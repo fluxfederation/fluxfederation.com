@@ -1,0 +1,552 @@
+/******************************************************************
+
+Stylesheet: Base Mobile Stylesheet
+
+Be light and don't over style since everything here will be
+loaded by mobile devices. You want to keep it as minimal as
+possible. This is called at the top of the main stylsheet
+and will be used across all viewports.
+
+******************************************************************/
+
+// ****** CONTENTS ****** //
+
+/*
+	GENERAL STYLES
+	WORDPRESS BODY CLASSES
+	LAYOUT & GRID STYLES
+	LINK STYLES
+	H1, H2, H3, H4, H5 STYLES
+	HEADER STYLES
+	NAVIGATION STYLES
+	FRONT PAGE
+	CONTACT US PAGE
+	SLIDERS
+	POSTS & CONTENT STYLES
+	ACCORDION
+	PAGE NAVI STYLES
+	COMMENT STYLES
+	COMMENT FORM STYLES
+	SIDEBARS & ASIDES
+	FOOTER STYLES
+*/
+
+
+/*********************
+GENERAL STYLES
+*********************/
+
+body {
+	font-size: 100%;
+	line-height: 1.7em;
+	color: $text-color;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	font-family: $sans-serif;
+	background-color: $ff-purple;
+	font-weight:500;
+}
+
+
+.video {
+	width: 100%;
+
+	.video-container {
+		position: relative;
+		width: 100%;
+		height: 0;
+		padding-bottom: 55.75%;
+		margin: 1.5em 0;
+		border: 3px solid $white;
+
+		iframe {
+			position: absolute;
+			top: 0px;
+			left: 0px;
+			width: 100%;
+			height: 100%;
+		}
+	}
+}
+
+/*********************
+LAYOUT & GRID STYLES
+*********************/
+
+section {
+	padding: 4.5em 0;
+
+	.flux-mark {
+		img {
+			width: 30px;
+			height: auto;
+			transition: all .2s linear;
+			margin-bottom: 1em;
+		}
+	}
+}
+
+.sub-section {
+	padding:1.2em 0;
+}
+
+.wrap {
+	width: 96%;
+	max-width:1200px;
+	margin: 0 auto;
+	padding-right: 10px;
+    padding-left: 10px;
+}
+
+/*********************
+LINK STYLES
+*********************/
+
+a, a:visited {
+	color: $link-color;
+	outline: none !important;
+	text-decoration: none;
+
+	/* on hover */
+	&:hover, &:focus {
+		color: $link-hover;
+	}
+
+	/* on click */
+	&:active {
+
+	}
+
+	/* mobile tap color */
+	&:link {
+		/*
+		this highlights links on iPhones/iPads.
+		so it basically works like the :hover selector
+		for mobile devices.
+		*/
+		-webkit-tap-highlight-color : rgba( 0, 0, 0, 0.3 );
+	}
+
+	&.down-arrow {
+		display: block;
+		text-align: center;
+
+		img {
+			width: 24px;
+			height: auto;
+			transition: all .2s linear;
+		}
+	}
+}
+
+.white {
+	a, a:visited {
+		font-weight: 500;
+		color: $ff-purple;
+	}
+}
+
+/******************************************************************
+P, H1, H2, H3, H4, H5 STYLES
+******************************************************************/
+
+p {
+	margin: 0;
+	font-size: 0.8em;
+	line-height: 1.5em;
+	margin-bottom: 1em;
+}
+
+h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
+	text-rendering: optimizelegibility;
+	font-weight: 500;
+	margin-left: -.05em;
+
+	margin: 0;
+	transition:all .2s linear;
+
+	a {
+		text-decoration: none;
+	}
+}
+
+h1, .h1 {
+	font-size: 2.5em;
+	line-height: 1.333em;
+	text-transform: uppercase;
+}
+
+h2, .h2 {
+	font-weight:900;
+	font-size: 1.5em;
+	line-height: 1.0em;
+	text-transform: uppercase;
+	margin-bottom: 0.8em;
+}
+
+h3, .h3 {
+	font-weight:900;
+	font-size: 3.5em;
+	line-height: 0.85em;
+	text-transform: uppercase;
+}
+
+h4, .h4 {
+	font-size: 0.8em;
+	font-weight: 700;
+	line-height: 1.5em;
+	text-transform: uppercase;
+	margin-bottom: 0.8em;
+}
+
+h5, .h5 {
+	font-size: 0.8em;
+	line-height: 1.5em;
+	font-weight: 700;
+	margin-bottom: 1em;
+}
+
+h6, .h6 {
+	font-size: 0.8em;
+	line-height: 1.5em;
+	font-weight: 700;
+	margin-bottom: 1em;
+}
+
+/*********************
+HEADER STYLES
+*********************/
+
+.header {
+	background: $ff-purple;
+	
+	.wrap {
+		padding-top:32px;
+		padding-bottom:60px;
+		transition:all .2s linear;
+
+		.logo {
+	
+			a {
+				color: $white;
+				
+				img {
+					width:72px;
+					height:auto;
+					transition:all .2s linear;
+				}
+			}
+		}
+
+		.powering-powershop {
+			padding-top:20px;
+			text-align:right;
+			transition:all .2s linear;
+
+			img {
+				width: 145px;
+				height: auto;
+				text-align: right;
+				transition:all .2s linear;
+				-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=50)"; // IE8
+				filter: alpha(opacity=50); // IE 5-7
+				opacity: 0.7;
+			}
+			
+			img:hover {
+				-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=100)"; // IE8
+				filter: alpha(opacity=100); // IE 5-7
+				opacity: 1;
+			}
+		}
+		
+		.questions {padding:0;}
+	}
+}
+
+/*********************
+NAVIGATION STYLES
+*********************/
+
+nav ul {
+	margin: 30px 0;
+	border-top:1px solid $ff-pink;
+	padding-top:6px;
+	text-align:left;
+	transition:all .2s linear;
+	
+	li {
+		display:inline;
+		text-align:left;
+		margin-right:20px;
+		transition:all .2s linear;
+		
+		a {
+			text-transform: uppercase;
+			font-weight:500;
+			font-size:14px;
+			text-decoration: none;
+		}
+	}
+}
+
+
+/*********************
+CONTENT STYLES
+*********************/
+.purple {
+	background:$ff-purple;
+	color:$white;
+}
+
+.pink {
+	background:$ff-pink;
+	color:$white;
+}
+
+.white {
+	background:$white;
+	color:$ff-purple;
+
+	h2 {
+		color: $ff-pink;
+	}
+
+	h5 {
+		color: $ff-pink;
+	}
+}
+
+/* Go Boldly */
+#go-boldly {
+	.illustration {
+		position: relative;
+
+		img {
+			width: 100%;
+			height: auto;
+			transition:all .2s linear;
+		}
+	}
+}
+
+/* Questions */
+.questions-title {
+	
+	.positioning-statement {
+		font-weight:900;
+		font-size: 3.8em;
+		line-height: 1em;
+		text-transform:uppercase;
+		margin:1.5em 0;
+		transition:all .2s linear;
+	}
+}
+
+.questions {
+	padding:120px 0;
+}
+
+h6.accordion {
+	position: relative;
+	cursor: pointer;
+	padding-left: 18px;
+
+	&:before {
+		content: '';
+		position: absolute;
+		left: 0;
+		margin-top: 6px;
+
+		width: 13px;
+		height: 7px;
+
+		background-image: url('../img/down-arrow-purple@2x.png');
+		background-repeat: no-repeat;
+		background-size: 100% 100%;
+
+		transition:all .2s linear;
+	}
+
+	&.open {
+		&:before {
+			@include transform(rotate(180deg));
+		}
+	}
+}
+
+div.accordion {
+	display: none;
+	padding-left: 20px;
+}
+
+/* 404 */
+#no-boldly {
+	p {
+	text-align: center;
+	padding: 0;
+	width: 100%;
+	}
+
+	.illustration {
+		width: 100%;
+
+		img {
+			width: 100%;
+			height: auto;
+		}
+	}
+}
+
+#front-page {
+	#main-container {}
+	#questions-container {
+		display: none;
+	}
+}
+
+/*********************
+CONTACT
+*********************/
+.contact-us {
+
+	.powershop {
+		
+		.powershop-logo {
+			padding-bottom:8px;
+			width:198px;
+			height:auto;
+		}
+
+		.table {
+			border: 1px solid $white;
+
+			.row {
+				.cell {
+					padding: 26px;
+
+					&:first-child {
+						border-top: 0;
+					}
+
+					&:hover {
+
+						h2, p {
+							color: $white;
+						}
+					}
+				}
+			}
+		}
+
+		h2 {
+			text-align:center;
+			font-size: 3em;
+			margin: 0;
+			font-weight:500;
+		}
+	
+		p {
+			text-align:center;
+			font-size: .9em;
+			margin: 0;
+			width: 100%;
+			font-weight: 300;
+		}
+	}
+}
+
+/** purple version of contact section **/
+.contact-us.purple {
+	
+	.address-block {
+		h4, p {color:$ff-pink;
+
+			a {color:$ff-pink;
+					
+				&:hover {color: darken($ff-pink, 20%);}
+			}
+		}
+	}
+
+	.powershop {
+
+		.row {
+			.cell {
+				border-top: 1px solid $ff-purple;
+				background: url('../img/contact-arrow-bg-purple.svg') $white top right no-repeat;
+				
+				&:first-child {
+					border-top: 0;
+				}
+
+				&:hover {
+					background: url('../img/contact-arrow-bg-white.svg') $ff-purple top right no-repeat;
+				}
+			}
+		}
+
+		h2 {
+			color: $ff-pink;
+		}
+	
+		p {
+			color: $ff-pink;
+		}
+	}
+}
+
+
+/** pink version of contact section **/
+.contact-us.pink {
+	
+	.address-block {
+		h4, p {color:$ff-purple;
+
+				a {color:$ff-purple;
+					
+					&:hover {color: darken($ff-purple, 20%);}
+				}
+		}
+	}
+
+	.powershop {
+
+		.row {
+			.cell {
+				border-top: 1px solid $ff-pink;
+				background: url('../img/contact-arrow-bg-pink.svg') $white top right no-repeat;
+				
+				&:first-child {
+					border-top: 0;
+				}
+
+				&:hover {
+					background: url('../img/contact-arrow-bg-white.svg') $ff-pink top right no-repeat;
+				}
+			}
+		}
+
+		h2 {
+			color: $ff-pink;
+		}
+	
+		p {
+			color: $ff-pink;
+		}
+	}
+}
+
+
+
+/*********************
+FOOTER STYLES
+*********************/
+
+.footer.purple {
+	p {color:$ff-pink;}
+}
+
+.footer.pink {
+	p {color:$ff-purple;}
+}

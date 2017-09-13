@@ -1,0 +1,83 @@
+/******************************************************************
+
+Stylesheet: Typography
+
+Need to import a font or set of icons for your site? Drop them in
+here or just use this to establish your typographical grid. Or not.
+Do whatever you want to...GOSH!
+
+Helpful Articles:
+http://trentwalton.com/2012/06/19/fluid-type/
+http://ia.net/blog/responsive-typography-the-basics/
+http://alistapart.com/column/responsive-typography-is-a-physical-discipline
+
+******************************************************************/
+
+
+/*********************
+FONT FACE (IN YOUR FACE)
+*********************/
+
+/*  To embed your own fonts, use this syntax
+    and place your fonts inside the
+    library/fonts folder. For more information
+    on embedding fonts, go to:
+    http://www.fontsquirrel.com/
+    Be sure to remove the comment brackets.
+*/
+
+
+@font-face {
+    font-family: 'rubik';
+    src: url('../fonts/ff-rubik-regular-webfont.woff2') format('woff2'),
+         url('../fonts/ff-rubik-regular-webfont.woff') format('woff');
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'rubik';
+    src: url('../fonts/ff-rubik-bold-webfont.woff2') format('woff2'),
+         url('../fonts/ff-rubik-bold-webfont.woff') format('woff');
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'rubik';
+    src: url('../fonts/ff-rubik-black-webfont.woff2') format('woff2'),
+         url('../fonts/ff-rubik-black-webfont.woff') format('woff');
+    font-weight: 900;
+    font-style: normal;
+}
+
+
+/*  The following is based of Typebase:
+    https://github.com/devinhunt/typebase.css
+    I've edited it a bit, but it's a nice starting point.
+*/
+
+
+// font stacks
+$sans-serif:        "rubik", Helvetica, Arial, sans-serif;
+
+/*  I imported this one in the functions file so bones would look sweet.
+    don't forget to remove it for your site.
+*/
+
+/*  Some nice typographical defaults
+    more here: http://www.newnet-soft.com/blog/csstypography
+*/
+p {
+    -ms-word-wrap: break-word;
+    word-break: break-word; // non-standard css for webkit
+    word-wrap: break-word;
+}
+
+.uppercase {
+    text-transform: uppercase;
+}
+
+.lowercase {
+    text-transform: lowercase;
+}

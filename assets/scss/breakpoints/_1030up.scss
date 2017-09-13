@@ -1,0 +1,118 @@
+/******************************************************************
+
+Stylesheet: Desktop Stylsheet
+
+This is the desktop size. It's larger than an iPad so it will only
+be seen on the Desktop.
+
+******************************************************************/
+
+/* CONTENT */
+
+/******************************************************************
+P, H1, H2, H3, H4, H5 STYLES
+******************************************************************/
+p {
+	font-size: .9em;
+}
+
+
+p, h2, h4, h5, h6 {
+    padding-right: 30%;
+}
+
+h2, .h2 {
+	font-size: 3.2em;
+}
+
+h3, .h3 {
+	font-size: 9em;
+}
+
+#go-boldly {
+	.illustration {
+		img {
+			top: -15em;
+		}
+	}
+}
+
+#no-boldly {
+	.illustration {
+		padding: 70px 140px 50px;
+	}
+	
+	.down-arrow {
+		padding-top:140px;
+	}
+}
+
+.video {
+    padding: 1em 0;
+    width: 70%;
+}
+
+
+
+/*********************
+CONTENT STYLES
+*********************/
+.contact-us {
+
+	.address-block {
+		h2 {
+			font-size:3.2em;
+			padding-right:0;
+		}
+		p {padding-right:0;}
+	}
+
+	.powershop {
+
+		.table {
+			display: table;
+
+			.row {
+				display: row;
+
+				.cell {
+					display: table-cell;
+					width: 33%;
+
+					border-top: 0;
+
+					vertical-align: top;
+
+					&:first-child {
+						border-left: 0;
+					}
+
+					h2 {
+						position: relative;
+						float: left;
+						text-align: left;
+						padding-right: 15px;
+					}
+
+					p {
+						position: relative;
+						float: left;
+						text-align: left;
+						padding: 0;
+						width:calc(100% - 85px);
+					}
+				}
+			}
+		}
+	}
+}
+.contact-us.purple {
+				.cell {
+					border-left: 1px solid $ff-purple;
+				}
+}
+.contact-us.pink {
+				.cell {
+					border-left: 1px solid $ff-pink;
+				}
+}
