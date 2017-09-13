@@ -12,6 +12,11 @@ be seen on the Desktop.
 /******************************************************************
 P, H1, H2, H3, H4, H5 STYLES
 ******************************************************************/
+p {
+	font-size: .9em;
+}
+
+
 p, h2, h4, h5, h6 {
     padding-right: 30%;
 }
@@ -55,7 +60,11 @@ CONTENT STYLES
 .contact-us {
 
 	.address-block {
-		h2 {font-size:3.2em;}
+		h2 {
+			font-size:3.2em;
+			padding-right:0;
+		}
+		p {padding-right:0;}
 	}
 
 	.powershop {

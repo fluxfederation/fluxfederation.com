@@ -1,3 +1,4 @@
+// This is Javascript and requires JQuery to be loaded//
 (function($) {
     $(document).ready(function() {
         // JQUERY //
@@ -8,18 +9,6 @@
             if(src.indexOf('youtube') >= 0) {
                 $(Element).wrap('<div class="video-container" />');
             }
-        });
-
-        // This is Javascript and requires JQuery to be loaded//
-        $('.scroll-trigger').on('click', function(event) {
-            event.preventDefault();
-
-            var padding = parseInt($('main').css('paddingTop'));
-            var location = $(this).attr('href');
-            var top = $('#'+location).offset().top - padding + 1;
-            $('html, body').animate({
-                scrollTop: top
-            }, 500);
         });
 
         $('h6.accordion').on('click', function(event) {
@@ -95,5 +84,23 @@
                 $('main').addClass('scroll');
             }
         });
+
+        $(document).ajaxComplete(function() {
+            scroll_triggers();
+        });
+
+        scroll_triggers();
+        function scroll_triggers() {
+            $('.scroll-trigger').off('click');
+            $('.scroll-trigger').on('click', function(event) {
+                event.preventDefault();
+                var padding = parseInt($('main').css('paddingTop'));
+                var location = $(this).attr('href');
+                var top = $('#'+location).offset().top - padding + 1;
+                $('html, body').animate({
+                    scrollTop: top
+                }, 500);
+            });
+        }
     });
 })(jQuery);

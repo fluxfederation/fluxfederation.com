@@ -69,6 +69,12 @@ FONT FACE (IN YOUR FACE)
 
 @font-face {
   font-family: 'rubik';
+  src: url("../fonts/ff-rubik-bold-webfont.woff2") format("woff2"), url("../fonts/ff-rubik-bold-webfont.woff") format("woff");
+  font-weight: 700;
+  font-style: normal; }
+
+@font-face {
+  font-family: 'rubik';
   src: url("../fonts/ff-rubik-black-webfont.woff2") format("woff2"), url("../fonts/ff-rubik-black-webfont.woff") format("woff");
   font-weight: 900;
   font-style: normal; }
@@ -199,9 +205,11 @@ main {
     padding-top: 72px;
     transition: all .2s linear; }
 
-section .flux-mark img {
-  width: 44px;
-  margin-bottom: 6em; }
+section {
+  padding: 9.5em 0 4.5em 0; }
+  section .flux-mark img {
+    width: 44px;
+    margin-bottom: 6em; }
 
 /*********************
 LINK STYLES
@@ -216,7 +224,6 @@ a.down-arrow, a:visited.down-arrow {
 P, H1, H2, H3, H4, H5 STYLES
 ******************************************************************/
 p {
-  font-size: .9em;
   width: 80%; }
 
 h2, .h2 {
@@ -315,6 +322,9 @@ be seen on the Desktop.
 /******************************************************************
 P, H1, H2, H3, H4, H5 STYLES
 ******************************************************************/
+p {
+  font-size: .9em; }
+
 p, h2, h4, h5, h6 {
   padding-right: 30%; }
 
@@ -341,7 +351,11 @@ h3, .h3 {
 CONTENT STYLES
 *********************/
 .contact-us .address-block h2 {
-  font-size: 3.2em; }
+  font-size: 3.2em;
+  padding-right: 0; }
+
+.contact-us .address-block p {
+  padding-right: 0; }
 
 .contact-us .powershop .table {
   display: table; }

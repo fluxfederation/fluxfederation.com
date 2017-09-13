@@ -37,6 +37,14 @@ FONT FACE (IN YOUR FACE)
 
 @font-face {
     font-family: 'rubik';
+    src: url('../fonts/ff-rubik-bold-webfont.woff2') format('woff2'),
+         url('../fonts/ff-rubik-bold-webfont.woff') format('woff');
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'rubik';
     src: url('../fonts/ff-rubik-black-webfont.woff2') format('woff2'),
          url('../fonts/ff-rubik-black-webfont.woff') format('woff');
     font-weight: 900;

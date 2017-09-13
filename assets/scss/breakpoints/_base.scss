@@ -44,6 +44,7 @@ body {
 	-moz-osx-font-smoothing: grayscale;
 	font-family: $sans-serif;
 	background-color: $ff-purple;
+	font-weight:500;
 }
 
 
@@ -73,7 +74,7 @@ LAYOUT & GRID STYLES
 *********************/
 
 section {
-	padding: 9.5em 0 4.5em;
+	padding: 4.5em 0;
 
 	.flux-mark {
 		img {
@@ -159,6 +160,7 @@ p {
 h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
 	text-rendering: optimizelegibility;
 	font-weight: 500;
+	margin-left: -.05em;
 
 	margin: 0;
 	transition:all .2s linear;
@@ -248,7 +250,7 @@ HEADER STYLES
 				transition:all .2s linear;
 				-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=50)"; // IE8
 				filter: alpha(opacity=50); // IE 5-7
-				opacity: 0.5;
+				opacity: 0.7;
 			}
 			
 			img:hover {
@@ -460,7 +462,10 @@ CONTACT
 	.address-block {
 		h4, p {color:$ff-pink;
 
-				a {color:$ff-pink;}
+			a {color:$ff-pink;
+					
+				&:hover {color: darken($ff-pink, 20%);}
+			}
 		}
 	}
 
@@ -482,11 +487,11 @@ CONTACT
 		}
 
 		h2 {
-			color: $ff-purple;
+			color: $ff-pink;
 		}
 	
 		p {
-			color: $ff-purple;
+			color: $ff-pink;
 		}
 	}
 }
@@ -498,7 +503,10 @@ CONTACT
 	.address-block {
 		h4, p {color:$ff-purple;
 
-				a {color:$ff-purple;}
+				a {color:$ff-purple;
+					
+					&:hover {color: darken($ff-purple, 20%);}
+				}
 		}
 	}
 
