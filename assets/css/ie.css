@@ -65,19 +65,22 @@ FONT FACE (IN YOUR FACE)
   font-family: 'rubik';
   src: url("../fonts/ff-rubik-regular-webfont.woff2") format("woff2"), url("../fonts/ff-rubik-regular-webfont.woff") format("woff");
   font-weight: 500;
-  font-style: normal; }
+  font-style: normal;
+}
 
 @font-face {
   font-family: 'rubik';
   src: url("../fonts/ff-rubik-bold-webfont.woff2") format("woff2"), url("../fonts/ff-rubik-bold-webfont.woff") format("woff");
   font-weight: 700;
-  font-style: normal; }
+  font-style: normal;
+}
 
 @font-face {
   font-family: 'rubik';
   src: url("../fonts/ff-rubik-black-webfont.woff2") format("woff2"), url("../fonts/ff-rubik-black-webfont.woff") format("woff");
   font-weight: 900;
-  font-style: normal; }
+  font-style: normal;
+}
 
 /*  The following is based of Typebase:
     https://github.com/devinhunt/typebase.css
@@ -92,13 +95,16 @@ FONT FACE (IN YOUR FACE)
 p {
   -ms-word-wrap: break-word;
   word-break: break-word;
-  word-wrap: break-word; }
+  word-wrap: break-word;
+}
 
 .uppercase {
-  text-transform: uppercase; }
+  text-transform: uppercase;
+}
 
 .lowercase {
-  text-transform: lowercase; }
+  text-transform: lowercase;
+}
 
 /******************************************************************
 
@@ -174,7 +180,8 @@ them in here, they won't work.
 */
 /* HEADER */
 .header .wrap .powering-powershop img {
-  width: 218px; }
+  width: 218px;
+}
 
 /******************************************************************
 
@@ -196,51 +203,71 @@ LAYOUT & GRID STYLES
 header.scroll .wrap {
   padding-top: 14px;
   padding-bottom: 58px;
-  transition: all .2s linear; }
+  transition: all .2s linear;
+}
 
 main {
   padding-top: 170px;
-  transition: all .2s linear; }
-  main.scroll {
-    padding-top: 72px;
-    transition: all .2s linear; }
+  transition: all .2s linear;
+}
+
+main.scroll {
+  padding-top: 72px;
+  transition: all .2s linear;
+}
 
 section {
-  padding: 9.5em 0 4.5em 0; }
-  section .flux-mark img {
-    width: 44px;
-    margin-bottom: 6em; }
+  padding: 9.5em 0 4.5em 0;
+}
+
+section .flux-mark img {
+  width: 44px;
+  margin-bottom: 6em;
+}
 
 /*********************
 LINK STYLES
 *********************/
 a.down-arrow, a:visited.down-arrow {
   padding-top: 60px;
-  margin-bottom: -45px; }
-  a.down-arrow img, a:visited.down-arrow img {
-    width: 32px; }
+  margin-bottom: -45px;
+}
+
+a.down-arrow img, a:visited.down-arrow img {
+  width: 32px;
+}
 
 /******************************************************************
 P, H1, H2, H3, H4, H5 STYLES
 ******************************************************************/
 p {
-  width: 80%; }
+  width: 80%;
+}
 
 h2, .h2 {
-  font-size: 3em; }
+  font-size: 3em;
+}
 
 h3, .h3 {
   font-size: 8.4em;
-  padding-bottom: 0.5em; }
+  padding-bottom: 0.5em;
+}
 
 h4, .h4 {
-  font-size: .9em; }
+  font-size: .9em;
+}
 
 h5, .h5 {
-  font-size: .9em; }
+  font-size: .9em;
+}
 
 h6, .h6 {
-  font-size: .9em; }
+  font-size: .9em;
+}
+
+article ul li {
+  width: 80%;
+}
 
 /*********************
 HEADER STYLES
@@ -250,22 +277,33 @@ HEADER STYLES
   top: 0;
   left: 0;
   width: 100%;
-  z-index: 10000; }
-  .header .wrap {
-    padding-top: 90px;
-    padding-bottom: 80px; }
-    .header .wrap .logo a img {
-      width: 112px; }
-    .header .wrap .powering-powershop {
-      padding-top: 16px; }
-    .header .wrap nav ul {
-      margin: 12px 0 0;
-      border: none;
-      padding: 0;
-      text-align: right; }
-      .header .wrap nav ul li {
-        margin-right: 0;
-        margin-left: 10px; }
+  z-index: 10000;
+}
+
+.header .wrap {
+  padding-top: 90px;
+  padding-bottom: 80px;
+}
+
+.header .wrap .logo a img {
+  width: 112px;
+}
+
+.header .wrap .powering-powershop {
+  padding-top: 16px;
+}
+
+.header .wrap nav ul {
+  margin: 12px 0 0;
+  border: none;
+  padding: 0;
+  text-align: right;
+}
+
+.header .wrap nav ul li {
+  margin-right: 0;
+  margin-left: 10px;
+}
 
 /*********************
 CONTENT STYLES
@@ -274,38 +312,48 @@ CONTENT STYLES
   position: absolute;
   width: 65%;
   right: 0px;
-  top: -10.5em; }
+  top: -10.5em;
+}
 
 .video {
   margin-top: 3em;
-  width: 60%; }
+  width: 60%;
+}
 
 /* Questions */
 h6.accordion {
-  padding-left: 40px; }
-  h6.accordion:before {
-    margin-top: 7px;
-    width: 15px;
-    height: 8px; }
+  padding-left: 40px;
+}
+
+h6.accordion:before {
+  margin-top: 7px;
+  width: 15px;
+  height: 8px;
+}
 
 div.accordion {
   margin-bottom: 2em;
-  padding-left: 40px; }
+  padding-left: 40px;
+}
 
 /*********************
 CONTACT
 *********************/
 .contact-us .address-block h2 {
-  font-size: 2em; }
+  font-size: 2em;
+}
 
 .contact-us .address-block div {
-  padding-right: 20px !important; }
+  padding-right: 20px !important;
+}
 
 .contact-us .address-block div:last-child {
-  padding-right: 0 !important; }
+  padding-right: 0 !important;
+}
 
 .contact-us .address-block p {
-  width: 100%; }
+  width: 100%;
+}
 
 /*********************
 FOOTER STYLES
@@ -323,68 +371,96 @@ be seen on the Desktop.
 P, H1, H2, H3, H4, H5 STYLES
 ******************************************************************/
 p {
-  font-size: .9em; }
+  font-size: .9em;
+}
 
 p, h2, h4, h5, h6 {
-  padding-right: 30%; }
+  padding-right: 30%;
+}
 
 h2, .h2 {
-  font-size: 3.2em; }
+  font-size: 3.2em;
+}
 
 h3, .h3 {
-  font-size: 9em; }
+  font-size: 9em;
+}
+
+article ul li {
+  padding-right: 30%;
+  font-size: .9em;
+}
 
 #go-boldly .illustration img {
-  top: -15em; }
+  top: -15em;
+}
 
 #no-boldly .illustration {
-  padding: 70px 140px 50px; }
+  padding: 70px 140px 50px;
+}
 
 #no-boldly .down-arrow {
-  padding-top: 140px; }
+  padding-top: 140px;
+}
 
 .video {
   padding: 1em 0;
-  width: 70%; }
+  width: 70%;
+}
 
 /*********************
 CONTENT STYLES
 *********************/
 .contact-us .address-block h2 {
   font-size: 3.2em;
-  padding-right: 0; }
+  padding-right: 0;
+}
 
 .contact-us .address-block p {
-  padding-right: 0; }
+  padding-right: 0;
+}
 
 .contact-us .powershop .table {
-  display: table; }
-  .contact-us .powershop .table .row {
-    display: row; }
-    .contact-us .powershop .table .row .cell {
-      display: table-cell;
-      width: 33%;
-      border-top: 0;
-      vertical-align: top; }
-      .contact-us .powershop .table .row .cell:first-child {
-        border-left: 0; }
-      .contact-us .powershop .table .row .cell h2 {
-        position: relative;
-        float: left;
-        text-align: left;
-        padding-right: 15px; }
-      .contact-us .powershop .table .row .cell p {
-        position: relative;
-        float: left;
-        text-align: left;
-        padding: 0;
-        width: calc(100% - 85px); }
+  display: table;
+}
+
+.contact-us .powershop .table .row {
+  display: row;
+}
+
+.contact-us .powershop .table .row .cell {
+  display: table-cell;
+  width: 33%;
+  border-top: 0;
+  vertical-align: top;
+}
+
+.contact-us .powershop .table .row .cell:first-child {
+  border-left: 0;
+}
+
+.contact-us .powershop .table .row .cell h2 {
+  position: relative;
+  float: left;
+  text-align: left;
+  padding-right: 15px;
+}
+
+.contact-us .powershop .table .row .cell p {
+  position: relative;
+  float: left;
+  text-align: left;
+  padding: 0;
+  width: calc(100% - 85px);
+}
 
 .contact-us.purple .cell {
-  border-left: 1px solid #5f259f; }
+  border-left: 1px solid #5f259f;
+}
 
 .contact-us.pink .cell {
-  border-left: 1px solid #ee4d87; }
+  border-left: 1px solid #ee4d87;
+}
 
 /*
 you can call the larger styles if you want, but there's really no need
@@ -409,3 +485,4 @@ header.php file to see what they are:
 .lt-ie8 .class { ... }
 
 */
+/*# sourceMappingURL=ie.css.map */

@@ -213,6 +213,17 @@ h6, .h6 {
 	margin-bottom: 1em;
 }
 
+article ul {
+	list-style-type: disc;
+	
+	li {
+	margin-left: 1rem;
+	font-size: 0.8em;
+	line-height: 1.5em;
+	margin-bottom: 1em;
+	}
+}
+
 /*********************
 HEADER STYLES
 *********************/
