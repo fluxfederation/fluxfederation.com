@@ -44,9 +44,6 @@ I mean, you can do whatever you want. The world is your oyster. Unless
 you hate oysters, then the world is your peanut butter & jelly sandwich.
 *********************/
 
-// alert boxes
-@import "modules/alerts";
-
 // buttons
 @import "modules/buttons";
 
@@ -106,10 +103,10 @@ you can add resource intensive styles.
 LARGE VIEWING SIZE
 This is for the larger monitors and possibly full screen viewers.
 *********************/
-@media only screen and (min-width: 1240px) {
+@media only screen and (min-width: 1200px) {
 
-	// styles in 1240up.scss
-	@import "breakpoints/1240up";
+	// styles in 1200up.scss
+	@import "breakpoints/1200up";
 
 } // end of media query
 

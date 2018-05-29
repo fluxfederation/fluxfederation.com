@@ -7,122 +7,162 @@ be seen on the Desktop.
 
 ******************************************************************/
 
-/* CONTENT */
+/*********************
+GENERAL STYLES
+*********************/
+html {
+    font-size: 112%;     // 100% defaults to 16px
+}
 
 /******************************************************************
 P, H1, H2, H3, H4, H5 STYLES
 ******************************************************************/
+
 p {
-	font-size: .9em;
+	&.strapline {
+		font-size: 1.5rem;
+		line-height: 1.7rem;
+		margin-bottom:1rem;
+	}
+
+	&.large {
+		//font-size: 1.25rem;
+		//line-height: 1.74rem;
+	}
+
+	&.small {
+		//font-size: 0.875rem;
+		//line-height: 1.3rem;
+	}
+
+	&.copyright {
+		font-size: 0.75rem;
+		line-height: 1.125rem;
+	}
 }
 
-
-p, h2, h4, h5, h6 {
-    padding-right: 30%;
+h1, .h1 {
+	font-size: 3.4rem;
+	line-height: 3.4rem;
+	&.homepage {
+		font-size: 3.8rem;
+		line-height: 3.8rem;
+		margin-bottom:1rem;
+	}
 }
 
 h2, .h2 {
-	font-size: 3.2em;
+    font-size: 2.2rem;
+	line-height: 2.4rem;
 }
 
 h3, .h3 {
-	font-size: 9em;
+
+	font-size: 1.4rem;
+	line-height: 1.6rem;
 }
 
-article ul li {
-	padding-right: 30%;
-	font-size: .9em;
+h4, .h4 {
+
+	font-size: 1.2rem;
+	line-height: 1.4rem;
 }
 
-#go-boldly {
-	.illustration {
-		img {
-			top: -15em;
-		}
-	}
-}
 
-#no-boldly {
-	.illustration {
-		padding: 70px 140px 50px;
-	}
-	
-	.down-arrow {
-		padding-top:140px;
-	}
-}
 
-.video {
-    padding: 1em 0;
-    width: 70%;
+/*********************
+NAVIGATION STYLES
+*********************/
+nav {
+	font-size: .9rem;
 }
-
 
 
 /*********************
 CONTENT STYLES
 *********************/
 
-#supplier-privacy-notice p, #supplier-privacy-notice h5, #supplier-privacy-notice h2 {
-	padding-right:0;
-}
-
-.contact-us {
-
-	.address-block {
-		h2 {
-			font-size:3.2em;
-			padding-right:0;
-		}
-		p {padding-right:0;}
+//homepage
+.homepage {
+	.rocket-man {
+		width: 16%;
 	}
 
-	.powershop {
+	#what-is-flux-part-1 {
+		text-align: center;
 
-		.table {
-			display: table;
+		.what-is-flux-diagram {
+			display: block;
+			width: 100%;
+			margin-top: 3rem;
 
-			.row {
-				display: row;
+			.diagram {
+				width: 100%;
+			}
+		}
 
-				.cell {
-					display: table-cell;
-					width: 33%;
+		.what-is-flux-diagram-mobile, .what-is-flux-diagram-tablet {
+			display: none;
+		}
+	}
 
-					border-top: 0;
+	#who-is-flux {
+		.illustration {
+			margin-bottom: -165px;
 
-					vertical-align: top;
-
-					&:first-child {
-						border-left: 0;
-					}
-
-					h2 {
-						position: relative;
-						float: left;
-						text-align: left;
-						padding-right: 15px;
-					}
-
-					p {
-						position: relative;
-						float: left;
-						text-align: left;
-						padding: 0;
-						width:calc(100% - 85px);
-					}
-				}
+			.illustration-wrapper {
+				width: 900px;
 			}
 		}
 	}
+
+	#powering-powershop {
+		.bottom {
+			.location-wrapper {
+				position: relative;
+				left: 50%;
+				transform: translateX(-50%);
+				max-width: 900px;
+			}
+		}
+		// display: none;
+	}
 }
-.contact-us.purple {
-				.cell {
-					border-left: 1px solid $ff-purple;
-				}
+
+
+// culture page
+.culture-page {
+	.video {
+		padding: 1em 0;
+		width: 70%;
+	}
 }
-.contact-us.pink {
-				.cell {
-					border-left: 1px solid $ff-pink;
-				}
+
+
+//404 page and thank you page
+.the-404-page, .thank-you-page {
+	.illustration {
+		margin-top:8rem;
+		margin-bottom:-178px;
+
+		img {
+			width:800px;
+			height:auto;
+		}
+	}
 }
+
+
+//Contact us
+.contact-us {
+	.address-block {
+		h2 {
+			padding-right: 0;
+		}
+        
+		p {
+            padding-right: 0;
+        }
+	}
+}
+

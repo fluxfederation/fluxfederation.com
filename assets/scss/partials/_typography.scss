@@ -26,6 +26,13 @@ FONT FACE (IN YOUR FACE)
     Be sure to remove the comment brackets.
 */
 
+@font-face {
+    font-family: 'rubik';
+    src: url('../fonts/ff-rubik-light-webfont.woff2') format('woff2'),
+         url('../fonts/ff-rubik-light-webfont.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+}
 
 @font-face {
     font-family: 'rubik';
@@ -51,6 +58,29 @@ FONT FACE (IN YOUR FACE)
     font-style: normal;
 }
 
+@font-face {
+    font-family: 'omnes';
+    src: url('../fonts/omnesregular.woff2') format('woff2'),
+         url('../fonts/omnesregular.woff') format('woff');
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'omnes';
+    src: url('../fonts/omnesmedium.woff2') format('woff2'),
+         url('../fonts/omnesmedium.woff') format('woff');
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'omnes';
+    src: url('../fonts/omnesbold.woff2') format('woff2'),
+         url('../fonts/omnesbold.woff') format('woff');
+    font-weight: 900;
+    font-style: normal;
+}
 
 /*  The following is based of Typebase:
     https://github.com/devinhunt/typebase.css

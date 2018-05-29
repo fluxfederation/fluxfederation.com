@@ -11,37 +11,22 @@ No one likes a mess.
 
 /*********************
 COLORS
-Need help w/ choosing your colors? Try this site out:
-http://0to255.com/
 *********************/
+$purple:            #5f259f;
+$dark-purple:       #4f2d9e;
+$header-scroll-purple:darken($purple, 10%);
 
+$gray:              #e6e6e6;
+$dark-gray:         #4d4d4d;
 
+$pink:              #ee4d87;
+$dark-pink:         #e01d3d;
+$powershop-pink:    #fa0e6a;
 
-$ff-purple:         #5f259f;
-$ff-pink:           #ee4d87;
+$powershop-blue:    #94d3e2;
 
-$black:             #000;
-$white:             #fff;
+$link-color:        $pink;
+$link-hover:        darken($pink, 10%);
 
-$link-color:        $white;
-$link-hover:        darken($link-color, 20%);
+$green:             #01a68e;
 
-$border-color:      #ccc;
-$disabled-gray:     #cfcfcf;
-
-$light-gray:        #f8f9fa;
-$gray:              #eaedf2;
-$text-color:        #5c6b80;
-$meta-gray:         #9fa6b4;
-
-$alert-yellow:      #ebe16f;
-$alert-red:         #fbe3e4;
-$alert-green:       #e6efc2;
-$alert-blue:        #d5edf8;
-
-
-/*
-Here's a great tutorial on how to
-use color variables properly:
-http://sachagreif.com/sass-color-variables/
-*/
