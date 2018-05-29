@@ -1,0 +1,427 @@
+/******************************************************************
+Site Name:
+Author:
+
+Stylesheet: Grid Stylesheet
+
+I've seperated the grid so you can swap it out easily. It's
+called at the top the style.scss stylesheet.
+
+There are a ton of grid solutions out there. You should definitely
+experiment with your own. Here are some recommendations:
+
+http://gridsetapp.com - Love this site. Responsive Grids made easy.
+http://susy.oddbird.net/ - Grids using Compass. Very elegant.
+http://gridpak.com/ - Create your own responsive grid.
+https://github.com/dope/lemonade - Neat lightweight grid.
+
+
+The grid below is a custom built thingy I modeled a bit after
+Gridset. It's VERY basic and probably shouldn't be used on
+your client projects. The idea is you learn how to roll your
+own grids. It's better in the long run and allows you full control
+over your project's layout.
+
+******************************************************************/
+
+
+// Grid for the front-end //
+#front-end-grid {
+    position:fixed;
+    z-index:9999999;
+    height:100%;
+    width:100%;
+
+    pointer-events: none;
+    display:none;
+    display:block;
+
+    #inner-content {
+
+        height:100%;
+        background:none;
+        pointer-events: none;
+
+        div {
+            height:100%;
+            background:none;
+            pointer-events: none;
+
+            div {
+                background:rgba(0, 0, 0, 0.1);
+            }
+        }
+    }
+}
+
+// using a mixin since we can't use placeholder selectors
+@mixin grid-col {
+    float: left;
+    padding-right: 10px;
+    padding-left: 10px;
+    text-align:left;
+}
+
+@mixin m-grid-col {
+    float: left;
+    padding-right: 30px;
+    padding-left: 30px;
+    text-align:left;
+}
+
+// the last column
+.last-col {
+    float: right!important;
+}
+
+// Wil - this removes padding for the first and last nested items
+.parent {
+    padding-left:0!important;
+    padding-right:0!important;
+}
+
+.center {
+    margin:0 auto!important;
+    text-align:center!important;
+}
+
+/*
+Mobile Grid Styles
+These are the widths for the mobile grid.
+There are four types, but you can add or customize
+them however you see fit.
+*/
+
+
+//@media (max-width: 767px) {
+
+.m-hide { display: none; }
+.m-show { display: inherit; }
+
+.center {
+    margin:0 auto!important;
+    text-align:center!important;
+}
+
+.m-all {
+    @include m-grid-col;
+    width: 100%;
+}
+
+.m-1of2 {
+    @include m-grid-col;
+    width: calc-percent(1, 2);
+}
+
+.m-1of3 {
+    @include m-grid-col;
+    width: calc-percent(1, 3);
+}
+
+.m-2of3 {
+    @include m-grid-col;
+    width: calc-percent(2, 3);
+}
+
+.m-1of4 {
+    @include m-grid-col;
+    width: calc-percent(1, 4);
+}
+
+.m-3of4 {
+    @include m-grid-col;
+    width: calc-percent(3, 4);
+}
+
+.m-center {
+    margin:0 auto;
+    text-align: center;
+    float:none;
+}
+
+// This creates offsets for columns
+
+.m-offset-left-1of2 {
+    margin-left: calc-percent(1, 2);
+}
+
+.m-offset-left-1of3 {
+    margin-left: calc-percent(1, 3);
+}
+
+.m-offset-left-1of6 {
+    margin-left: calc-percent(1, 6);
+}
+
+.m-offset-left-1of12 {
+    margin-left: calc-percent(1, 12);
+}
+
+//} // end mobile styles
+
+/* Portrait tablet to landscape */
+@media (min-width: 768px) /* Hide this for the moment: and (max-width: 1279px) */ {
+
+    .t-hide { display: none; }
+    .t-show { display: inherit; }
+
+    .t-all {
+        @include grid-col;
+        width: 100%;
+        padding: 0;
+    }
+
+    .t-1of2 {
+        @include grid-col;
+        width: calc-percent(1, 2);
+    }
+
+    .t-1of3 {
+        @include grid-col;
+        width: calc-percent(1, 3);
+    }
+
+    .t-2of3 {
+        @include grid-col;
+        width: calc-percent(2, 3);
+    }
+
+    .t-1of4 {
+        @include grid-col;
+        width: calc-percent(1, 4);
+    }
+
+    .t-3of4 {
+        @include grid-col;
+        width: calc-percent(3, 4);
+    }
+
+    .t-1of5 {
+        @include grid-col;
+        width: calc-percent(1, 5);
+    }
+
+    .t-2of5 {
+        @include grid-col;
+        width: calc-percent(2, 5);
+    }
+
+    .t-3of5 {
+        @include grid-col;
+        width: calc-percent(3, 5);
+    }
+
+    .t-4of5 {
+        @include grid-col;
+        width: calc-percent(4, 5);
+    }
+
+    .t-1of6 {
+        @include grid-col;
+        width: calc-percent(1, 6);
+    }
+    
+    .t-5of6 {
+        @include grid-col;
+        width: calc-percent(5, 6);
+    }
+    
+    .t-5of7 {
+        @include grid-col;
+        width: calc-percent(5, 7);
+    }
+    
+    .t-1of10 {
+        @include grid-col;
+        width: calc-percent(1, 10);
+    }
+
+    .t-1of12 {
+        @include grid-col;
+        width: calc-percent(1, 12);
+    }
+
+    .t-5of12 {
+        @include grid-col;
+        width: calc-percent(5, 12);
+    }
+
+    .t-7of12 {
+        @include grid-col;
+        width: calc-percent(7, 12);
+    }
+  
+    // Wil - This creates offsets for columns
+
+    .t-offset-left-1of2 {
+        margin-left: calc-percent(1, 2);
+    }
+
+    .t-offset-left-1of3 {
+        margin-left: calc-percent(1, 3);
+    }
+
+    .t-offset-left-1of5 {
+        margin-left: calc-percent(1, 5);
+    }
+
+    .t-offset-left-1of6 {
+        margin-left: calc-percent(1, 6);
+    }
+    
+    .t-offset-left-1of7 {
+        margin-left: calc-percent(1, 7);
+    }
+
+    .t-offset-left-1of12 {
+        margin-left: calc-percent(1, 12);
+    }
+
+    .t-offset-right-1of12 {
+        margin-right: calc-percent(1, 12);
+    }
+
+} // end tablet
+
+/* Landscape to small desktop */
+@media (min-width: 1280px) {
+
+    .d-hide { display: none; }
+    .d-show { display: inherit; }
+
+    .d-all  {
+        @include grid-col;
+        width: 100%;
+        padding: 0;
+    }
+
+    .d-1of2 {
+        @include grid-col;
+        width: calc-percent(1, 2);
+    }
+
+    .d-1of3 {
+        @include grid-col;
+        width: calc-percent(1, 3);
+    }
+
+    .d-2of3 {
+        @include grid-col;
+        width: calc-percent(2, 3);
+    }
+
+    .d-1of4 {
+        @include grid-col;
+        width: calc-percent(1, 4);
+    }
+
+    .d-3of4 {
+        @include grid-col;
+        width: calc-percent(3, 4);
+    }
+
+    .d-1of5 {
+        @include grid-col;
+        width: calc-percent(1, 5);
+    }
+
+    .d-2of5 {
+        @include grid-col;
+        width: calc-percent(2, 5);
+    }
+
+    .d-3of5 {
+        @include grid-col;
+        width: calc-percent(3, 5);
+    }
+
+    .d-4of5 {
+        @include grid-col;
+        width: calc-percent(4, 5);
+    }
+
+    .d-1of6 {
+        @include grid-col;
+        width: calc-percent(1, 6);
+    }
+
+    .d-1of7 {
+        @include grid-col;
+        width: calc-percent(1, 7);
+    }
+
+    .d-2of7 {
+        @include grid-col;
+        width: calc-percent(2, 7);
+    }
+
+    .d-3of7 {
+        @include grid-col;
+        width: calc-percent(3, 7);
+    }
+
+    .d-4of7 {
+        @include grid-col;
+        width: calc-percent(4, 7);
+    }
+
+    .d-5of7 {
+        @include grid-col;
+        width: calc-percent(5, 7);
+    }
+
+    .d-6of7 {
+        @include grid-col;
+        width: calc-percent(6, 7);
+    }
+
+    .d-1of8 {
+        @include grid-col;
+        width: calc-percent(1, 8);
+    }
+
+    .d-1of9 {
+        @include grid-col;
+        width: calc-percent(1, 9);
+    }
+
+    .d-1of10 {
+        @include grid-col;
+        width: calc-percent(1, 10);
+    }
+
+    .d-1of11 {
+        @include grid-col;
+        width: calc-percent(1, 11);
+    }
+
+    .d-1of12 {
+        @include grid-col;
+        width: calc-percent(1, 12);
+    }
+
+    .d-5of12 {
+        @include grid-col;
+        width: calc-percent(5, 12);
+    }
+  
+    // This creates offsets for columns
+	
+    .d-offset-left-1of2 {
+        margin-left: calc-percent(1, 2);
+    }
+
+    .d-offset-left-1of3 {
+        margin-left: calc-percent(1, 3);
+    }
+
+    .d-offset-left-1of6 {
+        margin-left: calc-percent(1, 6);
+    }
+
+    .d-offset-left-1of12 {
+        margin-left: calc-percent(1, 12);
+    }
+
+} // end desktop styles
+

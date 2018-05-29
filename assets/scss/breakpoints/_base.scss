@@ -1,0 +1,976 @@
+/******************************************************************
+
+Stylesheet: Base Mobile Stylesheet
+
+Be light and don't over style since everything here will be
+loaded by mobile devices. You want to keep it as minimal as
+possible. This is called at the top of the main stylsheet
+and will be used across all viewports.
+
+******************************************************************/
+
+// ****** CONTENTS ****** //
+
+/*
+	GENERAL STYLES
+	WORDPRESS BODY CLASSES
+	LAYOUT & GRID STYLES
+	LINK STYLES
+	H1, H2, H3, H4, H5 STYLES
+	HEADER STYLES
+	NAVIGATION STYLES
+	FRONT PAGE
+	CONTACT US PAGE
+	SLIDERS
+	POSTS & CONTENT STYLES
+	ACCORDION
+	PAGE NAVI STYLES
+	COMMENT STYLES
+	COMMENT FORM STYLES
+	SIDEBARS & ASIDES
+	FOOTER STYLES
+*/
+
+/*********************
+GENERAL STYLES
+*********************/
+html {
+	font-size: 100%;		// 100% defaults to 16px
+}
+
+body {
+	//font-size: 1rem;
+	//line-height: 1.4rem;
+	font-size: .875rem;
+	line-height: 1.3rem;
+
+	font-family: $sans-serif;
+    font-weight: 500;
+
+	color: black;
+
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+
+	text-rendering: optimizelegibility;
+
+	background-color: $purple;
+}
+
+/*********************
+LAYOUT & GRID STYLES
+*********************/
+section {
+	padding: 5rem 0;
+
+	&.purple {
+		color: white;
+		background: $purple;
+	}
+
+	&.dark-purple {
+		color: white;
+		background: $dark-purple;
+	}
+
+	&.white {
+		h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
+			color: $purple;
+		}
+
+		color: black;
+		background: white;
+	}
+
+	&.gray {
+		h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
+			color: $purple;
+		}
+
+		color: black;
+		background: $gray;
+	}
+
+	&.dark-gray {
+		color: $pink;
+		background: $dark-gray;
+	}
+}
+
+.sub-section {
+}
+
+.wrap {
+	width: 100%;
+	margin: 0 auto;
+}
+
+.underline {
+	height: 3px;
+	width: 150px;
+	background-color: $purple;
+}
+
+article {
+	position: relative;
+}
+
+.row {
+	position:relative;
+	margin:3rem 0;
+}
+
+.parallax {
+	position: relative;
+
+	.parallax-top,
+	.parallax-bottom {
+		position: absolute;
+		top: 0px;
+		left: 0px;
+	}
+
+	.parallax-top {
+		z-index: 2;
+	}
+
+	.parallax-middle {
+		position: relative;
+		z-index: 1;
+	}
+
+	.parallax-bottom {
+		z-index: 0;
+	}
+}
+
+/*********************
+LINK STYLES
+*********************/
+p a, p a:visited, li a, li a:visited {
+	position: relative;
+	color: $link-color;
+	outline: none !important;
+	text-decoration: none;
+	&:before {
+		content: "";
+		position: absolute;
+		width: 100%;
+		height: 1px;
+		bottom: -2px;
+		left: 0;
+		background-color: $link-hover;
+		visibility: hidden;
+		-webkit-transform: scaleX(0);
+		transform: scaleX(0);
+		-webkit-transition: all 0.3s ease-in-out 0s;
+		transition: all 0.3s ease-in-out 0s;
+	}
+
+	&:hover, &:focus, &.current {
+		color: $link-hover;
+		transition: color 0.2s ease-out;
+		
+		&:before {
+			visibility: visible;
+			-webkit-transform: scaleX(1);
+			transform: scaleX(1);
+		}
+	}
+
+	&:active {
+	}
+
+	&:link {
+		/*
+		this highlights links on iPhones/iPads.
+		so it basically works like the :hover selector
+		for mobile devices.
+		*/
+		-webkit-tap-highlight-color: rgba( 0, 0, 0, 0.3 );
+	}
+
+	&.down-arrow {
+		display: block;
+		text-align: center;
+
+		img {
+			width: 24px;
+			height: auto;
+			transition: all .2s linear;
+		}
+	}
+}
+
+.white {
+	a,a:visited {
+		font-weight: 500;
+		color: $purple;
+	}
+}
+
+/******************************************************************
+P, H1, H2, H3, H4, H5, address STYLES
+******************************************************************/
+p {
+	&.strapline {
+		font-size:1.3rem;
+		line-height: 1.7rem;
+		font-weight:400;
+	}
+
+	&.intro {
+		font-size: 1.25rem;
+		line-height: 1.6rem;
+		font-weight:400;
+	}
+
+	&.large {
+		//font-size: 1.125rem;
+		//line-height: 1.5rem;
+	}
+
+	&.small {
+	}
+
+	&.copyright {
+		font-size: 0.85rem;
+		line-height: 1.125rem;
+	}
+}
+
+h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
+	margin: 0;
+	transition: all .2s linear;
+	font-weight: 900;
+}
+
+h1, .h1 {
+	text-transform: uppercase;
+	font-size:2.5rem;
+	line-height:3rem;
+
+	&.homepage {
+		font-size:2.75rem;
+	}
+}
+
+h2, .h2 {
+	text-transform: uppercase;
+	font-size: 2.1rem;
+	line-height: 2.1rem;
+	margin-bottom:.8rem;
+}
+
+h3, .h3 {
+	text-transform: uppercase;
+	font-size: 1.6rem;
+	line-height: 1.8rem;
+}
+
+h4, .h4 {
+	font-size: 1.25rem;
+	line-height: 1.45rem;
+	font-weight:700;
+}
+
+h5, .h5 {
+	font-size: 1rem;
+	font-weight:700;
+}
+
+h6, .h6 {
+	font-size: .9rem;
+	font-weight:500;
+}
+
+address {
+	font-style: normal;
+}
+
+/*********************
+HEADER STYLES
+*********************/
+.header {
+	background: $purple;
+
+	.wrap {
+		padding-top: 32px;
+		padding-bottom: 60px;
+		transition: all .2s linear;
+
+		.logo {
+	
+			a {
+				color: white;
+				
+				img {
+					width: 72px;
+					height: auto;
+					transition: all .2s linear;
+				}
+			}
+		}
+		
+		.questions {
+			padding: 0;
+		}
+	}
+}
+
+/*********************
+NAVIGATION STYLES
+*********************/
+
+header nav ul {
+	float:right;
+
+	li {
+		a {
+
+			&:visited, &:hover { color:#fff!important;}
+
+		}
+	}
+}
+
+#careers-nav {
+	padding:0;
+	width: 100%;
+	
+	li {
+		margin:0;
+		a {
+			text-align: center;
+			color:$purple;
+			padding:1rem 0;
+
+			&:hover { 
+				background:#fff;
+				color:$pink;
+
+				&:before {
+					content:none;
+				}
+			}
+
+			&.current {
+				color:$pink;
+				background:#fff;
+			}
+
+			&:before {visibility: hidden;} // This hide the underline inherited from normal links
+		}
+	}
+
+	&.fixed {
+		border-bottom:2px solid $gray;
+	}
+}
+
+
+
+// This covers both the Header nav and the Careers nav
+nav {
+	font-size:.75rem;
+	line-height: 1.25rem;
+	font-weight: 500;
+	
+	ul {
+	margin: 0;
+	
+		li {
+			&:first-child { margin-left:0;}
+			display: inline;
+			text-align: left;
+			margin-left: 10px;
+			transition: all .2s linear;
+			
+			a {
+				text-transform: uppercase;
+				font-weight: 500;
+				text-decoration: none;
+				color:#fff;
+
+				&:visited {color:#fff;}
+				&:hover {
+					
+				}
+
+			}
+		}
+	}
+}
+
+/*********************
+CONTENT STYLES
+*********************/
+
+// Homepage
+.homepage {
+	
+	.rocket-man {
+		width: 26%;
+	
+		&.orbit {
+			animation: rocket-orbit 3s linear infinite;
+		}
+	
+		.rocket-left {
+			fill: white !important;
+			animation: rocket-left-flicker 0.02s infinite;
+		}
+	
+		.rocket-right {
+			fill: white !important;
+			animation: rocket-right-flicker 0.02s infinite;
+		}
+	
+		svg {
+			width: 100%;
+			height: 100%;
+		}
+	}
+	
+	@keyframes rocket-left-flicker {
+		0%   { opacity:1; }
+		50%  { opacity:0; }
+		100% { opacity:1; }
+	}
+	
+	@keyframes rocket-right-flicker {
+		0%   { opacity:0; }
+		50%  { opacity:1; }
+		100% { opacity:0; }
+	}
+	
+	@keyframes rocket-orbit {
+		from   	{ transform: rotate(0deg) translateX(5px) rotate(0deg); }
+		to	{ transform: rotate(360deg) translateX(5px) rotate(-360deg); }
+	}
+
+	// Section
+	#what-is-flux-part-1 {
+		text-align: center;
+
+		.what-is-flux-diagram, .what-is-flux-diagram-tablet {
+			position: relative;
+			display: none;
+		}
+
+		.what-is-flux-diagram-mobile {
+			position: relative;
+
+			.diagram {
+				max-width: 100%;
+			}
+		}
+	}
+
+	#what-is-flux-part-2 {
+		img {
+			width: 100%;
+		}
+
+		.simple, .flexible, .lovable {
+			padding: 2rem 10%;
+			text-align: center;
+
+			.m-graphic, .copy {
+				width: 100%;
+			}
+
+			.t-graphic {
+				display: none;
+			}
+		}
+
+		.flexible-animation {
+			position: relative;
+
+			.old-slice {
+				position: absolute;
+				top: 0px;
+				left: 0px;
+				width: 100%;
+				height: 100%;
+
+				transition: all 2s ease-in-out;
+
+				&.animate {
+					left: -29%;
+					top: -27%;
+				}
+			}
+
+			.new-slice {
+				position: absolute;
+				top: 0px;
+				left: 0px;
+				width: 100%;
+				height: 100%;
+
+				transition: all 2s ease-in-out;
+
+				&.animate {
+					left: -35%;
+				}
+			}
+
+			.top {
+				position: absolute;
+				top: 0px;
+				left: 0px;
+				width: 100%;
+				height: 100%;
+			}
+		}
+	}
+
+	// Section
+	.globe-container {
+		&.large {
+			display: none;
+		}
+	
+		&.small {
+			display: block;
+		}
+	}
+
+	// Powering-powershop
+	#powering-powershop {
+		padding: 0;
+
+		.top {
+			position: relative;
+			background-color: $powershop-blue;
+
+            .clouds {
+                display: block;
+                position: absolute;
+                top: 0px;
+                left: 0px;
+                right: 0px;
+                bottom: 0px;
+                overflow: hidden;
+
+                img {
+                    display: none;
+                    position: absolute;
+                    height: 4.5rem;
+                }
+            }
+
+			img {
+				&.powershop-face {
+                    position: relative;
+                    z-index: 1;
+					width: 15%;
+					padding: 1rem 0 0.8rem 0;
+				}
+			}
+
+			h2 {
+				text-align: center;
+				color: $powershop-pink;
+			}
+
+			p {
+				position: relative;
+				text-align: center;
+				padding-bottom: 1rem;
+			}
+
+			.bicycle {
+				position: relative;
+				margin-bottom: -12%;
+				z-index: 1;
+
+				img {
+					width: 100%;
+				}
+			}
+		}
+
+		.bottom {
+			position: relative;
+			background-color: $powershop-pink;
+			padding-top: 14%;
+
+			h2 {
+				color: white;
+				text-transform: uppercase;
+				text-align: center;
+				//font-family: 'omnes';
+				font-weight: 500;
+				font-size: 1.2rem;
+				line-height:1.2rem;
+
+				&.headline {
+					padding-bottom: 1rem;
+				}
+			}
+
+			.location {
+				position: relative;
+				left: 50%;
+				transform: translateX(-50%);
+				background-color: white;
+				border-radius: 5px;
+				text-align: center;
+
+				max-width: 300px;
+				padding: 0.7rem 1.5rem 0.1rem;
+				margin-bottom: 0.8rem;
+
+				a {
+					text-decoration: none;
+
+					h2 {
+						color: $powershop-pink;
+						white-space: nowrap;
+					}
+				}
+			}
+		}
+	}
+
+	//section
+	#quote {
+		.quote-image-wrapper {
+			.quote-image {
+				position: relative;
+				width: 60%;
+				left: 50%;
+				transform: translateX(-50%);
+				overflow: hidden;
+				border: 0.8rem solid red;
+				border-radius: 50%;
+	
+				&:after {
+					content: "";
+					display: block;
+					padding-bottom: 100%;
+				}
+	
+				img {
+					position: absolute;
+					float: left;
+					left: 50%;
+					top: 50%;
+					transform: translate(-50%, -50%);
+				}
+			}
+		}
+	
+		.large-quote-mark {
+			color: $pink;
+			font-size: 7rem;
+			line-height: 7.5rem;
+			text-align: right;
+		}
+	
+		.quote-mark {
+			position: relative;
+			padding-left: 3.5rem;
+	
+			&:before {
+				content: open-quote;
+				position: absolute;
+				top: 0;
+				left: 0;
+				font-size: 7rem;
+				line-height: 5.5rem;
+				color: $pink;
+			}
+		}
+	
+		.quote-source {
+			color: $dark-pink;
+			font-weight: 500;
+			text-transform: uppercase;
+		}
+	}
+	
+	//Section
+	#who-is-flux {
+		.illustration {
+			position: relative;
+			width: 100%;
+			overflow: hidden;
+			margin-bottom: -142px;
+	
+			.illustration-wrapper {
+				position: relative;
+				left: 50%;
+				transform: translateX(-50%);
+				width: 700px;
+	
+				img.scene {
+					width: 100%;
+				}
+	
+				img.little-bird {
+					position: absolute;
+					top: 0px;
+					right: 15%;
+					width: 5.7%;
+				}
+			}
+		}
+	}
+}
+
+// Contact us page
+.contact-us-page {
+	#masthead {
+		.button {
+			margin-right: 1.5rem;
+		}
+	}
+
+	#our-offices {
+		.map {
+			position: relative;
+			width: 100%;
+			padding-bottom: 65%;
+			height: 0;
+			line-height: 0;
+			margin:1rem 0;
+
+			img {
+				width:100%;
+			}
+		}
+
+		address { margin-bottom:1.5rem;}
+	}
+
+	#get-in-touch {
+	}
+
+	#get-in-touch-response {
+		display: none;
+	}
+
+	p.large {
+		color: $purple;
+	}
+}
+
+// Talk to us page
+.talk-to-us-page {
+	#talk-to-us-response {
+		display: none;
+	}
+}
+
+// Jobs page
+.jobs-page {
+	.no-jobs {
+		.image {
+			padding:0!important;
+
+			img { width:100%;}
+		}
+	}
+	#jobs {
+		section.job {
+			border-top: 1px solid $purple;
+			padding: 1.5rem 0;
+			display: table;
+			width: 100%;
+	
+			.fluxy {
+				display: none;
+				vertical-align: top;
+				width: 10rem;
+				padding-right: 1rem;
+	
+				.image {
+					background-color: $gray;
+					border-radius: 50%;
+					padding: 1rem;
+					line-height: 0;
+	
+					img {
+						width: 100%;
+					}
+				}
+			}
+	
+			.description {
+				vertical-align: top;
+				display: table-cell;
+	
+				.overview {
+					display: none;
+				}
+			}
+		}
+	}
+	.show-if-no-jobs {
+		display:none;
+	}
+	&.no-jobs {
+		.show-if-no-jobs {
+			display:block;
+		}
+		.hide-if-no-jobs {
+			display:none;
+		}
+	}
+}
+
+// Location page
+.location-page {
+	#masthead {
+		.location-wrapper {
+
+			a {
+				color: white;
+				text-decoration: none;
+				text-transform: uppercase;
+
+				img { width:80%;}
+			}
+		}
+	}
+
+	.location {
+		padding-top: 0;
+
+		img { width: 100%;}
+
+		.sub-section {
+			padding: 2rem;
+
+			&:first-child {
+				padding-top:4rem;
+			} 
+
+			p.large {
+				color:$purple;
+			}
+
+			div {
+				&:first-child {
+					margin-bottom: 1rem;
+				}
+			}
+
+			img.city-scape { width:80%;}
+
+			.m-graphic,
+			.copy {
+				width:100%;
+			}
+
+			.t-graphic {
+				display: none;
+			}
+
+			.welly-fluxy {
+				width:70%;
+				padding-top:30px;
+			}
+		}
+	}
+}
+
+// Culture page
+.culture-page {
+	#masthead {
+		.video-wrapper {
+			padding-top:1rem;
+
+			.main-video {
+				position: relative;
+				padding-bottom: 56.25%; /* 16:9 */
+				height: 0;
+				line-height: 0;
+
+				iframe {
+					position: absolute;
+					top: 0;
+					left: 0;
+					width: 100%;
+					height: 100%;
+				}
+			}
+		}
+
+		.thumbnail-wrapper {
+			padding-top: 0.5rem;
+			line-height: 0;
+
+			img {width:100%;}
+		}
+	}
+
+	p.large {
+		color:$purple;
+	}
+}
+
+// Privacy page
+.privacy-page {
+	h5 {
+		margin-top:3rem;
+	}
+	h6	{
+		margin-top:2rem;
+	}
+}
+
+// 404 page and Thank you page
+
+.the-404-page, .thank-you-page {
+	.illustration {
+		margin-top:8rem;
+		margin-bottom:-114px;
+
+		img {
+			width:300px;
+			height:auto;
+		}
+	}
+}
+
+.thank-you-page {
+	#get-in-touch-thank-you {
+		display: none;
+	}
+
+	#talk-to-us-thank-you {
+		display: none;
+	}
+}
+
+/*********************
+FOOTER STYLES
+*********************/
+
+.contact-us {
+	.address-block {
+		h3, p {
+			color: $pink;
+			a {
+				color: $pink;
+			}
+		}
+
+		h3 {
+			margin-bottom:1rem;
+		}
+	}
+}
+
+.footer {
+	padding-top:0;
+
+	p {
+		color: #fff;
+	}
+}

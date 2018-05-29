@@ -1,0 +1,32 @@
+/******************************************************************
+
+Stylesheet: Variables
+
+Here is where we declare all our variables like colors, fonts,
+base values, and defaults. We want to make sure this file ONLY
+contains variables that way our files don't get all messy.
+No one likes a mess.
+
+******************************************************************/
+
+/*********************
+COLORS
+*********************/
+$purple:            #5f259f;
+$dark-purple:       #4f2d9e;
+$header-scroll-purple:darken($purple, 10%);
+
+$gray:              #e6e6e6;
+$dark-gray:         #4d4d4d;
+
+$pink:              #ee4d87;
+$dark-pink:         #e01d3d;
+$powershop-pink:    #fa0e6a;
+
+$powershop-blue:    #94d3e2;
+
+$link-color:        $pink;
+$link-hover:        darken($pink, 10%);
+
+$green:             #01a68e;
+
