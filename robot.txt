@@ -1,0 +1,15 @@
+User-agent: *
+Disallow: /404/
+Disallow: /android-chrome-192x192.png
+Disallow: /android-chrome-256x256.png
+Disallow: /apple-touch-icon.png
+Disallow: /library/
+Disallow: /browserconfig.xml
+Disallow: /favicon-16x16.png
+Disallow: /favicon-32x32.png
+Disallow: /favicon.ico
+Disallow: /manifest.json
+Disallow: /mstile-150x150.png
+Disallow: /safari-pinned-tab.svg
+Disallow: /questions/ajax.html
+Disallow: /questions/readme.txt

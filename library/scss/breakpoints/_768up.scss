@@ -1,0 +1,277 @@
+/******************************************************************
+
+Stylesheet: Tablet & Small Desktop Stylesheet
+
+Here's where you can start getting into the good stuff.
+This size will work on iPads, other tablets, and desktops.
+So you can start working with more styles, background images,
+and other resources. You'll also notice the grid starts to
+come into play. Have fun!
+
+******************************************************************/
+
+/*********************
+GENERAL STYLES
+*********************/
+html {
+    font-size: 108%;     // 100% defaults to 16px
+}
+
+body {}
+
+.wrap {
+    max-width: 92%;
+}
+
+/*********************
+LAYOUT & GRID STYLES
+*********************/
+
+main {
+	padding-top: 110px;
+	transition: all .2s linear;
+	
+	&.scroll { 
+		padding-top: 72px;
+		transition: all .2s linear;
+	}
+}
+
+section {
+}
+
+/*********************
+LINK STYLES
+*********************/
+
+/******************************************************************
+P, H1, H2, H3, H4, H5 STYLES
+******************************************************************/
+
+/*********************
+HEADER STYLES
+*********************/
+.header {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	z-index: 10000;
+
+	.wrap {
+		padding: 2rem 0;
+
+		.logo {
+			a {
+				font-size:0;
+				line-height:0;
+				img {
+					width: 90px;
+				}
+			}
+		}
+
+		nav ul {
+			margin: 8px 0 0;
+			border: none;
+			padding: 0;
+			text-align: right;
+			
+			li {
+				margin-right: 0;
+				margin-left: 20px;
+			}
+		}
+	}
+
+	&.scroll {
+		transition: all .2s linear;
+
+		.wrap {
+			padding-top: 1rem;
+			padding-bottom: 1rem;
+
+			.logo {
+				a {
+					img {
+						width:72px;
+					}
+				}
+			}
+
+			nav {
+				ul {
+					margin:2px 0 0;
+				}
+			}
+		}
+	}
+}
+
+
+/*********************
+CONTENT STYLES
+*********************/
+
+// Grid layout with Inlineblock
+.inline {
+	display:inline-block;
+	float:none;
+	margin-right:-4px;
+
+	&.top {vertical-align:top;}
+	&.middle {vertical-align:middle;}
+}
+
+.call-to-action-illustration {
+	margin-bottom: -160px;
+
+	.illustration-wrapper {
+		width: 900px;
+	}
+}
+
+// Homepage
+.homepage {
+
+	#what-is-flux-part-1 {
+		text-align: center;
+
+		.what-is-flux-diagram-tablet {
+			display: block;
+			width: 100%;
+			margin-top: 3rem;
+
+			.diagram {
+				width: 100%;
+			}
+		}
+
+		.what-is-flux-diagram-mobile, .what-is-flux-diagram {
+			display: none;
+		}
+	}
+
+	#welcome {
+
+		.simple, .flexible, .lovable {
+			padding:2rem 10px;
+			text-align:left;
+			display:table;
+
+			.copy {
+				width:25%;
+				display:table-cell;
+				vertical-align:middle;
+			}
+			.m-graphic {
+				display:none;
+			}
+			.t-graphic, .graphic {
+				display:table-cell;
+				vertical-align:middle;
+			}
+		}
+
+		.simple .t-graphic {
+			width:75%;
+			padding-left:8.33%;
+		}
+
+		.flexible {
+			.graphic {
+				width:58.33%;
+				padding-right:16.66%;
+			}
+			.copy {
+				padding-right:16.66%;
+				width:41.66%
+			}
+		}
+
+		.lovable .t-graphic {
+			width:75%;
+			padding-left:16.66%;
+		}
+	}
+}
+
+// Opportunities page
+.opportunities-page {
+	#jobs {
+		section.job {
+			.fluxy {
+				display: table-cell;
+			}
+		}
+	}
+}
+
+
+// Working at Flux page
+.working-at-flux-page {
+	.benefit {
+		padding-bottom:2.5em;
+		padding-right:2.5em;
+	}
+}
+
+/* Contact page */
+.radio-buttons {
+    p {
+		margin:2.5rem 0 4.5rem;
+	}
+}
+
+/* Questions */
+h6.accordion {
+	padding-left: 40px;
+
+	&:before {
+		margin-top: 7px;
+		width: 15px;
+		height: 8px;
+	}
+}
+
+div.accordion {
+	margin-bottom: 2em;
+	padding-left: 40px;
+}
+
+// 404 page and thank you page
+
+.the-404-page, .thank-you-page {
+	.illustration {
+		margin-top:8rem;
+		margin-bottom:-140px;
+
+		img {
+			width:500px;
+			height:auto;
+		}
+	}
+}
+
+/*********************
+FOOTER STYLES
+*********************/
+.contact-us {
+	.address-block {
+		h2 {
+		}
+
+		div {
+			padding-right: 20px !important;
+		}
+
+		div:last-child {
+			padding-right: 0 !important;
+		}
+
+		p {
+			width: 100%;
+		}
+	}
+}
+
