@@ -1,0 +1,12 @@
+_site/
+.DS_Store
+.sass-cache
+*.codekit
+*.codekit3
+.htaccess
+.htpasswd
+wp-config.php
+GeoIP.dat
+GeoIPv6.dat
+.vscode
+.vscode/*
