@@ -263,12 +263,23 @@
 
         var flexibleSection = $('#flexible-section');
         if(flexibleSection.length) {
-            var flexibleSectionCenter = $(flexibleSection).offset().top + ($(flexibleSection).height() * 0.5);
+            var sectionCenter = $(flexibleSection).offset().top + ($(flexibleSection).height() * 0.5);
             var threshold = 200;
 
-            if(flexibleSectionCenter <= (windowCenter + threshold)) {
+            if(sectionCenter <= (windowCenter + threshold)) {
                 $('#flexible-section .flexible-animation .old-slice').addClass('animate');
                 $('#flexible-section .flexible-animation .new-slice').addClass('animate');
+            }
+        }
+
+        var simpleSection = $('#simple-section');
+        if(simpleSection.length) {
+            var sectionCenter = $(simpleSection).offset().top + ($(simpleSection).height() * 0.5);
+            var threshold = 200;
+
+            if(sectionCenter <= (windowCenter + threshold)) {
+                $('#simple-section .simple-animation .outer').addClass('animate');
+                $('#simple-section .simple-animation .middle').addClass('animate');
             }
         }
         

@@ -455,6 +455,10 @@ CONTENT STYLES
 				width: 100%;
 			}
 
+			.graphic {
+				width: 100%;
+			}
+
 			.t-graphic {
 				display: none;
 			}
@@ -463,41 +467,86 @@ CONTENT STYLES
 		.flexible-animation {
 			position: relative;
 
-			.old-slice {
-				position: absolute;
-				top: 0px;
-				left: 0px;
-				width: 100%;
-				height: 100%;
-
-				transition: all 2s ease-in-out;
-
-				&.animate {
-					left: -29%;
-					top: -27%;
-				}
-			}
-
-			.new-slice {
-				position: absolute;
-				top: 0px;
-				left: 0px;
-				width: 100%;
-				height: 100%;
-
-				transition: all 2s ease-in-out;
-
-				&.animate {
-					left: -35%;
-				}
-			}
-
+			.old-slice,
+			.new-slice,
 			.top {
 				position: absolute;
 				top: 0px;
 				left: 0px;
 				width: 100%;
 				height: 100%;
+			}
+
+			.old-slice {
+				transition: all 2s ease-in-out;
+
+				&.animate {
+					left: percentage(-51.311/156);
+					top: percentage(-37.838/134);
+				}
+			}
+
+			.new-slice {
+				transition: all 2s ease-in-out;
+
+				&.animate {
+					left: percentage(-52.43/156);
+				}
+			}
+		}
+
+		.simple-animation {
+			position: relative;
+
+			.outer,
+			.middle,
+			.inner {
+				position: absolute;
+				top: 0px;
+				left: 0px;
+				width: 100%;
+				height: 100%;
+				transition: all 6s ease-in-out;
+			}
+
+			.outer.animate,
+			.inner.animate {
+				transform: rotate(359deg);
+			}
+
+			.middle.animate {
+				transform: rotate(-359deg);
+			}
+		}
+	}
+
+	#main-video {
+		padding-top: 0;
+		padding-bottom: 0;
+		position: relative;
+
+		.half-background {
+			position: absolute;
+			width: 100%;
+			height: 30%;
+			background-color: $purple;
+		}
+
+		.wrap {
+			.video-wrapper {
+				position: relative;
+				width: 100%;
+				padding-bottom: 56.25%; // 16:9
+				height: 0;
+				line-height: 0;
+
+				iframe {
+					position: absolute;
+					top: 0;
+					left: 0;
+					width: 100%;
+					height: 100%;
+				}
 			}
 		}
 	}
