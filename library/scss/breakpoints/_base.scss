@@ -697,6 +697,7 @@ CONTENT STYLES
 	}
 }
 
+
 // Solutions page
 .solutions-page {
 
@@ -727,21 +728,16 @@ CONTENT STYLES
 		display: table;
 		width: 100%;
 
-		.fluxy {
+		.image {
+			line-height: 0;
 			display: none;
 			vertical-align: top;
-			width: 10rem;
 			padding-right: 1rem;
 
-			.image {
+			img {
+				width: 100%;
 				background-color: $gray;
 				border-radius: 50%;
-				padding: 1rem;
-				line-height: 0;
-
-				img {
-					width: 100%;
-				}
 			}
 		}
 
