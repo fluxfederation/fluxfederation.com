@@ -341,7 +341,7 @@ header nav ul {
 	}
 }
 
-#careers-nav {
+#in-page-nav {
 	padding:0;
 	width: 100%;
 	
@@ -377,7 +377,7 @@ header nav ul {
 
 
 
-// This covers both the Header nav and the Careers nav
+// This covers both the Header nav and the in page nav
 nav {
 	font-size:.75rem;
 	line-height: 1.25rem;
@@ -669,6 +669,45 @@ CONTENT STYLES
 
 	p.large {
 		color:$purple;
+	}
+}
+
+// Leadership page
+
+.leadership-page {
+
+	.job {
+		border-top: 1px solid $purple;
+		padding: 1.5rem 0;
+		display: table;
+		width: 100%;
+
+		.fluxy {
+			display: none;
+			vertical-align: top;
+			width: 10rem;
+			padding-right: 1rem;
+
+			.image {
+				background-color: $gray;
+				border-radius: 50%;
+				padding: 1rem;
+				line-height: 0;
+
+				img {
+					width: 100%;
+				}
+			}
+		}
+
+		.description {
+			vertical-align: top;
+			display: table-cell;
+
+			.overview {
+				display: none;
+			}
+		}
 	}
 }
 
