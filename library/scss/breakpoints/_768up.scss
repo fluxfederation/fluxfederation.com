@@ -114,104 +114,82 @@ CONTENT STYLES
 *********************/
 
 // misc, multipage
+.page {
 
-// Grid layout with Inlineblock
-.inline {
-	display:inline-block;
-	float:none;
-	margin-right:-4px;
+	// Grid layout with Inlineblock
+	.inline {
+		display:inline-block;
+		float:none;
+		margin-right:-4px;
 
-	&.top {vertical-align:top;}
-	&.middle {vertical-align:middle;}
-}
-
-.call-to-action-illustration {
-	margin-bottom: -160px;
-
-	.illustration-wrapper {
-		width: 900px;
+		&.top {vertical-align:top;}
+		&.middle {vertical-align:middle;}
 	}
-}
 
-.table-layout {
-	.image {
-		display: table-cell;
+	.table-layout {
+		.image {
+			display: table-cell;
+		}
+	}
+
+	.table-row-vert-center {
+	padding:2rem 10px;
+	text-align:left;
+	display:table;
+
+		.copy {
+			width:25%;
+			display:table-cell;
+			vertical-align:middle;
+		}
+		.m-graphic {
+			display:none;
+		}
+		.t-graphic, .graphic {
+			display:table-cell;
+			vertical-align:middle;
+			width:75%;
+		}
+	}
+
+	.call-to-action-illustration {
+		margin-bottom: -154px;
 	}
 }
 
 // Homepage
 .homepage {
+	
+	.simple .t-graphic {
+		width:75%;
+		padding-left:8.33%;
+	}
 
-	#what-is-flux-part-1 {
-		text-align: center;
-
-		.what-is-flux-diagram-tablet {
-			display: block;
-			width: 100%;
-			margin-top: 3rem;
-
-			.diagram {
-				width: 100%;
-			}
+	.flexible {
+		.graphic {
+			width:58.33%;
+			padding-right:16.66%;
 		}
-
-		.what-is-flux-diagram-mobile, .what-is-flux-diagram {
-			display: none;
+		.copy {
+			padding-right:16.66%;
+			width:41.66%
 		}
 	}
 
-	#welcome {
-
-		.simple, .flexible, .lovable {
-			padding:2rem 10px;
-			text-align:left;
-			display:table;
-
-			.copy {
-				width:25%;
-				display:table-cell;
-				vertical-align:middle;
-			}
-			.m-graphic {
-				display:none;
-			}
-			.t-graphic, .graphic {
-				display:table-cell;
-				vertical-align:middle;
-			}
+	.simple {
+		.graphic {
+			width:58.33%;
+			padding-right:16.66%;
 		}
-
-		.simple .t-graphic {
-			width:75%;
-			padding-left:8.33%;
+		.copy {
+			padding-right:16.66%;
+			width:41.66%
 		}
+	}
 
-		.flexible {
-			.graphic {
-				width:58.33%;
-				padding-right:16.66%;
-			}
-			.copy {
-				padding-right:16.66%;
-				width:41.66%
-			}
-		}
-
-		.simple {
-			.graphic {
-				width:58.33%;
-				padding-right:16.66%;
-			}
-			.copy {
-				padding-right:16.66%;
-				width:41.66%
-			}
-		}
-
-		.lovable .t-graphic {
-			width:75%;
-			padding-left:16.66%;
-		}
+	.lovable .t-graphic {
+		width:75%;
+		padding-left:16.66%;
 	}
 }
 
@@ -229,6 +207,15 @@ CONTENT STYLES
 
 // Working at Flux page
 .working-at-flux-page {
+
+	.respect .t-graphic, .brave .t-graphic {
+		padding-left:calc-percent(1, 12);
+	}
+
+	.big-picture .graphic {
+		padding-right:calc-percent(1, 12);
+	}
+
 	.benefit {
 		padding-bottom:2.5em;
 		padding-right:2.5em;
