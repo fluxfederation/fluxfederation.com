@@ -464,10 +464,28 @@ CONTENT STYLES
 		vertical-align: top;
 		padding-right: 1rem;
 
-		img {
-			width: 100%;
-			background-color: $gray;
+		.circle {
+			position: relative;
 			border-radius: 50%;
+			overflow: hidden;
+			-webkit-transform: rotate(0.000001deg);
+
+			img {
+				transition: all .5s ease-in-out;
+				width: 100%;
+				
+				&.gray {
+					-webkit-filter: grayscale(100%);
+					filter: grayscale(100%);
+				}
+
+				&.color {
+					position: absolute;
+					top: 0;
+					left: 0;
+					opacity: 0;
+				}
+			}
 		}
 	}
 
@@ -481,6 +499,19 @@ CONTENT STYLES
 	}
 }
 
+#roles {
+	.table-layout:hover {
+		.image .circle {
+			img {
+				transform: scale(1.1, 1.1);
+
+				&.color {
+					opacity: 1;
+				}
+			}
+		}
+	}
+}
 
 // Homepage
 .homepage {
