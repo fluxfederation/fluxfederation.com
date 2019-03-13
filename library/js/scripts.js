@@ -256,6 +256,16 @@
                 hamburger_open();
             }
         });
+
+        $('a.scroll-to-footer').on('click', function(event) {
+            event.preventDefault();
+
+            hamburger_close();
+            var offset = $('#contact').offset().top;
+            $('html, body').animate({
+                scrollTop: offset+'px'
+            }, 1000);
+        });
     });
 
     var globeAnimating = 0;
