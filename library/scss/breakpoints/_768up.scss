@@ -113,6 +113,8 @@ HEADER STYLES
 CONTENT STYLES
 *********************/
 
+// misc, multipage
+
 // Grid layout with Inlineblock
 .inline {
 	display:inline-block;
@@ -128,6 +130,12 @@ CONTENT STYLES
 
 	.illustration-wrapper {
 		width: 900px;
+	}
+}
+
+.table-layout {
+	.image {
+		display: table-cell;
 	}
 }
 
@@ -229,11 +237,6 @@ CONTENT STYLES
 
 // Leadership page
 .leadership-page {
-	.job {
-		.image {
-			display: table-cell;
-		}
-	}
 }
 
 /* Contact page */

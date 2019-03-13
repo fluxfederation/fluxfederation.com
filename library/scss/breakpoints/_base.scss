@@ -413,6 +413,19 @@ nav {
 CONTENT STYLES
 *********************/
 
+// misc, multi-page
+
+.space-bottom {
+	margin-bottom:1.5rem;
+}
+
+.space-top {
+	margin-top:1.5rem;
+}
+
+.hi-lite {
+	color:$purple;
+}
 
 .call-to-action-illustration {
 	position: relative;
@@ -438,6 +451,36 @@ CONTENT STYLES
 		}
 	}
 }
+
+.table-layout {
+	border-top: 1px solid $purple;
+	padding: 1.5rem 0;
+	display: table;
+	width: 100%;
+
+	.image {
+		line-height: 0;
+		display: none;
+		vertical-align: top;
+		padding-right: 1rem;
+
+		img {
+			width: 100%;
+			background-color: $gray;
+			border-radius: 50%;
+		}
+	}
+
+	.description {
+		vertical-align: top;
+		display: table-cell;
+
+		.overview {
+			display: none;
+		}
+	}
+}
+
 
 // Homepage
 .homepage {
@@ -721,35 +764,6 @@ CONTENT STYLES
 // Leadership page
 
 .leadership-page {
-
-	.job {
-		border-top: 1px solid $purple;
-		padding: 1.5rem 0;
-		display: table;
-		width: 100%;
-
-		.image {
-			line-height: 0;
-			display: none;
-			vertical-align: top;
-			padding-right: 1rem;
-
-			img {
-				width: 100%;
-				background-color: $gray;
-				border-radius: 50%;
-			}
-		}
-
-		.description {
-			vertical-align: top;
-			display: table-cell;
-
-			.overview {
-				display: none;
-			}
-		}
-	}
 }
 
 // Privacy page
