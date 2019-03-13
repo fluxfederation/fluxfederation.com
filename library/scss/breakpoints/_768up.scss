@@ -17,7 +17,12 @@ html {
     font-size: 108%;     // 100% defaults to 16px
 }
 
-body {}
+body {
+    &:after {
+        content: "2";
+        display: none;
+    }
+}
 
 .wrap {
     max-width: 92%;
