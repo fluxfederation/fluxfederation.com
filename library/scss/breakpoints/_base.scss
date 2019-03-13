@@ -751,11 +751,24 @@ CONTENT STYLES
 		padding-bottom: 2rem;
 	}
 
-	.basic-desktop {
+	.meet-the-flux-screens {
 		position: relative;
 		padding: 0 0 5% 10px;
 
-		.basic-mobile {
+		.desktop {
+			position: relative;
+
+			.overlay {
+				position: absolute;
+				top: 6%;
+				left: 13%;
+				width: 74%;
+				height: 81%;
+				overflow: hidden;
+			}
+		}
+
+		.mobile {
 			position: absolute;
 			bottom: 0;
 			left: 0;
