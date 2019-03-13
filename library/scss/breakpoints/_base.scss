@@ -842,8 +842,18 @@ CONTENT STYLES
 }
 
 // Leadership page
-
 .leadership-page {
+
+}
+
+// About page
+.about-page {
+	#awards {
+		img {
+			max-height:14rem;
+			max-width:100%;
+		}
+	}
 }
 
 // Privacy page
