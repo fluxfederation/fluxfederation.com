@@ -22,6 +22,13 @@ them in here, they won't work.
 
 /* HEADER */
 
+body {
+    &:after {
+        content: "1";
+        display: none;
+    }
+}
+
 .flux-buttons {
     display: inline-block;
     border-radius: 0.1875rem;

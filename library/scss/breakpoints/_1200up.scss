@@ -14,12 +14,18 @@ html {
     font-size: 120%;     // 100% defaults to 16px
 }
 
-.page {
-    
-    .wrap {
-        max-width: 1200px;
+body {
+    &:after {
+        content: "4";
+        display: none;
     }
-    
+}
+
+.wrap {
+    max-width: 1200px;
+}
+
+.page {
     .call-to-action-illustration {
         margin-bottom: -170px;
 

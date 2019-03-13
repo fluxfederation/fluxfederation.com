@@ -1,6 +1,8 @@
 
 // This is Javascript and requires JQuery to be loaded
 (function($) {
+    var breakpointIndex = -1;
+
     $(document).ready(function() {
         import_svg($('.rocket-man img'));
 
@@ -244,10 +246,49 @@
                 scrollTop: offset+'px'
             }, 1000);
         }
+
+        $('.hamburger').on('click', function(event) {
+            event.preventDefault();
+
+            if($(this).hasClass('open')) {
+                hamburger_close();
+            } else {
+                hamburger_open();
+            }
+        });
+
+        $('a.scroll-to-footer').on('click', function(event) {
+            event.preventDefault();
+
+            hamburger_close();
+            var offset = $('#contact').offset().top;
+            $('html, body').animate({
+                scrollTop: offset+'px'
+            }, 1000);
+        });
     });
 
     var globeAnimating = 0;
     $(window).on('resize orientationchange load scroll', function() {
+        var bodyAfter = window.getComputedStyle(document.body, ':after');
+        if(bodyAfter !== undefined) {
+            var content = bodyAfter.getPropertyValue('content');
+            if(content.charAt(0) === '"') {
+                content = content.substr(1, content.length - 1);
+            }
+            if(content.charAt(content.length - 1) === '"') {
+                content = content.substr(0, content.length - 1);
+            }
+
+            var index = parseInt(content);
+            if(index !== breakpointIndex) {
+                breakpointIndex = index;
+                if(breakpointIndex >= 2) {
+                    hamburger_close();
+                }
+            }
+        }
+
         var windowCenter = $(this).scrollTop() + ($(this).height() * 0.5);
 
         var globeSection = $('#world-markets');
@@ -317,17 +358,26 @@
         }
 
         meet_the_flux_screen_scroll();
-
-        $('.hamburger').on('click', function(event) {
-            event.preventDefault();
-
-            if($(this).hasClass('open')) {
-                $(this).removeClass('open');
-            } else {
-                $(this).addClass('open');
-            }
-        });
     });
+
+    var hamburgerTimer = -1;
+    function hamburger_open() {
+        if(hamburgerTimer >= 0) {
+            clearTimeout(hamburgerTimer);
+        }
+        $('.hamburger').addClass('open');
+        $('nav.nav').addClass('open').addClass('mobile');
+    }
+
+    function hamburger_close() {
+        $('.hamburger').removeClass('open');
+        $('nav.nav').removeClass('open');
+
+        hamburgerTimer = setTimeout(function() {
+            $('nav.nav').removeClass('mobile');
+            hamburgerTimeer = -1;
+        }, 500)
+    }
 
     function meet_the_flux_screen_scroll() {
         var meet = $('.meet-the-flux-screens');

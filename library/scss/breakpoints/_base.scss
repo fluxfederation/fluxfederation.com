@@ -55,6 +55,11 @@ body {
 	text-rendering: optimizelegibility;
 
 	background-color: $purple;
+
+    &:after {
+        content: "0";
+        display: none;
+    }
 }
 
 /*********************
@@ -299,8 +304,7 @@ address {
 HEADER STYLES
 *********************/
 .header {
-	// background: $purple;
-	background: orange;
+	background: $purple;
 	z-index: 10000;
 
 	.wrap {
@@ -322,7 +326,42 @@ HEADER STYLES
 			height: 100vh;
 			width: 100vw;
 			z-index: 10001;
-			background: $purple;
+			background: $pink;
+			transition: top .5s ease-in-out;
+
+			&.open {
+				top: 0;
+			}
+
+			&.mobile {
+				ul {
+					position: relative;
+					top: 50%;
+					transform: translateY(-50%);
+
+					li {
+						display: block;
+						margin-left: 0;
+						text-align: center;
+
+						a {
+							font-size: 1.2rem;
+							line-height: 2.2rem;
+							font-weight: 900;
+
+							&:hover {
+								color: white;
+								transition: none;
+
+								&:before {
+									-webkit-transform: scaleX(0);
+									transform: scaleX(0);
+								}
+							}
+						}
+					}
+				}
+			}
 		}
 
 		.hamburger {
@@ -336,11 +375,13 @@ HEADER STYLES
 
 			.line {
 				fill: white;
-				transition: all .75s ease-in-out;
+				transition: all .5s ease-in-out;
 				transform-origin: 50% 50%;
 			}
 
 			&.open {
+				position: fixed;
+
 				.line {
 					&.top {
 						transform: rotate(45deg) translateY(7px);
