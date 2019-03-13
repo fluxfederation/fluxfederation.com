@@ -826,3 +826,28 @@ FOOTER STYLES
 		color: #fff;
 	}
 }
+
+.flux-buttons {
+    display: inline-block;
+
+	a {
+		text-decoration: none;
+		text-transform: uppercase;
+		display: block;
+		color: white;
+		margin-bottom: .5rem;
+		padding: .4rem 1rem;
+		background-color: $pink;
+	    border-radius: 0.1875rem;
+
+	    .button-bg {
+	    	label {
+	    		cursor: pointer;
+	    	}
+	    }
+
+	    &:hover {
+			background-color: darken($pink, 10%);
+	    }
+	}	
+}
