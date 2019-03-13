@@ -315,7 +315,39 @@
         } else {
             update_careers_nav_location(scrollTop);
         }
+
+        meet_the_flux_screen_scroll();
     });
+
+    function meet_the_flux_screen_scroll() {
+        var meet = $('.meet-the-flux-screens');
+        if(meet.length) {
+            var screenImage = $('.meet-the-flux-screens .overlay img');
+            var screenImageHeight = screenImage.height();
+            var overlayHeight = $('.meet-the-flux-screens .overlay').height();
+
+            var screenImageOffset = screenImageHeight - overlayHeight;
+
+            var windowHeight = $(window).height();
+
+            var topLimit = -windowHeight * 0.1;
+            var bottomLimit = windowHeight * 0.6;
+
+            var position = meet.offset().top - $(document).scrollTop();
+
+            var offset = 0;
+            if(position > bottomLimit) {
+                // offset stays at 0px
+            } else if(position < topLimit) {
+                offset = -screenImageOffset;
+            } else {
+                var ratio = (position - topLimit) / (bottomLimit - topLimit);
+                offset = -(1.0 - ratio) * screenImageOffset;
+            }
+
+            $(screenImage).css('top', offset+'px');
+        }
+    }
 
     function update_careers_nav_location(scrollTop) {
         var header = $('#header');
