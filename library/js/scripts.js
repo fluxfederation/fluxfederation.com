@@ -317,6 +317,16 @@
         }
 
         meet_the_flux_screen_scroll();
+
+        $('.hamburger').on('click', function(event) {
+            event.preventDefault();
+
+            if($(this).hasClass('open')) {
+                $(this).removeClass('open');
+            } else {
+                $(this).addClass('open');
+            }
+        });
     });
 
     function meet_the_flux_screen_scroll() {
