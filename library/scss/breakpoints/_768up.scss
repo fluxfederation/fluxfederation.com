@@ -51,63 +51,64 @@ P, H1, H2, H3, H4, H5 STYLES
 /*********************
 HEADER STYLES
 *********************/
+
 .header {
 	position: fixed;
 	top: 0;
 	left: 0;
 	width: 100%;
-	z-index: 10000;
 
 	.wrap {
-		padding: 2rem 0;
+		transition: all .2s linear;
+		padding: 2rem 20px;
 
 		.logo {
-			a {
-				font-size:0;
-				line-height:0;
-				img {
-					width: 90px;
-				}
+			display: inline-block;
+
+			img {
+				transition: all .2s linear;
+
+				width: 90px;
+				height: 26px;
 			}
 		}
 
-		nav ul {
-			margin: 8px 0 0;
-			border: none;
-			padding: 0;
-			text-align: right;
-			
-			li {
-				margin-right: 0;
-				margin-left: 20px;
-			}
+		.nav {
+			position: relative;
+			float: right;
+			top: auto;
+			left: auto;
+			height: auto;
+			width: auto;
+			background-color: transparent;
+			padding-top: 8px;
+		}
+
+		.hamburger {
+			display: none;
 		}
 	}
 
 	&.scroll {
-		transition: all .2s linear;
-
 		.wrap {
 			padding-top: 1rem;
 			padding-bottom: 1rem;
 
 			.logo {
-				a {
-					img {
-						width:72px;
-					}
+				padding-top: 5px;
+
+				img {
+					width: 72px;
+					height: 21px;
 				}
 			}
 
-			nav {
-				ul {
-					margin:2px 0 0;
-				}
+			.nav {
+				padding-top: 5px;
 			}
 		}
 	}
 }
-
 
 /*********************
 CONTENT STYLES

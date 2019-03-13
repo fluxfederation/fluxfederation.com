@@ -299,28 +299,58 @@ address {
 HEADER STYLES
 *********************/
 .header {
-	background: $purple;
+	// background: $purple;
+	background: orange;
+	z-index: 10000;
 
 	.wrap {
-		padding-top: 32px;
-		padding-bottom: 60px;
-		transition: all .2s linear;
+		padding: 32px 20px;
 
 		.logo {
-	
-			a {
-				color: white;
-				
-				img {
-					width: 72px;
-					height: auto;
-					transition: all .2s linear;
-				}
+			display: inline-block;
+
+			img {
+				width: 72px;
+				height: 21px;
 			}
 		}
-		
-		.questions {
-			padding: 0;
+
+		.nav {
+			position: fixed;
+			top: -100vh;
+			left: 0;
+			height: 100vh;
+			width: 100vw;
+			z-index: 10001;
+			background: $purple;
+		}
+
+		.hamburger {
+			display: inline-block;
+			position: absolute;
+			z-index: 10002;
+			top: 25px;
+			right: 20px;
+			width: 40px;
+			height: 40px;
+
+			.line {
+				fill: white;
+				transition: all .75s ease-in-out;
+				transform-origin: 50% 50%;
+			}
+
+			&.open {
+				.line {
+					&.top {
+						transform: rotate(45deg) translateY(7px);
+					}
+
+					&.bottom {
+						transform: rotate(-45deg) translateY(-7px);
+					}
+				}
+			}
 		}
 	}
 }
@@ -328,18 +358,6 @@ HEADER STYLES
 /*********************
 NAVIGATION STYLES
 *********************/
-
-header nav ul {
-	float:right;
-
-	li {
-		a {
-
-			&:visited, &:hover { color:#fff!important;}
-
-		}
-	}
-}
 
 #in-page-nav {
 	padding:0;
@@ -468,14 +486,14 @@ CONTENT STYLES
 				overflow: hidden;
 				-webkit-transform: rotate(0.000001deg);
 
-				img {
-					transition: all .5s ease-in-out;
-					width: 100%;
-					
-					&.gray {
-						-webkit-filter: grayscale(100%);
-						filter: grayscale(100%);
-					}
+			img {
+				transition: all .5s ease-in-out;
+				width: 100%;
+
+				&.gray {
+					-webkit-filter: grayscale(100%);
+					filter: grayscale(100%);
+				}
 
 					&.color {
 						position: absolute;
