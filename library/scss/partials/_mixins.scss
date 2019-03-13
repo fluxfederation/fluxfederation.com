@@ -77,3 +77,24 @@ probably best not to use it. I mean, were you going to anyway? */
 }
 
 
+@mixin css-grid($columns, $rows) {
+    display: -ms-grid;
+    display: grid;
+
+    -ms-grid-rows: $rows;
+    grid-template-rows: $rows;
+    -ms-grid-columns: $columns;
+    grid-template-columns: $columns;
+}
+
+@mixin css-grid-column($column, $span) {
+    -ms-grid-column: $column;
+    -ms-grid-column-span: $span;
+    grid-column: $column / span $span;
+}
+
+@mixin css-grid-row($row, $span) {
+    -ms-grid-row: $row;
+    -ms-grid-row-span: $span;
+    grid-row: $row / span $span;
+}

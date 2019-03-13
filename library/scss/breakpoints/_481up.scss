@@ -22,3 +22,98 @@ them in here, they won't work.
 
 /* HEADER */
 
+
+.flux-buttons {
+    display: inline-block;
+    border-radius: 0.1875rem;
+    overflow: hidden;
+
+    a {
+        position: relative;
+        display: inline-block;
+        background-color: transparent;
+        margin: 0;
+        padding: 0;
+        border-radius: none;
+
+        &:after {
+            content: '';
+            position: absolute;
+            top: 0;
+            width: 110%;
+            height: 100%;
+            z-index: 1;
+            transform: skewX(-15deg);
+        }
+
+        &:hover {
+            background-color: transparent;
+        }
+        
+        .button-bg {
+            position: relative;
+            padding: .4rem 1rem;
+
+            &:after {
+                content: '';
+                position: absolute;
+                top: 0;
+                width: 110%;
+                height: 100%;
+                z-index: 2;
+                transform: skewX(-15deg);
+                transition: left .125s linear, right .125s linear;
+            }
+
+            label {
+                position: relative;
+                z-index: 3;
+            }
+        }
+
+        &.button-left {
+            color: white;
+            margin-right: -5px;
+
+            &:after {
+                left: -10%;
+                background-color: $pink;
+            }
+
+            .button-bg {
+                &:after {
+                    left: -120%;
+                    background-color: darken($pink, 10%);
+                }
+            }
+
+            &:hover {
+                .button-bg:after {
+                    left: -10%;
+                }
+            }
+        }
+
+        &.button-right {
+            color: white;
+
+            &:after {
+                right: -10%;
+                background-color: $red;
+            }
+            
+            .button-bg {
+                &:after {
+                    right: -120%;
+                    background-color: darken($pink, 20%);
+                }
+            }
+
+            &:hover {
+                .button-bg:after {
+                    right: -10%;
+                }
+            }
+        }
+    }
+}
