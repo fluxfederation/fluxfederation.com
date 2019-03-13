@@ -246,7 +246,7 @@ p {
 		line-height: 1.125rem;
 	}
 
-	&.purple {
+	&.hi-lite {
 		color: $purple;
 	}
 }
@@ -473,60 +473,58 @@ CONTENT STYLES
 
 // misc, multi-page
 
-.space-bottom {
-	margin-bottom:1.5rem;
-}
+.page {
 
-.space-top {
-	margin-top:1.5rem;
-}
+	.space-bottom {
+		margin-bottom:1.5rem;
+	}
 
-.hi-lite {
-	color:$purple;
-}
+	.space-top {
+		margin-top:1.5rem;
+	}
 
-.call-to-action-illustration {
-	position: relative;
-	width: 100%;
-	overflow: hidden;
-	margin-bottom: -142px;
-
-	.illustration-wrapper {
+	.call-to-action-illustration {
 		position: relative;
-		left: 50%;
-		transform: translateX(-50%);
-		width: 700px;
+		width: 100%;
+		overflow: hidden;
+		margin-bottom: -142px;
 
-		img.scene {
-			width: 100%;
-		}
+		.illustration-wrapper {
+			position: relative;
+			left: 50%;
+			transform: translateX(-50%);
+			width: 700px;
 
-		img.little-bird {
-			position: absolute;
-			top: 0px;
-			right: 15%;
-			width: 5.7%;
+			img.scene {
+				width: 100%;
+			}
+
+			img.little-bird {
+				position: absolute;
+				top: 0px;
+				right: 15%;
+				width: 5.7%;
+			}
 		}
 	}
-}
 
-.table-layout {
-	border-top: 1px solid $purple;
-	padding: 1.5rem 0;
-	display: table;
-	width: 100%;
+	.table-layout {
+		border-top: 1px solid $purple;
+		padding: 1.5rem 0;
+		display: table;
+		width: 100%;
 
-	.image {
-		line-height: 0;
-		display: none;
-		vertical-align: top;
-		padding-right: 1rem;
+		.image {
+			line-height: 0;
+			display: none;
+			vertical-align: top;
+			padding-right: 1rem;
 
-		.circle {
-			position: relative;
-			border-radius: 50%;
-			overflow: hidden;
-			-webkit-transform: rotate(0.000001deg);
+			.circle {
+				position: relative;
+				border-radius: 50%;
+				overflow: hidden;
+				-webkit-transform: rotate(0.000001deg);
 
 			img {
 				transition: all .5s ease-in-out;
@@ -537,34 +535,52 @@ CONTENT STYLES
 					filter: grayscale(100%);
 				}
 
-				&.color {
-					position: absolute;
-					top: 0;
-					left: 0;
-					opacity: 0;
+					&.color {
+						position: absolute;
+						top: 0;
+						left: 0;
+						opacity: 0;
+					}
 				}
+			}
+		}
+
+		.description {
+			vertical-align: top;
+			display: table-cell;
+
+			.overview {
+				display: none;
 			}
 		}
 	}
 
-	.description {
-		vertical-align: top;
-		display: table-cell;
-
-		.overview {
+	.table-row-vert-center {
+		margin-bottom:1.5rem;
+		
+		.t-graphic {
 			display: none;
 		}
+
+		.m-graphic, .copy {
+			width: 100%;
+		}
+
+		.graphic {
+			width: 100%;
+		}
 	}
-}
+	
 
-#roles {
-	.table-layout:hover {
-		.image .circle {
-			img {
-				transform: scale(1.1, 1.1);
+	#roles {
+		.table-layout:hover {
+			.image .circle {
+				img {
+					transform: scale(1.1, 1.1);
 
-				&.color {
-					opacity: 1;
+					&.color {
+						opacity: 1;
+					}
 				}
 			}
 		}
@@ -574,81 +590,71 @@ CONTENT STYLES
 // Homepage
 .homepage {
 
-	#welcome {
+	.simple, .flexible, .lovable {
+		text-align: center;
+		padding: 2rem 10%;
+
 		img {
 			width: 100%;
 		}
+	}
 
-		.simple, .flexible, .lovable {
-			padding: 2rem 10%;
-			text-align: center;
+	.flexible-animation, .simple-animation, .parallax {
+		margin-bottom:1.5rem;
+	}
 
-			.m-graphic, .copy {
-				width: 100%;
-			}
+	.flexible-animation {
+		position: relative;
 
-			.graphic {
-				width: 100%;
-			}
+		.old-slice,
+		.new-slice,
+		.top {
+			position: absolute;
+			top: 0px;
+			left: 0px;
+			width: 100%;
+			height: 100%;
+		}
 
-			.t-graphic {
-				display: none;
+		.old-slice {
+			transition: all 2s ease-in-out;
+
+			&.animate {
+				left: percentage(-51.311/156);
+				top: percentage(-37.838/134);
 			}
 		}
 
-		.flexible-animation {
-			position: relative;
+		.new-slice {
+			transition: all 2s ease-in-out;
 
-			.old-slice,
-			.new-slice,
-			.top {
-				position: absolute;
-				top: 0px;
-				left: 0px;
-				width: 100%;
-				height: 100%;
-			}
-
-			.old-slice {
-				transition: all 2s ease-in-out;
-
-				&.animate {
-					left: percentage(-51.311/156);
-					top: percentage(-37.838/134);
-				}
-			}
-
-			.new-slice {
-				transition: all 2s ease-in-out;
-
-				&.animate {
-					left: percentage(-52.43/156);
-				}
+			&.animate {
+				left: percentage(-52.43/156);
 			}
 		}
+	}
 
-		.simple-animation {
-			position: relative;
+	.simple-animation {
+		position: relative;
 
-			.outer,
-			.middle,
-			.inner {
-				position: absolute;
-				top: 0px;
-				left: 0px;
-				width: 100%;
-				height: 100%;
-				transition: all 6s ease-in-out;
-			}
+		.outer,
+		.middle,
+		.inner {
+			position: absolute;
+			top: 0px;
+			left: 0px;
+			width: 100%;
+			height: 100%;
+			transition: all 6s ease-in-out;
+		}
 
-			.outer.animate,
-			.inner.animate {
-				transform: rotate(359deg);
-			}
+		.outer.animate,
+		.inner.animate {
+			transform: rotate(359deg);
+		}
 
-			.middle.animate {
-				transform: rotate(-359deg);
-			}
+		.middle.animate {
+			transform: rotate(-359deg);
 		}
 	}
 
@@ -812,21 +818,6 @@ CONTENT STYLES
 // Working at Flux page
 .working-at-flux-page {
 
-	img { width: 100%;}
-
-	.sub-section {
-		padding: 2rem;
-
-		&:first-child {
-			padding-top:4rem;
-		} 
-
-		div {
-			&:first-child {
-				margin-bottom: 1rem;
-			}
-		}
-	}
 }
 
 
@@ -875,10 +866,6 @@ CONTENT STYLES
 
 // Meet the crew page
 .meet-the-crew-page {
-
-	p.large {
-		color:$purple;
-	}
 }
 
 // Leadership page

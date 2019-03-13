@@ -14,21 +14,17 @@ html {
     font-size: 120%;     // 100% defaults to 16px
 }
 
-body {
-    &:after {
-        content: "4";
-        display: none;
+.page {
+    
+    .wrap {
+        max-width: 1200px;
     }
-}
+    
+    .call-to-action-illustration {
+        margin-bottom: -170px;
 
-.wrap {
-    max-width: 1200px;
-}
-
-.call-to-action-illustration {
-    margin-bottom: -170px;
-
-    .illustration-wrapper {
-        width: 900px;
+        .illustration-wrapper {
+            width: 900px;
+        }
     }
 }
