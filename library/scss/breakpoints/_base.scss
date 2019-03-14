@@ -719,9 +719,10 @@ CONTENT STYLES
 	#get-in-touch {
 	}
 
-	#get-in-touch-response {
-		display: none;
-	}
+}
+
+#get-in-touch-response {
+	display: none;
 }
 
 .video-wrapper {
@@ -814,13 +815,15 @@ CONTENT STYLES
 			display:none;
 		}
 	}
+
+	.slider {
+		display: none;
+	}
 }
 
 // Working at Flux page
 .working-at-flux-page {
-
 }
-
 
 // Solutions page
 .solutions-page {

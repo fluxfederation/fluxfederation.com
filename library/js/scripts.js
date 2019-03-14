@@ -266,6 +266,19 @@
                 scrollTop: offset+'px'
             }, 1000);
         });
+
+        $('a.drop-us-a-line').on('click', function(event) {
+            event.preventDefault();
+
+            var slider = $('#change .slider');
+            if(slider.hasClass('open')) {
+                slider.removeClass('open');
+                slider.slideUp(500);
+            } else {
+                slider.addClass('open');
+                slider.slideDown(500);
+            }
+        });
     });
 
     var globeAnimating = 0;
