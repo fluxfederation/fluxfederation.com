@@ -321,7 +321,7 @@ HEADER STYLES
 
 		.nav {
 			position: fixed;
-			top: -100vh;
+			top: -100%;
 			left: 0;
 			height: 100vh;
 			width: 100vw;
@@ -370,13 +370,23 @@ HEADER STYLES
 			z-index: 10002;
 			top: 25px;
 			right: 20px;
-			width: 40px;
-			height: 40px;
+			width: 39px;
+			height: 39px;
 
 			.line {
-				fill: white;
+				position: absolute;
+				width: 38px;
+				height: 5px;
+				background-color: white;
 				transition: all .5s ease-in-out;
-				transform-origin: 50% 50%;
+
+				&.top {
+					top: 11px;
+				}
+
+				&.bottom {
+					top: 25px;
+				}
 			}
 
 			&.open {
@@ -384,11 +394,11 @@ HEADER STYLES
 
 				.line {
 					&.top {
-						transform: rotate(45deg) translateY(7px);
+						transform: translateY(7px) rotateZ(45deg);
 					}
 
 					&.bottom {
-						transform: rotate(-45deg) translateY(-7px);
+						transform: translateY(-7px) rotateZ(-45deg);
 					}
 				}
 			}
