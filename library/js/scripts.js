@@ -31,7 +31,9 @@
                         result += '<h4>'+(job.Title)+'</h4>';
                         result += '<p class="large">'+(job.Locations)+'</p>';
                         result += '<p>'+(job.Summary)+'</p>';
-                        result += '<button class="read-more">Read more</button>';
+                        result += '<div class="flux-button">';
+                        result += '<a href="#">Read more</a>';
+                        result += '</div>';
                         result += '<div class="overview">'+(job.Overview);
                         result += '<a class="button" href="'+(job.ApplyUrl)+'" target="_blank">Apply</a>';
                         result += '</div>';
@@ -41,23 +43,23 @@
 
                     $('#jobs').html(result);
 
-                    $('.job .description button').on('click', function(event) {
+                    $('.job .description .flux-button a').on('click', function(event) {
                         event.preventDefault();
 
-                        var button = $(this);
-                        var overview = $(button).next('.overview');
-
-                        if(button.length && overview.length) {
-                            if($(button).hasClass('open')) {
-                                $(overview).slideUp(750, function() {
-                                    $(button).removeClass('open');
-                                    $(button).html('Read more');
-                                });
-                            } else {
-                                $(overview).slideDown(750, function() {
-                                    $(button).addClass('open');
-                                    $(button).html('Read less');
-                                });
+                        var button = $(this).parent();
+                        var link = $(this);
+                        if(button.length) {
+                            var overview = button.next('.overview');
+                            if(overview.length) {
+                                if(button.hasClass('open')) {
+                                    link.html('Read more');
+                                    button.removeClass('open');
+                                    overview.slideUp(750);
+                                } else {
+                                    link.html('Read less');
+                                    button.addClass('open');
+                                    overview.slideDown(750);
+                                }                                
                             }
                         }
                     });
@@ -278,6 +280,12 @@
                 slider.addClass('open');
                 slider.slideDown(500);
             }
+        });
+
+        $('a.gform').on('click', function(event) {
+            event.preventDefault();
+            var id = $(this).attr('href');
+            $('#'+id).submit();
         });
     });
 
