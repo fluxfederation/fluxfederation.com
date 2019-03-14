@@ -32,10 +32,14 @@
                         result += '<p class="large">'+(job.Locations)+'</p>';
                         result += '<p>'+(job.Summary)+'</p>';
                         result += '<div class="flux-button">';
-                        result += '<a href="#">Read more</a>';
+                        result += '<a class="read-more" href="#">Read more</a>';
                         result += '</div>';
                         result += '<div class="overview">'+(job.Overview);
-                        result += '<a class="button" href="'+(job.ApplyUrl)+'" target="_blank">Apply</a>';
+
+                        result += '<div class="flux-button">';
+                        result += '<a href="'+(job.ApplyUrl)+'" target="_blank">Apply</a>';
+                        result += '</div>';
+
                         result += '</div>';
                         result += '</div>';
                         result += '</section>';
@@ -43,7 +47,7 @@
 
                     $('#jobs').html(result);
 
-                    $('.job .description .flux-button a').on('click', function(event) {
+                    $('.job .description .flux-button a.read-more').on('click', function(event) {
                         event.preventDefault();
 
                         var button = $(this).parent();
