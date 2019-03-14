@@ -76,10 +76,8 @@
 					</ul>
 				</nav>
 				<a class="hamburger" href="#">
-					<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="40px" height="40px" viewBox="0 0 40 40" style="enable-background:new 0 0 40 40;" xml:space="preserve">
-						<rect x="1" y="11" class="line top" width="38" height="4" />
-						<rect x="1" y="25" class="line bottom" width="38" height="4" />
-					</svg>
+					<div class="line top"></div>
+					<div class="line bottom"></div>
 				</a>
 			</div>
 		</header>
@@ -144,32 +142,36 @@
 			<section id="change" class="purple">
 				<div class="wrap cf">
 					<div class="m-all center cf">
-							<a href="/talk-to-us" class="button">Drop us a line</a>
-							
-							<div class="m-all t-1of2 no-padding t-offset-left-1of4 t-offset-right-1of4 cf">
-								<form name="gform" id="get-in-touch-form" enctype="text/plain" action="https://docs.google.com/forms/d/e/1FAIpQLSe6rGcmsWfHDzbvoXrSe6uaJTjqnMCqLFOgT_gUuvnW6mZ3-Q/formResponse?" target="get-in-touch-response">
-									<input type="hidden" name="usp" value="pp_url" />
-									<p>
-										<label for="your-name">Name</label><br />
-										<input id="your-name" name="entry.1629797745" value="" type="text" placeholder="Your name" />
-									</p>
-									<p>
-										<label for="your-email">Email</label><br />
-										<input id="your-email" name="entry.368106203" type="text" placeholder="Your email address" />
-									</p>
-									<p>
-										<label for="questions">How can we help?</label><br />
-										<textarea id="questions" name="entry.113701146" placeholder="Ask us anything"></textarea>
-									</p>
-									<p>
-										<input class="button" type="submit" value="Go" />
-									</p>
-								</form>
-							</div>
+                        <div class="flux-button">
+							<a href="#" class="drop-us-a-line">Drop us a line</a>
+						</div>
 
-                            <div class="m-all t-1of2 no-padding t-offset-left-1of4 t-offset-right-1of4 cf">
-								<iframe name="get-in-touch-response" id="get-in-touch-response" style=""></iframe>
-							</div>
+						<div class="slider m-all t-1of2 no-padding t-offset-left-1of4 t-offset-right-1of4 cf">
+							<form name="gform" id="get-in-touch-form" enctype="text/plain" action="https://docs.google.com/forms/d/e/1FAIpQLSe6rGcmsWfHDzbvoXrSe6uaJTjqnMCqLFOgT_gUuvnW6mZ3-Q/formResponse?" target="get-in-touch-response">
+								<input type="hidden" name="usp" value="pp_url" />
+								<p>
+									<label for="your-name">Name</label><br />
+									<input id="your-name" name="entry.1629797745" value="" type="text" placeholder="Your name" />
+								</p>
+								<p>
+									<label for="your-email">Email</label><br />
+									<input id="your-email" name="entry.368106203" type="text" placeholder="Your email address" />
+								</p>
+								<p>
+									<label for="questions">How can we help?</label><br />
+									<textarea id="questions" name="entry.113701146" placeholder="Ask us anything"></textarea>
+								</p>
+								<p>
+			                        <div class="flux-button">
+			                        	<a class="gform" href="get-in-touch-form" />Go</a>
+									</div>
+								</p>
+							</form>
+						</div>
+
+						<div class="m-all t-1of2 no-padding t-offset-left-1of4 t-offset-right-1of4 cf">
+							<iframe name="get-in-touch-response" id="get-in-touch-response" style=""></iframe>
+						</div>
 					</div>
 				</div>
 			</section>
