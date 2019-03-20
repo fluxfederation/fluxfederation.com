@@ -484,15 +484,19 @@ CONTENT STYLES
 
 // misc, multi-page
 
+.space-bottom {
+	margin-bottom:1.5rem;
+}
+
+.space-top {
+	margin-top:1.5rem;
+}
+
+#hasreveal .slider {
+	display: none;
+}
+
 .page {
-
-	.space-bottom {
-		margin-bottom:1.5rem;
-	}
-
-	.space-top {
-		margin-top:1.5rem;
-	}
 
 	.call-to-action-illustration {
 		position: relative;
@@ -567,7 +571,7 @@ CONTENT STYLES
 	}
 
 	.table-row-vert-center {
-		margin-bottom:1.5rem;
+		//margin-bottom:1.5rem;
 		
 		.t-graphic {
 			display: none;
@@ -825,10 +829,6 @@ CONTENT STYLES
 			display:none;
 		}
 	}
-
-	.slider {
-		display: none;
-	}
 }
 
 // Working at Flux page
@@ -887,8 +887,8 @@ CONTENT STYLES
 
 }
 
-// About page
-.about-page {
+// Awards page
+.awards-page {
 	#awards {
 		img {
 			max-height:14rem;
@@ -948,37 +948,42 @@ FOOTER STYLES
 			margin-bottom:1rem;
 		}
 	}
-}
 
-.footer {
-	padding-top:0;
+	.footer-button {
+		padding-bottom:.3rem;
 
-	p {
-		color: #fff;
+		.drop-us-a-line {
+			color:$pink;
+			padding-bottom:.3rem;
+			text-decoration: none;
+			border-bottom:1px solid $pink;
+
+			&:hover {
+				color: darken($pink, 10%);
+				border-bottom:1px solid darken($pink, 10%);
+			}
+		}
 	}
-}
 
-.flux-buttons {
-    display: inline-block;
+	.slider {
+		border:1px solid $pink;
+		//border-bottom:1px solid $pink;
 
-	a {
-		text-decoration: none;
-		text-transform: uppercase;
-		display: block;
-		color: white;
-		margin-bottom: .5rem;
-		padding: .4rem 1rem;
-		background-color: $pink;
-	    border-radius: 0.1875rem;
+		input, textarea {
+			width:75%; // beats input form specificity (_forms.scss)
+			background:none;
+			border:none;
+			border-bottom:1px solid $pink;
+			color:white;
+			padding-top:0;
+		}
+	}
 
-	    .button-bg {
-	    	label {
-	    		cursor: pointer;
-	    	}
-	    }
+	form p {
+		margin-bottom:.5rem;
+	}
 
-	    &:hover {
-			background-color: darken($pink, 10%);
-	    }
-	}	
+	.flux-button {
+		margin-bottom:1rem;
+	}
 }

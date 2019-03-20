@@ -139,12 +139,12 @@ CONTENT STYLES
 	}
 
 	.table-row-vert-center {
-	padding:2rem 10px;
+	padding:0 10px;
 	text-align:left;
 	display:table;
 
 		.copy {
-			width:25%;
+			width:33.3%;
 			display:table-cell;
 			vertical-align:middle;
 		}
@@ -154,7 +154,7 @@ CONTENT STYLES
 		.t-graphic, .graphic {
 			display:table-cell;
 			vertical-align:middle;
-			width:75%;
+			width:50%;
 		}
 	}
 
@@ -167,7 +167,7 @@ CONTENT STYLES
 .homepage {
 	
 	.simple .t-graphic {
-		width:75%;
+		width:50%;
 		padding-left:8.33%;
 	}
 
@@ -184,7 +184,7 @@ CONTENT STYLES
 
 	.simple {
 		.graphic {
-			width:58.33%;
+			width:46%;
 			padding-right:16.66%;
 		}
 		.copy {
@@ -194,7 +194,7 @@ CONTENT STYLES
 	}
 
 	.lovable .t-graphic {
-		width:75%;
+		width:50%;
 		padding-left:16.66%;
 	}
 }
@@ -275,14 +275,6 @@ FOOTER STYLES
 .contact-us {
 	.address-block {
 		h2 {
-		}
-
-		div {
-			padding-right: 20px !important;
-		}
-
-		div:last-child {
-			padding-right: 0 !important;
 		}
 
 		p {

@@ -47,6 +47,8 @@ input[type="button"],
     }
 }
 
+
+// Single button
 .flux-button {
     position: relative;
     display: inline-block;
@@ -81,3 +83,87 @@ input[type="button"],
         }
     }
 }
+
+
+// Double linked button design
+// Styles in 480px style sheet as well.
+.flux-buttons {
+    display: inline-block;
+
+	a {
+		text-decoration: none;
+		text-transform: uppercase;
+		display: block;
+		color: white;
+		margin-bottom: .5rem;
+		padding: .4rem 1rem;
+		background-color: $pink;
+	    border-radius: 0.1875rem;
+
+	    .button-bg {
+	    	label {
+	    		cursor: pointer;
+	    	}
+	    }
+
+	    &:hover {
+			background-color: darken($pink, 10%);
+	    }
+	}	
+}
+
+
+// Social buttons
+
+%social-icon-hover {
+  border-radius: 100%;
+  transform: scale(1.20);
+  transition: background-color .5s, transform .5s ease-out;
+}
+
+.soc {
+    display: block;
+    font-size: 0;
+    list-style: none;
+    li {
+      display: inline-block;
+      margin: .3rem;
+
+      &:first-child {
+          margin-left:0;
+      }
+    }
+    a, svg {
+      display: block;
+    }
+    a {
+      height: 2rem;
+      width: 2rem;
+    }
+    a {
+      fill: $pink;
+      &:hover {
+        background: white;
+        @extend %social-icon-hover
+      }
+      &:before {
+          height:0px; // Removes sitewide underline for links
+      }
+    }
+    em {
+      font-size: .8rem;
+      line-height: 1.5;
+      margin-top: -.75em;
+      position: absolute;
+      text-align: center;
+      top: 50%;
+      right: 0;
+      bottom: 0;
+      left: 0;
+    }
+    svg {
+      height: 100%;
+      width: 100%;
+    // IE8:
+    }
+  }

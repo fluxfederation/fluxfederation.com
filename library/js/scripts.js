@@ -267,7 +267,7 @@
             event.preventDefault();
 
             hamburger_close();
-            var offset = $('#contact').offset().top;
+            var offset = $('#footer').offset().top;
             $('html, body').animate({
                 scrollTop: offset+'px'
             }, 1000);
@@ -276,7 +276,7 @@
         $('a.drop-us-a-line').on('click', function(event) {
             event.preventDefault();
 
-            var slider = $('#change .slider');
+            var slider = $('#hasreveal .slider');
             if(slider.hasClass('open')) {
                 slider.removeClass('open');
                 slider.slideUp(500);
