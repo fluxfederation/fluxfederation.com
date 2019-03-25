@@ -111,3 +111,21 @@ p {
 .lowercase {
     text-transform: lowercase;
 }
+
+.light-font-weight {
+    font-weight: 300;
+}
+
+// Gradiations in colour
+
+%gradiated-text-light {
+    background: linear-gradient(to right, white 20%, $pink 120%);
+	-webkit-background-clip: text;
+  	-webkit-text-fill-color: transparent;
+}
+
+%gradiated-text-dark {
+    background: linear-gradient(to right, $purple 20%, $pink 120%);
+	-webkit-background-clip: text;
+  	-webkit-text-fill-color: transparent;
+}

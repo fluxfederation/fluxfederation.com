@@ -141,9 +141,10 @@ input[type="button"],
       width: 2rem;
     }
     a {
-      fill: $pink;
+      fill: $purple;
       &:hover {
-        background: white;
+        background: $purple;
+        fill:white;
         @extend %social-icon-hover
       }
       &:before {

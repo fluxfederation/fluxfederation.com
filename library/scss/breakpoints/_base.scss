@@ -54,7 +54,7 @@ body {
 
 	text-rendering: optimizelegibility;
 
-	background-color: $purple;
+	// background-color: $purple;
 
     &:after {
         content: "0";
@@ -70,7 +70,8 @@ section {
 
 	&.purple {
 		color: white;
-		background: $purple;
+		// background: $purple;
+		background: linear-gradient($purple 30%, lighten($pink, 20%) 200%);
 	}
 
 	&.dark-purple {
@@ -83,8 +84,21 @@ section {
 			color: $purple;
 		}
 
+		h2, .h2 {
+			@extend %gradiated-text-dark;
+		}
+
 		color: black;
 		background: white;
+	}
+
+	&.pink-gradient {
+		h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
+			color: $purple;
+		}
+
+		color: black;
+		background: linear-gradient(lighten($pink, 30%) 0%, $light-yellow 110%);
 	}
 
 	&.gray {
@@ -99,6 +113,15 @@ section {
 	&.dark-gray {
 		color: $pink;
 		background: $dark-gray;
+	}
+
+	&.no-background {
+		h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
+			color: $purple;
+		}
+
+		color: black;
+		background:inherit;
 	}
 }
 
@@ -254,30 +277,30 @@ p {
 h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
 	margin: 0;
 	transition: all .2s linear;
-	font-weight: 900;
+	font-weight: 300;
 }
 
 h1, .h1 {
-	text-transform: uppercase;
-	font-size:2.5rem;
-	line-height:3rem;
+	font-size:3rem;
+	line-height:3.4rem;
 
 	&.homepage {
-		font-size:2.75rem;
+		font-size:3rem;
 	}
 }
 
 h2, .h2 {
-	text-transform: uppercase;
-	font-size: 2.1rem;
-	line-height: 2.1rem;
+	font-size: 2.5rem;
+	line-height: 2.5rem;
 	margin-bottom:.8rem;
+	font-weight:300;
 }
 
 h3, .h3 {
-	text-transform: uppercase;
-	font-size: 1.6rem;
-	line-height: 1.8rem;
+	font-size: 1.8rem;
+	line-height: 2rem;
+	margin-bottom:.8rem;
+	font-weight:700;
 }
 
 h4, .h4 {
@@ -488,8 +511,16 @@ CONTENT STYLES
 	margin-bottom:1.5rem;
 }
 
+.space-bottom-double {
+	margin-bottom:3rem;
+}
+
 .space-top {
 	margin-top:1.5rem;
+}
+
+.space-top-double {
+	margin-top:3rem;
 }
 
 #hasreveal .slider {
@@ -651,6 +682,7 @@ CONTENT STYLES
 
 	.simple-animation {
 		position: relative;
+		width: 85%;
 
 		.outer,
 		.middle,
@@ -673,10 +705,14 @@ CONTENT STYLES
 		}
 	}
 
+	#masthead {
+		padding-bottom: 15rem;
+		margin-bottom: 10rem;
+	}
+
 	#main-video {
-		padding-top: 0;
+		margin-top:-25rem;
 		padding-bottom: 0;
-		position: relative;
 
 		.half-background {
 			position: absolute;
@@ -938,10 +974,7 @@ FOOTER STYLES
 .contact-us {
 	.address-block {
 		h3, p {
-			color: $pink;
-			a {
-				color: $pink;
-			}
+			color: $dark-gray;
 		}
 
 		h3 {
@@ -951,18 +984,6 @@ FOOTER STYLES
 
 	.footer-button {
 		padding-bottom:.3rem;
-
-		.drop-us-a-line {
-			color:$pink;
-			padding-bottom:.3rem;
-			text-decoration: none;
-			border-bottom:1px solid $pink;
-
-			&:hover {
-				color: darken($pink, 10%);
-				border-bottom:1px solid darken($pink, 10%);
-			}
-		}
 	}
 
 	.slider {

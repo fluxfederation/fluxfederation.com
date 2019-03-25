@@ -14,7 +14,7 @@ come into play. Have fun!
 GENERAL STYLES
 *********************/
 html {
-    font-size: 108%;     // 100% defaults to 16px
+    font-size: 106%;     // 100% defaults to 16px
 }
 
 body {
@@ -33,7 +33,7 @@ LAYOUT & GRID STYLES
 *********************/
 
 main {
-	padding-top: 110px;
+	padding-top: 100px;
 	transition: all .2s linear;
 	
 	&.scroll { 
@@ -62,6 +62,7 @@ HEADER STYLES
 	top: 0;
 	left: 0;
 	width: 100%;
+	padding-bottom: .5rem; // Fixes white flash under header as inertia over scrolls in Firefox/Chrome ...
 
 	.wrap {
 		transition: all .2s linear;
@@ -164,40 +165,7 @@ CONTENT STYLES
 }
 
 // Homepage
-.homepage {
-	
-	.simple .t-graphic {
-		width:50%;
-		padding-left:8.33%;
-	}
 
-	.flexible {
-		.graphic {
-			width:58.33%;
-			padding-right:16.66%;
-		}
-		.copy {
-			padding-right:16.66%;
-			width:41.66%
-		}
-	}
-
-	.simple {
-		.graphic {
-			width:46%;
-			padding-right:16.66%;
-		}
-		.copy {
-			padding-right:16.66%;
-			width:41.66%
-		}
-	}
-
-	.lovable .t-graphic {
-		width:50%;
-		padding-left:16.66%;
-	}
-}
 
 // Opportunities page
 .opportunities-page {
