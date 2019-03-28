@@ -131,6 +131,10 @@ CONTENT STYLES
 
 		&.top {vertical-align:top;}
 		&.middle {vertical-align:middle;}
+
+		.image {
+			display: table-cell;
+		}
 	}
 
 	.table-layout {

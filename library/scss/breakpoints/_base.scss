@@ -624,6 +624,20 @@ CONTENT STYLES
 		}
 	}
 
+	#roles {
+		.inline:hover {
+			.image .circle {
+				img {
+					transform: scale(1.1, 1.1);
+
+					&.color {
+						opacity: 1;
+					}
+				}
+			}
+		}
+	}
+
 	.table-row-vert-center {
 		//margin-bottom:1.5rem;
 		
@@ -637,21 +651,6 @@ CONTENT STYLES
 
 		.graphic {
 			width: 100%;
-		}
-	}
-	
-
-	#roles {
-		.table-layout:hover {
-			.image .circle {
-				img {
-					transform: scale(1.1, 1.1);
-
-					&.color {
-						opacity: 1;
-					}
-				}
-			}
 		}
 	}
 }
