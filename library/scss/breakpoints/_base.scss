@@ -98,7 +98,25 @@ section {
 		}
 
 		color: black;
-		background: linear-gradient(lighten($pink, 30%) 0%, $light-yellow 110%);
+		background: linear-gradient($pink-light 0%, $light-yellow 130%);
+	}
+
+	&.teal-gradient {
+		h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
+			color: $purple;
+		}
+
+		color: black;
+		background: linear-gradient($teal-light 0%, $light-green 140%);
+	}
+
+	&.purple-gradient {
+		h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
+			color: $purple;
+		}
+
+		color: black;
+		background: linear-gradient($purple-light 0%, $pink-light 100%);
 	}
 
 	&.gray {
@@ -271,6 +289,7 @@ p {
 
 	&.hi-lite {
 		color: $purple;
+		font-weight:500;
 	}
 }
 
@@ -560,35 +579,8 @@ CONTENT STYLES
 		display: table;
 		width: 100%;
 
-		.image {
-			line-height: 0;
-			display: none;
-			vertical-align: top;
-			padding-right: 1rem;
-
-			.circle {
-				position: relative;
-				border-radius: 50%;
-				overflow: hidden;
-				-webkit-transform: rotate(0.000001deg);
-
-			img {
-				transition: all .5s ease-in-out;
-				width: 100%;
-
-				&.gray {
-					-webkit-filter: grayscale(100%);
-					filter: grayscale(100%);
-				}
-
-					&.color {
-						position: absolute;
-						top: 0;
-						left: 0;
-						opacity: 0;
-					}
-				}
-			}
+		&:first-child {
+			border-top:none;
 		}
 
 		.description {
@@ -597,6 +589,37 @@ CONTENT STYLES
 
 			.overview {
 				display: none;
+			}
+		}
+	}
+
+	.image {
+		line-height: 0;
+		display: none;
+		vertical-align: top;
+		padding-right: 1rem;
+
+		.circle {
+			position: relative;
+			border-radius: 50%;
+			overflow: hidden;
+			-webkit-transform: rotate(0.000001deg);
+
+		img {
+			transition: all .5s ease-in-out;
+			width: 100%;
+
+			&.gray {
+				-webkit-filter: grayscale(100%);
+				filter: grayscale(100%);
+			}
+
+				&.color {
+					position: absolute;
+					top: 0;
+					left: 0;
+					opacity: 0;
+				}
 			}
 		}
 	}
@@ -916,6 +939,12 @@ CONTENT STYLES
 
 // Meet the crew page
 .meet-the-crew-page {
+}
+
+//About page
+
+#flexible-simple-lovable {
+
 }
 
 // Leadership page

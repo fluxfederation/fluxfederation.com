@@ -108,7 +108,7 @@ body {
 
             &:after {
                 right: -10%;
-                background-color: $red;
+                background-color: $teal;
             }
             
             .button-bg {
@@ -120,7 +120,7 @@ body {
 
             &:hover {
                 transition: .2s linear;
-                color:$pink;
+                color:$teal;
 
                 .button-bg:after {
                     right: -10%;

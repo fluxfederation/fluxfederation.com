@@ -12,18 +12,24 @@ No one likes a mess.
 /*********************
 COLORS
 *********************/
+
 $purple:            #5f259f;
+$purple-light:      lighten($purple, 50%);
 $dark-purple:       #4f2d9e;
 $header-scroll-purple:darken($purple, 10%);
+$light-green:       #e3e6bf;
 $light-yellow:      #f9e4c2;
+$teal:              #67c7bf;
+$teal-light:        lighten($teal, 30%);
 
 $gray:              #e6e6e6;
 $dark-gray:         #4d4d4d;
 
 $pink:              #ee4d87;
+$pink-light:        lighten($pink, 32%);
 $dark-pink:         #e01d3d;
 $powershop-pink:    #fa0e6a;
-$powershop-blue:    #94d3e2;
+$powershop-blue:    #94d3e2;   
 
 $link-color:        $pink;
 $link-hover:        darken($pink, 10%);

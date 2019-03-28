@@ -176,6 +176,10 @@ them however you see fit.
     margin-right: calc-percent(1, 12);
 }
 
+.m-offset-right-2of3 {
+    margin-right: calc-percent(2, 3);
+}
+
 // we need this media query because the min width of a column for above this is 60px - created by padding left/right of 30px //
 @media (min-width: 360px) {
 
@@ -565,5 +569,9 @@ them however you see fit.
 
     .d-offset-right-1of12 {
         margin-right: calc-percent(1, 12);
+    }
+
+    .d-offset-right-5of12  {
+        margin-right: calc-percent(5, 12);
     }
 } // end desktop styles
