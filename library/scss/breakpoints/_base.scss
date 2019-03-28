@@ -88,7 +88,7 @@ section {
 			@extend %gradiated-text-dark;
 		}
 
-		color: black;
+		color: $dark-gray;
 		background: white;
 	}
 
@@ -97,7 +97,7 @@ section {
 			color: $purple;
 		}
 
-		color: black;
+		color: $dark-gray;
 		background: linear-gradient($pink-light 0%, $light-yellow 130%);
 	}
 
@@ -106,7 +106,7 @@ section {
 			color: $purple;
 		}
 
-		color: black;
+		color: $dark-gray;
 		background: linear-gradient($teal-light 0%, $light-green 140%);
 	}
 
@@ -115,7 +115,7 @@ section {
 			color: $purple;
 		}
 
-		color: black;
+		color: $dark-gray;
 		background: linear-gradient($purple-light 0%, $pink-light 100%);
 	}
 
@@ -124,7 +124,7 @@ section {
 			color: $purple;
 		}
 
-		color: black;
+		color: $dark-gray;
 		background: $gray;
 	}
 
@@ -138,7 +138,7 @@ section {
 			color: $purple;
 		}
 
-		color: black;
+		color: $dark-gray;
 		background:inherit;
 	}
 }
@@ -944,6 +944,29 @@ CONTENT STYLES
 
 #flexible-simple-lovable {
 
+}
+
+#markets {
+	.cell {
+		padding:2rem 5rem;
+
+		p {
+			color:$pink;
+		}
+
+		&:hover {
+			background:white;
+		}
+	}
+
+	.retailer {
+		.cell {
+			background:white;
+			p {
+				color:$dark-gray;
+			}
+		}
+	}
 }
 
 // Leadership page
