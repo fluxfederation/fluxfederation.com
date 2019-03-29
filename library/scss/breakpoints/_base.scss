@@ -980,30 +980,32 @@ CONTENT STYLES
 
 #markets {
 	.markets {
-
 		.country {
 			display: block;
-			padding: 2rem 5rem;
+			width:7rem;
+			margin: 0 auto;
 			color: $pink;
 			text-decoration: none;
 			text-align: center;
 
 			&.open {
-				background-color: white;
+				border-bottom: 5px solid $pink;
 			}
 		}
 
 		.retailers {
 			overflow: hidden;
 			display: none;
-			background-color: white;
+			border-top: 1px solid $pink;
 
 			.inner {
 				.retailer {
-					padding: 1rem 6rem;
+					padding-top:3rem;
+					max-width:5rem;
+					margin: 0 auto;
 
 					p {
-						color: $pink;
+						color: $dark-gray;
 						text-align: center;
 					}
 				}

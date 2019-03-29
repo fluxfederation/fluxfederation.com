@@ -218,6 +218,7 @@ CONTENT STYLES
 		@include css-grid(percentage(1/3) percentage(1/3) percentage(1/3), auto auto);
 
 		.country {
+
 			&.nz {
 				@include css-grid-column-row(1, 1, 1, 1);
 			}
@@ -237,7 +238,7 @@ CONTENT STYLES
 				flex-wrap: wrap;
 
 				.retailer {
-					flex-basis: percentage(1/3);
+					flex-basis: percentage(1/2);
 				}
 			}
 		}

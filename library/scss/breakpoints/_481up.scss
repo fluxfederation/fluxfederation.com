@@ -130,10 +130,11 @@ body {
     }
 }
 
-//About page
-
+// About page
 #markets {
-	.cell {
-        padding:3rem 10rem;
+	.markets {
+		.country {
+			display: block;
+        }
     }
 }
