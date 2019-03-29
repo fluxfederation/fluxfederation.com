@@ -1,3 +1,4 @@
+var isIE = /*@cc_on!@*/false || !!document.documentMode;
 
 // This is Javascript and requires JQuery to be loaded
 (function($) {
@@ -5,6 +6,10 @@
 
     $(document).ready(function() {
         import_svg($('.rocket-man img'));
+
+        if(isIE) {
+            $('body').addClass('ie');
+        }
 
         var jobs = $('#jobs');
         if(jobs.length) {

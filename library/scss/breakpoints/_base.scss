@@ -143,6 +143,15 @@ section {
 	}
 }
 
+body.ie {
+	section.white {
+		h2, .h2 {
+			color: $purple;
+			background: transparent;
+		}
+	}
+}
+
 .sub-section {
 }
 
