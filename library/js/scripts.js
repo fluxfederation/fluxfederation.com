@@ -369,17 +369,17 @@
             $('main').removeClass('scroll');
 
             setTimeout(function() {
-                update_careers_nav_location($(window).scrollTop());
+                update_in_page_nav_location($(window).scrollTop());
             }, 250);
         } else if((scrollTop >= 50) && !$('main').hasClass('scroll')) {
             $('#header').addClass('scroll');
             $('main').addClass('scroll');
 
             setTimeout(function() {
-                update_careers_nav_location($(window).scrollTop());
+                update_in_page_nav_location($(window).scrollTop());
             }, 250);
         } else {
-            update_careers_nav_location(scrollTop);
+            update_in_page_nav_location(scrollTop);
         }
 
         meet_the_flux_screen_scroll();
@@ -434,7 +434,7 @@
         }
     }
 
-    function update_careers_nav_location(scrollTop) {
+    function update_in_page_nav_location(scrollTop) {
         var header = $('#header');
         var headerOffset = 0;
         if(header.css('position') === 'fixed') {
@@ -444,33 +444,33 @@
         var masthead = $('#masthead');
         var mastheadBottom = $(masthead).position().top + $(masthead).outerHeight();
 
-        var careersNav = $('#careers-nav');
-        var careersNavHeight = careersNav.outerHeight();
-        var careersNavOffset = mastheadBottom - scrollTop;
+        var inPageNav = $('#in-page-nav');
+        var inPagesNavHeight = inPageNav.outerHeight();
+        var inPageNavOffset = mastheadBottom - scrollTop;
 
-        var spacer = $('#careers-nav-spacer');
+        var spacer = $('#in-page-nav-spacer');
 
-        if(careersNavOffset <= headerOffset) {
-            careersNav.css({
+        if(inPageNavOffset <= headerOffset) {
+            inPageNav.css({
                 position: 'fixed',
                 top: headerOffset+'px',
                 zIndex: 1
             });
 
-            careersNav.addClass('fixed');
+            inPageNav.addClass('fixed');
 
             if(!spacer.length) {
-                spacer = $('<div id="careers-nav-spacer" />');
+                spacer = $('<div id="in-page-nav-spacer" />');
                 masthead.after(spacer);
             }
-            spacer.css('height', careersNavHeight+'px');
+            spacer.css('height', inPageNavHeight+'px');
         } else {
-            careersNav.css({
+            inPageNav.css({
                 position: 'relative',
                 top: 'auto'
             });
 
-            careersNav.removeClass('fixed');
+            inPageNav.removeClass('fixed');
 
             if(spacer.length) {
                 spacer.detach();
