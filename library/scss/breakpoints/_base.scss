@@ -947,23 +947,34 @@ CONTENT STYLES
 }
 
 #markets {
-	.cell {
-		padding:2rem 5rem;
+	.markets {
 
-		p {
-			color:$pink;
+		.country {
+			display: block;
+			padding: 2rem 5rem;
+			color: $pink;
+			text-decoration: none;
+			text-align: center;
+
+			&.open {
+				background-color: white;
+			}
 		}
 
-		&:hover {
-			background:white;
-		}
-	}
+		.retailers {
+			overflow: hidden;
+			display: none;
+			background-color: white;
 
-	.retailer {
-		.cell {
-			background:white;
-			p {
-				color:$dark-gray;
+			.inner {
+				.retailer {
+					padding: 1rem 6rem;
+
+					p {
+						color: $pink;
+						text-align: center;
+					}
+				}
 			}
 		}
 	}

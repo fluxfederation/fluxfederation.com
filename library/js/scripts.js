@@ -291,6 +291,48 @@
             var id = $(this).attr('href');
             $('#'+id).submit();
         });
+
+
+        $('.markets .country').on('click', function(event) {
+            event.preventDefault();
+
+            if(breakpointIndex < 2) {
+                var country = $(this);
+                var retailers = country.next('.retailers');
+                if(retailers.length) {
+                    if(retailers.hasClass('open')) {
+                        retailers.stop().slideUp(250, function() {
+                            country.removeClass('open');
+                            retailers.removeClass('open');
+                        });
+                    } else {
+                        country.addClass('open');
+                        retailers.stop().addClass('open').slideDown(250);
+                    }
+                }
+            }
+        });
+
+        $('.markets .country').on('mouseenter', function(event) {
+            if(breakpointIndex >= 2) {
+                var country = $(this);
+                if(!country.hasClass('open')) {
+                    $('.markets .country').removeClass('open');
+
+                    var retailers = country.next('.retailers');
+                    var openRetailers = $('.markets .retailers.open');
+                    if(openRetailers.length) {
+                        openRetailers.removeClass('open').stop().slideUp(250, function() {
+                            country.addClass('open');
+                            retailers.addClass('open').slideDown(250);
+                        });
+                    } else {
+                        country.addClass('open');
+                        retailers.addClass('open').slideDown(250);
+                    }
+                }
+            }
+        });
     });
 
     var globeAnimating = 0;
@@ -307,6 +349,11 @@
 
             var index = parseInt(content);
             if(index !== breakpointIndex) {
+                if((index < 2) && (breakpointIndex >= 2)) {
+                    $('.markets .country').removeClass('open');
+                    $('.markets .retailers').removeClass('open').stop().slideUp(250);
+                }
+
                 breakpointIndex = index;
                 if(breakpointIndex >= 2) {
                     hamburger_close();

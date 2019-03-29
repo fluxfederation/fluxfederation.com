@@ -98,3 +98,8 @@ probably best not to use it. I mean, were you going to anyway? */
     -ms-grid-row-span: $span;
     grid-row: $row / span $span;
 }
+
+@mixin css-grid-column-row($column, $columnSpan, $row, $rowSpan) {
+    @include css-grid-column($column, $columnSpan);
+    @include css-grid-row($row, $rowSpan);
+}
