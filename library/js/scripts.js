@@ -291,6 +291,48 @@
             var id = $(this).attr('href');
             $('#'+id).submit();
         });
+
+
+        $('.markets .country').on('click', function(event) {
+            event.preventDefault();
+
+            if(breakpointIndex < 2) {
+                var country = $(this);
+                var retailers = country.next('.retailers');
+                if(retailers.length) {
+                    if(retailers.hasClass('open')) {
+                        retailers.stop().slideUp(250, function() {
+                            country.removeClass('open');
+                            retailers.removeClass('open');
+                        });
+                    } else {
+                        country.addClass('open');
+                        retailers.stop().addClass('open').slideDown(250);
+                    }
+                }
+            }
+        });
+
+        $('.markets .country').on('mouseenter', function(event) {
+            if(breakpointIndex >= 2) {
+                var country = $(this);
+                if(!country.hasClass('open')) {
+                    $('.markets .country').removeClass('open');
+
+                    var retailers = country.next('.retailers');
+                    var openRetailers = $('.markets .retailers.open');
+                    if(openRetailers.length) {
+                        openRetailers.removeClass('open').stop().slideUp(250, function() {
+                            country.addClass('open');
+                            retailers.addClass('open').slideDown(250);
+                        });
+                    } else {
+                        country.addClass('open');
+                        retailers.addClass('open').slideDown(250);
+                    }
+                }
+            }
+        });
     });
 
     var globeAnimating = 0;
@@ -307,6 +349,11 @@
 
             var index = parseInt(content);
             if(index !== breakpointIndex) {
+                if((index < 2) && (breakpointIndex >= 2)) {
+                    $('.markets .country').removeClass('open');
+                    $('.markets .retailers').removeClass('open').stop().slideUp(250);
+                }
+
                 breakpointIndex = index;
                 if(breakpointIndex >= 2) {
                     hamburger_close();
@@ -369,17 +416,17 @@
             $('main').removeClass('scroll');
 
             setTimeout(function() {
-                update_in_page_nav_location($(window).scrollTop());
+                update_careers_nav_location($(window).scrollTop());
             }, 250);
         } else if((scrollTop >= 50) && !$('main').hasClass('scroll')) {
             $('#header').addClass('scroll');
             $('main').addClass('scroll');
 
             setTimeout(function() {
-                update_in_page_nav_location($(window).scrollTop());
+                update_careers_nav_location($(window).scrollTop());
             }, 250);
         } else {
-            update_in_page_nav_location(scrollTop);
+            update_careers_nav_location(scrollTop);
         }
 
         meet_the_flux_screen_scroll();
@@ -434,7 +481,7 @@
         }
     }
 
-    function update_in_page_nav_location(scrollTop) {
+    function update_careers_nav_location(scrollTop) {
         var header = $('#header');
         var headerOffset = 0;
         if(header.css('position') === 'fixed') {
@@ -444,33 +491,33 @@
         var masthead = $('#masthead');
         var mastheadBottom = $(masthead).position().top + $(masthead).outerHeight();
 
-        var inPageNav = $('#in-page-nav');
-        var inPagesNavHeight = inPageNav.outerHeight();
-        var inPageNavOffset = mastheadBottom - scrollTop;
+        var careersNav = $('#careers-nav');
+        var careersNavHeight = careersNav.outerHeight();
+        var careersNavOffset = mastheadBottom - scrollTop;
 
-        var spacer = $('#in-page-nav-spacer');
+        var spacer = $('#careers-nav-spacer');
 
-        if(inPageNavOffset <= headerOffset) {
-            inPageNav.css({
+        if(careersNavOffset <= headerOffset) {
+            careersNav.css({
                 position: 'fixed',
                 top: headerOffset+'px',
                 zIndex: 1
             });
 
-            inPageNav.addClass('fixed');
+            careersNav.addClass('fixed');
 
             if(!spacer.length) {
-                spacer = $('<div id="in-page-nav-spacer" />');
+                spacer = $('<div id="careers-nav-spacer" />');
                 masthead.after(spacer);
             }
-            spacer.css('height', inPageNavHeight+'px');
+            spacer.css('height', careersNavHeight+'px');
         } else {
-            inPageNav.css({
+            careersNav.css({
                 position: 'relative',
                 top: 'auto'
             });
 
-            inPageNav.removeClass('fixed');
+            careersNav.removeClass('fixed');
 
             if(spacer.length) {
                 spacer.detach();

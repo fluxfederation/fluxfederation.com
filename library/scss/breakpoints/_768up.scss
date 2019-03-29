@@ -214,9 +214,34 @@ CONTENT STYLES
 //About page
 
 #markets {
-	.cell {
-        padding:2rem 3rem;
-    }
+	.markets {
+		@include css-grid(percentage(1/3) percentage(1/3) percentage(1/3), auto auto);
+
+		.country {
+			&.nz {
+				@include css-grid-column-row(1, 1, 1, 1);
+			}
+			&.aust {
+				@include css-grid-column-row(2, 1, 1, 1);
+			}
+			&.uk {
+				@include css-grid-column-row(3, 1, 1, 1);
+			}
+		}
+
+		.retailers {
+			@include css-grid-column-row(1, 3, 2, 1);
+
+			.inner {
+				display: flex;
+				flex-wrap: wrap;
+
+				.retailer {
+					flex-basis: percentage(1/3);
+				}
+			}
+		}
+	}
 }
 
 /* Questions */
