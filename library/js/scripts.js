@@ -332,6 +332,20 @@
                 }
             }
         });
+
+        $('.leadership-member-container .flux-button a').on('click', function(event) {
+            event.preventDefault();
+
+            var description = $(this).parent().parent().parent().next('.leadership-member-decription');
+            if(description.length) {
+                description.fadeIn(500);
+            }
+        });
+
+        $('.leadership-member-decription .flux-button a').on('click', function(event) {
+            event.preventDefault();
+            $(this).parent().parent().parent().fadeOut(500);
+        });
     });
     
     var globeAnimating = 0;

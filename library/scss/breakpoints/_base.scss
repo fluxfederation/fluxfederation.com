@@ -636,6 +636,29 @@ CONTENT STYLES
 				}
 			}
 		}
+
+		.profile {
+			position: relative;
+
+			.leadership-member-decription {
+				position: fixed;
+				top: 0;
+				right: 0;
+				bottom: 0;
+				left: 0;
+				z-index: 20000;
+				background-color: $purple;
+
+				.inner {
+					position: relative;
+					max-width: 500px;
+					color: white;
+					top: 50%;
+					left: 50%;
+					transform: translate(-50%, -50%);
+				}
+			}
+		}
 	}
 
 	.table-row-vert-center {
