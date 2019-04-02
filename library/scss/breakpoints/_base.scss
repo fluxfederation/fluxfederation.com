@@ -928,9 +928,17 @@ CONTENT STYLES
 
 // Working at Flux page
 .working-at-flux-page {
-	.poeple-power-possibility {
-		img {
-			max-width:8rem;
+	.people-power-possibility {
+		.img-container {
+			img.people {
+				max-width:6rem;
+			}
+			img.power {
+				max-width:4rem;
+			}
+			img.possibility {
+				max-width:3rem;
+			}
 		}
 	}
 }
