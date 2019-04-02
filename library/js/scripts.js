@@ -90,7 +90,7 @@ var isIE = /*@cc_on!@*/false || !!document.documentMode;
             if(videoID.length) {
                 var iframe = $(this).closest('.video-wrapper').find('iframe');
                 if(iframe.length) {
-                    $(iframe).attr('src', 'https://www.youtube.com/embed/'+videoID+'?autoplay=1');
+                    $(iframe).attr('src', 'https://player.vimeo.com/video'+videoID+'?autoplay=1&title=0&byline=0&portrait=0');
                 }
             }
         });
