@@ -185,6 +185,17 @@ CONTENT STYLES
 
 // Working at Flux page
 .working-at-flux-page {
+	.people-power-possibility {
+		.img-container {
+			min-height:6rem;
+			display:flex;
+
+			img {
+				align-self: flex-end;
+			}
+		}
+	}
+
 
 	.respect .t-graphic, .brave .t-graphic {
 		padding-left:calc-percent(1, 12);
