@@ -928,6 +928,11 @@ CONTENT STYLES
 
 // Working at Flux page
 .working-at-flux-page {
+	.poeple-power-possibility {
+		img {
+			max-width:8rem;
+		}
+	}
 }
 
 // Solutions page
@@ -1030,6 +1035,7 @@ CONTENT STYLES
 		img {
 			max-height:14rem;
 			max-width:100%;
+			padding-right: 1.5rem;
 		}
 	}
 }
