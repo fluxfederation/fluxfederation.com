@@ -87,10 +87,10 @@ var isIE = /*@cc_on!@*/false || !!document.documentMode;
             event.preventDefault();
 
             var videoID = $(this).data('video-id');
-            if(videoID.length) {
+            if(videoID > 0) {
                 var iframe = $(this).closest('.video-wrapper').find('iframe');
                 if(iframe.length) {
-                    $(iframe).attr('src', 'https://player.vimeo.com/video'+videoID+'?autoplay=1&title=0&byline=0&portrait=0');
+                    $(iframe).attr('src', 'https://player.vimeo.com/video/'+videoID+'?autoplay=1&title=0&byline=0&portrait=0');
                 }
             }
         });
