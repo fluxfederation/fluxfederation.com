@@ -614,14 +614,14 @@ CONTENT STYLES
 			overflow: hidden;
 			-webkit-transform: rotate(0.000001deg);
 
-		img {
-			transition: all .5s ease-in-out;
-			width: 100%;
+			img {
+				transition: all .5s ease-in-out;
+				width: 100%;
 
-			&.gray {
-				-webkit-filter: grayscale(100%);
-				filter: grayscale(100%);
-			}
+				&.gray {
+					-webkit-filter: grayscale(100%);
+					filter: grayscale(100%);
+				}
 
 				&.color {
 					position: absolute;
@@ -634,43 +634,41 @@ CONTENT STYLES
 	}
 
 	#roles {
-		.inline:hover {
-			.image .circle {
-				img {
-					transform: scale(1.1, 1.1);
+		article {
+			.profile {
+				cursor: pointer;
+				text-align: center;
 
-					&.color {
-						opacity: 1;
+				.image {
+					display: block;
+					padding: 1rem;
+					padding-bottom: 0;
+				}
+
+				a {
+					font-size: 0.8rem;
+				}
+				&:hover {
+					border-bottom: 5px solid $pink;
+					
+					.image {
+						img {
+							transform: scale(1.1, 1.1);
+
+							&.color {
+								opacity: 1;
+							}
+						}
 					}
 				}
 			}
-		}
 
-		.profile {
-			position: relative;
-
-			.leadership-member-decription {
-				position: fixed;
-				top: 0;
-				right: 0;
-				bottom: 0;
-				left: 0;
-				z-index: 20000;
-				background-color: $purple;
-
-				.inner {
-					position: relative;
-					max-width: 80%;
-					color: white;
-					top: 50%;
-					left: 50%;
-					transform: translate(-50%, -50%);
-
-					p {
-						font-size:1.2rem;
-						line-height:2rem;
-					}
-				}
+			.bio {
+				border-top: 1px solid $pink;
+				position: relative;
+				display: none;
+				background-color: white;
+				padding-bottom: 2rem;
 			}
 		}
 	}

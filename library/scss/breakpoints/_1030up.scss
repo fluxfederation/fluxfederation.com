@@ -112,16 +112,67 @@ CONTENT STYLES
 }
 
 // leadership page
-.page #roles {
-	.profile {
-		.leadership-member-decription {
-			.inner {
-				max-width: 60%;
+.page {
+	#roles {
+		article {
+			@include css-grid(25% 25% 25% 25%, auto auto auto auto);
+
+			.profile {
+				&.ari {
+					@include css-grid-column-row(1, 1, 1, 1);
+				}
+				&.mark-s {
+					@include css-grid-column-row(2, 1, 1, 1);
+				}
+				&.phil {
+					@include css-grid-column-row(3, 1, 1, 1);
+				}
+				&.mark-d {
+					@include css-grid-column-row(4, 1, 1, 1);
+				}
+				&.emma {
+					@include css-grid-column-row(1, 1, 3, 1);
+				}
+				&.umesh {
+					@include css-grid-column-row(2, 1, 3, 1);
+				}
+				&.dan {
+					@include css-grid-column-row(3, 1, 3, 1);
+				}
+				&.jim {
+					@include css-grid-column-row(4, 1, 3, 1);
+				}
+			}
+
+			.bio {
+				&.ari {
+					@include css-grid-column-row(1, 4, 2, 1);
+				}
+				&.mark-s {
+					@include css-grid-column-row(1, 4, 2, 1);
+				}
+				&.phil {
+					@include css-grid-column-row(1, 4, 2, 1);
+				}
+				&.mark-d {
+					@include css-grid-column-row(1, 4, 2, 1);
+				}
+				&.emma {
+					@include css-grid-column-row(1, 4, 4, 1);
+				}
+				&.umesh {
+					@include css-grid-column-row(1, 4, 4, 1);
+				}
+				&.dan {
+					@include css-grid-column-row(1, 4, 4, 1);
+				}
+				&.jim {
+					@include css-grid-column-row(1, 4, 4, 1);
+				}
 			}
 		}
 	}
 }
-
 
 //404 page and thank you page
 .the-404-page, .thank-you-page {
