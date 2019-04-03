@@ -130,4 +130,70 @@ body {
     }
 }
 
+.page {
+    #roles {
+        article {
+            @include css-grid(50% 50%, auto auto auto auto auto auto);
+
+            .profile {
+                .image {
+                    display: block;
+                }
+
+                &.ari {
+                    @include css-grid-column-row(1, 1, 1, 1);
+                }
+                &.mark-s {
+                    @include css-grid-column-row(2, 1, 1, 1);
+                }
+                &.phil {
+                    @include css-grid-column-row(1, 1, 3, 1);
+                }
+                &.mark-d {
+                    @include css-grid-column-row(2, 1, 3, 1);
+                }
+                &.emma {
+                    @include css-grid-column-row(1, 1, 5, 1);
+                }
+                &.umesh {
+                    @include css-grid-column-row(2, 1, 5, 1);
+                }
+                &.dan {
+                    @include css-grid-column-row(1, 1, 7, 1);
+                }
+                &.jim {
+                    @include css-grid-column-row(2, 1, 7, 1);
+                }
+            }
+
+            .bio {
+                &.ari {
+                    @include css-grid-column-row(1, 2, 2, 1);
+                }
+                &.mark-s {
+                    @include css-grid-column-row(1, 2, 2, 1);
+                }
+                &.phil {
+                    @include css-grid-column-row(1, 2, 4, 1);
+                }
+                &.mark-d {
+                    @include css-grid-column-row(1, 2, 4, 1);
+                }
+                &.emma {
+                    @include css-grid-column-row(1, 2, 6, 1);
+                }
+                &.umesh {
+                    @include css-grid-column-row(1, 2, 6, 1);
+                }
+                &.dan {
+                    @include css-grid-column-row(1, 2, 8, 1);
+                }
+                &.jim {
+                    @include css-grid-column-row(1, 2, 8, 1);
+                }
+            }
+        }
+    }
+}
+
 // About page

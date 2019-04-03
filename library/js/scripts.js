@@ -354,6 +354,28 @@ var isIE = /*@cc_on!@*/false || !!document.documentMode;
             event.preventDefault();
             $(this).parent().parent().parent().fadeOut(500);
         });
+
+        $('#roles .profile').on('mouseenter', function(event) {
+            event.preventDefault();
+
+            var name = $(this).attr('class').replace('profile', '').trim();
+            if(name.length) {
+                $('.bio.'+name).slideDown(250, function() {
+                });
+            }
+        });
+
+        $('#roles .profile').on('mouseleave', function(event) {
+            event.preventDefault();
+
+            var name = $(this).attr('class').replace('profile', '').trim();
+            if(name.length) {
+                $('.bio.'+name).css('zIndex', 10000);
+                $('.bio.'+name).slideUp(250, function() {
+                    $(this).removeAttr('style');
+                });
+            }
+        });
     });
     
     var globeAnimating = 0;
