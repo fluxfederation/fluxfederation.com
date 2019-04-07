@@ -269,9 +269,10 @@ CONTENT STYLES
 		padding-right:calc-percent(1, 12);
 	}
 
-	.benefit {
-		padding-bottom:2.5em;
-		padding-right:2.5em;
+	.benefits {
+		.benefit {
+			width: 47%;
+		}
 	}
 }
 

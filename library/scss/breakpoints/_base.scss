@@ -940,6 +940,43 @@ CONTENT STYLES
 			}
 		}
 	}
+
+	.benefits {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-between;
+
+		.benefit {
+			position: relative;
+			width: 100%;
+
+			.benefit-image {
+				position: relative;
+				height: 0;
+				padding-top: 60%;
+				margin: 2rem 0 1rem 0;
+
+				background-size: cover;
+				background-position: center center;
+
+				&.image-1 {
+					background-image: url('/library/img/benefits-and-perks/Picture1.png');
+				}
+				&.image-2 {
+					background-image: url('/library/img/benefits-and-perks/Picture2.png');
+				}
+				&.image-3 {
+					background-image: url('/library/img/benefits-and-perks/Picture3.png');
+				}
+				&.image-4 {
+					background-image: url('/library/img/benefits-and-perks/Picture4.png');
+				}
+				&.image-5 {
+					background-image: url('/library/img/benefits-and-perks/Picture5.png');
+				}
+			}
+		}
+	}
 }
 
 // Solutions page
