@@ -99,6 +99,20 @@ CONTENT STYLES
 	}
 }
 
+.page {
+	.call-to-action {
+		.illustration {
+			padding: 0;
+			margin: 0 auto;
+		}
+
+		.buttons {
+			padding-top: 100px;
+			padding-bottom: 90px;
+		}
+	}
+}
+
 //homepage
 .homepage {
 	#change {
@@ -257,6 +271,48 @@ CONTENT STYLES
 					opacity: 1;
 				}
 			}
+		}
+	}
+}
+
+// About page
+.about-page {
+	.call-to-action {
+		.illustration {
+			width: 854px;
+			height: 305px;
+		}
+
+		.buttons {
+			margin-top: -80px;
+		}
+	}
+}
+
+// Solutions Page
+.solutions-page {
+	.call-to-action {
+		.illustration {
+			width: 854px;
+			height: 355px;
+		}
+
+		.buttons {
+			margin-top: -70px;
+		}
+	}
+}
+
+// Opportunities Page
+.opportunities-page {
+	.call-to-action {
+		.illustration {
+			width: 854px;
+			height: 281px;
+		}
+
+		.buttons {
+			margin-top: -78px;
 		}
 	}
 }

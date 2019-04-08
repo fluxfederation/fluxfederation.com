@@ -551,7 +551,7 @@ CONTENT STYLES
 	margin-top:3rem;
 }
 
-#hasreveal .slider {
+.hasreveal .slider {
 	display: none;
 }
 
@@ -579,6 +579,31 @@ CONTENT STYLES
 				right: 15%;
 				width: 5.7%;
 			}
+		}
+	}
+
+	.call-to-action {
+		padding: 0;
+
+		.illustration {
+			position: relative;
+			height: 0;
+			width: 100%;
+
+			img {
+				position: absolute;
+				top: 0;
+				left: 0;
+				bottom: 0;
+				right: 0;
+				width: 100%;
+			}
+		}
+
+		.buttons {
+			padding-top: 12%;
+			padding-bottom: 10%;
+			background: linear-gradient($pink-light 0%, $light-yellow 130%);
 		}
 	}
 
@@ -932,6 +957,16 @@ CONTENT STYLES
 			display:none;
 		}
 	}
+
+	.call-to-action {
+		.illustration {
+			padding-bottom: percentage(281/854);
+		}
+
+		.buttons {
+			margin-top: -9%;
+		}
+	}
 }
 
 // Working at Flux page
@@ -1048,6 +1083,16 @@ CONTENT STYLES
 			width: 23%;
 		}
 	}
+
+	.call-to-action {
+		.illustration {
+			padding-bottom: percentage(355/854);
+		}
+
+		.buttons {
+			margin-top: -8%;
+		}
+	}
 }
 
 
@@ -1055,10 +1100,20 @@ CONTENT STYLES
 .meet-the-crew-page {
 }
 
-//About page
+// About page
+.about-page {
+	.call-to-action {
+		.illustration {
+			padding-bottom: percentage(305/854);
+		}
+
+		.buttons {
+			margin-top: -9.5%;
+		}
+	}
+}
 
 #flexible-simple-lovable {
-
 }
 
 #markets {
