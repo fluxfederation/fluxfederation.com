@@ -100,8 +100,27 @@ CONTENT STYLES
 }
 
 //homepage
+.homepage {
+	#change {
+		padding-bottom: 0;
 
+		.layout {
+			@include css-grid(1fr auto, auto);
 
+			.content {
+				@include css-grid-column-row(1, 1, 1, 1);
+				padding-right: 4rem;
+				padding-bottom: 5rem;
+			}
+
+			.image {
+				display: flex;
+				align-items: flex-end;
+				@include css-grid-column-row(2, 1, 1, 1);
+			}
+		}
+	}
+}
 
 // culture page
 .meet-the-crew-page {
