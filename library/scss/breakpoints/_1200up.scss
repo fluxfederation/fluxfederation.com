@@ -37,4 +37,16 @@ main {
             width: 900px;
         }
     }
+
+    .location {
+        .layout {
+            @include css-grid(1fr 530px 670px 1fr, auto);
+
+            .image {
+                img {
+                    transform: translateX(20%);
+                }
+            }
+        }
+    }
 }

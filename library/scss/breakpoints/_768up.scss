@@ -275,6 +275,30 @@ CONTENT STYLES
 			width: 49.75%;
 		}
 	}
+
+	.location {
+		.layout {
+			@include css-grid(1fr 45% 47% 1fr, auto);
+
+			.content {
+				padding: 0 0 5rem 10px;
+				@include css-grid-column-row(2, 1, 1, 1);
+			}
+
+			.image {
+				display: flex;
+				overflow: hidden;
+
+				@include css-grid-column-row(2, 3, 1, 1);
+
+				img {
+					width: 100%;
+					align-self: flex-end;
+					transform: translateX(30%);
+				}
+			}
+		}
+	}
 }
 
 // Leadership page
