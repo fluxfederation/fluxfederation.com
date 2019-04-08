@@ -582,6 +582,31 @@ CONTENT STYLES
 		}
 	}
 
+	.call-to-action {
+		padding: 0;
+
+		.illustration {
+			position: relative;
+			height: 0;
+			width: 100%;
+
+			img {
+				position: absolute;
+				top: 0;
+				left: 0;
+				bottom: 0;
+				right: 0;
+				width: 100%;
+			}
+		}
+
+		.buttons {
+			padding-top: 12%;
+			padding-bottom: 10%;
+			background: linear-gradient($pink-light 0%, $light-yellow 130%);
+		}
+	}
+
 	.table-layout {
 		border-top: 1px solid $purple;
 		padding: 1.5rem 0;
@@ -1048,6 +1073,16 @@ CONTENT STYLES
 			width: 23%;
 		}
 	}
+
+	.call-to-action {
+		.illustration {
+			padding-bottom: percentage(355/854);
+		}
+
+		.buttons {
+			margin-top: -8%;
+		}
+	}
 }
 
 
@@ -1058,29 +1093,12 @@ CONTENT STYLES
 // About page
 .about-page {
 	.call-to-action {
-		padding: 0;
-
 		.illustration {
-			position: relative;
-			height: 0;
-			width: 100%;
 			padding-bottom: percentage(305/854);
-
-			img {
-				position: absolute;
-				top: 0;
-				left: 0;
-				bottom: 0;
-				right: 0;
-				width: 100%;
-			}
 		}
 
 		.buttons {
 			margin-top: -9.5%;
-			padding-top: 12%;
-			padding-bottom: 10%;
-			background: linear-gradient($pink-light 0%, $light-yellow 130%);
 		}
 	}
 }
