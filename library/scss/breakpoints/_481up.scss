@@ -140,55 +140,55 @@ body {
                     display: block;
                 }
 
-                &.ari {
+                &.one {
                     @include css-grid-column-row(1, 1, 1, 1);
                 }
-                &.mark-s {
+                &.two {
                     @include css-grid-column-row(2, 1, 1, 1);
                 }
-                &.phil {
+                &.three {
                     @include css-grid-column-row(1, 1, 3, 1);
                 }
-                &.mark-d {
+                &.four {
                     @include css-grid-column-row(2, 1, 3, 1);
                 }
-                &.emma {
+                &.five {
                     @include css-grid-column-row(1, 1, 5, 1);
                 }
-                &.umesh {
+                &.six {
                     @include css-grid-column-row(2, 1, 5, 1);
                 }
-                &.dan {
+                &.seven {
                     @include css-grid-column-row(1, 1, 7, 1);
                 }
-                &.jim {
+                &.eight {
                     @include css-grid-column-row(2, 1, 7, 1);
                 }
             }
 
             .bio {
-                &.ari {
+                &.one {
                     @include css-grid-column-row(1, 2, 2, 1);
                 }
-                &.mark-s {
+                &.two {
                     @include css-grid-column-row(1, 2, 2, 1);
                 }
-                &.phil {
+                &.three {
                     @include css-grid-column-row(1, 2, 4, 1);
                 }
-                &.mark-d {
+                &.four {
                     @include css-grid-column-row(1, 2, 4, 1);
                 }
-                &.emma {
+                &.five {
                     @include css-grid-column-row(1, 2, 6, 1);
                 }
-                &.umesh {
+                &.six {
                     @include css-grid-column-row(1, 2, 6, 1);
                 }
-                &.dan {
+                &.seven {
                     @include css-grid-column-row(1, 2, 8, 1);
                 }
-                &.jim {
+                &.eight {
                     @include css-grid-column-row(1, 2, 8, 1);
                 }
             }

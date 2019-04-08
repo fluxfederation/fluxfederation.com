@@ -118,55 +118,55 @@ CONTENT STYLES
 			@include css-grid(25% 25% 25% 25%, auto auto auto auto);
 
 			.profile {
-				&.ari {
+				&.one {
 					@include css-grid-column-row(1, 1, 1, 1);
 				}
-				&.mark-s {
+				&.two {
 					@include css-grid-column-row(2, 1, 1, 1);
 				}
-				&.phil {
+				&.three {
 					@include css-grid-column-row(3, 1, 1, 1);
 				}
-				&.mark-d {
+				&.four {
 					@include css-grid-column-row(4, 1, 1, 1);
 				}
-				&.emma {
+				&.five {
 					@include css-grid-column-row(1, 1, 3, 1);
 				}
-				&.umesh {
+				&.six {
 					@include css-grid-column-row(2, 1, 3, 1);
 				}
-				&.dan {
+				&.seven {
 					@include css-grid-column-row(3, 1, 3, 1);
 				}
-				&.jim {
+				&.eight {
 					@include css-grid-column-row(4, 1, 3, 1);
 				}
 			}
 
 			.bio {
-				&.ari {
+				&.one {
 					@include css-grid-column-row(1, 4, 2, 1);
 				}
-				&.mark-s {
+				&.two {
 					@include css-grid-column-row(1, 4, 2, 1);
 				}
-				&.phil {
+				&.three {
 					@include css-grid-column-row(1, 4, 2, 1);
 				}
-				&.mark-d {
+				&.four {
 					@include css-grid-column-row(1, 4, 2, 1);
 				}
-				&.emma {
+				&.five {
 					@include css-grid-column-row(1, 4, 4, 1);
 				}
-				&.umesh {
+				&.six {
 					@include css-grid-column-row(1, 4, 4, 1);
 				}
-				&.dan {
+				&.seven {
 					@include css-grid-column-row(1, 4, 4, 1);
 				}
-				&.jim {
+				&.eight {
 					@include css-grid-column-row(1, 4, 4, 1);
 				}
 			}
@@ -180,7 +180,7 @@ CONTENT STYLES
 
 		.benefit {
 			cursor: pointer;
-			margin-bottom: 20px;
+			margin-bottom: .5%;
 
 			.benefit-image {
 				margin: 0;

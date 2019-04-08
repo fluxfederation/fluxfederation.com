@@ -638,7 +638,8 @@ CONTENT STYLES
 			.profile {
 				cursor: pointer;
 				text-align: center;
-				padding-bottom:3rem;
+				padding-top:2rem;
+				padding-bottom:.5rem;
 
 				.image {
 					display: block;
@@ -669,7 +670,7 @@ CONTENT STYLES
 				position: relative;
 				display: none;
 				background-color: white;
-				padding-bottom: 3rem;
+				padding: 2rem;
 			}
 		}
 	}
