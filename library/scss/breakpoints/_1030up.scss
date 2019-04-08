@@ -289,6 +289,7 @@ CONTENT STYLES
 	}
 }
 
+// Solutions Page
 .solutions-page {
 	.call-to-action {
 		.illustration {
@@ -301,6 +302,21 @@ CONTENT STYLES
 		}
 	}
 }
+
+// Opportunities Page
+.opportunities-page {
+	.call-to-action {
+		.illustration {
+			width: 854px;
+			height: 281px;
+		}
+
+		.buttons {
+			margin-top: -78px;
+		}
+	}
+}
+
 //404 page and thank you page
 .the-404-page, .thank-you-page {
 	.illustration {

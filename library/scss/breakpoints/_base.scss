@@ -551,7 +551,7 @@ CONTENT STYLES
 	margin-top:3rem;
 }
 
-#hasreveal .slider {
+.hasreveal .slider {
 	display: none;
 }
 
@@ -955,6 +955,16 @@ CONTENT STYLES
 		}
 		.hide-if-no-jobs {
 			display:none;
+		}
+	}
+
+	.call-to-action {
+		.illustration {
+			padding-bottom: percentage(281/854);
+		}
+
+		.buttons {
+			margin-top: -9%;
 		}
 	}
 }

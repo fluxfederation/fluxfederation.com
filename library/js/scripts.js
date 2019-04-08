@@ -281,13 +281,18 @@ var isIE = /*@cc_on!@*/false || !!document.documentMode;
         $('a.drop-us-a-line').on('click', function(event) {
             event.preventDefault();
 
-            var slider = $('#hasreveal .slider');
-            if(slider.hasClass('open')) {
-                slider.removeClass('open');
-                slider.slideUp(500);
-            } else {
-                slider.addClass('open');
-                slider.slideDown(500);
+            var hasreveal = $(this).closest('.hasreveal');
+            if(hasreveal.length) {
+                var slider = $(hasreveal[0]).find('.slider');
+                if(slider.length) {
+                    if(slider.hasClass('open')) {
+                        slider.removeClass('open');
+                        slider.slideUp(500);
+                    } else {
+                        slider.addClass('open');
+                        slider.slideDown(500);
+                    }
+                }
             }
         });
 
