@@ -116,7 +116,7 @@ section {
 		}
 
 		color: $dark-gray;
-		background: linear-gradient($purple-light 0%, $pink-light 100%);
+		background: linear-gradient($pink-light 0%, $purple-light 100%);
 	}
 
 	&.gray {
@@ -981,6 +981,26 @@ CONTENT STYLES
 				}
 				&.image-5 {
 					background-image: url('/library/img/benefits-and-perks/Picture5.png');
+				}
+			}
+		}
+	}
+
+	.location {
+		padding-bottom: 0;
+
+		.layout {
+			.content {
+				padding: 0 20px 2rem 20px;
+			}
+
+			.image {
+				display: block;
+				width: 100%;
+				overflow: hidden;
+
+				img {
+					width: 150%;
 				}
 			}
 		}
