@@ -50,3 +50,15 @@ main {
         }
     }
 }
+
+.working-at-flux-page {
+    .benefits {
+        .benefit {
+            p {
+                padding: 2rem 2.4rem;
+                font-size: .9rem;
+                line-height: 1.5rem;
+            }
+        }
+    }
+}
