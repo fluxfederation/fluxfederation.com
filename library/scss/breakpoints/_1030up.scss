@@ -261,6 +261,24 @@ CONTENT STYLES
 	}
 }
 
+// About page
+.about-page {
+	.call-to-action {
+		.illustration {
+			width: 854px;
+			height: 305px;
+			padding: 0;
+			margin: 0 auto;
+		}
+
+		.buttons {
+			margin-top: -80px;
+			padding-top: 100px;
+			padding-bottom: 90px;
+		}
+	}
+}
+
 //404 page and thank you page
 .the-404-page, .thank-you-page {
 	.illustration {

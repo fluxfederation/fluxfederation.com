@@ -1055,10 +1055,37 @@ CONTENT STYLES
 .meet-the-crew-page {
 }
 
-//About page
+// About page
+.about-page {
+	.call-to-action {
+		padding: 0;
+
+		.illustration {
+			position: relative;
+			height: 0;
+			width: 100%;
+			padding-bottom: percentage(305/854);
+
+			img {
+				position: absolute;
+				top: 0;
+				left: 0;
+				bottom: 0;
+				right: 0;
+				width: 100%;
+			}
+		}
+
+		.buttons {
+			margin-top: -9.5%;
+			padding-top: 12%;
+			padding-bottom: 10%;
+			background: linear-gradient($pink-light 0%, $light-yellow 130%);
+		}
+	}
+}
 
 #flexible-simple-lovable {
-
 }
 
 #markets {
