@@ -146,6 +146,9 @@ section {
 #footer {
 	padding: 1.666666666666667rem 0 5rem 0;
 
+	a {
+		color: $purple;
+	}
 	.wrap {
 		.line {
 			display: none;
@@ -289,7 +292,7 @@ p a, p a:visited, li a, li a:visited {
 }
 
 nav.nav li a, nav.nav li a:visited {
-		color: white;
+	color: white;
 }
 
 /******************************************************************
