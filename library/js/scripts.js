@@ -317,7 +317,15 @@ var isBlink = (isChrome || isOpera) && !!window.CSS;
             event.preventDefault();
 
             hamburger_close();
+
             var offset = $('#footer').offset().top;
+            offset -= $('#header').height();
+
+            var inPageNav = $('#in-page-nav').height();
+            if(inPageNav !== undefined) {
+                offset -= inPageNav;
+            }
+
             $('html, body').animate({
                 scrollTop: offset+'px'
             }, 1000);
