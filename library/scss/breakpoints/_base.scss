@@ -1125,6 +1125,7 @@ CONTENT STYLES
 
 			width: 120px;
 			margin: 0 auto;
+			border-bottom: 5px solid $gray;
 			
 			&.open {
 				border-bottom: 5px solid $pink;
@@ -1157,7 +1158,7 @@ CONTENT STYLES
 			padding-top: 1rem;
 			padding-bottom: 2rem;
 			overflow: hidden;
-
+			
 			.inner {
 				text-align: center;
 			}
