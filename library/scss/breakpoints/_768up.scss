@@ -167,6 +167,44 @@ CONTENT STYLES
 		margin-bottom: -154px;
 	}
 
+			// .profile {
+			// 	cursor: pointer;
+			// 	text-align: center;
+			// 	padding-top:2rem;
+			// 	padding-bottom:.5rem;
+			// 	border-bottom: 5px solid white;
+
+			// 	.image {
+			// 		display: block;
+			// 		padding: 1rem;
+			// 		padding-bottom: 0;
+			// 	}
+
+			// 	a {
+			// 		font-size: 0.8rem;
+			// 	}
+
+			// 	&:hover {
+			// 		.image {
+			// 			img {
+			// 				transform: scale(1.1, 1.1);
+
+			// 				&.color {
+			// 					opacity: 1;
+			// 				}
+			// 			}
+			// 		}
+			// 	}
+			// }
+
+			// .bio {
+			// 	border-top: 1px solid $pink;
+			// 	position: relative;
+			// 	display: none;
+			// 	background-color: white;
+			// 	padding: 2rem;
+			// }
+
 	#roles {
 		article {
 			@include css-grid(percentage(1/3) percentage(1/3) percentage(1/3), auto auto auto auto auto auto);
@@ -174,6 +212,10 @@ CONTENT STYLES
 			.profile {
 				.image {
 					display: block;
+				}
+
+				&.open {
+					border-bottom: 5px solid $pink;
 				}
 
 				&.one {
@@ -203,6 +245,14 @@ CONTENT STYLES
 			}
 
 			.bio {
+				&.open {
+					display: block;
+
+					.inner {
+						opacity: 1;
+					}
+				}
+
 				&.one {
 					@include css-grid-column-row(1, 3, 2, 1);
 				}

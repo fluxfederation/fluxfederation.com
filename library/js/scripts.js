@@ -350,7 +350,6 @@ var isIE = /*@cc_on!@*/false || !!document.documentMode;
 
         function markets_close_desktop() {
             if(breakpointIndex >= 2) {
-                var countries = $('.markets .country.open');
                 $.each($('.markets .country.open'), function(index, country) {
                     var retailers = $(country).next('.retailers');
                     var inner = retailers.find('.inner');
@@ -380,26 +379,42 @@ var isIE = /*@cc_on!@*/false || !!document.documentMode;
         });
 
         $('#roles .profile').on('mouseenter', function(event) {
-            event.preventDefault();
+            profiles_close_desktop();
 
-            var name = $(this).attr('class').replace('profile', '').trim();
-            if(name.length) {
-                $('.bio.'+name).slideDown(250, function() {
-                });
+            if(breakpointIndex >= 2) {
+                var profile = $(this);
+                var bio = profile.next('.bio');
+                var inner = bio.find('.inner');
+                if(!profile.hasClass('open')) {
+                    profile.addClass('open');
+                    inner.fadeTo(250, 1);
+                    bio.slideDown(250, function() {
+                        bio.addClass('open').removeAttr('style');
+                        inner.removeAttr('style');
+                    });
+
+                }
             }
         });
 
-        $('#roles .profile').on('mouseleave', function(event) {
-            event.preventDefault();
+        $('#roles article').on('mouseleave', function(event) {
+            profiles_close_desktop();
+        });
 
-            var name = $(this).attr('class').replace('profile', '').trim();
-            if(name.length) {
-                $('.bio.'+name).css('zIndex', 10000);
-                $('.bio.'+name).slideUp(250, function() {
-                    $(this).removeAttr('style');
+        function profiles_close_desktop() {
+            if(breakpointIndex >= 2) {
+                $.each($('#roles .profile.open'), function(index, profile) {
+                    $(profile).removeClass('open');
+                    var bio = $(profile).next('.bio');
+                    var inner = bio.find('.inner');
+                    inner.fadeTo(250, 0);
+                    bio.slideUp(250, function() {
+                        bio.removeClass('open').removeAttr('style');
+                        inner.removeAttr('style');
+                    });
                 });
             }
-        });
+        }
     });
     
     var globeAnimating = 0;

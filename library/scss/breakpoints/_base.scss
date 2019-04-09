@@ -665,6 +665,7 @@ CONTENT STYLES
 				text-align: center;
 				padding-top:2rem;
 				padding-bottom:.5rem;
+				border-bottom: 5px solid white;
 
 				.image {
 					display: block;
@@ -675,9 +676,8 @@ CONTENT STYLES
 				a {
 					font-size: 0.8rem;
 				}
+
 				&:hover {
-					border-bottom: 5px solid $pink;
-					
 					.image {
 						img {
 							transform: scale(1.1, 1.1);
@@ -694,8 +694,11 @@ CONTENT STYLES
 				border-top: 1px solid $pink;
 				position: relative;
 				display: none;
-				background-color: white;
 				padding: 2rem;
+
+				.inner {
+					opacity: 0;
+				}
 			}
 		}
 	}
