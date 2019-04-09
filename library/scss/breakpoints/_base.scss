@@ -263,8 +263,11 @@ p a, p a:visited, li a, li a:visited {
 .white {
 	a,a:visited {
 		font-weight: 500;
-		color: $purple;
 	}
+}
+
+nav.nav li a, nav.nav li a:visited {
+		color: white;
 }
 
 /******************************************************************
@@ -884,8 +887,18 @@ section.remove-padding {
 
 }
 
-#get-in-touch-response {
+#get-in-touch-response,
+#get-in-touch-response-2 {
 	display: none;
+}
+
+#get-in-touch-form-2 {
+	input[type="text"],
+	textarea {
+		background-color: transparent;
+		border: none;
+		border-bottom: 1px solid $pink;
+	}
 }
 
 .video-wrapper {
@@ -1186,6 +1199,35 @@ section.remove-padding {
 				a {
 					color: $pink;
 					text-decoration: none;
+
+					.retailer {
+						position: relative;
+
+						p:before {
+							content: "";
+							position: absolute;
+							width: 100%;
+							height: 1px;
+							bottom: 10px;
+							left: 0;
+							background-color: $link-hover;
+							visibility: hidden;
+							-webkit-transform: scaleX(0);
+							transform: scaleX(0);
+							-webkit-transition: all 0.3s ease-in-out 0s;
+							transition: all 0.3s ease-in-out 0s;
+						}
+					}
+
+					&:hover {
+						.retailer {
+							p:before {
+								visibility: visible;
+								-webkit-transform: scaleX(1);
+								transform: scaleX(1);
+							}
+						}
+					}
 				}
 			}
 		}
@@ -1272,10 +1314,8 @@ FOOTER STYLES
 
 		input, textarea {
 			width:75%; // beats input form specificity (_forms.scss)
-			background:none;
 			border:none;
 			border-bottom:1px solid $pink;
-			color:white;
 			padding-top:0;
 		}
 	}
