@@ -1181,6 +1181,11 @@ section.remove-padding {
 			
 			.inner {
 				text-align: center;
+
+				a {
+					color: $pink;
+					text-decoration: none;
+				}
 			}
 		}
 	}
