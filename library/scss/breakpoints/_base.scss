@@ -513,7 +513,7 @@ nav {
 			&:first-child { margin-left:0;}
 			display: inline;
 			text-align: left;
-			margin-left: 10px;
+			margin-left: 1rem;
 			transition: all .2s linear;
 			
 			a {
@@ -537,6 +537,12 @@ CONTENT STYLES
 *********************/
 
 // misc, multi-page
+
+#masthead {
+	a {
+		color:lighten($pink, 10%);
+	}
+}
 
 .space-bottom {
 	margin-bottom:1.5rem;
@@ -1293,7 +1299,7 @@ section.remove-padding {
 FOOTER STYLES
 *********************/
 
-.contact-us {
+#footer {
 	.address-block {
 		h3, p {
 			color: $dark-gray;
@@ -1326,6 +1332,7 @@ FOOTER STYLES
 
 	.flux-button {
 		margin-bottom:1rem;
+		a { color:white!important;}
 	}
 }
 
