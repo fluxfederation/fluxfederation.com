@@ -1,4 +1,10 @@
+var isOpera = (!!window.opr && !!opr.addons) || !!window.opera || navigator.userAgent.indexOf(' OPR/') >= 0;
+var isFirefox = typeof InstallTrigger !== 'undefined';
+var isSafari = /constructor/i.test(window.HTMLElement) || (function (p) { return p.toString() === "[object SafariRemoteNotification]"; })(!window['safari'] || safari.pushNotification);
 var isIE = /*@cc_on!@*/false || !!document.documentMode;
+var isEdge = !isIE && !!window.StyleMedia;
+var isChrome = !!window.chrome && !!window.chrome.webstore;
+var isBlink = (isChrome || isOpera) && !!window.CSS;
 
 // This is Javascript and requires JQuery to be loaded
 (function($) {
@@ -9,6 +15,8 @@ var isIE = /*@cc_on!@*/false || !!document.documentMode;
 
         if(isIE) {
             $('body').addClass('ie');
+        } else if(isEdge) {
+            $('body').addClass('edge');
         }
 
         var jobs = $('#jobs');

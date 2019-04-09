@@ -405,10 +405,10 @@ CONTENT STYLES
 
 			.inner {
 				opacity: 0;
-
+				width: 100%;
+				padding-top: 1rem;
 				display: flex;
-				justify-content: space-around;
-				justify-content: space-evenly;	// NOTE(jez): This is a hack. IE & Edge don't support this and will use space-around instead (above)
+				justify-content: space-evenly;
 
 				.retailer {
 					@include css-grid(1fr auto 1fr, 90px auto);
@@ -439,6 +439,14 @@ CONTENT STYLES
 				}
 			}
 		}
+	}
+}
+
+// NOTE(jez): This is a hack. IE & Edge don't support justify-content: space-evenly;
+body.ie,
+body.edge {
+	#markets .markets .retailers .inner {
+		justify-content: space-around;
 	}
 }
 
