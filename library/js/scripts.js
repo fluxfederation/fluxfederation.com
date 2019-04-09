@@ -308,43 +308,62 @@ var isIE = /*@cc_on!@*/false || !!document.documentMode;
             if(breakpointIndex < 2) {
                 var country = $(this);
                 var retailers = country.next('.retailers');
+                var inner = retailers.find('.inner');
                 if(retailers.length) {
                     if(retailers.hasClass('open')) {
                         retailers.stop().slideUp(250, function() {
-                            country.removeClass('open');
-                            retailers.removeClass('open');
+                            country.removeClass('open').removeAttr('style');
+                            retailers.removeClass('open').removeAttr('style');
+                            inner.removeAttr('style');
                         });
                     } else {
                         country.addClass('open');
                         retailers.stop().addClass('open').slideDown(250);
+                        inner.removeAttr('style');
                     }
                 }
             }
         });
 
         $('.markets .country').on('mouseenter', function(event) {
-            if(breakpointIndex >= 2) {
-                var country = $(this);
-                if(!country.hasClass('open')) {
-                    var retailers = country.next('.retailers');
-                    country.addClass('open');
-                    retailers.slideDown(250);
-                }
-            }
-        });
+           markets_close_desktop();
 
-        $('.markets .country').on('mouseleave', function(event) {
             if(breakpointIndex >= 2) {
                 var country = $(this);
-                if(country.hasClass('open')) {
-                    var retailers = country.next('.retailers');
-                    retailers.slideUp(250, function() {
-                        country.removeClass('open').removeAttr('style');
+                var retailers = country.next('.retailers');
+                var inner = retailers.find('.inner');
+                if(!country.hasClass('open')) {
+                    country.addClass('open');
+                    inner.fadeTo(250, 1);
+                    retailers.slideDown(250, function() {
+                        retailers.addClass('open');
                         retailers.removeAttr('style');
+                        inner.removeAttr('style');
                     });
                 }
             }
         });
+
+        $('.markets').on('mouseleave', function(event) {
+            markets_close_desktop();
+        });
+
+        function markets_close_desktop() {
+            if(breakpointIndex >= 2) {
+                var countries = $('.markets .country.open');
+                $.each($('.markets .country.open'), function(index, country) {
+                    var retailers = $(country).next('.retailers');
+                    var inner = retailers.find('.inner');
+                    inner.fadeTo(250, 0);
+                    retailers.slideUp(250, function() {
+                        $(country).removeClass('open');
+                        retailers.removeClass('open');
+                        retailers.removeAttr('style');
+                        inner.removeAttr('style');
+                    });
+                });
+            }
+        }
 
         $('.leadership-member-container .flux-button a').on('click', function(event) {
             event.preventDefault();
@@ -400,6 +419,7 @@ var isIE = /*@cc_on!@*/false || !!document.documentMode;
                 if((breakpointIndex < 2) && (index >= 2)) {
                     $('.markets .country').removeClass('open').removeAttr('style');
                     $('.markets .retailers').removeClass('open').removeAttr('style');
+                    $('.markets .retailers .inner').removeAttr('style');
                 }
 
                 breakpointIndex = index;
