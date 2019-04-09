@@ -234,6 +234,18 @@ CONTENT STYLES
 
 // Homepage
 .homepage {
+
+	#masthead {
+		//padding-bottom: 15rem;
+		//margin-bottom: 10rem;
+		position:relative;
+
+		.flux-intro-illustration {
+			position:absolute;
+			bottom:0;
+			right:0;
+		}
+	}
 }
 
 // Opportunities page
