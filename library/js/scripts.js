@@ -621,7 +621,7 @@ var isIE = /*@cc_on!@*/false || !!document.documentMode;
             inPageNav.css({
                 position: 'fixed',
                 top: headerOffset+'px',
-                zIndex: 1
+                zIndex: 2
             });
 
             inPageNav.addClass('fixed');
