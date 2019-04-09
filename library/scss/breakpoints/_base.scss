@@ -71,7 +71,7 @@ section {
 	&.purple {
 		color: white;
 		// background: $purple;
-		background: linear-gradient($purple 30%, lighten($pink, 20%) 200%);
+		background: linear-gradient($purple 20%, lighten($pink, 20%) 150%);
 	}
 
 	&.dark-purple {
@@ -594,7 +594,8 @@ section.remove-padding {
 		position:absolute;
 		top:50%;
 		left:50%;
-		transform:translate(-50%, -50%)
+		transform:translate(-50%, -50%);
+		line-height:1.3rem;
 	}
 }
 
