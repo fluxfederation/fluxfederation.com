@@ -883,8 +883,18 @@ section.remove-padding {
 
 }
 
-#get-in-touch-response {
+#get-in-touch-response,
+#get-in-touch-response-2 {
 	display: none;
+}
+
+#get-in-touch-form-2 {
+	input[type="text"],
+	textarea {
+		background-color: transparent;
+		border: none;
+		border-bottom: 1px solid $pink;
+	}
 }
 
 .video-wrapper {
@@ -1300,10 +1310,8 @@ FOOTER STYLES
 
 		input, textarea {
 			width:75%; // beats input form specificity (_forms.scss)
-			background:none;
 			border:none;
 			border-bottom:1px solid $pink;
-			color:white;
 			padding-top:0;
 		}
 	}

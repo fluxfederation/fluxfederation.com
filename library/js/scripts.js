@@ -141,6 +141,43 @@ var isIE = /*@cc_on!@*/false || !!document.documentMode;
             return(!getInTouchSubmitted);
         });
 
+        var getInTouchSubmitted2 = false;
+        $('#get-in-touch-form-2').validate({
+            rules: {
+                'entry.1629797745': {
+                    required: true,                 // your name
+                    minlength: 3,
+                    maxlength: 30,
+                    noNumbers: true,
+                },
+                'entry.368106203': {                // your email
+                    required: true,
+                    email: true,
+                    emailBetterDomain: true,
+                    minlength: 5,
+                    maxlength: 30,
+                },
+                'entry.113701146': {
+                    required: true,                 // how can we help
+                    minlength: 3,
+                },
+            },
+            errorPlacement: function(error, element) {
+            },
+            submitHandler: function(form) {
+                form.submit();
+                getInTouchSubmitted2 = true;
+
+                setTimeout(function() {
+                    window.location = '/thank-you/?thank=get-in-touch';
+                }, 1000);
+            },
+        });
+
+        $('#get-in-touch-response-2').on('load', function(event) {
+            return(!getInTouchSubmitted2);
+        });
+
         var talkToUsSubmitted = false;
         $('#talk-to-us-form').validate({
             rules: {
