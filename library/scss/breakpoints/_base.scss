@@ -263,8 +263,11 @@ p a, p a:visited, li a, li a:visited {
 .white {
 	a,a:visited {
 		font-weight: 500;
-		color: $purple;
 	}
+}
+
+nav.nav li a, nav.nav li a:visited {
+		color: white;
 }
 
 /******************************************************************
