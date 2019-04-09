@@ -555,6 +555,23 @@ CONTENT STYLES
 	display: none;
 }
 
+section.remove-padding {
+	padding:0 !important;
+	position:relative;
+
+	.full-width-secton-image {
+		width:100%;
+		opacity:.3;
+	}
+
+	.full-width-copy-overlay {
+		position:absolute;
+		top:50%;
+		left:50%;
+		transform:translate(-50%, -50%)
+	}
+}
+
 .page {
 
 	.call-to-action-illustration {
