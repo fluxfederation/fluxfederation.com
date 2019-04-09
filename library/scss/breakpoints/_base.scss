@@ -143,31 +143,6 @@ section {
 	}
 }
 
-#footer {
-	padding: 1.666666666666667rem 0 5rem 0;
-
-	a {
-		color: $purple;
-	}
-	.wrap {
-		.line {
-			display: none;
-
-			.top {
-				border-top: 1px solid $purple;
-			}
-		}
-
-		.address-block {
-			padding-top: 3.333333333333333rem;
-		}
-	}
-}
-
-body.white-footer #footer .wrap .line {
-	display: block;
-}
-
 body.ie {
 	section.white {
 		h2, .h2 {
@@ -1352,4 +1327,34 @@ FOOTER STYLES
 	.flux-button {
 		margin-bottom:1rem;
 	}
+}
+
+#footer {
+	padding: 1.666666666666667rem 0 5rem 0;
+
+	a {
+		color: $purple !important;
+	}
+
+	.wrap {
+		.line {
+			display: none;
+
+			.top {
+				border-top: 1px solid $purple;
+			}
+		}
+
+		.address-block {
+			padding-top: 3.333333333333333rem;
+		}
+	}
+}
+
+.footer a {
+	color: $purple !important;
+}
+
+body.white-footer #footer .wrap .line {
+	display: block;
 }
