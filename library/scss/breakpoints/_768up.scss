@@ -1,0 +1,496 @@
+/******************************************************************
+
+Stylesheet: Tablet & Small Desktop Stylesheet
+
+Here's where you can start getting into the good stuff.
+This size will work on iPads, other tablets, and desktops.
+So you can start working with more styles, background images,
+and other resources. You'll also notice the grid starts to
+come into play. Have fun!
+
+******************************************************************/
+
+/*********************
+GENERAL STYLES
+*********************/
+html {
+    font-size: 106%;     // 100% defaults to 16px
+}
+
+body {
+    &:after {
+        content: "2";
+        display: none;
+    }
+}
+
+.wrap {
+    max-width: 92%;
+}
+
+/*********************
+LAYOUT & GRID STYLES
+*********************/
+
+main {
+	padding-top: 100px;
+	transition: all .2s linear;
+	
+	&.scroll { 
+		padding-top: 72px;
+		transition: all .2s linear;
+	}
+}
+
+section {
+}
+
+/*********************
+LINK STYLES
+*********************/
+
+/******************************************************************
+P, H1, H2, H3, H4, H5 STYLES
+******************************************************************/
+
+/*********************
+HEADER STYLES
+*********************/
+
+.header {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	padding-bottom: .5rem; // Fixes white flash under header as inertia over scrolls in Firefox/Chrome ...
+
+	.wrap {
+		transition: all .2s linear;
+		padding: 2rem 20px;
+
+		.logo {
+			display: inline-block;
+
+			img {
+				transition: all .2s linear;
+
+				width: 90px;
+				height: 26px;
+			}
+		}
+
+		.nav {
+			position: relative;
+			float: right;
+			top: auto;
+			left: auto;
+			height: auto;
+			width: auto;
+			background-color: transparent;
+			padding-top: 8px;
+		}
+
+		.hamburger {
+			display: none;
+		}
+	}
+
+	&.scroll {
+		.wrap {
+			padding-top: 1rem;
+			padding-bottom: 1rem;
+
+			.logo {
+				padding-top: 5px;
+
+				img {
+					width: 72px;
+					height: 21px;
+				}
+			}
+
+			.nav {
+				padding-top: 5px;
+			}
+		}
+	}
+}
+
+/*********************
+CONTENT STYLES
+*********************/
+
+// misc, multipage
+.page {
+
+	// Grid layout with Inlineblock
+	.inline {
+		display:inline-block;
+		float:none;
+		margin-right:-4px;
+
+		&.top {vertical-align:top;}
+		&.middle {vertical-align:middle;}
+
+		.image {
+			display: table-cell;
+		}
+	}
+
+	.table-layout {
+		.image {
+			display: table-cell;
+		}
+	}
+
+	.table-row-vert-center {
+	padding:0 10px;
+	text-align:left;
+	display:table;
+
+		.copy {
+			width:33.3%;
+			display:table-cell;
+			vertical-align:middle;
+		}
+		.m-graphic {
+			display:none;
+		}
+		.t-graphic, .graphic {
+			display:table-cell;
+			vertical-align:middle;
+			width:50%;
+		}
+	}
+
+	.call-to-action-illustration {
+		margin-bottom: -154px;
+	}
+
+			// .profile {
+			// 	cursor: pointer;
+			// 	text-align: center;
+			// 	padding-top:2rem;
+			// 	padding-bottom:.5rem;
+			// 	border-bottom: 5px solid white;
+
+			// 	.image {
+			// 		display: block;
+			// 		padding: 1rem;
+			// 		padding-bottom: 0;
+			// 	}
+
+			// 	a {
+			// 		font-size: 0.8rem;
+			// 	}
+
+			// 	&:hover {
+			// 		.image {
+			// 			img {
+			// 				transform: scale(1.1, 1.1);
+
+			// 				&.color {
+			// 					opacity: 1;
+			// 				}
+			// 			}
+			// 		}
+			// 	}
+			// }
+
+			// .bio {
+			// 	border-top: 1px solid $pink;
+			// 	position: relative;
+			// 	display: none;
+			// 	background-color: white;
+			// 	padding: 2rem;
+			// }
+
+	#roles {
+		article {
+			@include css-grid(percentage(1/3) percentage(1/3) percentage(1/3), auto auto auto auto auto auto);
+
+			.profile {
+				.image {
+					display: block;
+				}
+
+				&.open {
+					border-bottom: 5px solid $pink;
+				}
+
+				&.one {
+					@include css-grid-column-row(1, 1, 1, 1);
+				}
+				&.two {
+					@include css-grid-column-row(2, 1, 1, 1);
+				}
+				&.three {
+					@include css-grid-column-row(3, 1, 1, 1);
+				}
+				&.four {
+					@include css-grid-column-row(1, 1, 3, 1);
+				}
+				&.five {
+					@include css-grid-column-row(2, 1, 3, 1);
+				}
+				&.six {
+					@include css-grid-column-row(3, 1, 3, 1);
+				}
+				&.seven {
+					@include css-grid-column-row(1, 1, 5, 1);
+				}
+				&.eight {
+					@include css-grid-column-row(2, 1, 5, 1);
+				}
+			}
+
+			.bio {
+				&.open {
+					display: block;
+
+					.inner {
+						opacity: 1;
+					}
+				}
+
+				&.one {
+					@include css-grid-column-row(1, 3, 2, 1);
+				}
+				&.two {
+					@include css-grid-column-row(1, 3, 2, 1);
+				}
+				&.three {
+					@include css-grid-column-row(1, 3, 2, 1);
+				}
+				&.four{
+					@include css-grid-column-row(1, 3, 4, 1);
+				}
+				&.five {
+					@include css-grid-column-row(1, 3, 4, 1);
+				}
+				&.six {
+					@include css-grid-column-row(1, 3, 4, 1);
+				}
+				&.seven {
+					@include css-grid-column-row(1, 3, 6, 1);
+				}
+				&.eight {
+					@include css-grid-column-row(1, 3, 6, 1);
+				}
+			}
+		}
+	}
+}
+
+// Homepage
+.homepage {
+
+	#masthead {
+		//padding-bottom: 15rem;
+		//margin-bottom: 10rem;
+		position:relative;
+
+		.flux-intro-illustration {
+			position:absolute;
+			bottom:0;
+			right:0;
+		}
+	}
+}
+
+// Opportunities page
+.opportunities-page {
+	#jobs {
+		section.job {
+			.fluxy {
+				display: table-cell;
+			}
+		}
+	}
+}
+
+
+// Working at Flux page
+.working-at-flux-page {
+	.people-power-possibility {
+		.img-container {
+			min-height:6rem;
+			display:flex;
+
+			img {
+				align-self: flex-end;
+			}
+		}
+	}
+
+
+	.respect .t-graphic, .brave .t-graphic {
+		padding-left:calc-percent(1, 12);
+	}
+
+	.big-picture .graphic {
+		padding-right:calc-percent(1, 12);
+	}
+
+	.benefits {
+		.benefit {
+			width: 49.75%;
+
+			h4 {font-weight:500;}
+		}
+	}
+
+	.location {
+		.layout {
+			@include css-grid(1fr 45% 47% 1fr, auto);
+
+			.content {
+				padding: 0 0 5rem 10px;
+				@include css-grid-column-row(2, 1, 1, 1);
+			}
+
+			.image {
+				display: flex;
+				overflow: hidden;
+
+				@include css-grid-column-row(2, 3, 1, 1);
+
+				img {
+					width: 100%;
+					align-self: flex-end;
+					transform: translateX(30%);
+				}
+			}
+		}
+	}
+}
+
+// Leadership page
+.leadership-page {
+}
+
+/* Contact page */
+.radio-buttons {
+    p {
+		margin:2.5rem 0 4.5rem;
+	}
+}
+
+#markets {
+	.markets {
+		@include css-grid(1fr auto 1fr auto 1fr auto 1fr, auto auto);
+
+		.country {
+			&.nz {
+				@include css-grid-column-row(2, 1, 1, 1);
+			}
+			&.aust {
+				@include css-grid-column-row(4, 1, 1, 1);
+			}
+			&.uk {
+				@include css-grid-column-row(6, 1, 1, 1);
+			}
+
+			.inner {
+				p {
+					width: 120px;
+				}
+			}
+		}
+
+		.retailers {
+			@include css-grid-column-row(1, 7, 2, 1);
+
+			display: none;
+
+			.inner {
+				opacity: 0;
+				width: 100%;
+				padding-top: 1rem;
+				display: flex;
+				justify-content: space-evenly;
+
+				.retailer {
+					@include css-grid(1fr auto 1fr, 90px auto);
+
+					.grid-image {
+						@include css-grid-column-row(2, 1, 1, 1);
+
+						display: flex;
+						align-items: center;
+
+						img {
+						}
+					}
+
+					p {
+						text-align: center;
+						width: 120px;
+						@include css-grid-column-row(1, 3, 2, 1);
+					}
+				}
+			}
+
+			&.open {
+				display: block;
+
+				.inner {
+					opacity: 1;
+				}
+			}
+		}
+	}
+}
+
+// NOTE(jez): This is a hack. IE & Edge don't support justify-content: space-evenly;
+body.ie,
+body.edge {
+	#markets .markets .retailers .inner {
+		justify-content: space-around;
+	}
+}
+
+/* Questions */
+h6.accordion {
+	padding-left: 40px;
+
+	&:before {
+		margin-top: 7px;
+		width: 15px;
+		height: 8px;
+	}
+}
+
+div.accordion {
+	margin-bottom: 2em;
+	padding-left: 40px;
+}
+
+// 404 page and thank you page
+
+.the-404-page, .thank-you-page {
+	.illustration {
+		margin-top:8rem;
+		margin-bottom:-140px;
+
+		img {
+			width:500px;
+			height:auto;
+		}
+	}
+}
+
+/*********************
+FOOTER STYLES
+*********************/
+.contact-us {
+	.address-block {
+		h2 {
+		}
+
+		p {
+			width: 100%;
+		}
+	}
+}
+
