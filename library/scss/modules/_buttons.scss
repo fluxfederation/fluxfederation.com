@@ -1,0 +1,170 @@
+/******************************************************************
+Site Name:
+Author:
+
+Stylesheet: Button Styles
+
+Buttons are a pretty important part of your site's style, so it's
+important to have a consistent baseline for them. Use this stylesheet
+to create all kinds of buttons.
+
+Helpful Links:
+http://galp.in/blog/2011/08/02/the-ui-guide-part-1-buttons/
+
+******************************************************************/
+
+input[type="button"],
+.button, button {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+
+    text-transform: uppercase;
+
+    //dt font-size: 1rem;
+    font-size:.875rem;
+    font-weight: 500;
+    line-height: 1.25rem;
+    padding:.5rem 1.5rem;
+
+    border: 0;
+    text-decoration: none;
+
+    color: #fff!important;
+
+    border-radius: 0.1875rem;
+
+    background-color: $pink;
+
+    &:hover,
+    &:focus {
+        color: white;
+        background-color: darken($pink, 8%);
+    }
+
+    &:active {
+        background-color: darken($pink, 10%);
+    }
+}
+
+
+// Single button
+.flux-button {
+    position: relative;
+    display: inline-block;
+    border-radius: 0.1875rem;
+    background-color: $pink;
+    overflow: hidden;
+
+    a {
+        position: relative;
+        display: inline-block;
+        text-decoration: none;
+        color: white !important;
+        text-transform: uppercase;
+        padding:.5rem 1.5rem;
+        z-index: 1;
+
+        &:after {
+            content: '';
+            width: 110%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            right: 110%;
+            background-color: darken($pink, 10%);
+            z-index: -1;
+            transform: skewX(-15deg);
+            transition: right .125s linear, right .125s linear;
+        }
+
+        &:hover:after {
+            right: -10px;
+        }
+    }
+}
+
+
+// Double linked button design
+// Styles in 480px style sheet as well.
+.flux-buttons {
+    display: inline-block;
+
+	a {
+		text-decoration: none;
+		text-transform: uppercase;
+		display: block;
+		color: white;
+		margin-bottom: .5rem;
+		padding: .4rem 1rem;
+		background-color: $pink;
+	    border-radius: 0.1875rem;
+
+	    .button-bg {
+	    	label {
+	    		cursor: pointer;
+	    	}
+	    }
+
+	    &:hover {
+			background-color: darken($pink, 10%);
+	    }
+	}	
+}
+
+
+// Social buttons
+
+%social-icon-hover {
+  border-radius: 100%;
+  transform: scale(1.20);
+  transition: background-color .5s, transform .5s ease-out;
+}
+
+.soc {
+    display: block;
+    font-size: 0;
+    list-style: none;
+    li {
+      display: inline-block;
+      margin: .3rem;
+
+      &:first-child {
+          margin-left:0;
+      }
+    }
+    a, svg {
+      display: block;
+    }
+    a {
+      height: 2rem;
+      width: 2rem;
+    }
+    a {
+      fill: $purple;
+      &:hover {
+        background: $purple;
+        fill:white;
+        @extend %social-icon-hover
+      }
+      &:before {
+          height:0px; // Removes sitewide underline for links
+      }
+    }
+    em {
+      font-size: .8rem;
+      line-height: 1.5;
+      margin-top: -.75em;
+      position: absolute;
+      text-align: center;
+      top: 50%;
+      right: 0;
+      bottom: 0;
+      left: 0;
+    }
+    svg {
+      height: 100%;
+      width: 100%;
+    // IE8:
+    }
+  }

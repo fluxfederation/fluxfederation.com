@@ -1,0 +1,199 @@
+/******************************************************************
+
+Stylesheet: 481px and Up Stylesheet
+
+This stylesheet is loaded for larger devices. It's set to
+481px because at 480px it would load on a landscaped iPhone.
+This isn't ideal because then you would be loading all those
+extra styles on that same mobile connection.
+
+A word of warning. This size COULD be a larger mobile device,
+so you still want to keep it pretty light and simply expand
+upon your base.scss styles.
+
+******************************************************************/
+
+/*
+IMPORTANT NOTE ABOUT SASS 3.3 & UP
+You can't use @extend within media queries
+anymore, so just be aware that if you drop
+them in here, they won't work.
+*/
+
+/* HEADER */
+
+body {
+    &:after {
+        content: "1";
+        display: none;
+    }
+}
+
+.flux-buttons {
+    display: inline-block;
+    border-radius: 0.1875rem;
+    overflow: hidden;
+
+    a {
+        position: relative;
+        display: inline-block;
+        background-color: transparent;
+        margin: 0;
+        padding: 0;
+        border-radius: none;
+
+        &:after {
+            content: '';
+            position: absolute;
+            top: 0;
+            width: 110%;
+            height: 100%;
+            z-index: 1;
+            transform: skewX(-15deg);
+        }
+
+        &:hover {
+            background-color: transparent;
+        }
+        
+        .button-bg {
+            position: relative;
+            padding: .4rem 1rem;
+
+            &:after {
+                content: '';
+                position: absolute;
+                top: 0;
+                width: 110%;
+                height: 100%;
+                z-index: 2;
+                transform: skewX(-15deg);
+                transition: left .125s linear, right .125s linear;
+            }
+
+            label {
+                position: relative;
+                z-index: 3;
+            }
+        }
+
+        &.button-left {
+            color: white;
+            margin-right: -5px;
+
+            &:after {
+                left: -10%;
+                background-color: $pink;
+            }
+
+            .button-bg {
+                &:after {
+                    left: -120%;
+                    background-color: white;
+                }
+            }
+
+            &:hover {
+                transition: .2s linear;
+                color:$pink;
+
+                .button-bg:after {
+                    left: -10%;
+                }
+            }
+        }
+
+        &.button-right {
+            color: white;
+
+            &:after {
+                right: -10%;
+                background-color: $teal;
+            }
+            
+            .button-bg {
+                &:after {
+                    right: -120%;
+                    background-color: white;
+                }
+            }
+
+            &:hover {
+                transition: .2s linear;
+                color:$teal;
+
+                .button-bg:after {
+                    right: -10%;
+                }
+            }
+        }
+    }
+}
+
+.page {
+    #roles {
+        article {
+            @include css-grid(50% 50%, auto auto auto auto auto auto);
+
+            .profile {
+                .image {
+                    display: block;
+                }
+
+                &.one {
+                    @include css-grid-column-row(1, 1, 1, 1);
+                }
+                &.two {
+                    @include css-grid-column-row(2, 1, 1, 1);
+                }
+                &.three {
+                    @include css-grid-column-row(1, 1, 3, 1);
+                }
+                &.four {
+                    @include css-grid-column-row(2, 1, 3, 1);
+                }
+                &.five {
+                    @include css-grid-column-row(1, 1, 5, 1);
+                }
+                &.six {
+                    @include css-grid-column-row(2, 1, 5, 1);
+                }
+                &.seven {
+                    @include css-grid-column-row(1, 1, 7, 1);
+                }
+                &.eight {
+                    @include css-grid-column-row(2, 1, 7, 1);
+                }
+            }
+
+            .bio {
+                &.one {
+                    @include css-grid-column-row(1, 2, 2, 1);
+                }
+                &.two {
+                    @include css-grid-column-row(1, 2, 2, 1);
+                }
+                &.three {
+                    @include css-grid-column-row(1, 2, 4, 1);
+                }
+                &.four {
+                    @include css-grid-column-row(1, 2, 4, 1);
+                }
+                &.five {
+                    @include css-grid-column-row(1, 2, 6, 1);
+                }
+                &.six {
+                    @include css-grid-column-row(1, 2, 6, 1);
+                }
+                &.seven {
+                    @include css-grid-column-row(1, 2, 8, 1);
+                }
+                &.eight {
+                    @include css-grid-column-row(1, 2, 8, 1);
+                }
+            }
+        }
+    }
+}
+
+// About page

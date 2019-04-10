@@ -1,0 +1,336 @@
+/******************************************************************
+
+Stylesheet: Desktop Stylsheet
+
+This is the desktop size. It's larger than an iPad so it will only
+be seen on the Desktop.
+
+******************************************************************/
+
+/*********************
+GENERAL STYLES
+*********************/
+html {
+    font-size: 110%;     // 100% defaults to 16px
+}
+
+body {
+    &:after {
+        content: "3";
+        display: none;
+    }
+}
+
+/******************************************************************
+P, H1, H2, H3, H4, H5 STYLES
+******************************************************************/
+
+p {
+	&.strapline {
+		font-size: 1.5rem;
+		line-height: 1.7rem;
+		margin-bottom:1rem;
+	}
+
+	&.large {
+		//font-size: 1.25rem;
+		//line-height: 1.74rem;
+	}
+
+	&.small {
+		//font-size: 0.875rem;
+		//line-height: 1.3rem;
+	}
+
+	&.copyright {
+		font-size: 0.75rem;
+		line-height: 1.125rem;
+	}
+}
+
+h1, .h1 {
+	font-size: 3.4rem;
+	line-height: 3.4rem;
+	&.homepage {
+		font-size: 3.8rem;
+		line-height: 3.8rem;
+		margin-bottom:1rem;
+	}
+}
+
+h2, .h2 {
+    font-size: 2.6rem;
+	line-height: 2.8rem;
+}
+
+h3, .h3 {
+
+	font-size: 1.4rem;
+	line-height: 1.6rem;
+}
+
+h4, .h4 {
+
+	font-size: 1.2rem;
+	line-height: 1.4rem;
+}
+
+
+
+/*********************
+NAVIGATION STYLES
+*********************/
+nav {
+	font-size: .9rem;
+}
+
+
+/*********************
+CONTENT STYLES
+*********************/
+
+.p {
+	.call-to-action-illustration {
+	margin-bottom: -165px;
+
+		.illustration-wrapper {
+			width: 900px;
+		}
+	}
+}
+
+.page {
+	.call-to-action {
+		.illustration {
+			padding: 0;
+			margin: 0 auto;
+		}
+
+		.buttons {
+			padding-top: 100px;
+			padding-bottom: 90px;
+		}
+	}
+}
+
+//homepage
+.homepage {
+	#change {
+		padding-bottom: 0;
+
+		.layout {
+			@include css-grid(1fr auto, auto);
+
+			.content {
+				@include css-grid-column-row(1, 1, 1, 1);
+				padding-right: 4rem;
+				padding-bottom: 5rem;
+			}
+
+			.image {
+				display: flex;
+				align-items: flex-end;
+				@include css-grid-column-row(2, 1, 1, 1);
+			}
+		}
+	}
+}
+
+// culture page
+.meet-the-crew-page {
+	.video {
+		padding: 1em 0;
+		width: 70%;
+	}
+}
+
+// leadership page
+.page {
+	#roles {
+		article {
+			@include css-grid(25% 25% 25% 25%, auto auto auto auto);
+
+			.profile {
+				&.one {
+					@include css-grid-column-row(1, 1, 1, 1);
+				}
+				&.two {
+					@include css-grid-column-row(2, 1, 1, 1);
+				}
+				&.three {
+					@include css-grid-column-row(3, 1, 1, 1);
+				}
+				&.four {
+					@include css-grid-column-row(4, 1, 1, 1);
+				}
+				&.five {
+					@include css-grid-column-row(1, 1, 3, 1);
+				}
+				&.six {
+					@include css-grid-column-row(2, 1, 3, 1);
+				}
+				&.seven {
+					@include css-grid-column-row(3, 1, 3, 1);
+				}
+				&.eight {
+					@include css-grid-column-row(4, 1, 3, 1);
+				}
+			}
+
+			.bio {
+				&.one {
+					@include css-grid-column-row(1, 4, 2, 1);
+				}
+				&.two {
+					@include css-grid-column-row(1, 4, 2, 1);
+				}
+				&.three {
+					@include css-grid-column-row(1, 4, 2, 1);
+				}
+				&.four {
+					@include css-grid-column-row(1, 4, 2, 1);
+				}
+				&.five {
+					@include css-grid-column-row(1, 4, 4, 1);
+				}
+				&.six {
+					@include css-grid-column-row(1, 4, 4, 1);
+				}
+				&.seven {
+					@include css-grid-column-row(1, 4, 4, 1);
+				}
+				&.eight {
+					@include css-grid-column-row(1, 4, 4, 1);
+				}
+			}
+		}
+	}
+}
+
+// Working at Flux page
+.working-at-flux-page {
+	.benefits {
+
+		.benefit {
+			cursor: pointer;
+			margin-bottom: 5px;
+
+			.benefit-image {
+				margin: 0;
+				padding-top: 90%;
+			}
+
+			h4 {
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 90%;
+				color: white;
+
+				font-size: 24px;
+				line-height: 44px;
+
+				padding-left: 20px;
+				padding-top: 8px;
+				padding-bottom: 2px;
+
+				span {
+					padding: 16px 0;
+					white-space: pre-wrap;
+					-webkit-box-decoration-break: clone;
+					box-decoration-break: clone;
+					background-color: $pink;
+					box-shadow: 20px 0 0 $pink, -20px 0 0 $pink;
+				}
+			}
+
+			p {
+				position: absolute;
+				top: 0;
+				left: 0;
+				bottom: 0;
+				right: 0;
+				overflow: hidden;
+				margin: 0;
+				background-color: $pink;
+				padding: 2rem 2rem;
+				opacity: 0;
+				transition: opacity .5s ease-in-out;
+
+				span {
+					color: white;
+				}
+			}
+
+			.underline {
+				display: none;
+			}
+
+			&:hover {
+				p {
+					opacity: 1;
+				}
+			}
+		}
+	}
+}
+
+// About page
+.about-page {
+	.call-to-action {
+		.illustration {
+			width: 854px;
+			height: 305px;
+		}
+
+		.buttons {
+			margin-top: -80px;
+		}
+	}
+}
+
+// Solutions Page
+.solutions-page {
+	.call-to-action {
+		.illustration {
+			width: 854px;
+			height: 355px;
+		}
+
+		.buttons {
+			margin-top: -70px;
+		}
+	}
+}
+
+// Opportunities Page
+.opportunities-page {
+	.call-to-action {
+		.illustration {
+			width: 854px;
+			height: 281px;
+		}
+
+		.buttons {
+			margin-top: -78px;
+		}
+	}
+}
+
+//404 page and thank you page
+.the-404-page, .thank-you-page {
+	.illustration {
+		margin-top:8rem;
+		margin-bottom:-178px;
+
+		img {
+			width:800px;
+			height:auto;
+		}
+	}
+}
+
+
+//Contact us
+
+
