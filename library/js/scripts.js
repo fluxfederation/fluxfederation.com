@@ -637,7 +637,7 @@ var isBlink = (isChrome || isOpera) && !!window.CSS;
             inPageNav.css({
                 position: 'fixed',
                 top: headerOffset+'px',
-                zIndex: 2
+                zIndex: 4
             });
 
             inPageNav.addClass('fixed');

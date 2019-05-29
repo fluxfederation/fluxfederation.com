@@ -658,9 +658,10 @@ section.remove-padding {
 
 	.image {
 		line-height: 0;
-		display: none;
+		//display: none;
 		vertical-align: top;
 		padding-right: 1rem;
+		margin-top:3rem;
 
 		.circle {
 			position: relative;
@@ -1361,8 +1362,16 @@ FOOTER STYLES
 	}
 }
 
-.footer a {
+.footer {
+	a {
 	color: $purple !important;
+	}
+
+	.BSI-mark {
+		text-align:right;
+		
+		img { width: 80px;}
+	}
 }
 
 body.white-footer #footer .wrap .line {
