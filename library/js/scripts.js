@@ -91,6 +91,49 @@ var isBlink = (isChrome || isOpera) && !!window.CSS;
             });
         }
 
+        var singleJob = $('#single-job');
+        if(singleJob.length) {
+            var code = get_first_url_param('');
+            if(code !== undefined) {
+                $.getJSON('https://careers.pageuppeople.com/616/flux/en/jobs.json', function(data) {
+                    if(data.length) {
+                        var fluxiesCount = 16;
+                        var result = '';
+
+                        for(var i = 0; i < data.length; ++i) {
+                            var job = data[i];
+
+                            if(job.Id == code) {
+                                var fluxieIndex = Math.floor(Math.random() * fluxiesCount) + 1;
+
+                                result += '<section class="job job-'+(job.Id)+'">';
+                                result += '<div class="fluxy">';
+                                result += '<div class="image">';
+                                result += '<img src="../../../library/img/fluxies/fluxy-'+(fluxieIndex)+'.svg" />';
+                                result += '</div>';
+                                result += '</div>';
+                                result += '<div class="description">';
+                                result += '<h4>'+(job.Title)+'</h4>';
+                                result += '<p class="large">'+(job.Locations)+'</p>';
+                                result += '<p>'+(job.Summary)+'</p>';
+                                result += '<div class="overview">'+(job.Overview);
+
+                                result += '<div class="flux-button">';
+                                result += '<a href="'+(job.ApplyUrl)+'" target="_blank">Apply</a>';
+                                result += '</div>';
+
+                                result += '</div>';
+                                result += '</div>';
+                                result += '</section>';
+
+                                singleJob.html(result);
+                            }
+                        }
+                    }
+                });
+            }
+        }
+
         $('.video-wrapper .thumbnail-wrapper .thumbnail a').on('click', function(event) {
             event.preventDefault();
 
@@ -769,11 +812,21 @@ function create_office_map(containerID, latitude, longitude) {
     mapMarker.setMap(map);
 }
 
-function get_url_param(parameterName) {
+function get_first_url_param() {
     var pageURL = decodeURIComponent(window.location.search.substring(1));
     var variables = pageURL.split('&');
     var result = undefined;
 
+    if(variables != '') {
+        result = variables;
+    }
+    return(result);
+}
+
+function get_url_param(parameterName) {
+    var pageURL = decodeURIComponent(window.location.search.substring(1));
+    var variables = pageURL.split('&');
+    var result = undefined;
     for(var i = 0; i < variables.length; ++i) {
         var values = variables[i].split('=');
         if(values[0] === parameterName) {
