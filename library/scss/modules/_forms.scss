@@ -156,3 +156,19 @@ select {
         }
     }
 }
+.news.radio-buttons {
+    p {
+        margin:0;
+
+        label {
+            display: flex;
+            align-items: center;
+            justify-content: left;
+
+            &:before {
+                display: inline-block;
+                margin: 0 1rem 0 0;
+            }
+        }
+    }
+}

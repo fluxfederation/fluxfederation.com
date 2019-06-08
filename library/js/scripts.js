@@ -279,6 +279,55 @@ var isBlink = (isChrome || isOpera) && !!window.CSS;
             return(!talkToUsSubmitted);
         });
 
+
+        var brochureDownloadSubmitted = false;
+        $('#brochure-download').validate({
+            rules: {
+                'entry.514709734': {
+                    required: true,             // your name
+                    maxlength: 30,
+                    minlength: 3,
+                    noNumbers: true,
+                },
+                /*
+                'entry.365974255': {
+                    required: true,             // company name
+                    maxlength: 30,
+                    minlength: 3,
+                },
+                'entry.979571740': {
+                    required: true,             // your role
+                    maxlength: 30,
+                    minlength: 3,
+                },
+                'entry.1009693116': {           // your email
+                    required: true,
+                    email: true,
+                    emailBetterDomain: true,
+                    maxlength: 30,
+                    minlength: 5,
+                },
+                'entry.432997003': {
+                    required: false,             // radio buttons
+                },
+                */
+            },
+            errorPlacement: function(error, element) {
+            },
+            submitHandler: function(form) {
+                form.submit();
+                brochureDownloadSubmitted = true;
+
+                setTimeout(function() {
+                    window.location = '/thank-you/?thank=talk-to-us';
+                }, 1000);
+            },
+        });
+
+        $('#brochure-download-response').on('load', function(event) {
+            return(!brochureDownloadSubmitted);
+        });
+
         $('a.down-arrow').on('click', function(event) {
             event.preventDefault();
 
