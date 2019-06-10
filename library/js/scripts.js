@@ -102,6 +102,7 @@ var isBlink = (isChrome || isOpera) && !!window.CSS;
                     if(data.length) {
                         var fluxiesCount = 16;
                         var result = '';
+                        var found = false;
 
                         for(var i = 0; i < data.length; ++i) {
                             var job = data[i];
@@ -130,8 +131,22 @@ var isBlink = (isChrome || isOpera) && !!window.CSS;
                                 result += '</section>';
 
                                 singleJob.html(result);
+                                found = true;
+                                break;
                             }
                         }
+
+                        if(found !== true) {
+                            $('main').addClass('expired-job');
+                            $.get('/careers/opportunities/single-job/expired-job.html', function(data) {
+                                singleJob.html(data);
+                            });
+                        }
+                    } else {
+                        $('main').addClass('no-jobs');
+                        $.get('/careers/opportunities/no-job-openings.html', function(data) {
+                            $('#jobs').html(data);
+                        });
                     }
                 });
             }
