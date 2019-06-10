@@ -173,6 +173,8 @@ var isBlink = (isChrome || isOpera) && !!window.CSS;
             }, 1500);
         });
 
+
+
         var getInTouchSubmitted = false;
         $('#get-in-touch-form').validate({
             rules: {
@@ -210,42 +212,7 @@ var isBlink = (isChrome || isOpera) && !!window.CSS;
             return(!getInTouchSubmitted);
         });
 
-        var getInTouchSubmitted2 = false;
-        $('#get-in-touch-form-2').validate({
-            rules: {
-                'entry.1629797745': {
-                    required: true,                 // your name
-                    minlength: 3,
-                    maxlength: 30,
-                    noNumbers: true,
-                },
-                'entry.368106203': {                // your email
-                    required: true,
-                    email: true,
-                    emailBetterDomain: true,
-                    minlength: 5,
-                    maxlength: 30,
-                },
-                'entry.113701146': {
-                    required: true,                 // how can we help
-                    minlength: 3,
-                },
-            },
-            errorPlacement: function(error, element) {
-            },
-            submitHandler: function(form) {
-                form.submit();
-                getInTouchSubmitted2 = true;
 
-                setTimeout(function() {
-                    window.location = '/thank-you/?thank=get-in-touch';
-                }, 1000);
-            },
-        });
-
-        $('#get-in-touch-response-2').on('load', function(event) {
-            return(!getInTouchSubmitted2);
-        });
 
         var talkToUsSubmitted = false;
         $('#talk-to-us-form').validate({
@@ -278,7 +245,7 @@ var isBlink = (isChrome || isOpera) && !!window.CSS;
                     minlength: 3,
                 },
                 'entry.1152685397': {
-                    required: true,             // radio buttons
+                    required: true,             // radio buttons - type of request
                 },
             },
             errorPlacement: function(error, element) {
@@ -298,8 +265,9 @@ var isBlink = (isChrome || isOpera) && !!window.CSS;
         });
 
 
+
         var brochureDownloadSubmitted = false;
-        $('#brochure-download').validate({
+        $('#brochure-download-form').validate({
             rules: {
                 'entry.514709734': {
                     required: true,             // your name
@@ -307,7 +275,7 @@ var isBlink = (isChrome || isOpera) && !!window.CSS;
                     minlength: 3,
                     noNumbers: true,
                 },
-                /*
+                
                 'entry.365974255': {
                     required: true,             // company name
                     maxlength: 30,
@@ -325,10 +293,7 @@ var isBlink = (isChrome || isOpera) && !!window.CSS;
                     maxlength: 30,
                     minlength: 5,
                 },
-                'entry.432997003': {
-                    required: false,             // radio buttons
-                },
-                */
+                
             },
             errorPlacement: function(error, element) {
             },
@@ -337,7 +302,7 @@ var isBlink = (isChrome || isOpera) && !!window.CSS;
                 brochureDownloadSubmitted = true;
 
                 setTimeout(function() {
-                    window.location = '/thank-you/?thank=talk-to-us';
+                    window.location = '/library/download/Flux-brochure-2019-web.pdf';
                 }, 1000);
             },
         });
@@ -345,6 +310,7 @@ var isBlink = (isChrome || isOpera) && !!window.CSS;
         $('#brochure-download-response').on('load', function(event) {
             return(!brochureDownloadSubmitted);
         });
+
 
         $('a.down-arrow').on('click', function(event) {
             event.preventDefault();
