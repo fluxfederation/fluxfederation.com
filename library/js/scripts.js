@@ -45,7 +45,7 @@ var isBlink = (isChrome || isOpera) && !!window.CSS;
                         result += '<p class="large">'+(job.Locations)+'</p>';
                         result += '<p>'+(job.Summary)+'</p>';
                         result += '<div class="flux-button">';
-                        result += '<a class="read-more" href="#">Read more</a>';
+                        result += '<a class="read-more" href="#" data-job="'+(job.Id)+'">Read more</a>';
                         result += '</div>';
                         result += '<div class="overview">'+(job.Overview);
 
@@ -63,22 +63,25 @@ var isBlink = (isChrome || isOpera) && !!window.CSS;
                     $('.job .description .flux-button a.read-more').on('click', function(event) {
                         event.preventDefault();
 
-                        var button = $(this).parent();
-                        var link = $(this);
-                        if(button.length) {
-                            var overview = button.next('.overview');
-                            if(overview.length) {
-                                if(button.hasClass('open')) {
-                                    link.html('Read more');
-                                    button.removeClass('open');
-                                    overview.slideUp(750);
-                                } else {
-                                    link.html('Read less');
-                                    button.addClass('open');
-                                    overview.slideDown(750);
-                                }                                
-                            }
-                        }
+                        // var button = $(this).parent();
+                        // var link = $(this);
+                        // if(button.length) {
+                        //     var overview = button.next('.overview');
+                        //     if(overview.length) {
+                        //         if(button.hasClass('open')) {
+                        //             link.html('Read more');
+                        //             button.removeClass('open');
+                        //             overview.slideUp(750);
+                        //         } else {
+                        //             link.html('Read less');
+                        //             button.addClass('open');
+                        //             overview.slideDown(750);
+                        //         }                                
+                        //     }
+                        // }
+
+                        var jobID = $(this).data('job');
+                        window.location = "/careers/opportunities/single-job/?"+jobID;
                     });
 
                     $('main').removeClass('no-jobs');
