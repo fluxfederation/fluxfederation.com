@@ -52,11 +52,13 @@ textarea,
     line-height: 1.4rem;
 
     color: black;
-    border-radius: 3px;
+    //border-radius: 3px;
 
     box-sizing: border-box;
     box-shadow: none;
-    border: 1px solid $gray;
+    //border: 1px solid $gray;
+    border:none;
+    border-bottom: 1px solid $pink;
 
     width: 100%;
     padding: 0.3rem 0.8rem;
