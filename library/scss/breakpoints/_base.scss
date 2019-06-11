@@ -269,6 +269,19 @@ p a, p a:visited, li a, li a:visited {
 
 nav.nav li a, nav.nav li a:visited {
 	color: white;
+
+	// this is a hack to fix chrome bug of focus remaining on contact when javascript fires
+	&.contact:focus {
+		&:before {
+			visibility: hidden;
+		}
+	}
+	&.contact:hover {
+		&:before {
+			visibility: visible;
+		}
+	}
+
 }
 
 /******************************************************************
@@ -541,7 +554,30 @@ CONTENT STYLES
 
 #masthead {
 	a {
-		color:lighten($pink, 10%);
+		color:white;
+		transition: color 0.2s ease-out;
+
+		&:before {
+			content: "";
+			position: absolute;
+			width: 100%;
+			height: 1px;
+			bottom: -2px;
+			left: 0;
+			background-color: white;
+
+			visibility: visible;
+			-webkit-transform: scaleX(1);
+			transform: scaleX(1);
+		}
+
+		&:hover, &:focus, &.current {
+			transition: color 0.2s ease-out;
+			
+			&:before {
+				background-color: $link-hover;
+			}
+		}
 	}
 }
 
