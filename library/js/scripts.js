@@ -45,7 +45,7 @@ var isBlink = (isChrome || isOpera) && !!window.CSS;
                         result += '<p class="large">'+(job.Locations)+'</p>';
                         result += '<p>'+(job.Summary)+'</p>';
                         result += '<div class="flux-button">';
-                        result += '<a class="read-more" href="#">Read more</a>';
+                        result += '<a class="read-more" href="#" data-job="'+(job.Id)+'">Read more</a>';
                         result += '</div>';
                         result += '<div class="overview">'+(job.Overview);
 
@@ -63,22 +63,25 @@ var isBlink = (isChrome || isOpera) && !!window.CSS;
                     $('.job .description .flux-button a.read-more').on('click', function(event) {
                         event.preventDefault();
 
-                        var button = $(this).parent();
-                        var link = $(this);
-                        if(button.length) {
-                            var overview = button.next('.overview');
-                            if(overview.length) {
-                                if(button.hasClass('open')) {
-                                    link.html('Read more');
-                                    button.removeClass('open');
-                                    overview.slideUp(750);
-                                } else {
-                                    link.html('Read less');
-                                    button.addClass('open');
-                                    overview.slideDown(750);
-                                }                                
-                            }
-                        }
+                        // var button = $(this).parent();
+                        // var link = $(this);
+                        // if(button.length) {
+                        //     var overview = button.next('.overview');
+                        //     if(overview.length) {
+                        //         if(button.hasClass('open')) {
+                        //             link.html('Read more');
+                        //             button.removeClass('open');
+                        //             overview.slideUp(750);
+                        //         } else {
+                        //             link.html('Read less');
+                        //             button.addClass('open');
+                        //             overview.slideDown(750);
+                        //         }                                
+                        //     }
+                        // }
+
+                        var jobID = $(this).data('job');
+                        window.location = "/careers/opportunities/single-job/?"+jobID;
                     });
 
                     $('main').removeClass('no-jobs');
@@ -89,6 +92,64 @@ var isBlink = (isChrome || isOpera) && !!window.CSS;
                     });
                 }
             });
+        }
+
+        var singleJob = $('#single-job');
+        if(singleJob.length) {
+            var code = get_first_url_param('');
+            if(code !== undefined) {
+                $.getJSON('https://careers.pageuppeople.com/616/flux/en/jobs.json', function(data) {
+                    if(data.length) {
+                        var fluxiesCount = 16;
+                        var result = '';
+                        var found = false;
+
+                        for(var i = 0; i < data.length; ++i) {
+                            var job = data[i];
+
+                            if(job.Id == code) {
+                                var fluxieIndex = Math.floor(Math.random() * fluxiesCount) + 1;
+
+                                result += '<section class="job job-'+(job.Id)+'">';
+                                result += '<div class="fluxy">';
+                                result += '<div class="image">';
+                                result += '<img src="../../../library/img/fluxies/fluxy-'+(fluxieIndex)+'.svg" />';
+                                result += '</div>';
+                                result += '</div>';
+                                result += '<div class="description">';
+                                result += '<h4>'+(job.Title)+'</h4>';
+                                result += '<p class="large">'+(job.Locations)+'</p>';
+                                result += '<p>'+(job.Summary)+'</p>';
+                                result += '<div class="overview">'+(job.Overview);
+
+                                result += '<div class="flux-button">';
+                                result += '<a href="'+(job.ApplyUrl)+'" target="_blank">Apply</a>';
+                                result += '</div>';
+
+                                result += '</div>';
+                                result += '</div>';
+                                result += '</section>';
+
+                                singleJob.html(result);
+                                found = true;
+                                break;
+                            }
+                        }
+
+                        if(found !== true) {
+                            $('main').addClass('expired-job');
+                            $.get('/careers/opportunities/single-job/expired-job.html', function(data) {
+                                singleJob.html(data);
+                            });
+                        }
+                    } else {
+                        $('main').addClass('no-jobs');
+                        $.get('/careers/opportunities/no-job-openings.html', function(data) {
+                            $('#jobs').html(data);
+                        });
+                    }
+                });
+            }
         }
 
         $('.video-wrapper .thumbnail-wrapper .thumbnail a').on('click', function(event) {
@@ -111,6 +172,8 @@ var isBlink = (isChrome || isOpera) && !!window.CSS;
                 scrollTop: $(location).offset().top
             }, 1500);
         });
+
+
 
         var getInTouchSubmitted = false;
         $('#get-in-touch-form').validate({
@@ -149,42 +212,7 @@ var isBlink = (isChrome || isOpera) && !!window.CSS;
             return(!getInTouchSubmitted);
         });
 
-        var getInTouchSubmitted2 = false;
-        $('#get-in-touch-form-2').validate({
-            rules: {
-                'entry.1629797745': {
-                    required: true,                 // your name
-                    minlength: 3,
-                    maxlength: 30,
-                    noNumbers: true,
-                },
-                'entry.368106203': {                // your email
-                    required: true,
-                    email: true,
-                    emailBetterDomain: true,
-                    minlength: 5,
-                    maxlength: 30,
-                },
-                'entry.113701146': {
-                    required: true,                 // how can we help
-                    minlength: 3,
-                },
-            },
-            errorPlacement: function(error, element) {
-            },
-            submitHandler: function(form) {
-                form.submit();
-                getInTouchSubmitted2 = true;
 
-                setTimeout(function() {
-                    window.location = '/thank-you/?thank=get-in-touch';
-                }, 1000);
-            },
-        });
-
-        $('#get-in-touch-response-2').on('load', function(event) {
-            return(!getInTouchSubmitted2);
-        });
 
         var talkToUsSubmitted = false;
         $('#talk-to-us-form').validate({
@@ -217,7 +245,7 @@ var isBlink = (isChrome || isOpera) && !!window.CSS;
                     minlength: 3,
                 },
                 'entry.1152685397': {
-                    required: true,             // radio buttons
+                    required: true,             // radio buttons - type of request
                 },
             },
             errorPlacement: function(error, element) {
@@ -235,6 +263,54 @@ var isBlink = (isChrome || isOpera) && !!window.CSS;
         $('#talk-to-us-response').on('load', function(event) {
             return(!talkToUsSubmitted);
         });
+
+
+
+        var brochureDownloadSubmitted = false;
+        $('#brochure-download-form').validate({
+            rules: {
+                'entry.514709734': {
+                    required: true,             // your name
+                    maxlength: 30,
+                    minlength: 3,
+                    noNumbers: true,
+                },
+                
+                'entry.365974255': {
+                    required: true,             // company name
+                    maxlength: 30,
+                    minlength: 3,
+                },
+                'entry.979571740': {
+                    required: true,             // your role
+                    maxlength: 30,
+                    minlength: 3,
+                },
+                'entry.1009693116': {           // your email
+                    required: true,
+                    email: true,
+                    emailBetterDomain: true,
+                    maxlength: 30,
+                    minlength: 5,
+                },
+                
+            },
+            errorPlacement: function(error, element) {
+            },
+            submitHandler: function(form) {
+                form.submit();
+                brochureDownloadSubmitted = true;
+
+                setTimeout(function() {
+                    window.location = '/library/download/Flux-brochure-2019-web.pdf';
+                }, 1000);
+            },
+        });
+
+        $('#brochure-download-response').on('load', function(event) {
+            return(!brochureDownloadSubmitted);
+        });
+
 
         $('a.down-arrow').on('click', function(event) {
             event.preventDefault();
@@ -637,7 +713,7 @@ var isBlink = (isChrome || isOpera) && !!window.CSS;
             inPageNav.css({
                 position: 'fixed',
                 top: headerOffset+'px',
-                zIndex: 2
+                zIndex: 4
             });
 
             inPageNav.addClass('fixed');
@@ -769,11 +845,21 @@ function create_office_map(containerID, latitude, longitude) {
     mapMarker.setMap(map);
 }
 
-function get_url_param(parameterName) {
+function get_first_url_param() {
     var pageURL = decodeURIComponent(window.location.search.substring(1));
     var variables = pageURL.split('&');
     var result = undefined;
 
+    if(variables != '') {
+        result = variables;
+    }
+    return(result);
+}
+
+function get_url_param(parameterName) {
+    var pageURL = decodeURIComponent(window.location.search.substring(1));
+    var variables = pageURL.split('&');
+    var result = undefined;
     for(var i = 0; i < variables.length; ++i) {
         var values = variables[i].split('=');
         if(values[0] === parameterName) {
