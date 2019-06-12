@@ -140,6 +140,7 @@ CONTENT STYLES
 	.table-layout {
 		.image {
 			display: table-cell;
+			margin-top:0;
 		}
 	}
 
@@ -300,13 +301,14 @@ CONTENT STYLES
 
 // Opportunities page
 .opportunities-page {
-	#jobs {
+	#jobs, #single-job {
 		section.job {
 			.fluxy {
 				display: table-cell;
 			}
 		}
 	}
+	.link-opportunities, .expired-job { padding-left:10rem; margin:0;}
 }
 
 

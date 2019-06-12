@@ -83,7 +83,7 @@ body {
 
             &:after {
                 left: -10%;
-                background-color: $pink;
+                background-color: darken($pink, 15%);
             }
 
             .button-bg {
@@ -95,7 +95,7 @@ body {
 
             &:hover {
                 transition: .2s linear;
-                color:$pink;
+                color:darken($pink, 15%);
 
                 .button-bg:after {
                     left: -10%;

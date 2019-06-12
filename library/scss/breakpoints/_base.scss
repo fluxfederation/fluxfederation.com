@@ -163,6 +163,7 @@ body.ie {
 .underline {
 	height: 3px;
 	width: 75px;
+	margin-bottom:1rem;
 	background-color: $purple;
 }
 
@@ -268,6 +269,19 @@ p a, p a:visited, li a, li a:visited {
 
 nav.nav li a, nav.nav li a:visited {
 	color: white;
+
+	// this is a hack to fix chrome bug of focus remaining on contact when javascript fires
+	&.contact:focus {
+		&:before {
+			visibility: hidden;
+		}
+	}
+	&.contact:hover {
+		&:before {
+			visibility: visible;
+		}
+	}
+
 }
 
 /******************************************************************
@@ -540,7 +554,30 @@ CONTENT STYLES
 
 #masthead {
 	a {
-		color:lighten($pink, 10%);
+		color:white;
+		transition: color 0.2s ease-out;
+
+		&:before {
+			content: "";
+			position: absolute;
+			width: 100%;
+			height: 1px;
+			bottom: -2px;
+			left: 0;
+			background-color: white;
+
+			visibility: visible;
+			-webkit-transform: scaleX(1);
+			transform: scaleX(1);
+		}
+
+		&:hover, &:focus, &.current {
+			transition: color 0.2s ease-out;
+			
+			&:before {
+				background-color: $link-hover;
+			}
+		}
 	}
 }
 
@@ -658,9 +695,10 @@ section.remove-padding {
 
 	.image {
 		line-height: 0;
-		display: none;
+		//display: none;
 		vertical-align: top;
 		padding-right: 1rem;
+		margin-top:3rem;
 
 		.circle {
 			position: relative;
@@ -729,6 +767,8 @@ section.remove-padding {
 					opacity: 0;
 				}
 			}
+
+			&.leadership {margin-bottom:5rem;}
 		}
 	}
 
@@ -943,6 +983,13 @@ section.remove-padding {
 	}
 }
 
+// Brochure download
+.brochure-download-page {
+	#brochure-download-response {
+		display: none;
+	}
+}
+
 // Opportunities page
 .opportunities-page {
 	.no-jobs {
@@ -952,7 +999,7 @@ section.remove-padding {
 			img { width:100%;}
 		}
 	}
-	#jobs {
+	#jobs, #single-job {
 		section.job {
 			border-top: 1px solid $purple;
 			padding: 1.5rem 0;
@@ -970,6 +1017,7 @@ section.remove-padding {
 					border-radius: 50%;
 					padding: 1rem;
 					line-height: 0;
+					margin-top:0;
 	
 					img {
 						width: 100%;
@@ -983,6 +1031,15 @@ section.remove-padding {
 	
 				.overview {
 					display: none;
+				}
+			}
+		}
+	}
+	#single-job {
+		section.job {
+			.description {
+				.overview {
+					display: block;
 				}
 			}
 		}
@@ -1151,6 +1208,10 @@ section.remove-padding {
 		.buttons {
 			margin-top: -9.5%;
 		}
+	}
+
+	.BSI-mark img {
+		max-width:220px;
 	}
 }
 
@@ -1359,8 +1420,16 @@ FOOTER STYLES
 	}
 }
 
-.footer a {
+.footer {
+	a {
 	color: $purple !important;
+	}
+
+	.BSI-mark {
+		text-align:left;
+		
+		img { width: 120px;}
+	}
 }
 
 body.white-footer #footer .wrap .line {
