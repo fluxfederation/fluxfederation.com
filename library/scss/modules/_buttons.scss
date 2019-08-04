@@ -53,8 +53,9 @@ input[type="button"],
     position: relative;
     display: inline-block;
     border-radius: 0.1875rem;
-    background-color: $pink;
+    background-color: darken($pink, 15%);
     overflow: hidden;
+    letter-spacing:.05rem;
 
     a {
         position: relative;
@@ -72,7 +73,7 @@ input[type="button"],
             position: absolute;
             top: 0;
             right: 110%;
-            background-color: darken($pink, 10%);
+            background-color: darken($pink, 5%);
             z-index: -1;
             transform: skewX(-15deg);
             transition: right .125s linear, right .125s linear;
@@ -97,7 +98,8 @@ input[type="button"],
 		color: white;
 		margin-bottom: .5rem;
 		padding: .4rem 1rem;
-		background-color: $pink;
+    background-color: darken($pink, 15%);
+    letter-spacing: .05rem;
 	    border-radius: 0.1875rem;
 
 	    .button-bg {
@@ -107,7 +109,7 @@ input[type="button"],
 	    }
 
 	    &:hover {
-			background-color: darken($pink, 10%);
+			background-color: darken($pink, 5%);
 	    }
 	}	
 }
