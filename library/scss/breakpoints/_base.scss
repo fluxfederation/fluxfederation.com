@@ -74,6 +74,11 @@ section {
 		background: linear-gradient($purple 20%, lighten($pink, 20%) 150%);
 	}
 
+	&.flat-purple {
+		color: white;
+		background: $purple;
+	}
+
 	&.dark-purple {
 		color: white;
 		background: $dark-purple;
@@ -285,7 +290,11 @@ nav.nav li a, nav.nav li a:visited {
 }
 
 /******************************************************************
+<<<<<<< HEAD
 P, H1, H2, H3, H4, H5, address STYLES
+=======
+P, H1, H2, H3, H4, H5, address, section list STYLES
+>>>>>>> b721a2ee9ebc89baf8c83b8051d620e8e713a2be
 ******************************************************************/
 p {
 	&.strapline {
@@ -366,6 +375,16 @@ h6, .h6 {
 
 address {
 	font-style: normal;
+}
+
+section ul, section ol {
+	padding-left:2rem;
+	list-style-type: disc;
+	margin:.7rem 0 0 0; 
+
+	li {
+		padding:.2rem 0 .5rem 0;
+	}
 }
 
 /*********************
@@ -589,7 +608,7 @@ CONTENT STYLES
 	margin-bottom:3rem;
 }
 
-.space-top {
+.space-top, .m-space-top {
 	margin-top:1.5rem;
 }
 
@@ -1055,14 +1074,18 @@ section.remove-padding {
 			display:none;
 		}
 	}
+	#call-to-action {
 
-	.call-to-action {
-		.illustration {
-			padding-bottom: percentage(281/854);
-		}
+		article {
+			position:relative;
 
-		.buttons {
-			margin-top: -9%;
+			input[type="text"], textarea {
+				color:white;
+			}
+	
+			#fluxie-door {
+				margin-bottom:-5rem;
+			}
 		}
 	}
 }
@@ -1144,6 +1167,11 @@ section.remove-padding {
 // Solutions page
 .solutions-page {
 
+	section ul {
+		padding-left:0;
+		list-style-type: none;
+	}
+
 	.module {
 		border-top:1px solid $purple;
 		padding-top: 2rem;
@@ -1182,13 +1210,33 @@ section.remove-padding {
 		}
 	}
 
+	#bespoke-innovations {
+		position:inherit;
+		margin-top:-2rem;
+		margin-bottom:2rem;
+
+		article {
+			padding-top:5rem!important;
+			border-top:1px solid $purple;
+
+			img {
+				max-width:360px;
+			}
+	
+			p {
+				line-height: 1.3rem;
+			}
+		}
+	}
+
 	.call-to-action {
+
 		.illustration {
-			padding-bottom: percentage(355/854);
+			
 		}
 
 		.buttons {
-			margin-top: -8%;
+			text-align:center;
 		}
 	}
 }
@@ -1196,6 +1244,15 @@ section.remove-padding {
 
 // Meet the crew page
 .meet-the-crew-page {
+	#humans-of-flux {
+		article {
+
+			.flux-team {
+				margin-bottom:-5rem;
+				margin-top:1rem;
+			}
+		}
+	}
 }
 
 // About page
