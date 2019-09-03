@@ -32,25 +32,28 @@ $(document).ready(function () {
 		 	html = '<form name="gform" enctype="text/plain">'
 		 	html += '<div class="radio-buttons">'
 		 		$.each(data.fields[0].choices, function (i,v) {
-		 			html += '<p class="m-all t-1of3"><input id="' + v.value + '" type="radio" value="' + v.text + '" checked><label for="' + v.value + '">' + v.text + '/label></p>'
+		 			console.log(v.isSelected)
+		 			html += '<p class="m-all t-1of3"><input id="' + v.value + '" type="radio" value="' + v.text + '"' + (v.isSelected ? 'checked' : '' ) + '><label for="' + v.value + '">' + v.text + '</label></p>'
 		 		})
 	 		html += '</div>'
-	 		html += ''
-		 	// $('.drop-us-a-line-container').html(form)
+	 		html += createTextInputs(data.fields)
+		 	$('.talk-to-us-container').html(html)
 		})
 	}
 
 	function createTextInputs(fields) {
 		html = ''
 		$.each(fields, function (i,v) {
-			html += '<p class="m-all">'
-			html += '<label for="' + v.cssClass + '" class="m-all d-1of4">' + v.label + '</label>' 
-			if (v.type == 'text' || v.type == 'email') {
-				html += '<input id="'+ v.cssClass + '" type="' + v.type + '" placeholder="' + v.placeholder + '" class="m-all t-3of4 cf">'
-			} else if (v.type == 'textarea') {
-				html += '<textarea id="' + v.className + '" placeholder="' + v.placeholder + '" class="m-all t-3of4 cf"></textarea>'
+			if (['text', 'email', 'textarea'].indexOf(v.type) >= 0) {
+				html += '<p class="m-all">'
+				html += '<label for="' + v.cssClass + '" class="m-all d-1of4">' + v.label + '</label>' 
+				if (v.type == 'text' || v.type == 'email') {
+					html += '<input id="'+ v.cssClass + '" type="' + v.type + '" placeholder="' + v.placeholder + '" class="m-all t-3of4 cf">'
+				} else if (v.type == 'textarea') {
+					html += '<textarea id="' + v.className + '" placeholder="' + v.placeholder + '" class="m-all t-3of4 cf"></textarea>'
+				}
+				html += '</p>'
 			}
-			html += '</p>'
 		})
 		return html
 	}
