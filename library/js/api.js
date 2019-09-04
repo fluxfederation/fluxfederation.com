@@ -13,11 +13,9 @@ $(document).ready(function () {
 		  url: "https://fluxfederation.wpengine.com/wp-json/fluxapi/v1/form/2",
 		  crossDomain: true
 		}).done(function(data) {
-			console.log(data)
-			console.log(data.fields)
-			html = '<form name="gform" id="get-in-touch-form">'
+			html = '<form name="gform">'
 			html += createTextInputs(data.fields)
-			html += '<div class="m-all t-1of4 right cf"><div class="flux-button"><a class="gform" href="get-in-touch-form">Go</a></div></div>'
+			html += '<div class="m-all t-1of4 right cf drop-us-a-line-submit"><div class="flux-button"><a>Go</a></div></div>'
 			html += '</form>'
 			$('.drop-us-a-line-container').html(html)
 		})
@@ -28,8 +26,6 @@ $(document).ready(function () {
 		  url: "https://fluxfederation.wpengine.com/wp-json/fluxapi/v1/form/1",
 		  crossDomain: true
 		}).done(function(data) {
-		 	console.log(data)
-		 	console.log(data.fields)
 		 	$('.form-title').text(data.fields[0].label)
 		 	html = '<form name="gform" enctype="text/plain">'
 		 	html += '<div class="radio-buttons">'
@@ -48,20 +44,41 @@ $(document).ready(function () {
 		$.each(fields, function (i,v) {
 			if (['text', 'email', 'textarea'].indexOf(v.type) >= 0) {
 				html += '<p class="m-all">'
+
 				if (v.cssClass.split(' ').indexOf('label-left-align') >= 0) {
 					html += '<label for="' + v.cssClass + '" class="m-all d-1of4">' + v.label + '</label>' 
 				} else {
 					html += '<label for="' + v.cssClass + '">' + v.label + '</label><br>' 
 				}
+
 				if (v.type == 'text' || v.type == 'email') {
-					html += '<input id="'+ v.cssClass + '" type="' + v.type + '" placeholder="' + v.placeholder + '" class="m-all t-3of4 cf">'
+					html += '<input name="'+ v.cssClass.split(' ')[0] + '" type="' + v.type + '" placeholder="' + v.placeholder + '" class="m-all t-3of4 cf">'
 				} else if (v.type == 'textarea') {
-					html += '<textarea id="' + v.className + '" placeholder="' + v.placeholder + '" class="m-all t-3of4 cf"></textarea>'
+					html += '<textarea name="' + v.cssClass.split(' ')[0] + '" placeholder="' + v.placeholder + '" class="m-all t-3of4 cf"></textarea>'
 				}
+
 				html += '</p>'
 			}
 		})
 		return html
+	}
+
+	$('.drop-us-a-line-container').on('click', '.drop-us-a-line-submit', function (e) {
+		$('.drop-us-a-line-container form').submit()
+	})
+
+	$('.drop-us-a-line-container').on('submit', 'form', function (e) {
+		addEntry(this)
+		e.preventDefault()
+	})
+
+	function addEntry(form) {
+		form_data = $(form).serializeArray()
+		var data = {};
+		$(form_data ).each(function(i, v){
+		    data[v.name] = v.value;
+		});
+		console.log(data)
 	}
 
 })
