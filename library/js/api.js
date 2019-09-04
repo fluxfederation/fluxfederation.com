@@ -1,42 +1,32 @@
 $(document).ready(function () {
 
 	if ($('.drop-us-a-line-container').length) {
-		dropLineForm()
+		getForm(2)
 	}
 
 	if ($('#talk-to-us').length) {
-		talkToUsForm()
+		getForm(1)
 	}
 
-	function dropLineForm() {
-		$.ajax({
-		  url: "https://fluxfederation.wpengine.com/wp-json/fluxapi/v1/form/2",
-		  crossDomain: true
-		}).done(function(data) {
-			html = '<form name="gform">'
+	function parseTalkToUsForm(data) {
+	 	$('.form-title').text(data.fields[0].label)
+	 	html = '<form name="gform" enctype="text/plain">'
+	 	html += '<div class="radio-buttons">'
+	 		$.each(data.fields[0].choices, function (i,v) {
+	 			console.log(v.isSelected)
+	 			html += '<p class="m-all t-1of3"><input id="' + v.value + '" type="radio" value="' + v.text + '"' + (v.isSelected ? 'checked' : '' ) + '><label for="' + v.value + '">' + v.text + '</label></p>'
+	 		})
+			html += '</div>'
 			html += createTextInputs(data.fields)
-			html += '<div class="m-all t-1of4 right cf drop-us-a-line-submit"><div class="flux-button"><a>Go</a></div></div>'
-			html += '</form>'
-			$('.drop-us-a-line-container').html(html)
-		})
+	 	$('.talk-to-us-container').html(html)
 	}
 
-	function talkToUsForm() {
-		$.ajax({
-		  url: "https://fluxfederation.wpengine.com/wp-json/fluxapi/v1/form/1",
-		  crossDomain: true
-		}).done(function(data) {
-		 	$('.form-title').text(data.fields[0].label)
-		 	html = '<form name="gform" enctype="text/plain">'
-		 	html += '<div class="radio-buttons">'
-		 		$.each(data.fields[0].choices, function (i,v) {
-		 			console.log(v.isSelected)
-		 			html += '<p class="m-all t-1of3"><input id="' + v.value + '" type="radio" value="' + v.text + '"' + (v.isSelected ? 'checked' : '' ) + '><label for="' + v.value + '">' + v.text + '</label></p>'
-		 		})
-	 		html += '</div>'
-	 		html += createTextInputs(data.fields)
-		 	$('.talk-to-us-container').html(html)
-		})
+	function parseDropLineForm(data) {
+		html = '<form name="gform">'
+		html += createTextInputs(data.fields)
+		html += '<div class="m-all t-1of4 right cf drop-us-a-line-submit"><div class="flux-button"><a>Go</a></div></div>'
+		html += '</form>'
+		$('.drop-us-a-line-container').html(html)
 	}
 
 	function createTextInputs(fields) {
@@ -80,6 +70,39 @@ $(document).ready(function () {
 		});
 		console.log(data)
 	}
+
+	////////////////////////////////////////////////////////////////////////
+	//  API CALLS BELOW
+	////////////////////////////////////////////////////////////////////////
+
+	function getForm(form_id) {
+		$.ajax({
+		  url: "https://fluxfederation.wpengine.com/wp-json/fluxapi/v1/form/" + form_id,
+		  crossDomain: true
+		}).done(function(data) {
+			switch(form_id) {
+			  case 1:
+				parseTalkToUsForm(data)
+			    break;
+			  case 2:
+				parseDropLineForm(data)
+			    break;
+			}
+		})
+	}
+
+	function postForm(form_id, data) {
+		$.ajax({
+		  url: "https://fluxfederation.wpengine.com/wp-json/fluxapi/v1/form/" + form_id,
+		  crossDomain: true,
+		  method: 'POST',
+		  data: data
+		}).done(function(repsonse) {
+			console.log(repsonse)
+		})
+	}
+
+
 
 })
 
