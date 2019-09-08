@@ -13,14 +13,7 @@ $(document).ready(function () {
 	 	$('.form-title').text(data.fields[0].label)
 	 	html = '<form name="gform" enctype="text/plain">'
 	 	html += '<input type="hidden" value="' + data.id + '" name="form_id"></input>'
-	 // 	html += '<div class="radio-buttons">'
-	 // 		$.each(data.fields[0].choices, function (i,v) {
-	 // 			html += '<p class="m-all t-1of3"><input id="' + v.value + '" type="radio" value="' + v.text + '"' + (v.isSelected ? 'checked' : '' ) + '><label for="' + v.value + '">' + v.text + '</label></p>'
-	 // 		})
-		// html += '</div>'
-		// html += createTextInputs(data.fields)
 		$.each(data.fields, function (i,input) {
-			// console.log(createInput(input))
 			html += createInput(input)
 		})
 	 	$('.talk-to-us-container').html(html)
@@ -32,7 +25,7 @@ $(document).ready(function () {
 			return radioInput(input)
 			break;
 		case 'html':
-			// code block
+			return input.content
 			break;
 		case 'text':
 			return textInput(input)
@@ -57,13 +50,7 @@ $(document).ready(function () {
 
 	textInput = input => `${label(input)}<input name="${input.id}" type="${input.type}" placeholder="${input.placeholder}" class="m-all t-3of4 cf">`
 
-	label = input => {
-		if (labelIsLeftAlign(input.cssClass)) {
-			return `<label for="${input.id}" class="m-all d-1of4">${input.label}</label>`
-		} else {
-			return `<label for="${input.id}">${input.label}</label><br>`
-		}
-	}
+	label = input => labelIsLeftAlign(input.cssClass) ? `<label for="${input.id}" class="m-all d-1of4">${input.label}</label>` : `<label for="${input.id}">${input.label}</label><br>`
 
 	parseDropLineForm = data => {
 		html = '<form name="gform">'
