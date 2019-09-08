@@ -31,10 +31,10 @@ $(document).ready(function () {
 			return textInput(input)
 			break;
 		case 'email':
-		  // code block
-		  break;
+			return textInput(input)
+			break;
 		case 'textarea':
-		  // code block
+		  return textArea(input)
 		  break;
 		}
 	}
@@ -48,7 +48,9 @@ $(document).ready(function () {
 		return html
 	}
 
-	textInput = input => `${label(input)}<input name="${input.id}" type="${input.type}" placeholder="${input.placeholder}" class="m-all t-3of4 cf">`
+	textInput = input => `<p>${label(input)}<input name="${input.id}" type="${input.type}" placeholder="${input.placeholder}"></p>`
+	
+	textArea = input => `<p>${label(input)}<textarea name="${input.id}" placeholder="${input.placeholder}" style="width: 100%;"></textarea></p>`
 
 	label = input => labelIsLeftAlign(input.cssClass) ? `<label for="${input.id}" class="m-all d-1of4">${input.label}</label>` : `<label for="${input.id}">${input.label}</label><br>`
 
@@ -59,30 +61,6 @@ $(document).ready(function () {
 		html += '<div class="m-all t-1of4 right cf drop-us-a-line-submit"><div class="flux-button"><a>Go</a></div></div>'
 		html += '</form>'
 		$('.drop-us-a-line-container').html(html)
-	}
-
-	createTextInputs = fields => {
-		html = ''
-		$.each(fields, function (i,v) {
-			if (['text', 'email', 'textarea'].indexOf(v.type) >= 0) {
-				html += '<p class="m-all">'
-
-				if (labelIsLeftAlign(v.cssClass)) {
-					html += '<label for="' + v.id + '" class="m-all d-1of4">' + v.label + '</label>' 
-				} else {
-					html += '<label for="' + v.id + '">' + v.label + '</label><br>' 
-				}
-
-				if (v.type == 'text' || v.type == 'email') {
-					html += '<input name="'+ v.id + '" type="' + v.type + '" placeholder="' + v.placeholder + '" class="m-all t-3of4 cf">'
-				} else if (v.type == 'textarea') {
-					html += '<textarea name="' + v.id + '" placeholder="' + v.placeholder + '" class="m-all t-3of4 cf" style="width: 100%;"></textarea>'
-				}
-
-				html += '</p>'
-			}
-		})
-		return html
 	}
 
 	$('.drop-us-a-line-container').on('click', '.drop-us-a-line-submit', function (e) {
@@ -97,10 +75,7 @@ $(document).ready(function () {
 	addEntry = form => {
 		form_data = $(form).serializeArray()
 		var data = {};
-		$(form_data ).each(function(i, v){
-		    data[v.name] = v.value
-		})
-
+		$(form_data ).each((i, v) => data[v.name] = v.value)
 		postForm(data)
 	}
 
