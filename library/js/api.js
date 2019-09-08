@@ -12,7 +12,7 @@ $(document).ready(function () {
 		console.log(data)
 	 	$('.form-title').text(data.fields[0].label)
 	 	html = '<form name="gform" enctype="text/plain">'
-	 	html += '<input type="hidden" value="' + data.id + '" name="form_id"></input>'
+	 	html += hiddenIdInput(data.id)
 		$.each(data.fields, function (i,input) {
 			html += createInput(input)
 		})
@@ -42,7 +42,7 @@ $(document).ready(function () {
 	radioInput = input => {
 		html = '<div class="radio-buttons">'
 		$.each(input.choices, function (i,v) {
-			html += `<p class="m-all t-1of3"><input id="${v.value}" type="radio" value="${v.text}"${(v.isSelected ? " checked" : "" )}><label for="${v.value}">${v.text}</label></p>`
+			html += `<p class="m-all t-1of3"><input id="${v.value}" type="radio" name="${input.cssClass.split(' ')[0]}" value="${v.value}" ${(v.isSelected ? " checked" : "" )}><label for="${v.value}">${v.text}</label></p>`
 		})
 		html += '</div>'
 		return html
@@ -54,10 +54,14 @@ $(document).ready(function () {
 
 	label = input => labelIsLeftAlign(input.cssClass) ? `<label for="${input.id}" class="m-all d-1of4">${input.label}</label>` : `<label for="${input.id}">${input.label}</label><br>`
 
+	hiddenIdInput = id => `<input type="hidden" value="${id}" name="form_id"></input>`
+
 	parseDropLineForm = data => {
 		html = '<form name="gform">'
 		html += '<input type="hidden" value="' + data.id + '" name="form_id"></input>'
-		html += createTextInputs(data.fields)
+		$.each(data.fields, function (i,input) {
+			html += createInput(input)
+		})
 		html += '<div class="m-all t-1of4 right cf drop-us-a-line-submit"><div class="flux-button"><a>Go</a></div></div>'
 		html += '</form>'
 		$('.drop-us-a-line-container').html(html)
