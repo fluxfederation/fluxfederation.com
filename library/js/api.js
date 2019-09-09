@@ -19,8 +19,8 @@ $(document).ready(function () {
 		$.each(data.fields, function (i,input) {
 			html += createInput(input)
 		})
-		html += submitButton(data.button)
-		return $('<form enctype="text/plain"></form>').append(html)
+		html += submitButton(data.button, data.id)
+		return $(`<form id="${data.id}" enctype="text/plain"></form>`).append(html)
 	}
 
 	createInput = input => {
@@ -60,22 +60,30 @@ $(document).ready(function () {
 
 	hiddenIdInput = id => `<input type="hidden" value="${id}" name="form_id"></input>`
 
-	submitButton = button => `<div class="flux-button"><a>${button.text}</a></div>`
-
-
-	addEntry = form => {
-		form_data = $(form).serializeArray()
-		var data = {};
-		$(form_data ).each((i, v) => data[v.name] = v.value)
-		postForm(data)
-	}
+	submitButton = (button, id) => `<div class="flux-button" id="${id}"><a>${button.text}</a></div>`
 
 	labelIsLeftAlign = classes => classes.split(' ').indexOf('label-left-align') >= 0
 
-	$('.drop-us-a-line-container').on('click', '.drop-us-a-line-submit', () => $('.drop-us-a-line-container form').submit())
+	addEntry = form => {
+		data = formDataToJson($(form).serializeArray())
+		postForm(data)
+		.then(data => console.log(data))
+		.catch(error => console.log(error))
+	}
 
-	$('.drop-us-a-line-container').on('submit', 'form', e => {
-		addEntry(this)
+	formDataToJson = data => {
+		json = {}
+		$(data).each((i, v) => json[v.name] = v.value)
+		return json
+	}
+
+	$('body').on('click', 'form .flux-button', (e) => {
+		id = e.currentTarget.id
+		$(`form#${id}`).submit()
+	})
+
+	$('body').on('submit', 'form', e => {
+		addEntry(e.currentTarget)
 		e.preventDefault()
 	})
 
@@ -95,15 +103,20 @@ $(document).ready(function () {
 	}
 
 	function postForm(data) {
-		console.log(data)
-		$.ajax({
-		  url: "https://fluxfederation.wpengine.com/wp-json/fluxapi/v1/form/" + data.form_id,
-		  crossDomain: true,
-		  method: 'POST',
-		  dataType: "json",
-		  data: JSON.stringify(data),
-		}).done(function(repsonse) {
-			console.log(repsonse)
+		return new Promise((resolve, reject) => {
+			$.ajax({
+				url: "https://fluxfederation.wpengine.com/wp-json/fluxapi/v1/form/" + data.form_id,
+				crossDomain: true,
+				method: 'POST',
+				dataType: "json",
+				data: JSON.stringify(data),
+				success: function(data) {
+					resolve(data)
+				},
+				error: function(error) {
+					reject(error)
+				}
+			})
 		})
 	}
 
