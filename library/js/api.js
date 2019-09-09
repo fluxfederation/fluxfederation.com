@@ -1,22 +1,26 @@
 $(document).ready(function () {
 
-	if ($('.drop-us-a-line-container').length) {
-		getForm(2)
-	}
-
 	if ($('#talk-to-us').length) {
-		getForm(1)
+		getFormData(1)
+		.then(data => buildForm(data))
+		.then(form => $('.talk-to-us-container').append(form))
+		.catch(error => console.log(error))
 	}
 
-	parseTalkToUsForm = data => {
-		console.log(data)
-	 	$('.form-title').text(data.fields[0].label)
-	 	html = '<form name="gform" enctype="text/plain">'
-	 	html += hiddenIdInput(data.id)
+	if ($('.drop-us-a-line-container').length) {
+		getFormData(2)
+		.then(data => buildForm(data))
+		.then(form => $('.drop-us-a-line-container').append(form))
+		.catch(error => console.log(error))
+	}
+
+	buildForm = data => {
+	 	html = hiddenIdInput(data.id)
 		$.each(data.fields, function (i,input) {
 			html += createInput(input)
 		})
-	 	$('.talk-to-us-container').html(html)
+		html += submitButton(data.button)
+		return $('<form enctype="text/plain"></form>').append(html)
 	}
 
 	createInput = input => {
@@ -42,7 +46,7 @@ $(document).ready(function () {
 	radioInput = input => {
 		html = '<div class="radio-buttons">'
 		$.each(input.choices, function (i,v) {
-			html += `<p class="m-all t-1of3"><input id="${v.value}" type="radio" name="${input.cssClass.split(' ')[0]}" value="${v.value}" ${(v.isSelected ? " checked" : "" )}><label for="${v.value}">${v.text}</label></p>`
+			html += `<p><input id="${v.value}" type="radio" name="${input.cssClass.split(' ')[0]}" value="${v.value}" ${(v.isSelected ? " checked" : "" )}><label for="${v.value}">${v.text}</label></p>`
 		})
 		html += '</div>'
 		return html
@@ -56,25 +60,8 @@ $(document).ready(function () {
 
 	hiddenIdInput = id => `<input type="hidden" value="${id}" name="form_id"></input>`
 
-	parseDropLineForm = data => {
-		html = '<form name="gform">'
-		html += '<input type="hidden" value="' + data.id + '" name="form_id"></input>'
-		$.each(data.fields, function (i,input) {
-			html += createInput(input)
-		})
-		html += '<div class="m-all t-1of4 right cf drop-us-a-line-submit"><div class="flux-button"><a>Go</a></div></div>'
-		html += '</form>'
-		$('.drop-us-a-line-container').html(html)
-	}
+	submitButton = button => `<div class="flux-button"><a>${button.text}</a></div>`
 
-	$('.drop-us-a-line-container').on('click', '.drop-us-a-line-submit', function (e) {
-		$('.drop-us-a-line-container form').submit()
-	})
-
-	$('.drop-us-a-line-container').on('submit', 'form', function (e) {
-		addEntry(this)
-		e.preventDefault()
-	})
 
 	addEntry = form => {
 		form_data = $(form).serializeArray()
@@ -85,24 +72,26 @@ $(document).ready(function () {
 
 	labelIsLeftAlign = classes => classes.split(' ').indexOf('label-left-align') >= 0
 
-	////////////////////////////////////////////////////////////////////////
-	//  API CALLS BELOW
-	////////////////////////////////////////////////////////////////////////
+	$('.drop-us-a-line-container').on('click', '.drop-us-a-line-submit', () => $('.drop-us-a-line-container form').submit())
 
-	function getForm(form_id) {
-		$.ajax({
-		  url: "https://fluxfederation.wpengine.com/wp-json/fluxapi/v1/form/" + form_id,
-		  crossDomain: true
-		}).done(function(data) {
-			switch(form_id) {
-			  case 1:
-				parseTalkToUsForm(data)
-			    break;
-			  case 2:
-				parseDropLineForm(data)
-			    break;
-			}
-		})
+	$('.drop-us-a-line-container').on('submit', 'form', e => {
+		addEntry(this)
+		e.preventDefault()
+	})
+
+	function getFormData(form_id) {
+		return new Promise((resolve, reject) => {
+			$.ajax({
+				url: "https://fluxfederation.wpengine.com/wp-json/fluxapi/v1/form/" + form_id,
+				crossDomain: true,
+				success: function(data) {
+					resolve(data)
+				},
+				error: function(error) {
+					reject(error)
+				}
+			})
+		})	
 	}
 
 	function postForm(data) {
