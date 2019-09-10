@@ -1,8 +1,16 @@
 $(document).ready(function () {
 
 	talk_to_us_styles = {
-		'#2 p' : 'm-all t-1of3',
-		'#8' : 'news' 
+		'#talk-to-us #input-2 p' : 'm-all t-1of3',
+		'#talk-to-us #input-14' : 'news' ,
+		'#talk-to-us textarea' : 'full-width'
+	}
+
+	drop_a_line_styles = {
+		'.drop-us-a-line-container p' : 'm-all',
+		'.drop-us-a-line-container p label' : 'm-all d-1of4',
+		'.drop-us-a-line-container input, .drop-us-a-line-container textarea' : 'm-all t-3of4 cf',
+		'.drop-us-a-line-container .flux-button-container' : 'm-all t-1of4 right cf'
 	}
 
 	if ($('#talk-to-us').length) {
@@ -17,6 +25,7 @@ $(document).ready(function () {
 		getFormData(2)
 		.then(data => buildForm(data))
 		.then(form => $('.drop-us-a-line-container').append(form))
+		.then(() => addCustomCss(drop_a_line_styles))
 		.catch(error => console.log(error))
 	}
 
@@ -36,6 +45,7 @@ $(document).ready(function () {
 
 	createInput = input => {
 		switch(input.type) {
+		case 'checkbox':
 		case 'radio':
 			return radioInput(input)
 			break;
@@ -57,23 +67,23 @@ $(document).ready(function () {
 	}
 
 	radioInput = input => {
-		html = `<div class="radio-buttons" id="${input.id}" >`
+		html = `<div class="radio-buttons" id="input-${input.id}" >`
 		$.each(input.choices, function (i,v) {
-			html += `<p><input id="${v.value}" type="radio" name="${input.id}" value="${v.value}" ${(v.isSelected ? " checked" : "" )}><label for="${v.value}">${v.text}</label></p>`
+			html += `<p><input id="${v.value}" type="${input.type}" name="${input.id}" value="${v.value}" ${(v.isSelected ? " checked" : "" )}><label for="${v.value}">${v.text}</label></p>`
 		})
 		html += '</div>'
 		return html
 	}
 
-	textInput = input => `<p id="${input.id}">${label(input)}<input name="${input.id}" type="${input.type}" placeholder="${input.placeholder}"></p>`
+	textInput = input => `<p id="input-${input.id}">${label(input)}<input name="${input.id}" type="${input.type}" placeholder="${input.placeholder}"></p>`
 	
-	textArea = input => `<p id="${input.id}">${label(input)}<textarea name="${input.id}" placeholder="${input.placeholder}" style="width: 100%;"></textarea></p>`
+	textArea = input => `<p id="input-${input.id}">${label(input)}<textarea name="${input.id}" placeholder="${input.placeholder}"></textarea></p>`
 
 	label = input => labelIsLeftAlign(input.cssClass) ? `<label for="${input.id}" class="m-all d-1of4">${input.label}</label>` : `<label for="${input.id}">${input.label}</label><br>`
 
 	hiddenIdInput = id => `<input id="${id}" type="hidden" value="${id}" name="form_id"></input>`
 
-	submitButton = (button, id) => `<div class="flux-button" id="${id}"><a>${button.text}</a></div>`
+	submitButton = (button, id) => `<div class="flux-button-container"><div class="flux-button" id="${id}"><a>${button.text}</a></div></div>`
 
 	labelIsLeftAlign = classes => classes.split(' ').indexOf('label-left-align') >= 0
 
