@@ -1,9 +1,15 @@
 $(document).ready(function () {
 
+	talk_to_us_styles = {
+		'#2 p' : 'm-all t-1of3',
+		'#8' : 'news' 
+	}
+
 	if ($('#talk-to-us').length) {
 		getFormData(1)
 		.then(data => buildForm(data))
 		.then(form => $('.talk-to-us-container').append(form))
+		.then(() => addCustomCss(talk_to_us_styles))
 		.catch(error => console.log(error))
 	}
 
@@ -14,7 +20,12 @@ $(document).ready(function () {
 		.catch(error => console.log(error))
 	}
 
+	addCustomCss = (styles) => {
+		$.each(styles, (selector, classNames) => $(selector).addClass(classNames))
+	}
+
 	buildForm = data => {
+		console.log(data)
 	 	html = hiddenIdInput(data.id)
 		$.each(data.fields, function (i,input) {
 			html += createInput(input)
@@ -39,26 +50,28 @@ $(document).ready(function () {
 			break;
 		case 'textarea':
 		  return textArea(input)
+		case 'captcha':
+		  return ''
 		  break;
 		}
 	}
 
 	radioInput = input => {
-		html = '<div class="radio-buttons">'
+		html = `<div class="radio-buttons" id="${input.id}" >`
 		$.each(input.choices, function (i,v) {
-			html += `<p><input id="${v.value}" type="radio" name="${input.cssClass.split(' ')[0]}" value="${v.value}" ${(v.isSelected ? " checked" : "" )}><label for="${v.value}">${v.text}</label></p>`
+			html += `<p><input id="${v.value}" type="radio" name="${input.id}" value="${v.value}" ${(v.isSelected ? " checked" : "" )}><label for="${v.value}">${v.text}</label></p>`
 		})
 		html += '</div>'
 		return html
 	}
 
-	textInput = input => `<p>${label(input)}<input name="${input.id}" type="${input.type}" placeholder="${input.placeholder}"></p>`
+	textInput = input => `<p id="${input.id}">${label(input)}<input name="${input.id}" type="${input.type}" placeholder="${input.placeholder}"></p>`
 	
-	textArea = input => `<p>${label(input)}<textarea name="${input.id}" placeholder="${input.placeholder}" style="width: 100%;"></textarea></p>`
+	textArea = input => `<p id="${input.id}">${label(input)}<textarea name="${input.id}" placeholder="${input.placeholder}" style="width: 100%;"></textarea></p>`
 
 	label = input => labelIsLeftAlign(input.cssClass) ? `<label for="${input.id}" class="m-all d-1of4">${input.label}</label>` : `<label for="${input.id}">${input.label}</label><br>`
 
-	hiddenIdInput = id => `<input type="hidden" value="${id}" name="form_id"></input>`
+	hiddenIdInput = id => `<input id="${id}" type="hidden" value="${id}" name="form_id"></input>`
 
 	submitButton = (button, id) => `<div class="flux-button" id="${id}"><a>${button.text}</a></div>`
 
