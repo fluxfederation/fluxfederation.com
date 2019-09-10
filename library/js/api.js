@@ -69,7 +69,7 @@ $(document).ready(function () {
 	radioInput = input => {
 		html = `<div class="radio-buttons" id="input-${input.id}" >`
 		$.each(input.choices, function (i,v) {
-			html += `<p><input id="${v.value}" type="${input.type}" name="${input.id}" value="${v.value}" ${(v.isSelected ? " checked" : "" )}><label for="${v.value}">${v.text}</label></p>`
+			html += `<p><input id="${v.value}" type="${input.type}" name="${input.id}${input.type == 'checkbox' ? `.${i+1}` : ""}" value="${v.value}" ${(v.isSelected ? " checked" : "" )}><label for="${v.value}">${v.text}</label></p>`
 		})
 		html += '</div>'
 		return html
@@ -89,6 +89,7 @@ $(document).ready(function () {
 
 	addEntry = form => {
 		data = formDataToJson($(form).serializeArray())
+		console.log(data)
 		postForm(data)
 		.then(data => console.log(data))
 		.catch(error => console.log(error))
