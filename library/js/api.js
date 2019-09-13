@@ -1,5 +1,7 @@
 $(document).ready(function () {
 
+	captcha_sitekey = '6Ld5v7cUAAAAANz28l09GqtI4KjKOuJcrwjn1HUD'
+
 	talk_to_us_styles = {
 		'#talk-to-us #input-2 p' : 'm-all t-1of3',
 		'#talk-to-us #input-14' : 'news' ,
@@ -34,12 +36,12 @@ $(document).ready(function () {
 	}
 
 	buildForm = data => {
-		console.log(data)
+		captcha = shouldIncludeCaptcha(data.fields)
 	 	html = hiddenIdInput(data.id)
 		$.each(data.fields, function (i,input) {
 			html += createInput(input)
 		})
-		html += submitButton(data.button, data.id)
+		html += submitButton(data.button, data.id, captcha)
 		return $(`<form id="${data.id}" enctype="text/plain"></form>`).append(html)
 	}
 
@@ -75,17 +77,25 @@ $(document).ready(function () {
 		return html
 	}
 
+	captchaField = () => `<div class="g-recaptcha" data-sitekey="${captcha_sitekey}"></div>`
+
 	textInput = input => `<p id="input-${input.id}">${label(input)}<input name="${input.id}" type="${input.type}" placeholder="${input.placeholder}"></p>`
 	
 	textArea = input => `<p id="input-${input.id}">${label(input)}<textarea name="${input.id}" placeholder="${input.placeholder}"></textarea></p>`
 
-	label = input => labelIsLeftAlign(input.cssClass) ? `<label for="${input.id}" class="m-all d-1of4">${input.label}</label>` : `<label for="${input.id}">${input.label}</label><br>`
+	label = input => `<label for="${input.id}">${input.label}</label><br>`
 
 	hiddenIdInput = id => `<input id="${id}" type="hidden" value="${id}" name="form_id"></input>`
 
-	submitButton = (button, id) => `<div class="flux-button-container"><div class="flux-button" id="${id}"><a>${button.text}</a></div></div>`
+	submitButton = (button, id, captcha) => `<div class="flux-button-container"><div class="flux-button" id="${id}"><button data-sitekey="${captcha ? captcha_sitekey : '' }" class="${captcha ? 'g-recaptcha' : '' }" >${button.text}</button></div></div>`
 
-	labelIsLeftAlign = classes => classes.split(' ').indexOf('label-left-align') >= 0
+	shouldIncludeCaptcha = fields => {
+		for (var field of fields) {
+		  if (field.type == 'captcha') { 
+		  	return true
+		  }
+		}
+	}
 
 	addEntry = form => {
 		data = formDataToJson($(form).serializeArray())
