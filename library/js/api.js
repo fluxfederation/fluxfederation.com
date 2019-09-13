@@ -15,6 +15,18 @@ $(document).ready(function () {
 		'.drop-us-a-line-container .flux-button-container' : 'm-all t-1of4 right cf'
 	}
 
+	drop_a_line_validations = {
+		'1' : {
+			'aboveMinLength' : 3,
+			'belowMaxLength' : 30
+		},
+		'2' : ['isEmail'],
+		'3' : {
+			'aboveMinLength' : 3,
+			'belowMaxLength' : 1000
+		}
+	}
+
 	if ($('#talk-to-us').length) {
 		getFormData(1)
 		.then(data => buildForm(data))
@@ -30,6 +42,8 @@ $(document).ready(function () {
 		.then(() => addCustomCss(drop_a_line_styles))
 		.catch(error => console.log(error))
 	}
+
+	
 
 	addCustomCss = (styles) => {
 		$.each(styles, (selector, classNames) => $(selector).addClass(classNames))
@@ -99,7 +113,6 @@ $(document).ready(function () {
 
 	addEntry = form => {
 		data = formDataToJson($(form).serializeArray())
-		console.log(data)
 		postForm(data)
 		.then(data => console.log(data))
 		.catch(error => console.log(error))
@@ -111,9 +124,22 @@ $(document).ready(function () {
 		return json
 	}
 
+	aboveMinLength = (val, n) => val.length >= n
+
+	belowMaxLength = (val, n) => val.length <= n
+
+	// isEmail = val => val
+
+	noNumbers = val => /\d/.test(val)
+
 	$('body').on('click', 'form .flux-button', (e) => {
 		id = e.currentTarget.id
-		$(`form#${id}`).submit()
+		for (var field of $(`form#${id} input, form#${id} textarea`)) {
+			console.log(field.name)
+			console.log($(field).val())
+		}
+		e.preventDefault()
+		// $(`form#${id}`).submit()
 	})
 
 	$('body').on('submit', 'form', e => {
@@ -153,7 +179,6 @@ $(document).ready(function () {
 			})
 		})
 	}
-
 
 })
 
