@@ -83,7 +83,7 @@ $(document).ready(function () {
 
 	hiddenIdInput = id => `<input id="${id}" type="hidden" value="${id}" name="form_id"></input>`
 
-	submitButton = (button, id) => `<div class="flux-button-container"><div class="flux-button" id="${id}"><a>${button.text}</a></div></div>`
+	submitButton = (button, id) => `<div class="flux-button-container"><div class="flux-button" id="${id}"><a href="${id}">${button.text}</a></div></div>`
 
 	labelIsLeftAlign = classes => classes.split(' ').indexOf('label-left-align') >= 0
 

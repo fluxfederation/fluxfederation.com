@@ -176,23 +176,23 @@ var isBlink = (isChrome || isOpera) && !!window.CSS;
 
 
         var getInTouchSubmitted = false;
-        $('#get-in-touch-form').validate({
+        $('#2').validate({
             rules: {
-                'entry.1629797745': {
-                    required: true,                 // your name
+                '1': {
+                    required: true,             // your name
                     minlength: 3,
                     maxlength: 30,
                     noNumbers: true,
                 },
-                'entry.368106203': {                // your email
+                '2': {                          // your email
                     required: true,
                     email: true,
                     emailBetterDomain: true,
                     minlength: 5,
                     maxlength: 30,
                 },
-                'entry.113701146': {
-                    required: true,                 // how can we help
+                '3': {
+                    required: true,             // how can we help
                     minlength: 3,
                 },
             },
