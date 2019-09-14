@@ -113,15 +113,14 @@ $(document).ready(function () {
 	}
 
 	$('body').on('click', 'form .flux-button', (e) => {
-		id = e.currentTarget.id
-		checkAllFieldsValid(id)
 		e.preventDefault()
-		// $(`form#${id}`).submit()
+		id = e.currentTarget.id
+		allFieldsValid(id) ? $(`form#${id}`).submit() : ''
 	})
 
 	$('body').on('submit', 'form', e => {
-		addEntry(e.currentTarget)
 		e.preventDefault()
+		addEntry(e.currentTarget)
 	})
 
 	function getFormData(form_id) {
@@ -208,16 +207,17 @@ $(document).ready(function () {
 
 	addValidationClass = (input, valid) => valid ? input.removeClass('error').addClass('valid') : input.removeClass('valid').addClass('error')
 
-	checkAllFieldsValid = form_id => {
+	allFieldsValid = form_id => {
 		valid = true
 		validations = getValidations(form_id)
 		for (var name in validations) {
 			field_validations = validations[name]
 			value = getFieldByName(form_id, name).val()
 			for (validation of field_validations) {
-				fieldIsValid(value, validation)
+				fieldIsValid(value, validation) ? '' : valid = false
 			}
 		}
+		return valid
 	}
 
 	$('body').on('blur', 'input, textarea', (e) => {
