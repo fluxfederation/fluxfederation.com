@@ -15,18 +15,6 @@ $(document).ready(function () {
 		'.drop-us-a-line-container .flux-button-container' : 'm-all t-1of4 right cf'
 	}
 
-	drop_a_line_validations = {
-		'1' : {
-			'aboveMinLength' : 3,
-			'belowMaxLength' : 30
-		},
-		'2' : ['isEmail'],
-		'3' : {
-			'aboveMinLength' : 3,
-			'belowMaxLength' : 1000
-		}
-	}
-
 	if ($('#talk-to-us').length) {
 		getFormData(1)
 		.then(data => buildForm(data))
@@ -43,7 +31,7 @@ $(document).ready(function () {
 		.catch(error => console.log(error))
 	}
 
-	
+
 
 	addCustomCss = (styles) => {
 		$.each(styles, (selector, classNames) => $(selector).addClass(classNames))
@@ -64,21 +52,21 @@ $(document).ready(function () {
 		case 'checkbox':
 		case 'radio':
 			return radioInput(input)
-			break;
+			break
 		case 'html':
 			return input.content
-			break;
+			break
 		case 'text':
 			return textInput(input)
-			break;
+			break
 		case 'email':
 			return textInput(input)
-			break;
+			break
 		case 'textarea':
 		  return textArea(input)
 		case 'captcha':
 		  return ''
-		  break;
+		  break
 		}
 	}
 
@@ -97,7 +85,7 @@ $(document).ready(function () {
 	
 	textArea = input => `<p id="input-${input.id}">${label(input)}<textarea name="${input.id}" placeholder="${input.placeholder}"></textarea></p>`
 
-	label = input => `<label for="${input.id}">${input.label}</label><br>`
+	label = input => `<label for="${input.id}">${input.label}</label>`
 
 	hiddenIdInput = id => `<input id="${id}" type="hidden" value="${id}" name="form_id"></input>`
 
@@ -124,20 +112,9 @@ $(document).ready(function () {
 		return json
 	}
 
-	aboveMinLength = (val, n) => val.length >= n
-
-	belowMaxLength = (val, n) => val.length <= n
-
-	// isEmail = val => val
-
-	noNumbers = val => /\d/.test(val)
-
 	$('body').on('click', 'form .flux-button', (e) => {
 		id = e.currentTarget.id
-		for (var field of $(`form#${id} input, form#${id} textarea`)) {
-			console.log(field.name)
-			console.log($(field).val())
-		}
+		checkAllFieldsValid(id)
 		e.preventDefault()
 		// $(`form#${id}`).submit()
 	})
@@ -179,6 +156,83 @@ $(document).ready(function () {
 			})
 		})
 	}
+
+	////////////////////////////////////////////////////////////////////////
+	// Validations //
+	////////////////////////////////////////////////////////////////////////
+
+	talk_to_us_validations = {
+		'1' : ['aboveMinLength', 'belowMaxLength'],
+		'2' : ['isEmail'],
+		'3' : ['aboveMinLength', 'belowMaxLength']
+	}
+
+	getValidations = id => {
+		switch(id) {
+		case '1':
+			return drop_a_line__validations
+			break
+		case '2':
+			return talk_to_us_validations
+			break
+		}
+	}
+
+	runValidation = (val, validation) => {
+		switch(validation) {
+			case 'aboveMinLength':
+				return aboveMinLength(val)
+				break
+			case 'belowMaxLength':
+				return belowMaxLength(val)
+				break;
+			case 'isEmail':
+				return isEmail(val)
+				break
+		}
+	}
+
+	aboveMinLength = (val) => val.length >= 3
+
+	belowMaxLength = (val) => val.length <= 30
+
+	isEmail = val => /\S+@\S+\.\S+/.test(val)
+
+	noNumbers = val => /\d/.test(val)
+
+	getFieldByName = (form_id, input_name) => $(`form#${form_id} *[name="${input_name}"]`)
+
+	fieldIsValid = (val, validation) => runValidation(val, validation)
+
+	getFieldValidation = (form_id, name) => getValidations(form_id)[name]
+
+	addValidationClass = (input, valid) => valid ? input.removeClass('error').addClass('valid') : input.removeClass('valid').addClass('error')
+
+	checkAllFieldsValid = form_id => {
+		valid = true
+		validations = getValidations(form_id)
+		for (var name in validations) {
+			field_validations = validations[name]
+			value = getFieldByName(form_id, name).val()
+			for (validation of field_validations) {
+				fieldIsValid(value, validation)
+			}
+		}
+	}
+
+	$('body').on('blur', 'input, textarea', (e) => {
+		valid = true
+		name = e.currentTarget.name
+		form_id = e.currentTarget.form.id
+		validations = getFieldValidation(form_id, name)
+		value = getFieldByName(form_id, name).val()
+		for (validation of validations) {
+			runValidation(value, validation) ? '' : valid = false
+		}
+		addValidationClass(getFieldByName(form_id, name), valid)
+	})
+
+
 
 })
 
