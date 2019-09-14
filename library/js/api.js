@@ -38,7 +38,8 @@ $(document).ready(function () {
 	}
 
 	buildForm = data => {
-		captcha = shouldIncludeCaptcha(data.fields)
+		// captcha = shouldIncludeCaptcha(data.fields)
+		captcha = false
 	 	html = hiddenIdInput(data.id)
 		$.each(data.fields, function (i,input) {
 			html += createInput(input)
