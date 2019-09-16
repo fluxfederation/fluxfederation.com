@@ -162,10 +162,19 @@ $(document).ready(function () {
 	////////////////////////////////////////////////////////////////////////
 
 	talk_to_us_validations = {
-		'1' : ['aboveMinLength', 'belowMaxLength'],
+		'1' : ['aboveMinLength', 'belowMaxLength', 'noNumbers'],
 		'2' : ['isEmail'],
-		'3' : ['aboveMinLength', 'belowMaxLength']
+		'3' : ['aboveMinLength']
 	}
+
+	drop_a_line__validations = {
+		'3' : ['aboveMinLength', 'belowMaxLength', 'noNumbers'],
+		'4' : ['aboveMinLength', 'belowMaxLength'],
+		'5' : ['aboveMinLength', 'belowMaxLength'],
+		'6' : ['isEmail'],
+		'9' : ['aboveMinLength']
+	}
+
 
 	getValidations = id => {
 		switch(id) {
@@ -188,6 +197,9 @@ $(document).ready(function () {
 				break;
 			case 'isEmail':
 				return isEmail(val)
+				break
+			case 'noNumbers':
+				return noNumbers(val)
 				break
 		}
 	}
