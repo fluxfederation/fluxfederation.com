@@ -210,7 +210,7 @@ $(document).ready(function () {
 
 	isEmail = val => /\S+@\S+\.\S+/.test(val)
 
-	noNumbers = val => /\d/.test(val)
+	noNumbers = val => !/\d/.test(val)
 
 	getFieldByName = (form_id, input_name) => $(`form#${form_id} *[name="${input_name}"]`)
 
@@ -240,6 +240,7 @@ $(document).ready(function () {
 		validations = getFieldValidation(form_id, name)
 		value = getFieldByName(form_id, name).val()
 		for (validation of validations) {
+			console.log(`${value} : ${validation} : ${runValidation(value, validation)}`)
 			runValidation(value, validation) ? '' : valid = false
 		}
 		addValidationClass(getFieldByName(form_id, name), valid)
