@@ -41,6 +41,7 @@ $(document).ready(function () {
 		// captcha = shouldIncludeCaptcha(data.fields)
 		captcha = false
 	 	html = hiddenIdInput(data.id)
+	 	html += hiddenRedirectUrl(data)
 		$.each(data.fields, function (i,input) {
 			html += createInput(input)
 		})
@@ -70,6 +71,12 @@ $(document).ready(function () {
 		  break
 		}
 	}
+
+	// hiddenRedirectUrl = data => `<div id="redirect-url" display="none" href="${data.confirmations[Object.keys(data.confirmations)[0]].url}"></div>`
+	
+	hiddenRedirectUrl = data => `<div id="redirect-url" display="none" href="/thank-you/?thank=get-in-touch"></div>`
+
+	redirectAfterSuccess = url => window.location.href = url
 
 	radioInput = input => {
 		html = `<div class="radio-buttons" id="input-${input.id}" >`
@@ -148,6 +155,7 @@ $(document).ready(function () {
 				dataType: "json",
 				data: JSON.stringify(data),
 				success: function(data) {
+					redirectAfterSuccess($(`form#${form_id} #redirect-url`).attr('href'))
 					resolve(data)
 				},
 				error: function(error) {
@@ -240,7 +248,7 @@ $(document).ready(function () {
 		validations = getFieldValidation(form_id, name)
 		value = getFieldByName(form_id, name).val()
 		for (validation of validations) {
-			console.log(`${value} : ${validation} : ${runValidation(value, validation)}`)
+			// console.log(`${value} : ${validation} : ${runValidation(value, validation)}`)
 			runValidation(value, validation) ? '' : valid = false
 		}
 		addValidationClass(getFieldByName(form_id, name), valid)
