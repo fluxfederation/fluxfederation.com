@@ -243,9 +243,9 @@ $(document).ready(function () {
 		for (var input_id in validations) {
 			field_validations = validations[name]
 			value = getFieldByID(form_id, input_id).val()
-			for (validation of field_validations) {
+			$.each(field_validations, (i, validation) => {
 				fieldIsValid(value, validation) ? '' : valid = false
-			}
+			}) 
 		}
 		return valid
 	}
