@@ -82,13 +82,13 @@ $(document).ready(function () {
 	}
 
 	// hiddenRedirectUrl = data => `<div id="redirect-url" display="none" href="${data.confirmations[Object.keys(data.confirmations)[0]].url}"></div>`
-	
+
 	hiddenRedirectUrl = data => `<div id="redirect-url" display="none" href="/thank-you/?thank=get-in-touch"></div>`
 
 	redirectAfterSuccess = url => window.location.href = url
 
 	radioInput = input => {
-		html = `<div class="radio-buttons" id="input-${input.id}" >`
+		html = `<div class="radio-buttons" id="${input.cssClass}-container" >`
 		$.each(input.choices, function (i,v) {
 			html += `<p><input id="${v.value}" type="${input.type}" name="${input.id}${input.type == 'checkbox' ? `.${i+1}` : ""}" value="${v.value}" ${(v.isSelected ? " checked" : "" )}><label for="${v.value}">${v.text}</label></p>`
 		})
@@ -98,11 +98,11 @@ $(document).ready(function () {
 
 	captchaField = () => `<div class="g-recaptcha" data-sitekey="${captcha_sitekey}"></div>`
 
-	textInput = input => `<p id="input-${input.id}">${label(input)}<input name="${input.id}" type="${input.type}" placeholder="${input.placeholder}"></p>`
+	textInput = input => `<p id="${input.cssClass}-container">${label(input)}<input id="${input.cssClass}" name="${input.id}" type="${input.type}" placeholder="${input.placeholder}"></p>`
 	
-	textArea = input => `<p id="input-${input.id}">${label(input)}<textarea name="${input.id}" placeholder="${input.placeholder}"></textarea></p>`
+	textArea = input => `<p id="${input.cssClass}-container">${label(input)}<textarea id="${input.cssClass}" name="${input.id}" placeholder="${input.placeholder}"></textarea></p>`
 
-	label = input => `<label for="${input.id}">${input.label}</label>`
+	label = input => `<label for="${input.cssClass}">${input.label}</label>`
 
 	hiddenIdInput = id => `<input id="${id}" type="hidden" value="${id}" name="form_id"></input>`
 
@@ -179,9 +179,9 @@ $(document).ready(function () {
 	////////////////////////////////////////////////////////////////////////
 
 	talk_to_us_validations = {
-		'1' : ['aboveMinLength', 'belowMaxLength', 'noNumbers'],
-		'2' : ['isEmail'],
-		'3' : ['aboveMinLength']
+		'name-input' : ['aboveMinLength', 'belowMaxLength', 'noNumbers'],
+		'email-input' : ['isEmail'],
+		'help-textarea' : ['aboveMinLength']
 	}
 
 	drop_a_line__validations = {
@@ -229,20 +229,20 @@ $(document).ready(function () {
 
 	noNumbers = val => !/\d/.test(val)
 
-	getFieldByName = (form_id, input_name) => $(`form#${form_id} *[name="${input_name}"]`)
+	getFieldByID = (form_id, input_id) => $(`form#${form_id} *[id="${input_id}"]`)
 
 	fieldIsValid = (val, validation) => runValidation(val, validation)
 
-	getFieldValidation = (form_id, name) => getValidations(form_id)[name]
+	getFieldValidation = (form_id, input_id) => getValidations(form_id)[input_id]
 
 	addValidationClass = (input, valid) => valid ? input.removeClass('error').addClass('valid') : input.removeClass('valid').addClass('error')
 
 	allFieldsValid = form_id => {
 		valid = true
 		validations = getValidations(form_id)
-		for (var name in validations) {
+		for (var input_id in validations) {
 			field_validations = validations[name]
-			value = getFieldByName(form_id, name).val()
+			value = getFieldByID(form_id, input_id).val()
 			for (validation of field_validations) {
 				fieldIsValid(value, validation) ? '' : valid = false
 			}
@@ -252,15 +252,16 @@ $(document).ready(function () {
 
 	$('body').on('blur', 'input, textarea', (e) => {
 		valid = true
-		name = e.currentTarget.name
+		input_id = e.currentTarget.id
 		form_id = e.currentTarget.form.id
-		validations = getFieldValidation(form_id, name)
-		value = getFieldByName(form_id, name).val()
-		for (validation of validations) {
-			// console.log(`${value} : ${validation} : ${runValidation(value, validation)}`)
+		validations = getFieldValidation(form_id, input_id)
+		value = getFieldByID(form_id, input_id).val()
+		console.log(validations)
+		$.each(validations, (index, validation) => {
+			console.log(`${value} : ${validation} : ${runValidation(value, validation)}`)
 			runValidation(value, validation) ? '' : valid = false
-		}
-		addValidationClass(getFieldByName(form_id, name), valid)
+		})
+		addValidationClass(getFieldByID(form_id, input_id), valid)
 	})
 
 
