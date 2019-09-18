@@ -15,7 +15,11 @@ $(document).ready(function () {
 		'.drop-us-a-line-container .flux-button-container' : 'm-all t-1of4 right cf'
 	}
 
-	brochure_download_styles = talk_to_us_styles
+	brochure_download_styles = {
+		'#brochure-download-form-container #help-type-radio-container p' : 'm-all t-1of3',
+		'#brochure-download-form-container #email-checkbox-container' : 'news' ,
+		'#brochure-download-form-container #question-textarea' : 'full-width'
+	}
 
 	if ($('#talk-to-us').length) {
 		getFormData(1)
