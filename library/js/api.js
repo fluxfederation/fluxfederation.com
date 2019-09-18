@@ -199,7 +199,6 @@ $(document).ready(function () {
 		'question-textarea' : ['aboveMinLength']
 	}
 
-
 	getValidations = id => {
 		switch(id) {
 		case '1':
@@ -207,6 +206,9 @@ $(document).ready(function () {
 			break
 		case '2':
 			return drop_a_line__validations
+			break
+		case '3':
+			return talk_to_us_validations
 			break
 		}
 	}
