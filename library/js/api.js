@@ -3,9 +3,9 @@ $(document).ready(function () {
 	captcha_sitekey = '6Ld5v7cUAAAAANz28l09GqtI4KjKOuJcrwjn1HUD'
 
 	talk_to_us_styles = {
-		'#talk-to-us #input-2 p' : 'm-all t-1of3',
-		'#talk-to-us #input-14' : 'news' ,
-		'#talk-to-us textarea' : 'full-width'
+		'#talk-to-us #help-type-radio-container p' : 'm-all t-1of3',
+		'#talk-to-us #email-checkbox-container' : 'news' ,
+		'#talk-to-us #question-textarea' : 'full-width'
 	}
 
 	drop_a_line_styles = {
@@ -178,28 +178,28 @@ $(document).ready(function () {
 	// Validations //
 	////////////////////////////////////////////////////////////////////////
 
-	talk_to_us_validations = {
+	drop_a_line__validations = {
 		'name-input' : ['aboveMinLength', 'belowMaxLength', 'noNumbers'],
 		'email-input' : ['isEmail'],
 		'help-textarea' : ['aboveMinLength']
 	}
 
-	drop_a_line__validations = {
-		'3' : ['aboveMinLength', 'belowMaxLength', 'noNumbers'],
-		'4' : ['aboveMinLength', 'belowMaxLength'],
-		'5' : ['aboveMinLength', 'belowMaxLength'],
-		'6' : ['isEmail'],
-		'9' : ['aboveMinLength']
+	talk_to_us_validations = {
+		'name-input' : ['aboveMinLength', 'belowMaxLength', 'noNumbers'],
+		'company-input' : ['aboveMinLength', 'belowMaxLength'],
+		'role-input' : ['aboveMinLength', 'belowMaxLength'],
+		'email-input' : ['isEmail'],
+		'question-textarea' : ['aboveMinLength']
 	}
 
 
 	getValidations = id => {
 		switch(id) {
 		case '1':
-			return drop_a_line__validations
+			return talk_to_us_validations
 			break
 		case '2':
-			return talk_to_us_validations
+			return drop_a_line__validations
 			break
 		}
 	}
