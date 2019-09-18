@@ -50,15 +50,15 @@ $(document).ready(function () {
 	}
 
 	buildForm = data => {
-		console.log(data)
-		// captcha = shouldIncludeCaptcha(data.fields)
-		captcha = false
+		// console.log(data)
+		// captcha = false
 	 	html = hiddenIdInput(data.id)
 	 	html += hiddenRedirectUrl(data)
+	 	shouldIncludeCaptcha(data.fields) ? html += captchaDiv() : ''
 		$.each(data.fields, function (i,input) {
 			html += createInput(input)
 		})
-		html += submitButton(data.button, data.id, captcha)
+		html += submitButton(data.button, data.id)
 		return $(`<form id="${data.id}" enctype="text/plain"></form>`).append(html)
 	}
 
@@ -100,7 +100,7 @@ $(document).ready(function () {
 		return html
 	}
 
-	captchaField = () => `<div class="g-recaptcha" data-sitekey="${captcha_sitekey}"></div>`
+	captchaDiv = () => `<div class="g-recaptcha" data-sitekey="${captcha_sitekey}" data-size="invisible"></div>`
 
 	textInput = input => `<p id="${input.cssClass}-container">${label(input)}<input id="${input.cssClass}" name="${input.id}" type="${input.type}" placeholder="${input.placeholder}"></p>`
 	
@@ -110,7 +110,7 @@ $(document).ready(function () {
 
 	hiddenIdInput = id => `<input id="${id}" type="hidden" value="${id}" name="form_id"></input>`
 
-	submitButton = (button, id, captcha) => `<div class="flux-button-container"><div class="flux-button" id="${id}"><button data-sitekey="${captcha ? captcha_sitekey : '' }" class="${captcha ? 'g-recaptcha' : '' }" >${button.text}</button></div></div>`
+	submitButton = (button, id) => `<div class="flux-button-container"><div class="flux-button" id="${id}"><button>${button.text}</button></div></div>`
 
 	shouldIncludeCaptcha = fields => {
 		for (var field of fields) {
@@ -120,11 +120,12 @@ $(document).ready(function () {
 		}
 	}
 
-	addEntry = form => {
+	submitEntry = form => {
 		data = formDataToJson($(form).serializeArray())
-		postForm(data)
-		.then(data => console.log(data))
-		.catch(error => console.log(error))
+		console.log(grecaptcha.getResponse())
+		// postForm(data)
+		// .then(data => console.log(data))
+		// .catch(error => console.log(error))
 	}
 
 	formDataToJson = data => {
@@ -141,7 +142,7 @@ $(document).ready(function () {
 
 	$('body').on('submit', 'form', e => {
 		e.preventDefault()
-		addEntry(e.currentTarget)
+		submitEntry(e.currentTarget)
 	})
 
 	function getFormData(form_id) {
