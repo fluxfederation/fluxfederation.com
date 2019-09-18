@@ -15,13 +15,15 @@ $(document).ready(function () {
 		'.drop-us-a-line-container .flux-button-container' : 'm-all t-1of4 right cf'
 	}
 
+	brochure_download_styles = talk_to_us_styles
+
 	if ($('#talk-to-us').length) {
 		getFormData(1)
 		.then(data => buildForm(data))
 		.then(form => $('.talk-to-us-container').append(form))
 		.then(() => addCustomCss(talk_to_us_styles))
 		.catch(error => console.log(error))
-	}
+	}	
 
 	if ($('.drop-us-a-line-container').length) {
 		getFormData(2)
@@ -31,13 +33,20 @@ $(document).ready(function () {
 		.catch(error => console.log(error))
 	}
 
-
+	if ($('#brochure-download-form-container').length) {
+		getFormData(3)
+		.then(data => buildForm(data))
+		.then(form => $('#brochure-download-form-container').append(form))
+		.then(() => addCustomCss(brochure_download_styles))
+		.catch(error => console.log(error))
+	}
 
 	addCustomCss = (styles) => {
 		$.each(styles, (selector, classNames) => $(selector).addClass(classNames))
 	}
 
 	buildForm = data => {
+		console.log(data)
 		// captcha = shouldIncludeCaptcha(data.fields)
 		captcha = false
 	 	html = hiddenIdInput(data.id)
