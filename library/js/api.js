@@ -83,7 +83,7 @@ $(document).ready(function () {
 
 	// hiddenRedirectUrl = data => `<div id="redirect-url" display="none" href="${data.confirmations[Object.keys(data.confirmations)[0]].url}"></div>`
 
-	hiddenRedirectUrl = data => `<div id="redirect-url" display="none" href="/thank-you/?thank=get-in-touch"></div>`
+	hiddenRedirectUrl = data => `<input id="redirect-url" type="hidden" value="/thank-you/?thank=get-in-touch"></input>`
 
 	redirectAfterSuccess = url => window.location.href = url
 
@@ -156,15 +156,18 @@ $(document).ready(function () {
 	}
 
 	function postForm(data) {
+		form_id = data.form_id
 		return new Promise((resolve, reject) => {
 			$.ajax({
-				url: "https://fluxfederation.wpengine.com/wp-json/fluxapi/v1/form/" + data.form_id,
+				url: "https://fluxfederation.wpengine.com/wp-json/fluxapi/v1/form/" + form_id,
 				crossDomain: true,
 				method: 'POST',
 				dataType: "json",
 				data: JSON.stringify(data),
 				success: function(data) {
-					redirectAfterSuccess($(`form#${form_id} #redirect-url`).attr('href'))
+					redirect_url = $(`form#${form_id}`).find('#redirect-url').val()
+					console.log(redirect_url)
+					redirectAfterSuccess(redirect_url)
 					resolve(data)
 				},
 				error: function(error) {
