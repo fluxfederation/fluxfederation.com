@@ -1,6 +1,50 @@
 $(document).ready(function () {
 
 	captcha_sitekey = '6Ld5v7cUAAAAANz28l09GqtI4KjKOuJcrwjn1HUD'
+	captcha_response = null
+
+	function loadAsyncScript(url) {
+		return new Promise((resolve, reject) => {
+			script = document.createElement('script')
+			script.async = true
+			script.defer = true
+			script.onload = () => resolve()
+			script.onerror = () => reject()
+			script.src = url
+			document.getElementsByTagName("head")[0].appendChild(script);
+		})
+	}
+
+	loadAsyncScript('https://www.google.com/recaptcha/api.js')
+	.then(() => chooseFormToLoad())
+	.catch((error) => console.log(`Unable to load captcha : ${error}`))
+
+	chooseFormToLoad = () => {
+		if ($('#talk-to-us').length) {
+			getFormData(1)
+			.then(data => buildForm(data))
+			.then(form => $('.talk-to-us-container').append(form))
+			.then(() => addCustomCss(talk_to_us_styles))
+			.catch(error => console.log(error))
+		}	
+
+		if ($('.drop-us-a-line-container').length) {
+			getFormData(2)
+			.then(data => buildForm(data))
+			.then(form => $('.drop-us-a-line-container').append(form))
+			.then(() => addCustomCss(drop_a_line_styles))
+			.catch(error => console.log(error))
+		}
+
+		if ($('#brochure-download-form-container').length) {
+			getFormData(3)
+			.then(data => buildForm(data))
+			.then(form => $('#brochure-download-form-container').append(form))
+			.then(form => initCaptcha(form.id))
+			.then(() => addCustomCss(brochure_download_styles))
+			.catch(error => console.log(error))
+		}
+	}
 
 	talk_to_us_styles = {
 		'#talk-to-us #help-type-radio-container p' : 'm-all t-1of3',
@@ -17,32 +61,8 @@ $(document).ready(function () {
 
 	brochure_download_styles = {
 		'#brochure-download-form-container #help-type-radio-container p' : 'm-all t-1of3',
-		'#brochure-download-form-container #email-checkbox-container' : 'news' ,
+		'#brochure-download-form-container #email-checkbox-container' : 'news',
 		'#brochure-download-form-container #question-textarea' : 'full-width'
-	}
-
-	if ($('#talk-to-us').length) {
-		getFormData(1)
-		.then(data => buildForm(data))
-		.then(form => $('.talk-to-us-container').append(form))
-		.then(() => addCustomCss(talk_to_us_styles))
-		.catch(error => console.log(error))
-	}	
-
-	if ($('.drop-us-a-line-container').length) {
-		getFormData(2)
-		.then(data => buildForm(data))
-		.then(form => $('.drop-us-a-line-container').append(form))
-		.then(() => addCustomCss(drop_a_line_styles))
-		.catch(error => console.log(error))
-	}
-
-	if ($('#brochure-download-form-container').length) {
-		getFormData(3)
-		.then(data => buildForm(data))
-		.then(form => $('#brochure-download-form-container').append(form))
-		.then(() => addCustomCss(brochure_download_styles))
-		.catch(error => console.log(error))
 	}
 
 	addCustomCss = (styles) => {
@@ -50,11 +70,9 @@ $(document).ready(function () {
 	}
 
 	buildForm = data => {
-		// console.log(data)
-		// captcha = false
 	 	html = hiddenIdInput(data.id)
 	 	html += hiddenRedirectUrl(data)
-	 	shouldIncludeCaptcha(data.fields) ? html += captchaDiv() : ''
+	 	shouldIncludeCaptcha(data.fields) ? html += captchaDiv(data.id) : ''
 		$.each(data.fields, function (i,input) {
 			html += createInput(input)
 		})
@@ -100,8 +118,6 @@ $(document).ready(function () {
 		return html
 	}
 
-	captchaDiv = () => `<div class="g-recaptcha" data-sitekey="${captcha_sitekey}" data-size="invisible"></div>`
-
 	textInput = input => `<p id="${input.cssClass}-container">${label(input)}<input id="${input.cssClass}" name="${input.id}" type="${input.type}" placeholder="${input.placeholder}"></p>`
 	
 	textArea = input => `<p id="${input.cssClass}-container">${label(input)}<textarea id="${input.cssClass}" name="${input.id}" placeholder="${input.placeholder}"></textarea></p>`
@@ -120,9 +136,27 @@ $(document).ready(function () {
 		}
 	}
 
-	submitEntry = form => {
+	// captchaDiv = () => `<div class="g-recaptcha" data-sitekey="${captcha_sitekey}" data-callback="submitCaptcha" data-size="invisible"></div>`
+
+	captchaDiv = (id) => `<div id="recaptcha-${id}" data-form="${id}"></div>`
+
+	initCaptcha = (id) => {
+		grecaptcha.render(`recaptcha-${id}`, { 
+		  sitekey: captcha_sitekey, 
+		  callback: function(response) {
+		  	captcha_response = response
+		  	$(`form#${id}`).submit()
+		  }
+		})
+	}
+
+	hasCaptcha = form => $(`form#${form.id} .recaptcha`).length
+
+	submitCaptcha = response => response
+
+	processEntry = form => {
 		data = formDataToJson($(form).serializeArray())
-		console.log(grecaptcha.getResponse())
+		console.log(captcha_response)
 		// postForm(data)
 		// .then(data => console.log(data))
 		// .catch(error => console.log(error))
@@ -137,12 +171,20 @@ $(document).ready(function () {
 	$('body').on('click', 'form .flux-button', (e) => {
 		e.preventDefault()
 		id = e.currentTarget.id
-		allFieldsValid(id) ? $(`form#${id}`).submit() : ''
+		form = $(`form#${id}`)
+		console.log(allFieldsValid(id))
+		if (hasCaptcha(form) && allFieldsValid(id)) {
+			console.log('test')
+			grecaptcha.execute()
+		} else if (allFieldsValid(id)) {
+			form.submit()
+		}
 	})
 
 	$('body').on('submit', 'form', e => {
 		e.preventDefault()
-		submitEntry(e.currentTarget)
+		form = e.currentTarget
+		processEntry(form)
 	})
 
 	function getFormData(form_id) {
@@ -200,6 +242,13 @@ $(document).ready(function () {
 		'question-textarea' : ['aboveMinLength']
 	}
 
+	brochure_download_validations = {
+		'name-input' : ['aboveMinLength', 'belowMaxLength', 'noNumbers'],
+		'company-input' : ['aboveMinLength', 'belowMaxLength'],
+		'role-input' : ['aboveMinLength', 'belowMaxLength'],
+		'email-input' : ['isEmail']
+	}
+
 	getValidations = id => {
 		switch(id) {
 		case '1':
@@ -209,7 +258,7 @@ $(document).ready(function () {
 			return drop_a_line__validations
 			break
 		case '3':
-			return talk_to_us_validations
+			return brochure_download_validations
 			break
 		}
 	}
@@ -251,7 +300,7 @@ $(document).ready(function () {
 		valid = true
 		validations = getValidations(form_id)
 		for (var input_id in validations) {
-			field_validations = validations[name]
+			field_validations = validations[input_id]
 			value = getFieldByID(form_id, input_id).val()
 			$.each(field_validations, (i, validation) => {
 				fieldIsValid(value, validation) ? '' : valid = false
@@ -266,9 +315,8 @@ $(document).ready(function () {
 		form_id = e.currentTarget.form.id
 		validations = getFieldValidation(form_id, input_id)
 		value = getFieldByID(form_id, input_id).val()
-		console.log(validations)
 		$.each(validations, (index, validation) => {
-			console.log(`${value} : ${validation} : ${runValidation(value, validation)}`)
+			// console.log(`${value} : ${validation} : ${runValidation(value, validation)}`)
 			runValidation(value, validation) ? '' : valid = false
 		})
 		addValidationClass(getFieldByID(form_id, input_id), valid)
