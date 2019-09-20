@@ -1,25 +1,25 @@
 $(document).ready(function () {
 
 	captcha_sitekey = '6Ld5v7cUAAAAANz28l09GqtI4KjKOuJcrwjn1HUD'
-	captcha_response = null
+	submitted_form_id = 0
+	// captcha_loaded = false
 
-	function loadAsyncScript(url) {
-		return new Promise((resolve, reject) => {
-			script = document.createElement('script')
-			script.async = true
-			script.defer = true
-			script.onload = () => resolve()
-			script.onerror = () => reject()
-			script.src = url
-			document.getElementsByTagName("head")[0].appendChild(script);
-		})
+	// waitForCaptcha()
+	// .then(() => conditionFormRender())
+	// .catch((error) => console.log(`Unable to load captcha : ${error}`))
+
+	// function waitForCaptcha() {
+	// 	return new Promise((resolve,reject) => {
+	// 		setTimeout(() => { captcha_loaded ? resolve() : '' }, 150);
+	// 	})
+	// }
+
+	captchaLoaded = () => {
+		// captcha_loaded = true
+		conditionFormRender()
 	}
 
-	loadAsyncScript('https://www.google.com/recaptcha/api.js')
-	.then(() => chooseFormToLoad())
-	.catch((error) => console.log(`Unable to load captcha : ${error}`))
-
-	chooseFormToLoad = () => {
+	conditionFormRender = () => {
 		if ($('#talk-to-us').length) {
 			getFormData(1)
 			.then(data => buildForm(data))
@@ -40,7 +40,7 @@ $(document).ready(function () {
 			getFormData(3)
 			.then(data => buildForm(data))
 			.then(form => $('#brochure-download-form-container').append(form))
-			.then(form => initCaptcha(form.id))
+			.then(form => initCaptcha())
 			.then(() => addCustomCss(brochure_download_styles))
 			.catch(error => console.log(error))
 		}
@@ -136,16 +136,14 @@ $(document).ready(function () {
 		}
 	}
 
-	// captchaDiv = () => `<div class="g-recaptcha" data-sitekey="${captcha_sitekey}" data-callback="submitCaptcha" data-size="invisible"></div>`
+	captchaDiv = () => `<div id="recaptcha" data-size="invisible"></div>`
 
-	captchaDiv = (id) => `<div id="recaptcha-${id}" data-form="${id}"></div>`
-
-	initCaptcha = (id) => {
-		grecaptcha.render(`recaptcha-${id}`, { 
-		  sitekey: captcha_sitekey, 
+	initCaptcha = () => {
+		grecaptcha.render(`recaptcha`, { 
+		  sitekey: captcha_sitekey,
 		  callback: function(response) {
 		  	captcha_response = response
-		  	$(`form#${id}`).submit()
+		  	$(`form#${submitted_form_id}`).submit()
 		  }
 		})
 	}
@@ -172,10 +170,9 @@ $(document).ready(function () {
 		e.preventDefault()
 		id = e.currentTarget.id
 		form = $(`form#${id}`)
-		console.log(allFieldsValid(id))
+		submitted_form_id = id
 		if (hasCaptcha(form) && allFieldsValid(id)) {
-			console.log('test')
-			grecaptcha.execute()
+			grecaptcha.execute(submitted_form_id)
 		} else if (allFieldsValid(id)) {
 			form.submit()
 		}
