@@ -190,6 +190,7 @@ $(document).ready(function () {
 
 	function postForm(data) {
 		form_id = data.form_id
+		console.log(data)
 		return new Promise((resolve, reject) => {
 			$.ajax({
 				url: "https://fluxfederation.wpengine.com/wp-json/fluxapi/v1/form/" + form_id,
