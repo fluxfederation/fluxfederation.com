@@ -154,9 +154,10 @@ $(document).ready(function () {
 
 	submitCaptcha = response => response
 
-	processEntry = form => {
+	processEntry = (form, captcha_response = null) => {
 		data = formDataToJson($(form).serializeArray())
-		console.log(captcha_response)
+		captcha_response ? data = { ...data, captcha_response: captcha_response } : ''
+		console.log(data)
 		// postForm(data)
 		// .then(data => console.log(data))
 		// .catch(error => console.log(error))
@@ -173,8 +174,6 @@ $(document).ready(function () {
 		id = e.currentTarget.id
 		form = $(`form#${id}`)
 		submitted_form_id = id
-		console.log(checkCaptcha())
-		console.log(allFieldsValid(id))
 		if (checkCaptcha() && allFieldsValid(id)) {
 			grecaptcha.execute()
 		} else if (!checkCaptcha() && allFieldsValid(id)) {
