@@ -2,6 +2,7 @@ $(document).ready(function () {
 
 	captcha_sitekey = '6Ld5v7cUAAAAANz28l09GqtI4KjKOuJcrwjn1HUD'
 	submitted_form_id = 0
+	captcha_response = ''
 	// captcha_loaded = false
 
 	// waitForCaptcha()
@@ -142,13 +143,14 @@ $(document).ready(function () {
 		grecaptcha.render(`recaptcha`, { 
 		  sitekey: captcha_sitekey,
 		  callback: function(response) {
+		  	console.log(response)
 		  	captcha_response = response
 		  	$(`form#${submitted_form_id}`).submit()
 		  }
 		})
 	}
 
-	hasCaptcha = form => $(`form#${form.id} .recaptcha`).length
+	checkCaptcha = () => $(`#recaptcha`).length
 
 	submitCaptcha = response => response
 
@@ -171,9 +173,11 @@ $(document).ready(function () {
 		id = e.currentTarget.id
 		form = $(`form#${id}`)
 		submitted_form_id = id
-		if (hasCaptcha(form) && allFieldsValid(id)) {
-			grecaptcha.execute(submitted_form_id)
-		} else if (allFieldsValid(id)) {
+		console.log(checkCaptcha())
+		console.log(allFieldsValid(id))
+		if (checkCaptcha() && allFieldsValid(id)) {
+			grecaptcha.execute()
+		} else if (!checkCaptcha() && allFieldsValid(id)) {
 			form.submit()
 		}
 	})
