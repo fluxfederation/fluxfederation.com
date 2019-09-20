@@ -1,22 +1,10 @@
 $(document).ready(function () {
 
 	captcha_sitekey = '6Ld5v7cUAAAAANz28l09GqtI4KjKOuJcrwjn1HUD'
-	submitted_form_id = 0
-	captcha_response = ''
-	// captcha_loaded = false
-
-	// waitForCaptcha()
-	// .then(() => conditionFormRender())
-	// .catch((error) => console.log(`Unable to load captcha : ${error}`))
-
-	// function waitForCaptcha() {
-	// 	return new Promise((resolve,reject) => {
-	// 		setTimeout(() => { captcha_loaded ? resolve() : '' }, 150);
-	// 	})
-	// }
+	submitted_form_id = null
+	captcha_response = null
 
 	captchaLoaded = () => {
-		// captcha_loaded = true
 		conditionFormRender()
 	}
 
@@ -73,7 +61,7 @@ $(document).ready(function () {
 	buildForm = data => {
 	 	html = hiddenIdInput(data.id)
 	 	html += hiddenRedirectUrl(data)
-	 	shouldIncludeCaptcha(data.fields) ? html += captchaDiv(data.id) : ''
+	 	shouldIncludeCaptcha(data.fields) ? captchaDiv() : ''
 		$.each(data.fields, function (i,input) {
 			html += createInput(input)
 		})
@@ -137,30 +125,28 @@ $(document).ready(function () {
 		}
 	}
 
-	captchaDiv = () => `<div id="recaptcha" data-size="invisible"></div>`
+	captchaDiv = () => $('body').append(`<div id="recaptcha" data-size="invisible"></div>`)
 
 	initCaptcha = () => {
 		grecaptcha.render(`recaptcha`, { 
 		  sitekey: captcha_sitekey,
 		  callback: function(response) {
-		  	console.log(response)
 		  	captcha_response = response
 		  	$(`form#${submitted_form_id}`).submit()
 		  }
 		})
 	}
 
-	checkCaptcha = () => $(`#recaptcha`).length
+	isCaptchaPresent = () => $(`#recaptcha`).length
 
 	submitCaptcha = response => response
 
 	processEntry = (form, captcha_response = null) => {
 		data = formDataToJson($(form).serializeArray())
 		captcha_response ? data = { ...data, captcha_response: captcha_response } : ''
-		console.log(data)
-		// postForm(data)
-		// .then(data => console.log(data))
-		// .catch(error => console.log(error))
+		postForm(data)
+		.then(data => console.log(data))
+		.catch(error => console.log(error))
 	}
 
 	formDataToJson = data => {
@@ -174,9 +160,9 @@ $(document).ready(function () {
 		id = e.currentTarget.id
 		form = $(`form#${id}`)
 		submitted_form_id = id
-		if (checkCaptcha() && allFieldsValid(id)) {
+		if (isCaptchaPresent() && allFieldsValid(id)) {
 			grecaptcha.execute()
-		} else if (!checkCaptcha() && allFieldsValid(id)) {
+		} else if (!isCaptchaPresent() && allFieldsValid(id)) {
 			form.submit()
 		}
 	})
@@ -184,7 +170,7 @@ $(document).ready(function () {
 	$('body').on('submit', 'form', e => {
 		e.preventDefault()
 		form = e.currentTarget
-		processEntry(form)
+		captcha_response ? processEntry(form, captcha_response) : processEntry(form)
 	})
 
 	function getFormData(form_id) {
@@ -213,9 +199,9 @@ $(document).ready(function () {
 				data: JSON.stringify(data),
 				success: function(data) {
 					redirect_url = $(`form#${form_id}`).find('#redirect-url').val()
-					console.log(redirect_url)
-					redirectAfterSuccess(redirect_url)
-					resolve(data)
+					console.log(data)
+					// redirectAfterSuccess(redirect_url)
+					// resolve(data)
 				},
 				error: function(error) {
 					reject(error)
