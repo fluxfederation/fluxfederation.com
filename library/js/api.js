@@ -35,6 +35,14 @@ $(document).ready(function () {
 			.then(() => addCustomCss(brochure_download_styles))
 			.catch(error => console.log(error))
 		}
+
+		if ($('#get-in-touch-form-2').length) {
+			getFormData(5)
+			.then(data => buildForm(data))
+			.then(form => $('#get-in-touch-form-2').append(form))
+			.then(() => addCustomCss(talk_to_us_styles))
+			.catch(error => console.log(error))
+		}
 	}
 
 	talk_to_us_styles = {
