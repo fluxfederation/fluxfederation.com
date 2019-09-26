@@ -5,15 +5,17 @@ $(document).ready(function () {
 	captcha_response = null
 
 	captchaLoaded = () => {
-		conditionFormRender()
+		appendCaptchaDiv()
+		initCaptcha()
+		setupForms()
 	}
 
-	conditionFormRender = () => {
+	setupForms = () => {
+
 		if ($('#talk-to-us').length) {
 			getFormData(1)
 			.then(data => buildForm(data))
 			.then(form => $('.talk-to-us-container').append(form))
-			.then(() => initCaptcha())
 			.then(() => addCustomCss(talk_to_us_styles))
 			.catch(error => console.log(error))
 		}	
@@ -22,7 +24,6 @@ $(document).ready(function () {
 			getFormData(2)
 			.then(data => buildForm(data))
 			.then(form => $('.drop-us-a-line-container').append(form))
-			.then(() => initCaptcha())
 			.then(() => addCustomCss(drop_a_line_styles))
 			.catch(error => console.log(error))
 		}
@@ -31,7 +32,6 @@ $(document).ready(function () {
 			getFormData(3)
 			.then(data => buildForm(data))
 			.then(form => $('#brochure-download-form-container').append(form))
-			.then(() => initCaptcha())
 			.then(() => addCustomCss(brochure_download_styles))
 			.catch(error => console.log(error))
 		}
@@ -63,9 +63,6 @@ $(document).ready(function () {
 	buildForm = data => {
 	 	html = hiddenIdInput(data.id)
 	 	html += hiddenRedirectUrl(data)
-	 	console.log(!captchaIsPresent())
-	 	console.log(shouldIncludeCaptcha(data.fields))
-	 	shouldIncludeCaptcha(data.fields) && !captchaIsPresent() ? captchaDiv() : ''
 		$.each(data.fields, function (i,input) {
 			html += createInput(input)
 		})
@@ -129,23 +126,19 @@ $(document).ready(function () {
 		}
 	}
 
-	captchaDiv = () => $('body').append(`<div id="recaptcha" data-size="invisible"></div>`)
+	appendCaptchaDiv = () => $('body').append(`<div id="recaptcha" data-size="invisible"></div>`)
 
 	initCaptcha = () => {
-		if ($('#recaptcha').length) {
-			grecaptcha.render(`recaptcha`, { 
-			  sitekey: captcha_sitekey,
-			  callback: function(response) {
-			  	captcha_response = response
-			  	$(`form#${submitted_form_id}`).submit()
-			  }
-			})
-		}
+		grecaptcha.render(`recaptcha`, { 
+		  sitekey: captcha_sitekey,
+		  callback: function(response) {
+		  	captcha_response = response
+		  	$(`form#${submitted_form_id}`).submit()
+		  }
+		})
 	}
 
 	captchaIsPresent = () => $(`#recaptcha`).length
-
-	submitCaptcha = response => response
 
 	processEntry = (form, captcha_response = null) => {
 		data = formDataToJson($(form).serializeArray())
@@ -166,11 +159,7 @@ $(document).ready(function () {
 		id = e.currentTarget.id
 		form = $(`form#${id}`)
 		submitted_form_id = id
-		if (captchaIsPresent() && allFieldsValid(id)) {
-			grecaptcha.execute()
-		} else if (!captchaIsPresent() && allFieldsValid(id)) {
-			form.submit()
-		}
+		allFieldsValid(id) ? grecaptcha.execute() : ''
 	})
 
 	$('body').on('submit', 'form', e => {
@@ -297,6 +286,7 @@ $(document).ready(function () {
 			value = getFieldByID(form_id, input_id).val()
 			$.each(field_validations, (i, validation) => {
 				fieldIsValid(value, validation) ? '' : valid = false
+				addValidationClass(getFieldByID(form_id, input_id), valid)
 			}) 
 		}
 		return valid
@@ -309,7 +299,6 @@ $(document).ready(function () {
 		validations = getFieldValidation(form_id, input_id)
 		value = getFieldByID(form_id, input_id).val()
 		$.each(validations, (index, validation) => {
-			// console.log(`${value} : ${validation} : ${runValidation(value, validation)}`)
 			runValidation(value, validation) ? '' : valid = false
 		})
 		addValidationClass(getFieldByID(form_id, input_id), valid)
