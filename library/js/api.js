@@ -40,7 +40,7 @@ $(document).ready(function () {
 			getFormData(5)
 			.then(data => buildForm(data))
 			.then(form => $('#get-in-touch-form-2').append(form))
-			.then(() => addCustomCss(talk_to_us_styles))
+			.then(() => addCustomCss(drop_a_line_styles))
 			.catch(error => console.log(error))
 		}
 	}
@@ -245,6 +245,7 @@ $(document).ready(function () {
 			return talk_to_us_validations
 			break
 		case '2':
+		case '5':
 			return drop_a_line__validations
 			break
 		case '3':

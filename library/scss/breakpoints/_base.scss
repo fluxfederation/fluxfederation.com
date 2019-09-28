@@ -958,14 +958,14 @@ section.remove-padding {
 	display: none;
 }
 
-#get-in-touch-form-2 {
-	input[type="text"],
+#get-in-touch-form-2 { 
+	input,
 	textarea {
 		background-color: transparent;
 		border: none;
 		border-bottom: 1px solid $pink;
 	}
-}
+} 
 
 .video-wrapper {
 	padding-top:1rem;

@@ -2333,7 +2333,7 @@ section.remove-padding {
 #get-in-touch-response-2 {
   display: none; }
 
-#get-in-touch-form-2 input[type="text"],
+#get-in-touch-form-2 input,
 #get-in-touch-form-2 textarea {
   background-color: transparent;
   border: none;
