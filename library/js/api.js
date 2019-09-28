@@ -150,10 +150,11 @@ $(document).ready(function () {
 	captchaIsPresent = () => $(`#recaptcha`).length
 
 	toggleCaptchaBadgeDisplay = () => {
-		display = $('.grecaptcha-badge').css('display')
-		console.log(display)
-		display == 'block' ? display = 'none' : display = 'block'
-		$('.grecaptcha-badge').css({'display': display})
+		if (!$('#talk-to-us').length && !$('#brochure-download-form-container').length) {
+			display = $('.grecaptcha-badge').css('display')
+			display == 'block' ? display = 'none' : display = 'block'
+			$('.grecaptcha-badge').css({'display': display})
+		}
 	}
 
 	processEntry = (form, captcha_response = null) => {
