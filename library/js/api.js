@@ -5,8 +5,9 @@ $(document).ready(function () {
 	captcha_response = null
 
 	captchaLoaded = () => {
-		appendCaptchaDiv()
+		appendCaptchaWatcher()
 		initCaptcha()
+		toggleCaptchaBadgeDisplay()
 		setupForms()
 	}
 
@@ -134,7 +135,7 @@ $(document).ready(function () {
 		}
 	}
 
-	appendCaptchaDiv = () => $('body').append(`<div id="recaptcha" data-size="invisible"></div>`)
+	appendCaptchaWatcher = () => $('body').append(`<div id="recaptcha" data-size="invisible"></div>`)
 
 	initCaptcha = () => {
 		grecaptcha.render(`recaptcha`, { 
@@ -147,6 +148,13 @@ $(document).ready(function () {
 	}
 
 	captchaIsPresent = () => $(`#recaptcha`).length
+
+	toggleCaptchaBadgeDisplay = () => {
+		display = $('.grecaptcha-badge').css('display')
+		console.log(display)
+		display == 'block' ? display = 'none' : display = 'block'
+		$('.grecaptcha-badge').css({'display': display})
+	}
 
 	processEntry = (form, captcha_response = null) => {
 		data = formDataToJson($(form).serializeArray())
@@ -176,6 +184,10 @@ $(document).ready(function () {
 		captcha_response ? processEntry(form, captcha_response) : processEntry(form)
 	})
 
+	$('body').on('click', 'a.drop-us-a-line', () => {
+		toggleCaptchaBadgeDisplay()
+	})
+
 	function getFormData(form_id) {
 		return new Promise((resolve, reject) => {
 			$.ajax({
@@ -193,7 +205,6 @@ $(document).ready(function () {
 
 	function postForm(data) {
 		form_id = data.form_id
-		console.log(data)
 		return new Promise((resolve, reject) => {
 			$.ajax({
 				url: "https://fluxfederation.wpengine.com/wp-json/fluxapi/v1/form/" + form_id,
@@ -203,9 +214,8 @@ $(document).ready(function () {
 				data: JSON.stringify(data),
 				success: function(data) {
 					redirect_url = $(`form#${form_id}`).find('#redirect-url').val()
-					console.log(data)
-					// redirectAfterSuccess(redirect_url)
-					// resolve(data)
+					redirectAfterSuccess(redirect_url)
+					resolve(data)
 				},
 				error: function(error) {
 					reject(error)
