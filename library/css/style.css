@@ -2638,6 +2638,21 @@ FOOTER STYLES
 body.white-footer #footer .wrap .line {
   display: block; }
 
+.cookie-disclaimer {
+  z-index: 10;
+  width: 100%;
+  background-color: #d2d2d2;
+  position: fixed;
+  top: 100%;
+  padding: 3px 0;
+  transform: translateY(-100%);
+  text-align: center;
+  line-height: 24px; }
+  .cookie-disclaimer p {
+    padding: 0;
+    margin: 0;
+    line-height: 1.6; }
+
 /*********************
 LARGER MOBILE DEVICES
 This is for devices like the Galaxy Note or something that's
