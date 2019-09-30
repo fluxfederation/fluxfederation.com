@@ -2652,6 +2652,10 @@ body.white-footer #footer .wrap .line {
     padding: 0;
     margin: 0;
     line-height: 1.6; }
+  .cookie-disclaimer-close {
+    float: right;
+    margin-right: 25px;
+    font-weight: bold; }
 
 /*********************
 LARGER MOBILE DEVICES

@@ -4,6 +4,8 @@ $(document).ready(function () {
 	submitted_form_id = null
 	captcha_response = null
 
+	localStorage.getItem("cookies-ok") != 'true' ? $('.cookie-disclaimer').show() : ''
+
 	captchaLoaded = () => {
 		appendCaptchaWatcher()
 		initCaptcha()
@@ -104,6 +106,10 @@ $(document).ready(function () {
 
 	// hiddenRedirectUrl = data => `<div id="redirect-url" display="none" href="${data.confirmations[Object.keys(data.confirmations)[0]].url}"></div>`
 
+	setCookiesClose = () => {
+		localStorage.setItem("cookies-ok", 'true')
+	}
+
 	hiddenRedirectUrl = data => `<input id="redirect-url" type="hidden" value="/thank-you/?thank=get-in-touch"></input>`
 
 	redirectAfterSuccess = url => window.location.href = url
@@ -187,6 +193,11 @@ $(document).ready(function () {
 
 	$('body').on('click', 'a.drop-us-a-line', () => {
 		toggleCaptchaBadgeDisplay()
+	})
+
+	$('body').on('click', '.cookie-disclaimer-close', () => {
+		setCookiesClose()
+		$('.cookie-disclaimer').hide()
 	})
 
 	function getFormData(form_id) {

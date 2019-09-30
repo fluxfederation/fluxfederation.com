@@ -1508,4 +1508,9 @@ body.white-footer #footer .wrap .line {
 		margin: 0;
 		line-height: 1.6;
 	}
+	&-close {
+		float: right;
+		margin-right: 25px;
+		font-weight: bold;
+	}
 }
