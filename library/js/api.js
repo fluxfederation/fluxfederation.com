@@ -1,6 +1,6 @@
 $(document).ready(function () {
 
-	captcha_sitekey = '6Ld5v7cUAAAAANz28l09GqtI4KjKOuJcrwjn1HUD'
+	captcha_sitekey = '6LcAZbsUAAAAAGfUVO4VBM5DVEkPySuVX186Kg72'
 	submitted_form_id = null
 	captcha_response = null
 
