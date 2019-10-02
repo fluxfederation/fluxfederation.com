@@ -111,13 +111,13 @@ $(document).ready(function () {
 		}
 	}
 
-	// hiddenRedirectUrl = data => `<div id="redirect-url" display="none" href="${data.confirmations[Object.keys(data.confirmations)[0]].url}"></div>`
+	pathFromUrl = url => new URL(url).pathname
+
+	hiddenRedirectUrl = data => `<input id="redirect-url" type="hidden" value="${pathFromUrl(data.confirmations[Object.keys(data.confirmations)[0]].url)}"></input>`
 
 	setCookiesClose = () => {
 		localStorage.setItem("cookies-ok", 'true')
 	}
-
-	hiddenRedirectUrl = data => `<input id="redirect-url" type="hidden" value="/thank-you/?thank=get-in-touch"></input>`
 
 	redirectAfterSuccess = url => window.location.href = url
 
