@@ -17,5 +17,13 @@ $(document).ready(function () {
 		$('#get-in-touch-form-2').length ? forms.brochureDownload = new Form(5, 1, '#get-in-touch-form-2') : ''
 	}
 
+	$('body').on('click', 'form .flux-button', (e) => {
+		e.preventDefault()
+		id = e.currentTarget.id
+		form = $(`form#${id}`)
+		submitted_form_id = id
+		allFieldsValid(id) ? grecaptcha.execute() : ''
+	})
+
 
 })

@@ -5,12 +5,6 @@ class Captcha {
 	 	self = this
 	}
 
-	captchaLoaded() {
-		self.appendCaptchaWatcher()
-		self.initCaptcha()
-		self.toggleCaptchaBadgeDisplay()
-	}
-
 	appendCaptchaWatcher() {
 		$('body').append(`<div id="recaptcha" data-size="invisible"></div>`)	
 	} 

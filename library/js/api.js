@@ -1,3 +1,10 @@
+captchaLoaded = () => {
+	$(document).ready(function () {
+		captchaAndDocumentLoaded()
+	})
+}
+
+
 $(document).ready(function () {
 
 	captcha_sitekey = '6Ld5v7cUAAAAANz28l09GqtI4KjKOuJcrwjn1HUD'
@@ -6,7 +13,7 @@ $(document).ready(function () {
 
 	localStorage.getItem("cookies-ok") != 'true' ? $('.cookie-disclaimer').show() : ''
 
-	captchaLoaded = () => {
+	captchaAndDocumentLoaded = () => {
 		appendCaptchaWatcher()
 		initCaptcha()
 		toggleCaptchaBadgeDisplay()
