@@ -387,6 +387,11 @@ section ul, section ol {
 	}
 }
 
+b, strong, .strong { 
+	font-weight:600;
+	-webkit-font-smoothing: antialiased;
+}
+
 /*********************
 HEADER STYLES
 *********************/
