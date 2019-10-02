@@ -2973,6 +2973,9 @@ you can add resource intensive styles.
   /*********************
   CONTENT STYLES
   *********************/
+  .cookie-disclaimer {
+    text-align: center; }
+
   .page .inline {
     display: inline-block;
     float: none;
