@@ -1,3 +1,10 @@
+captchaLoaded = () => {
+	$(document).ready(function () {
+		captchaAndDocumentLoaded()
+	})
+}
+
+
 $(document).ready(function () {
 
 	captcha_sitekey = '6LcAZbsUAAAAAGfUVO4VBM5DVEkPySuVX186Kg72'
@@ -6,7 +13,7 @@ $(document).ready(function () {
 
 	localStorage.getItem("cookies-ok") != 'true' ? $('.cookie-disclaimer').show() : ''
 
-	captchaLoaded = () => {
+	captchaAndDocumentLoaded = () => {
 		appendCaptchaWatcher()
 		initCaptcha()
 		toggleCaptchaBadgeDisplay()
@@ -104,13 +111,13 @@ $(document).ready(function () {
 		}
 	}
 
-	// hiddenRedirectUrl = data => `<div id="redirect-url" display="none" href="${data.confirmations[Object.keys(data.confirmations)[0]].url}"></div>`
+	pathFromUrl = url => new URL(url).pathname
+
+	hiddenRedirectUrl = data => `<input id="redirect-url" type="hidden" value="${pathFromUrl(data.confirmations[Object.keys(data.confirmations)[0]].url)}"></input>`
 
 	setCookiesClose = () => {
 		localStorage.setItem("cookies-ok", 'true')
 	}
-
-	hiddenRedirectUrl = data => `<input id="redirect-url" type="hidden" value="/thank-you/?thank=get-in-touch"></input>`
 
 	redirectAfterSuccess = url => window.location.href = url
 
