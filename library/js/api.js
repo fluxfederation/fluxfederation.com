@@ -4,7 +4,6 @@ captchaLoaded = () => {
 	})
 }
 
-
 $(document).ready(function () {
 
 	captcha_sitekey = '6LcAZbsUAAAAAGfUVO4VBM5DVEkPySuVX186Kg72'
