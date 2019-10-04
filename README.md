@@ -24,4 +24,4 @@
 - Make sure latest version of node is installed
 - `npm install`
 - `npx babel library/js/api --out-file library/js/api.min.js --presets minify`
-- Or if you want the script to watch for updates: `npx babel library/js/api --watch --out-file library/js/api.min.js --presets minify`
+- Or if you want the script to watch for updates: `npx babel library/js/api --watch --out-file library/js/api.min.js --presets minify --verbose`
