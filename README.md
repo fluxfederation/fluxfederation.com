@@ -18,7 +18,7 @@
 - Append new form within the `setUpForms` function.
 - Add custom styles if neccesary.
 
-#Babel Instructions
+## Babel Instructions 
 
 - Navigate to root directory
 - Make sure latest version of node is installed
