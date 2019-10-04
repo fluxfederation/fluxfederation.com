@@ -1,3 +1,7 @@
+// OLD FILE
+// NO LONGER USED
+// SOON TO DELETE
+
 captchaLoaded = () => {
 	$(document).ready(function () {
 		captchaAndDocumentLoaded()

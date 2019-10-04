@@ -48,8 +48,7 @@ $(document).ready(function () {
 	$('body').on('click', 'a.drop-us-a-line', () => {
 		toggleCaptchaBadgeDisplay()
 	})
-
-
+	
 })
 
 
