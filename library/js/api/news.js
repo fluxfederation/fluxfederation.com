@@ -1,7 +1,7 @@
 $(document).ready(function () {
 	if ($('.events-page').length) {
 		getEventsData()
-		.then((data) => $.each(data.reverse(), (i, event) => $('.events-page').append(buildEventItem(event))))
+		.then((events) => addEventsToPage(events))
 	}
 
 	function getEventsData() {
@@ -19,21 +19,26 @@ $(document).ready(function () {
 		})	
 	}
 
-	buildEventItem = event => {
+	addEventsToPage = events => {
+		html =`<section class="white"><article class="wrap cf">`
+		$.each(events.reverse(), (i, event) => html += eventItem(event))
+		html += `</section>`
+		$('.events-page').append(html)
+	}
+
+	eventItem = event => {
 		console.log(event)
 		html = 
-		`<section class="white">
-			<article class="wrap cf">
-				<div class="m-all t-1of2 d-8of12" style="height: 100%;"> 
-					<div style="background-image: url(${event.image_url}); width: 100%; height: 100%; display: inline-block;"></div>
+			`<div class="table-layout">
+				<div class="m-all t-4of12">
+					<img src="${event.image_url}" style="object-fit: contain; max-height: 200px;">
 				</div>
-				<div class="m-all t-1of2 d-4of12">
+				<div class="m-all t-7of12 t-offset-left-1of12">
 					<h2>${event.title}</h2>
 					<h4>${event.dates}</h4>
 					<p>${event.blurb}</p>
 				</div>
-			<article>
-		</section>`
+			</div>`
 		return html
 	}
 
