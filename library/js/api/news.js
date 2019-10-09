@@ -1,8 +1,7 @@
 $(document).ready(function () {
-	if ($('.events-page').length) {
-		getEventsData()
-		.then((events) => addEventsToPage(events))
-	}
+
+	$('.events-page').length ? getEventsData().then((events) => addEventsToPage(events)) : ''
+	$('.blog-page').length ? getBlogPosts().then((events) => addBlogsToPage(events)) : ''
 
 	function getEventsData() {
 		return new Promise((resolve, reject) => {
@@ -19,6 +18,23 @@ $(document).ready(function () {
 		})	
 	}
 
+	function getBlogPosts() {
+		return new Promise((resolve, reject) => {
+			$.ajax({
+				url: "https://fluxfederation.wpengine.com/wp-json/fluxapi/v1/posts",
+				crossDomain: true,
+				success: function(data) {
+					resolve(data)
+				},
+				error: function(error) {
+					console.log(error)
+				}
+			})
+		})	
+	}
+
+
+
 	addEventsToPage = events => {
 		html =`<section class="white"><article class="wrap cf">`
 		$.each(events.reverse(), (i, event) => html += eventItem(event))
@@ -26,8 +42,11 @@ $(document).ready(function () {
 		$('.events-page').append(html)
 	}
 
+	addBlogsToPage = blogs => {
+		console.log(blogs)
+	}
+
 	eventItem = event => {
-		console.log(event)
 		html = 
 			`<div class="table-layout">
 				<div class="m-all t-4of12">
