@@ -44,10 +44,22 @@ $(document).ready(function () {
 
 	addBlogsToPage = blogs => {
 		html =`<section class="white"><article class="wrap cf">`
-		$.each(blogs.reverse(), (i, blog) => html += blogItem(blog))
+		n = 0
+		$.each(blogs.reverse(), (i, blog) => {
+			n++
+			if (n == 1) {
+				html += `<div style="display: inline-block;">`
+			}
+			html += blogItem(blog)
+			if (n == 3) {
+				n = 0
+				html += `</div>`
+			}
+		})
 		html += `</section>`
 		$('.blog-page').append(html)
 	}
+
 
 	eventItem = event => {
 		html = 
@@ -67,9 +79,9 @@ $(document).ready(function () {
 	blogItem = blog => {
 		console.log(blog)
 		html = 
-			`<div class="m-all t-4of12" >
-				<img src="https://www.newzealand.com/assets/Tourism-NZ/Auckland/d9db343eba/img-1536246368-4474-25053-p-5AFB273C-B866-CC92-5C84407C8052181E-2544003__FocalPointCropWzQyNyw2NDAsNDYsNTcsODUsImpwZyIsNjUsMi41XQ.jpg" style="object-fit: cover; max-height: 200px;">
-				<h2>${blog.post_title}</h2>
+			`<div class="m-all t-4of12 space-top" >
+				<img src="${blog.banner_image}" style="object-fit: cover; max-height: 200px;">
+				<h4>${blog.post_title}</h4>
 			</div>`
 		return html
 	}
