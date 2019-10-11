@@ -47,7 +47,7 @@ $(document).ready(function () {
 		n = 0
 		$.each(blogs.reverse(), (i, blog) => {
 			n++
-			n == 1 ? html += `<div class="space-top-double" style="display: inline-block;">` : ''
+			n == 1 ? html += `<div class="space-top-double" style="display: inline-block; position: relative;">` : ''
 			html += blogItem(blog)
 			n == 3 ? html += `</div>` : ''
 			n == 3 ? n = 0 : ''
@@ -79,10 +79,10 @@ $(document).ready(function () {
 		day = date.getDate()
 		month = date.toLocaleString('default', { month: 'short' })
 		html = 
-			`<div class="m-all t-4of12" >
+			`<div class="m-all t-4of12">
 				<img src="${blog.banner_image}" style="object-fit: cover; max-height: 200px;">
 				<h4>${blog.post_title}</h4>
-				<div class="cf" style="margin-top: 20px;">
+				<div class="cf" style="margin-top: 20px; bottom: 0;">
 					<image style="float: left; height: 44px; width: 44px; object-fit: cover; border-radius: 50%;" src="${blog.author_image}"">
 					<strong><p style="float: left; margin: 0 10px;">${blog.author_name}</p></strong>
 					<br>
