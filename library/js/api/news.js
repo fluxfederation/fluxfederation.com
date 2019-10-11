@@ -80,8 +80,10 @@ $(document).ready(function () {
 		month = date.toLocaleString('default', { month: 'short' })
 		html = 
 			`<div class="m-all t-4of12">
-				<img src="${blog.banner_image}" style="object-fit: cover; max-height: 200px;">
-				<h4>${blog.post_title}</h4>
+				<a href="/blog/post?id=${blog.ID}">
+					<img src="${blog.banner_image}" style="object-fit: cover; max-height: 200px;">
+					<h4 style="text-decoration:none;">${blog.post_title}</h4>
+				</a>
 				<div class="cf" style="margin-top: 20px; bottom: 0;">
 					<image style="float: left; height: 44px; width: 44px; object-fit: cover; border-radius: 50%;" src="${blog.author_image}"">
 					<strong><p style="float: left; margin: 0 10px;">${blog.author_name}</p></strong>
