@@ -47,14 +47,10 @@ $(document).ready(function () {
 		n = 0
 		$.each(blogs.reverse(), (i, blog) => {
 			n++
-			if (n == 1) {
-				html += `<div style="display: inline-block;">`
-			}
+			n == 1 ? html += `<div style="display: inline-block;">` : ''
 			html += blogItem(blog)
-			if (n == 3) {
-				n = 0
-				html += `</div>`
-			}
+			n == 3 ? html += `</div>` : ''
+			n == 3 ? n = 0 : ''
 		})
 		html += `</section>`
 		$('.blog-page').append(html)
