@@ -60,7 +60,7 @@ $(document).ready(function () {
 		console.log(event)
 		html = 
 			`<div class="m-all t-1of4">
-				<a style="text-decoration:none;" href="/event/?id=${event.ID}">
+				<a style="text-decoration:none;" href="event/?id=${event.ID}">
 					<img src="${event.image_url}" style="padding: 30px;object-fit: contain; height: 200px;">
 					<h4>${event.title}</h4>
 				</a>
@@ -81,7 +81,7 @@ $(document).ready(function () {
 		month = date.toLocaleString('default', { month: 'short' })
 		html = 
 			`<div class="m-all t-4of12">
-				<a style="text-decoration:none;" href="/blog/post?id=${blog.ID}">
+				<a style="text-decoration:none;" href="post?id=${blog.ID}">
 					<img src="${blog.banner_image}" style="object-fit: cover; max-height: 200px;">
 					<h4>${blog.post_title}</h4>
 				</a>
