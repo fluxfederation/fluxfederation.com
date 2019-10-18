@@ -66,6 +66,7 @@ $(document).ready(function () {
 
 	addBlogToPage = blog => {
 		console.log(blog)
+		$('.js-blog-title').text(blog.post_title)
 	}
 
 	addBlogsToPage = blogs => {
