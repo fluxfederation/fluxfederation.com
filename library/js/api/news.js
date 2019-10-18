@@ -36,14 +36,14 @@ $(document).ready(function () {
 
 
 	addEventsToPage = events => {
-		html =`<section class="white"><article class="wrap cf">`
+		html =`<article class="wrap cf">`
 		$.each(events.reverse(), (i, event) => html += eventItem(event))
-		html += `</section>`
+		html += `</article>`
 		$('.events-page').append(html)
 	}
 
 	addBlogsToPage = blogs => {
-		html =`<section class="white"><article class="wrap cf">`
+		html =`<article class="wrap cf">`
 		n = 0
 		$.each(blogs.reverse(), (i, blog) => {
 			n++
@@ -52,21 +52,22 @@ $(document).ready(function () {
 			n == 3 ? html += `</div>` : ''
 			n == 3 ? n = 0 : ''
 		})
-		html += `</section>`
+		html += `</article>`
 		$('.blog-page').append(html)
 	}
 
-
 	eventItem = event => {
+		console.log(event)
 		html = 
-			`<div class="table-layout">
-				<div class="m-all t-4of12">
-					<img src="${event.image_url}" style="object-fit: cover; max-height: 200px;">
-				</div>
-				<div class="m-all t-7of12 t-offset-left-1of12">
-					<h2>${event.title}</h2>
-					<h4>${event.dates}</h4>
-					<p>${event.blurb}</p>
+			`<div class="m-all t-1of4">
+				<a style="text-decoration:none;" href="/event/?id=${event.title.toLowerCase().replace(/[^\w ]+/g,'').replace(/ +/g,'-')}">
+					<img src="${event.image_url}" style="padding: 30px;object-fit: contain; height: 200px;">
+					<h4>${event.title}</h4>
+				</a>
+				<div class="cf" style="margin-top: 20px; bottom: 0;">
+					<strong><p style="float: left; margin: 0;">${event.dates}</p></strong>
+					<br>
+					<p style="opacity: 0.7; float: left; margin: 0;">${event.blurb}</p>
 				</div>
 			</div>`
 		return html
@@ -93,6 +94,7 @@ $(document).ready(function () {
 			</div>`
 		return html
 	}
+
 
 
 
