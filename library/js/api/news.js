@@ -109,7 +109,7 @@ $(document).ready(function () {
 		html = 
 			`<div class="m-all t-4of12">
 				<a style="text-decoration:none;" href="post?id=${blog.ID}">
-					<img src="${blog.banner_image}" style="object-fit: cover; max-height: 200px;">
+					<img src="${blog.banner_image}" style="object-fit: cover; height: 190px; background-color: rgba(0,0,0,0.05);">
 					<h4>${blog.post_title}</h4>
 				</a>
 				<div class="cf" style="margin-top: 20px; bottom: 0;">
