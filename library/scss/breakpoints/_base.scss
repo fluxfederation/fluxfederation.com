@@ -822,11 +822,17 @@ section.remove-padding {
 }
 
 .single-blog-page {
+
 	.banner-image {
 		width: 100%;
 		object-fit: cover;
 		background-color: rgba(0,0,0,0.05);
 		height: 500px;
+	}
+
+	.blog-content {
+		width: 100%;
+		display: inline-block;
 	}
 }
 

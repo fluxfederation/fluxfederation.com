@@ -68,6 +68,7 @@ $(document).ready(function () {
 		console.log(blog)
 		$('.js-blog-title').text(blog.post_title)
 		$('.banner-image').attr('src', blog.banner_image)
+		$('.blog-content article').html(blog.post_content)
 	}
 
 	addBlogsToPage = blogs => {
