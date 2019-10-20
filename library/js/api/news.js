@@ -86,15 +86,15 @@ $(document).ready(function () {
 	eventItem = event => {
 		console.log(event)
 		html = 
-			`<div class="m-all t-1of4">
-				<a style="text-decoration:none;" href="event/?id=${event.ID}">
-					<img src="${event.image_url}" style="padding: 30px;object-fit: contain; height: 200px;">
+			`<div class="m-all t-1of4 news-item">
+				<a href="event/?id=${event.ID}">
+					<img src="${event.image_url}" class="item-image item-image-logo">
 					<h4>${event.title}</h4>
 				</a>
-				<div class="cf" style="margin-top: 20px; bottom: 0;">
-					<strong><p style="float: left; margin: 0;">${event.dates}</p></strong>
+				<div class="cf item-info">
+					<strong><p>${event.dates}</p></strong>
 					<br>
-					<p style="opacity: 0.7; float: left; margin: 0;">${event.blurb}</p>
+					<p class="item-meta-info">${event.blurb}</p>
 				</div>
 			</div>`
 		return html
@@ -108,15 +108,15 @@ $(document).ready(function () {
 		month = date.toLocaleString('default', { month: 'short' })
 		html = 
 			`<div class="m-all t-4of12 news-item">
-				<a style="text-decoration:none;" href="post?id=${blog.ID}">
+				<a href="post?id=${blog.ID}">
 					<img src="${blog.banner_image}" class="item-image">
-					<h4>${blog.post_title}</h4>
+					<h4>${blog.post_title.substring(0,25)}..</h4>
 				</a>
 				<div class="cf item-info">
 					<image class="item-author-image" src="${blog.author_image}"">
-					<strong><p class="item-info-text">${blog.author_name}</p></strong>
+					<strong><p class="item-info-text-margin">${blog.author_name}</p></strong>
 					<br>
-					<p class="item-meta-info">${month} ${day} | ${blog.read_time} min read</p>
+					<p class="item-meta-info item-info-text-margin">${month} ${day} | ${blog.read_time} min read</p>
 				</div>
 			</div>`
 		return html

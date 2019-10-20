@@ -824,10 +824,20 @@ section.remove-padding {
 
 .news-item {
 
+	margin-top: 3rem;
+
+	a {
+		text-decoration: none;
+	}
+
 	.item-image {
 		object-fit: cover;
 		height: 190px;
 		background-color: rgba(0,0,0,0.05);
+		&-logo {
+			background-color: rgba(0,0,0,0);
+			object-fit: contain;
+		}
 	}
 
 	.item-info {
@@ -842,13 +852,17 @@ section.remove-padding {
 		border-radius: 50%;
 	}
 
-	p {
-		float: left;
-		margin: 0 10px;
-	}
-
 	.item-meta-info {
 		color: rgba(0,0,0,0.3);
+	}
+
+	p {
+		float: left;
+		margin: 0;
+	}
+
+	.item-info-text-margin {
+		margin: 0 10px;
 	}
 
 }
