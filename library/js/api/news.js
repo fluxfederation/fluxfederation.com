@@ -2,7 +2,7 @@ $(document).ready(function () {
 
 	$('.events-page').length ? getEventsData().then((events) => addEventsToPage(events)) : ''
 	$('.blog-page').length ? getBlogPosts().then((blogs) => addBlogsToPage(blogs)) : ''
-	$('.blog-post-page').length ? getSingleBlogPost().then((blog) => addBlogToPage(blog)) : ''
+	$('.single-blog-page').length ? getSingleBlogPost().then((blog) => addBlogToPage(blog)) : ''
 
 	function getEventsData() {
 		return new Promise((resolve, reject) => {
@@ -67,6 +67,7 @@ $(document).ready(function () {
 	addBlogToPage = blog => {
 		console.log(blog)
 		$('.js-blog-title').text(blog.post_title)
+		$('.banner-image').attr('src', blog.banner_image)
 	}
 
 	addBlogsToPage = blogs => {
