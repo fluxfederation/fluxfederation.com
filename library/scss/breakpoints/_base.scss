@@ -823,6 +823,10 @@ section.remove-padding {
 
 .single-blog-page {
 
+	.content-padding {
+		// padding: 0 10rem;
+	}
+
 	.banner-image {
 		width: 100%;
 		object-fit: cover;
@@ -831,8 +835,17 @@ section.remove-padding {
 	}
 
 	.blog-content {
+		font-size: 21px;
 		width: 100%;
-		display: inline-block;
+		line-height: 1.58;
+		width: 680px;
+		position: relative;
+		margin: 0 auto;
+		padding: 2rem 0;
+		a {
+			color: inherit;
+			text-decoration: underline;
+		}
 	}
 }
 
