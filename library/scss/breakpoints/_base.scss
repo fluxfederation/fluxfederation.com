@@ -844,6 +844,9 @@ section.remove-padding {
 		position: relative;
 		margin: 0 auto;
 		padding: 2rem 0;
+		img {
+			padding: 2rem 0;
+		}
 		hr {
 			border: none;
 			width: 100%;
@@ -884,6 +887,7 @@ section.remove-padding {
 		&-logo {
 			background-color: rgba(0,0,0,0);
 			object-fit: contain;
+			padding: 50px;
 		}
 	}
 

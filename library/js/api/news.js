@@ -66,6 +66,7 @@ $(document).ready(function () {
 
 	addBlogToPage = blog => {
 		console.log(blog)
+		blog.post_content == "" ? window.location.href = "../" : ''
 		$('.js-blog-title').text(blog.post_title)
 		$('.banner-image').attr('src', blog.banner_image)
 		$('.banner-image-caption').text(blog.banner_image_caption)
@@ -89,7 +90,7 @@ $(document).ready(function () {
 	eventItem = event => {
 		console.log(event)
 		html = 
-			`<div class="m-all t-1of4 news-item">
+			`<div class="m-all t-4of12 news-item">
 				<a href="event/?id=${event.ID}">
 					<img src="${event.image_url}" class="item-image item-image-logo">
 					<h4>${event.title}</h4>
