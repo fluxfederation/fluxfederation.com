@@ -79,11 +79,14 @@ $(document).ready(function () {
 		return html
 	}
 
+	returnToBlogLink = () => `<a href="../" class="back-to-blog-link m-all t-5of6"><p>< Back to Blog</p></a>`
+
 	addBlogToPage = blog => {
 		console.log(blog)
 		blog.post_content == "" ? window.location.href = "../" : ''
 		$('.blog-title').text(blog.post_title)
-		$(blogPostMeta(blog)).insertAfter('.blog-title').addClass('m-all t-5of6')
+		$(blogPostMeta(blog)).insertAfter('.blog-title').addClass('m-all t-5of6').after($(returnToBlogLink()))
+		// $(returnToBlogLink()).insertBefore('.blog-title').addClass('m-all t-5of6')
 		$('.banner-image').attr('src', blog.banner_image)
 		$('.banner-image-caption').text(blog.banner_image_caption)
 		$('.blog-content article').html(blog.post_content)
