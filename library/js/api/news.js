@@ -91,10 +91,8 @@ $(document).ready(function () {
 		console.log(event)
 		html = 
 			`<div class="m-all t-4of12 news-item">
-				<a href="event/?id=${event.ID}">
-					<img src="${event.image_url}" class="item-image item-image-logo">
-					<h4>${event.title}</h4>
-				</a>
+				<img src="${event.image_url}" class="item-image item-image-logo">
+				<h4>${event.title}</h4>
 				<div class="cf item-info">
 					<strong><p>${event.dates}</p></strong>
 					<br>
