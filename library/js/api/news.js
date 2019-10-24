@@ -64,6 +64,17 @@ $(document).ready(function () {
 		$('.events-page').append(html)
 	}
 
+	blogPostMeta = blog => {
+		html = 
+		`<div class="cf item-info">
+			<image class="item-author-image" src="${blog.author_image}"">
+			<strong><p class="item-info-text-margin">${blog.author_name}</p></strong>
+			<br>
+			<p class="item-meta-info item-info-text-margin">${month} ${day} | ${blog.read_time} min read</p>
+		</div>`
+		return html
+	}
+
 	addBlogToPage = blog => {
 		console.log(blog)
 		blog.post_content == "" ? window.location.href = "../" : ''
@@ -90,15 +101,15 @@ $(document).ready(function () {
 	eventItem = event => {
 		console.log(event)
 		html = 
-			`<div class="m-all t-4of12 news-item">
-				<img src="${event.image_url}" class="item-image item-image-logo">
-				<h4>${event.title}</h4>
-				<div class="cf item-info">
-					<strong><p>${event.dates}</p></strong>
-					<br>
-					<p class="item-meta-info">${event.blurb}</p>
-				</div>
-			</div>`
+		`<div class="m-all t-4of12 news-item">
+			<img src="${event.image_url}" class="item-image item-image-logo">
+			<h4>${event.title}</h4>
+			<div class="cf item-info">
+				<strong><p>${event.dates}</p></strong>
+				<br>
+				<p class="item-meta-info">${event.blurb}</p>
+			</div>
+		</div>`
 		return html
 	}
 
@@ -109,18 +120,13 @@ $(document).ready(function () {
 		day = date.getDate()
 		month = date.toLocaleString('default', { month: 'short' })
 		html = 
-			`<div class="m-all t-4of12 news-item">
-				<a href="post?id=${blog.ID}">
-					<img src="${blog.banner_image}" class="item-image">
-					<h4>${blog.post_title.substring(0,25)}..</h4>
-				</a>
-				<div class="cf item-info">
-					<image class="item-author-image" src="${blog.author_image}"">
-					<strong><p class="item-info-text-margin">${blog.author_name}</p></strong>
-					<br>
-					<p class="item-meta-info item-info-text-margin">${month} ${day} | ${blog.read_time} min read</p>
-				</div>
-			</div>`
+		`<div class="m-all t-4of12 news-item">
+			<a href="post?id=${blog.ID}">
+				<img src="${blog.banner_image}" class="item-image">
+				<h4>${blog.post_title.substring(0,25)}..</h4>
+			</a>
+			${blogPostMeta(blog)}
+		</div>`
 		return html
 	}
 
