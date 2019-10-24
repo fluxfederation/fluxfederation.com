@@ -879,30 +879,11 @@ section.remove-padding {
 	}
 }
 
-
-.news-item {
-
-	margin-top: 3rem;
-
-	a {
-		text-decoration: none;
-	}
-
-	.item-image {
-		object-fit: cover;
-		height: 190px;
-		background-color: rgba(0,0,0,0.05);
-		&-logo {
-			background-color: rgba(0,0,0,0);
-			object-fit: contain;
-			padding: 50px;
-		}
-	}
-
-	.item-info {
-		margin-top: 20px;
-	}
-
+.item-info {
+	margin-top: 20px;
+	float: left;
+	width: 100%;
+	
 	.item-author-image {
 		float: left;
 		height: 44px;
@@ -923,6 +904,28 @@ section.remove-padding {
 	.item-info-text-margin {
 		margin: 0 10px;
 	}
+}
+
+
+.news-item {
+
+	margin-top: 3rem;
+
+	a {
+		text-decoration: none;
+	}
+
+	.item-image {
+		object-fit: cover;
+		height: 190px;
+		background-color: rgba(0,0,0,0.05);
+		&-logo {
+			background-color: rgba(0,0,0,0);
+			object-fit: contain;
+			padding: 50px;
+		}
+	}
+
 
 }
 

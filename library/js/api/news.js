@@ -65,6 +65,10 @@ $(document).ready(function () {
 	}
 
 	blogPostMeta = blog => {
+		date_written = blog.date_written.split('/')
+		date = new Date(parseInt(date_written[0]), parseInt(date_written[1]), parseInt(date_written[2]))
+		day = date.getDate()
+		month = date.toLocaleString('default', { month: 'short' })
 		html = 
 		`<div class="cf item-info">
 			<image class="item-author-image" src="${blog.author_image}"">
@@ -78,7 +82,7 @@ $(document).ready(function () {
 	addBlogToPage = blog => {
 		console.log(blog)
 		blog.post_content == "" ? window.location.href = "../" : ''
-		$('.js-blog-title').text(blog.post_title)
+		$('.js-blog-title').text(blog.post_title).after(blogPostMeta(blog))
 		$('.banner-image').attr('src', blog.banner_image)
 		$('.banner-image-caption').text(blog.banner_image_caption)
 		$('.blog-content article').html(blog.post_content)
@@ -115,10 +119,6 @@ $(document).ready(function () {
 
 	blogItem = blog => {
 		console.log(blog)
-		date_written = blog.date_written.split('/')
-		date = new Date(parseInt(date_written[0]), parseInt(date_written[1]), parseInt(date_written[2]))
-		day = date.getDate()
-		month = date.toLocaleString('default', { month: 'short' })
 		html = 
 		`<div class="m-all t-4of12 news-item">
 			<a href="post?id=${blog.ID}">
