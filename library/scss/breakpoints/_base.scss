@@ -821,13 +821,17 @@ section.remove-padding {
 	width: 100%;
 }
 
+.blog-page {
+	padding: 0;
+}
+
 .single-blog-page {
 
 	.banner-image {
 		width: 100%;
 		object-fit: cover;
 		background-color: rgba(0,0,0,0.05);
-		height: 500px;
+		height: 250px;
 	}
 
 	.banner-image-caption {
@@ -840,12 +844,16 @@ section.remove-padding {
 		font-size: 21px;
 		width: 100%;
 		line-height: 1.58;
-		width: 680px;
+		width: 100%;
 		position: relative;
 		margin: 0 auto;
-		padding: 2rem 0;
+		padding: 2rem 1.5rem;
 		img {
 			padding: 2rem 0;
+		}
+		h2 {
+			padding: 1.5rem 0 0 0;
+			margin: 0;
 		}
 		hr {
 			border: none;
