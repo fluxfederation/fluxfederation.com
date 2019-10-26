@@ -836,6 +836,18 @@ section.remove-padding {
 	}
 }
 
+.show-more {
+	width: 100%;
+	margin: 2rem 0;
+	position: relative;
+	.flux-button {
+		cursor: pointer;
+		position: relative;
+		left: 50%;
+		transform: translateX(-50%);
+	}
+}
+
 .single-blog-page {
 
 	.banner-image {
@@ -928,7 +940,7 @@ section.remove-padding {
 
 	.item-image {
 		object-fit: cover;
-		height: 190px;
+		height: 210px;
 		background-color: rgba(0,0,0,0.05);
 		&-logo {
 			background-color: rgba(0,0,0,0);

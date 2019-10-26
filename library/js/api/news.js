@@ -81,19 +81,20 @@ $(document).ready(function () {
 
 	returnToBlogLink = () => `<a href="../" class="back-to-blog-link m-all t-5of6"><p>< Back to Blog</p></a>`
 
+	calcPageNum = () => $('.news-item').length % 6 != 0 ? 0 : $('.news-item').length ? $('.news-item').length / 6 : 1
+
 	addBlogToPage = blog => {
 		console.log(blog)
 		blog.post_content == "" ? window.location.href = "../" : ''
 		$('.blog-title').text(blog.post_title)
 		$(blogPostMeta(blog)).insertAfter('.blog-title').addClass('m-all t-5of6').after($(returnToBlogLink()))
-		// $(returnToBlogLink()).insertBefore('.blog-title').addClass('m-all t-5of6')
 		$('.banner-image').attr('src', blog.banner_image)
 		$('.banner-image-caption').text(blog.banner_image_caption)
 		$('.blog-content article').html(blog.post_content)
 	}
 
 	addBlogsToPage = blogs => {
-		html =`<article class="wrap cf">`
+		html = ``
 		n = 0
 		$.each(blogs.reverse(), (i, blog) => {
 			n++
@@ -102,8 +103,8 @@ $(document).ready(function () {
 			n == 3 ? html += `</div>` : ''
 			n == 3 ? n = 0 : ''
 		})
-		html += `</article>`
-		$('.blog-page').append(html)
+		html += `<div class="show-more"><div class="flux-button" data-page-n="${calcPageNum()}"><a>Show More</a></div></div>`
+		$('.blog-section').append(html)
 	}
 
 	eventItem = event => {
