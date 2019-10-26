@@ -4,6 +4,8 @@ $(document).ready(function () {
 	$('.blog-page').length ? getBlogPosts().then((blogs) => addBlogsToPage(blogs)) : ''
 	$('.single-blog-page').length ? getSingleBlogPost().then((blog) => addBlogToPage(blog)) : ''
 
+	$(document).on('click', '.show-more-blogs .flux-button', e => getBlogPosts($(e.target).data('page-n')).then((blogs) => addBlogsToPage(blogs)))
+
 	function getEventsData() {
 		return new Promise((resolve, reject) => {
 			$.ajax({
@@ -19,10 +21,11 @@ $(document).ready(function () {
 		})	
 	}
 
-	function getBlogPosts() {
+	function getBlogPosts(page_n = 'init') {
+		page_n == 'init' ? url = `https://fluxfederation.wpengine.com/wp-json/fluxapi/v1/posts` : url =  `https://fluxfederation.wpengine.com/wp-json/fluxapi/v1/posts/${page_n}`
 		return new Promise((resolve, reject) => {
 			$.ajax({
-				url: "https://fluxfederation.wpengine.com/wp-json/fluxapi/v1/posts",
+				url: url,
 				crossDomain: true,
 				success: function(data) {
 					resolve(data)
@@ -94,16 +97,17 @@ $(document).ready(function () {
 	}
 
 	addBlogsToPage = blogs => {
+		$('.show-more').remove()
 		html = ``
 		n = 0
 		$.each(blogs.reverse(), (i, blog) => {
 			n++
 			n == 1 ? html += `<div class="news-items-row">` : ''
 			html += blogItem(blog)
-			n == 3 ? html += `</div>` : ''
+			n == 3 || i == blogs.length -1 ? html += `</div>` : ''
 			n == 3 ? n = 0 : ''
 		})
-		html += `<div class="show-more"><div class="flux-button" data-page-n="${calcPageNum()}"><a>Show More</a></div></div>`
+		html += `<div class="show-more show-more-blogs"><div class="flux-button" data-page-n="${calcPageNum()}"><a data-page-n="${calcPageNum()}">Show More</a></div></div>`
 		$('.blog-section').append(html)
 	}
 
