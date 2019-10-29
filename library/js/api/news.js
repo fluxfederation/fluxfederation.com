@@ -44,7 +44,6 @@ $(document).ready(function () {
 		})	
 	}
 
-
 	function getSingleBlogPost() {
 		const postId = () => new URL(document.location).searchParams.get('id')
 		console.log('test')
@@ -100,7 +99,7 @@ $(document).ready(function () {
 		$(blogPostMeta(blog)).insertAfter('.blog-title').addClass('m-all t-5of6').after($(returnToBlogLink()))
 		$('.banner-image').attr('src', blog.banner_image)
 		$('.banner-image-caption').text(blog.banner_image_caption)
-		$('.blog-content article').html(blog.post_content)
+		$('.blog-content article').html(blog.post_content).after(returnToBlogLink())
 	}
 
 	addBlogsToPage = (blogs) => {

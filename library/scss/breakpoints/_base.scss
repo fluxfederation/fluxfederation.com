@@ -863,6 +863,10 @@ section.remove-padding {
 		color: rgba(0,0,0,0.4);
 	}
 
+	.item-meta-info {
+		color: rgba(256,256,256, 0.5) !important;
+	}
+
 	.blog-content {
 		font-size: 21px;
 		width: 100%;
@@ -871,6 +875,11 @@ section.remove-padding {
 		position: relative;
 		margin: 0 auto;
 		padding: 2rem 1.5rem;
+		.back-to-blog-link {
+			text-decoration: none;
+			margin: 0;
+			padding: 0;
+		}
 		img {
 			padding: 2rem 0;
 		}
