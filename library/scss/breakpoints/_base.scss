@@ -884,6 +884,9 @@ section.remove-padding {
 		.share-buttons {
 			margin-top: 10px;
 			float: left;
+			a, iframe {
+				display: block;
+			}
 		}
 		img {
 			padding: 2rem 0;
