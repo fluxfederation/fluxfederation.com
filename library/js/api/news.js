@@ -1,10 +1,17 @@
 $(document).ready(function () {
 
+	const self = this
+
 	$('.events-page').length ? getEventsData().then((events) => addEventsToPage(events)) : ''
-	$('.blog-page').length ? getBlogPosts().then((blogs) => addBlogsToPage(blogs)) : ''
+	if ($('.blog-page').length) {
+		getBlogPosts().then(blogs => {
+			self.blogs = blogs
+			addBlogsToPage()
+		})
+	}
 	$('.single-blog-page').length ? getSingleBlogPost().then((blog) => addBlogToPage(blog)) : ''
 
-	$(document).on('click', '.show-more-blogs .flux-button', e => getBlogPosts($(e.target).data('page-n')).then((blogs) => addBlogsToPage(blogs)))
+	$(document).on('click', '.show-more-blogs .flux-button', e => addBlogsToPage())
 
 	function getEventsData() {
 		return new Promise((resolve, reject) => {
@@ -22,7 +29,7 @@ $(document).ready(function () {
 	}
 
 	function getBlogPosts(page_n = 'init') {
-		page_n == 'init' ? url = `https://fluxfederation.wpengine.com/wp-json/fluxapi/v1/posts` : url =  `https://fluxfederation.wpengine.com/wp-json/fluxapi/v1/posts/${page_n}`
+		url = `https://fluxfederation.wpengine.com/wp-json/fluxapi/v1/posts`
 		return new Promise((resolve, reject) => {
 			$.ajax({
 				url: url,
@@ -96,18 +103,23 @@ $(document).ready(function () {
 		$('.blog-content article').html(blog.post_content)
 	}
 
-	addBlogsToPage = blogs => {
+	addBlogsToPage = (blogs) => {
 		$('.show-more').remove()
 		html = ``
 		n = 0
-		$.each(blogs.reverse(), (i, blog) => {
-			n++
-			n == 1 ? html += `<div class="news-items-row">` : ''
-			html += blogItem(blog)
-			n == 3 || i == blogs.length -1 ? html += `</div>` : ''
-			n == 3 ? n = 0 : ''
-		})
-		html += `<div class="show-more show-more-blogs"><div class="flux-button" data-page-n="${calcPageNum()}"><a data-page-n="${calcPageNum()}">Show More</a></div></div>`
+		for (var i=0; i < 6; i++) {
+			if (self.blogs.length) {
+				n++
+				console.log(self.blogs)
+				blog = self.blogs[0]
+				n == 1 ? html += `<div class="news-items-row">` : ''
+				html += blogItem(blog)
+				n == 3 || self.blogs.length == 1 ? html += `</div>` : ''
+				n == 3 ? n = 0 : ''
+				self.blogs.splice(0, 1)
+			}
+		}
+		self.blogs.length ? html += `<div class="show-more show-more-blogs"><div class="flux-button"><a>Show More</a></div></div>` : ''
 		$('.blog-section').append(html)
 	}
 
@@ -127,7 +139,7 @@ $(document).ready(function () {
 	}
 
 	blogItem = blog => {
-		console.log(blog)
+		// console.log(blog)
 		html = 
 		`<div class="m-all t-4of12 news-item">
 			<a href="post?id=${blog.ID}">
