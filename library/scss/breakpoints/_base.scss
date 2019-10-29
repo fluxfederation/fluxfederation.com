@@ -942,12 +942,12 @@ section.remove-padding {
 		object-fit: cover;
 		height: 210px;
 		background-color: rgba(0,0,0,0.05);
+		border-radius: 4px;
 		&-logo {
 			background-color: rgba(0,0,0,0);
-			object-fit: contain;
 			padding: 50px;
+			object-fit: contain;
 			background-color: rgba(0,0,0,0.03);
-			border-radius: 4px;
 		}
 	}
 
