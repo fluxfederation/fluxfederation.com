@@ -138,7 +138,6 @@ $(document).ready(function () {
 	}
 
 	blogItem = blog => {
-		// console.log(blog)
 		html = 
 		`<div class="m-all t-4of12 news-item">
 			<a href="post?id=${blog.ID}">
