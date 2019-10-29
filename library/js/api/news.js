@@ -100,6 +100,7 @@ $(document).ready(function () {
 		$('.banner-image').attr('src', blog.banner_image)
 		$('.banner-image-caption').text(blog.banner_image_caption)
 		$('.blog-content article').html(blog.post_content).after(returnToBlogLink())
+		document.title = `${blog.post_title} - Flux Federation`
 	}
 
 	addBlogsToPage = (blogs) => {
