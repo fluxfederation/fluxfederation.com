@@ -46,7 +46,6 @@ $(document).ready(function () {
 
 	function getSingleBlogPost() {
 		const postId = () => new URL(document.location).searchParams.get('id')
-		console.log('test')
 		if(postId()) {
 			return new Promise((resolve, reject) => {
 				$.ajax({
@@ -73,17 +72,22 @@ $(document).ready(function () {
 		$('.events-page').append(html)
 	}
 
-	blogPostMeta = blog => {
-		date_written = blog.date_written.split('/')
-		date = new Date(parseInt(date_written[0]), parseInt(date_written[1]), parseInt(date_written[2]))
+	parseBlogDate = date => {
+		date = date.split('/')
+		date = new Date(parseInt(date[0]), parseInt(date[1]), parseInt(date[2]))
 		day = date.getDate()
 		month = date.toLocaleString('default', { month: 'short' })
+		return {month: month, day: day}	
+	}
+
+	blogPostMeta = blog => {
+		date = parseBlogDate(blog.date_written)
 		html = 
 		`<div class="cf item-info">
 			<image class="item-author-image" src="${blog.author_image}"">
 			<strong><p class="item-info-text-margin">${blog.author_name}</p></strong>
 			<br>
-			<p class="item-meta-info item-info-text-margin">${month} ${day} | ${blog.read_time} min read</p>
+			<p class="item-meta-info item-info-text-margin">${date.month} ${date.day} | ${blog.read_time} min read</p>
 		</div>`
 		return html
 	}
@@ -93,7 +97,6 @@ $(document).ready(function () {
 	calcPageNum = () => $('.news-item').length % 6 != 0 ? 0 : $('.news-item').length ? $('.news-item').length / 6 : 1
 
 	addBlogToPage = blog => {
-		console.log(blog)
 		blog.post_content == "" ? window.location.href = "../" : ''
 		$('.blog-title').text(blog.post_title)
 		$(blogPostMeta(blog)).insertAfter('.blog-title').addClass('m-all t-5of6').after($(returnToBlogLink()))
@@ -111,7 +114,6 @@ $(document).ready(function () {
 		for (var i=0; i < 6; i++) {
 			if (self.blogs.length) {
 				n++
-				console.log(self.blogs)
 				blog = self.blogs[0]
 				n == 1 ? html += `<div class="news-items-row">` : ''
 				html += blogItem(blog)
@@ -120,12 +122,13 @@ $(document).ready(function () {
 				self.blogs.splice(0, 1)
 			}
 		}
-		self.blogs.length ? html += `<div class="show-more show-more-blogs"><div class="flux-button"><a>Show More</a></div></div>` : ''
+		self.blogs.length ? html += showMoreButton() : ''
 		$('.blog-section').append(html)
 	}
 
+	const showMoreButton = () => `<div class="show-more show-more-blogs"><div class="flux-button"><a>Show More</a></div></div>`
+
 	eventItem = event => {
-		console.log(event)
 		html = 
 		`<div class="m-all t-4of12 news-item">
 			<img src="${event.image_url}" class="item-image item-image-logo">
