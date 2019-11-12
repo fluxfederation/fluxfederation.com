@@ -1,12 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"	xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
 	<url>
-		<loc>https://peterwm.com/welcome-aboard/</loc>
-		<lastmod>2019-01-03T23:46:43Z</lastmod>
-		<changefreq>monthly</changefreq>
-		<priority>0.3</priority>
-	</url>
-	<url>
 		<loc>https://fluxfederation.com</loc>
 		<changefreq>daily</changefreq>
 		<priority>1.0</priority>
@@ -60,5 +54,10 @@
 		<loc>https://fluxfederation.com/careers/talk-to-us/</loc>
 		<changefreq>weekly</changefreq>
 		<priority>0.5</priority>
-	</url>		
+	</url>
+	<url>
+		<loc>https://fluxfederation.com/flux-uk-tax-strategy/</loc>
+		<changefreq>weekly</changefreq>
+		<priority>0.4</priority>
+	</url>	
 </urlset>
