@@ -18,7 +18,7 @@ $(document).ready(function () {
 	function getEventsData() {
 		return new Promise((resolve, reject) => {
 			$.ajax({
-				url: "https://fluxfederation.wpengine.com/wp-json/fluxapi/v1/events",
+				url: "https://cms.fluxfederation.com/wp-json/fluxapi/v1/events",
 				crossDomain: true,
 				success: function(data) {
 					resolve(data)
@@ -31,7 +31,7 @@ $(document).ready(function () {
 	}
 
 	function getBlogPosts(page_n = 'init') {
-		url = `https://fluxfederation.wpengine.com/wp-json/fluxapi/v1/posts`
+		url = `https://cms.fluxfederation.com/wp-json/fluxapi/v1/posts`
 		return new Promise((resolve, reject) => {
 			$.ajax({
 				url: url,
@@ -51,7 +51,7 @@ $(document).ready(function () {
 		if(postId()) {
 			return new Promise((resolve, reject) => {
 				$.ajax({
-					url: `https://fluxfederation.wpengine.com/wp-json/fluxapi/v1/post/${postId()}`,
+					url: `https://cms.fluxfederation.com/wp-json/fluxapi/v1/post/${postId()}`,
 					crossDomain: true,
 					success: function(data) {
 						resolve(data)

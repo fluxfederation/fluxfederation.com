@@ -5,7 +5,7 @@ $(document).ready(function () {
 	function getCaseStudiesData() {
 		return new Promise((resolve, reject) => {
 			$.ajax({
-				url: "https://fluxfederation.wpengine.com/wp-json/fluxapi/v1/case-studies",
+				url: "https://cms.fluxfederation.com/wp-json/fluxapi/v1/case-studies",
 				crossDomain: true,
 				success: function(data) {
 					resolve(data)

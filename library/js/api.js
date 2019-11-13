@@ -213,7 +213,7 @@ $(document).ready(function () {
 	function getFormData(form_id) {
 		return new Promise((resolve, reject) => {
 			$.ajax({
-				url: "https://fluxfederation.wpengine.com/wp-json/fluxapi/v1/form/" + form_id,
+				url: "https://cms.fluxfederation.com/wp-json/fluxapi/v1/form/" + form_id,
 				crossDomain: true,
 				success: function(data) {
 					resolve(data)
@@ -229,7 +229,7 @@ $(document).ready(function () {
 		form_id = data.form_id
 		return new Promise((resolve, reject) => {
 			$.ajax({
-				url: "https://fluxfederation.wpengine.com/wp-json/fluxapi/v1/form/" + form_id,
+				url: "https://cms.fluxfederation.com/wp-json/fluxapi/v1/form/" + form_id,
 				crossDomain: true,
 				method: 'POST',
 				dataType: "json",
