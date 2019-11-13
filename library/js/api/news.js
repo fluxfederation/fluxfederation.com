@@ -83,6 +83,7 @@ $(document).ready(function () {
 	}
 
 	blogPostMeta = blog => {
+		console.log(blog)
 		date = parseBlogDate(blog.date_written)
 		html = 
 		`<div class="cf item-info">
@@ -100,10 +101,10 @@ $(document).ready(function () {
 	addBlogToPage = blog => {
 		blog.post_content == "" ? window.location.href = "../" : ''
 		$('.blog-title').text(blog.post_title)
-		$(blogPostMeta(blog)).insertAfter('.blog-title').addClass('m-all t-5of6').after($(returnToBlogLink()))
+		$(blogPostMeta(blog)).insertAfter('.blog-title')
 		$('.banner-image').attr('src', blog.banner_image)
 		$('.banner-image-caption').text(blog.banner_image_caption)
-		$('.blog-content article').html(blog.post_content).after(returnToBlogLink())
+		$('.blog-content article').html(blog.post_content)
 		$('.fb-share-button').data('href', window.location.href)
 		document.title = `${blog.post_title} - Flux Federation`
 	}
@@ -148,7 +149,7 @@ $(document).ready(function () {
 		`<div class="m-all t-4of12 news-item">
 			<a href="post?id=${blog.ID}">
 				<img src="${blog.banner_image}" class="item-image">
-				<h4>${blog.post_title.substring(0,25)}..</h4>
+				<h4>${blog.post_title}..</h4>
 			</a>
 			${blogPostMeta(blog)}
 		</div>`

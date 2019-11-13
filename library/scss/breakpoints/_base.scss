@@ -819,6 +819,7 @@ section.remove-padding {
 	display: inline-block;
 	position: relative;
 	width: 100%;
+	display: flex;
 }
 
 .blog-page {
@@ -861,10 +862,6 @@ section.remove-padding {
 		width: 100%;
 		text-align: center;
 		color: rgba(0,0,0,0.4);
-	}
-
-	.item-meta-info {
-		color: rgba(256,256,256, 0.5) !important;
 	}
 
 	.blog-content {
@@ -920,7 +917,7 @@ section.remove-padding {
 }
 
 .item-info {
-	margin-top: 20px;
+	margin: 20px 0;
 	float: left;
 	width: 100%;
 
@@ -940,7 +937,7 @@ section.remove-padding {
 		float: left;
 		margin: 0;
 	}
-	
+
 }
 
 
@@ -956,7 +953,7 @@ section.remove-padding {
 		object-fit: cover;
 		height: 210px;
 		background-color: rgba(0,0,0,0.05);
-		border-radius: 4px;
+		// border-radius: 4px;
 		&-logo {
 			background-color: rgba(0,0,0,0);
 			padding: 50px;
