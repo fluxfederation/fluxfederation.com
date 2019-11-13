@@ -3,12 +3,14 @@ $(document).ready(function () {
 	const self = this
 
 	$('.events-page').length ? getEventsData().then((events) => addEventsToPage(events)) : ''
+	
 	if ($('.blog-page').length) {
 		getBlogPosts().then(blogs => {
 			self.blogs = blogs
 			addBlogsToPage()
 		})
 	}
+
 	$('.single-blog-page').length ? getSingleBlogPost().then((blog) => addBlogToPage(blog)) : ''
 
 	$(document).on('click', '.show-more-blogs .flux-button', e => addBlogsToPage())
