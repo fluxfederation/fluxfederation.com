@@ -86,10 +86,9 @@ $(document).ready(function () {
 		date = parseBlogDate(blog.date_written)
 		html = 
 		`<div class="cf item-info">
-			<image class="item-author-image" src="${blog.author_image}"">
-			<strong><p class="item-info-text-margin">${blog.author_name}</p></strong>
+			<strong><p>${blog.author_name}</p></strong>
 			<br>
-			<p class="item-meta-info item-info-text-margin">${date.month} ${date.day} | ${blog.read_time} min read</p>
+			<p class="item-meta-info">${date.month} ${date.day} | ${blog.read_time} min read</p>
 		</div>`
 		return html
 	}
