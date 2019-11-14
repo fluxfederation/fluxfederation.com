@@ -151,7 +151,7 @@ $(document).ready(function () {
 		`<div class="m-all t-4of12 news-item">
 			<a href="post?id=${blog.ID}">
 				<img src="${blog.banner_image}" class="item-image">
-				<h4>${blog.post_title}..</h4>
+				<h4>${blog.post_title}</h4>
 			</a>
 			${blogPostMeta(blog)}
 			<p class="preview">${blog.post_preview}</p>
