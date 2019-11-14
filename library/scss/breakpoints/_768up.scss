@@ -309,6 +309,15 @@ CONTENT STYLES
 
 // News page
 
+.new-item-row {
+	display: flex;
+}
+
+.news-item-button {
+    position: absolute;
+    bottom: 0;
+}
+
 .single-blog-page {
 	.banner-image {
 		height: 500px;

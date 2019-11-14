@@ -82,18 +82,6 @@ $(document).ready(function () {
 		return {month: month, day: day}	
 	}
 
-	blogPostMeta = blog => {
-		console.log(blog)
-		date = parseBlogDate(blog.date_written)
-		html = 
-		`<div class="cf item-info">
-			<strong><p>${blog.author_name}</p></strong>
-			<br>
-			<p class="item-meta-info">${date.month} ${date.day} | ${blog.read_time} min read</p>
-		</div>`
-		return html
-	}
-
 	returnToBlogLink = () => `<a href="../" class="back-to-blog-link m-all t-5of6"><p>< Back to Blog</p></a>`
 
 	calcPageNum = () => $('.news-item').length % 6 != 0 ? 0 : $('.news-item').length ? $('.news-item').length / 6 : 1
@@ -124,11 +112,11 @@ $(document).ready(function () {
 				self.blogs.splice(0, 1)
 			}
 		}
-		self.blogs.length ? html += showMoreButton() : ''
+		self.blogs.length ? html += showMorePostsButton() : ''
 		$('.blog-section').append(html)
 	}
 
-	const showMoreButton = () => `<div class="show-more show-more-blogs"><div class="flux-button"><a>Show More</a></div></div>`
+	const showMorePostsButton = () => `<div class="show-more show-more-blogs"><div class="flux-button"><a>Show More</a></div></div>`
 
 	eventItem = event => {
 		html = 
@@ -144,6 +132,20 @@ $(document).ready(function () {
 		return html
 	}
 
+	blogPostMeta = blog => {
+		console.log(blog)
+		date = parseBlogDate(blog.date_written)
+		html = 
+		`<div class="cf item-info">
+			<strong><p class="author">By ${blog.author_name}</p></strong>
+			<br>
+			<p class="item-meta-info">${date.month} ${date.day} | ${blog.read_time} min read</p>
+		</div>`
+		return html
+	}
+
+	const readMoreButton = id => `<div class="flux-button news-item-button"><a href="post/?id=${blog.ID}">Read More</a></div>`
+
 	blogItem = blog => {
 		html = 
 		`<div class="m-all t-4of12 news-item">
@@ -152,6 +154,8 @@ $(document).ready(function () {
 				<h4>${blog.post_title}..</h4>
 			</a>
 			${blogPostMeta(blog)}
+			<p class="preview">${blog.post_preview}</p>
+			${readMoreButton(blog.ID)}
 		</div>`
 		return html
 	}

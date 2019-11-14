@@ -819,7 +819,6 @@ section.remove-padding {
 	display: inline-block;
 	position: relative;
 	width: 100%;
-	display: flex;
 }
 
 .blog-page {
@@ -913,7 +912,7 @@ section.remove-padding {
 }
 
 .item-info {
-	margin: 20px 0;
+	margin: 10px 0;
 	float: left;
 	width: 100%;
 
@@ -932,17 +931,22 @@ section.remove-padding {
 	p {
 		float: left;
 		margin: 0;
+		&.author {
+			color: $purple;
+		}
 	}
 
 }
 
-
 .news-item {
-
 	margin-top: 3rem;
 
 	a {
 		text-decoration: none;
+	}
+
+	.preview {
+		padding: 0 0 50px 0;
 	}
 
 	.item-image {
