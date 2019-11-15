@@ -13,6 +13,21 @@ $(document).ready(function () {
 
 	$('.single-blog-page').length ? getSingleBlogPost().then((blog) => addBlogToPage(blog)) : ''
 
+	$('.social-share-container li').click(e => {
+		facebook_url = `https://www.facebook.com/sharer/sharer.php?u=${encodeURI(window.location.href)}&t=${document.title}`
+		switch(e.currentTarget.id) {
+			case 'facebook':
+				window.open(facebook_url, "pop", "width=600, height=400, scrollbars=no")
+			break;
+			case 'twitter':
+				// code block
+			break;
+			case 'linkedin':
+				// code block
+			break;
+		}
+	})
+
 	$(document).on('click', '.show-more-blogs .flux-button', e => addBlogsToPage())
 
 	function getEventsData() {
