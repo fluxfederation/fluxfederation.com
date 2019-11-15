@@ -15,12 +15,13 @@ $(document).ready(function () {
 
 	$('.social-share-container li').click(e => {
 		facebook_url = `https://www.facebook.com/sharer/sharer.php?u=${encodeURI(window.location.href)}&t=${document.title}`
+		twitter_url = `http://twitter.com/share?text=${document.title}&url=${window.location.href}`
 		switch(e.currentTarget.id) {
 			case 'facebook':
 				window.open(facebook_url, "pop", "width=600, height=400, scrollbars=no")
 			break;
 			case 'twitter':
-				// code block
+				window.open(twitter_url, "pop", "width=600, height=400, scrollbars=no")
 			break;
 			case 'linkedin':
 				// code block
