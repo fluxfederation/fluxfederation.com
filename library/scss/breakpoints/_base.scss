@@ -871,6 +871,9 @@ section.remove-padding {
 		position: relative;
 		margin: 0 auto;
 		padding: 2rem 1.5rem;
+		article {
+			margin: 0;
+		}
 		.back-to-blog-link {
 			text-decoration: none;
 			margin: 0;
@@ -936,6 +939,10 @@ section.remove-padding {
 		}
 	}
 
+}
+
+.social-share-container {
+	padding: 0;
 }
 
 .news-item {
