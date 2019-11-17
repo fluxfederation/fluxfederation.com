@@ -14,7 +14,7 @@ $(document).ready(function () {
 	$('.single-blog-page').length ? getSingleBlogPost().then((blog) => addBlogToPage(blog)) : ''
 
 	$('.social-share-container li').click(e => {
-		facebook_url = `https://www.facebook.com/sharer/sharer.php?u=${encodeURI(window.location.href)}&t=${document.title}`
+		facebook_url = `https://www.facebook.com/sharer/sharer.php?u=${encodeURI(window.location.href)}&t=${encodeURI(document.title)}`
 		twitter_url = `http://twitter.com/share?text=${document.title}&url=${window.location.href}`
 		switch(e.currentTarget.id) {
 			case 'facebook':
