@@ -14,8 +14,14 @@ $(document).ready(function () {
 	$('.single-blog-page').length ? getSingleBlogPost().then((blog) => addBlogToPage(blog)) : ''
 
 	$('.social-share-container li').click(e => {
-		facebook_url = `https://www.facebook.com/sharer/sharer.php?u=${encodeURI(window.location.href)}&t=${encodeURI(document.title)}`
-		twitter_url = `http://twitter.com/share?text=${document.title}&url=${window.location.href}`
+		current_url = window.location.href
+		encoded_url = encodeURIComponent(current_url)
+		test_encoded_url = encodeURIComponent('https://fluxfederation.com/')
+		encoded_title = encodeURIComponent(document.title)
+		facebook_url = `https://www.facebook.com/sharer/sharer.php?u=${encoded_url}&t=${encoded_title}`
+		twitter_url = `http://twitter.com/share?text=${document.title}&url=${current_url}`
+		linkedin_url = `https://www.linkedin.com/shareArticle?mini=true&url=${test_encoded_url}&title=${encoded_title}`
+		maiil_url = ``
 		switch(e.currentTarget.id) {
 			case 'facebook':
 				window.open(facebook_url, "pop", "width=600, height=400, scrollbars=no")
@@ -24,7 +30,11 @@ $(document).ready(function () {
 				window.open(twitter_url, "pop", "width=600, height=400, scrollbars=no")
 			break;
 			case 'linkedin':
-				// code block
+				window.open(linkedin_url, "pop", "width=600, height=400, scrollbars=no")
+			break;
+			case 'mail':
+				link = $(`<a href="mailto:?Subject=${encoded_title}&Body=${encoded_url}"></a>`)[0].click()
+				console.log(link)
 			break;
 		}
 	})
