@@ -21,7 +21,6 @@ $(document).ready(function () {
 		facebook_url = `https://www.facebook.com/sharer/sharer.php?u=${encoded_url}&t=${encoded_title}`
 		twitter_url = `http://twitter.com/share?text=${document.title}&url=${current_url}`
 		linkedin_url = `https://www.linkedin.com/shareArticle?mini=true&url=${test_encoded_url}&title=${encoded_title}`
-		maiil_url = ``
 		switch(e.currentTarget.id) {
 			case 'facebook':
 				window.open(facebook_url, "pop", "width=600, height=400, scrollbars=no")
@@ -33,8 +32,7 @@ $(document).ready(function () {
 				window.open(linkedin_url, "pop", "width=600, height=400, scrollbars=no")
 			break;
 			case 'mail':
-				link = $(`<a href="mailto:?Subject=${encoded_title}&Body=${encoded_url}"></a>`)[0].click()
-				console.log(link)
+				$(`<a href="mailto:?Subject=${encoded_title}&Body=${encoded_url}"></a>`)[0].click()
 			break;
 		}
 	})
@@ -73,11 +71,11 @@ $(document).ready(function () {
 	}
 
 	function getSingleBlogPost() {
-		const postId = () => new URL(document.location).searchParams.get('id')
-		if(postId()) {
+		const postName = () => new URL(document.location).searchParams.get('name')
+		if(postName()) {
 			return new Promise((resolve, reject) => {
 				$.ajax({
-					url: `https://cms.fluxfederation.com/wp-json/fluxapi/v1/post/${postId()}`,
+					url: `https://cms.fluxfederation.com/wp-json/fluxapi/v1/post/${postName()}`,
 					crossDomain: true,
 					success: function(data) {
 						resolve(data)
@@ -120,10 +118,16 @@ $(document).ready(function () {
 		$('.banner-image-caption').text(blog.banner_image_caption)
 		$('.blog-content article').html(blog.post_content)
 		$('.fb-share-button').data('href', window.location.href)
+		$.each(blog.tags, function (i, tag) {
+			$('.tags-container').append(blogTag(tag.name))
+		})
 		document.title = `${blog.post_title} - Flux Federation`
 	}
 
-	addBlogsToPage = (blogs) => {
+	blogTag = tag => `<div class="tag">${tag}</div>`
+
+	addBlogsToPage = () => {
+		console.log(self.blogs)
 		$('.show-more').remove()
 		html = ``
 		n = 0
@@ -132,7 +136,7 @@ $(document).ready(function () {
 				n++
 				blog = self.blogs[0]
 				n == 1 ? html += `<div class="news-items-row">` : ''
-				html += blogItem(blog)
+				html += blogPreview(blog)
 				n == 3 || self.blogs.length == 1 ? html += `</div>` : ''
 				n == 3 ? n = 0 : ''
 				self.blogs.splice(0, 1)
@@ -170,18 +174,18 @@ $(document).ready(function () {
 		return html
 	}
 
-	const readMoreButton = id => `<div class="flux-button news-item-button"><a href="post/?id=${blog.ID}">Read More</a></div>`
+	const readMoreButton = name => `<div class="flux-button news-item-button"><a href="post/?name=${name}">Read More</a></div>`
 
-	blogItem = blog => {
+	blogPreview = blog => {
 		html = 
 		`<div class="m-all t-4of12 news-item">
-			<a href="post?id=${blog.ID}">
+			<a href="post/?name=${blog.post_name}">
 				<img src="${blog.banner_image}" class="item-image">
 				<h4>${blog.post_title}</h4>
 			</a>
 			${blogPostMeta(blog)}
 			<p class="preview">${blog.post_preview}</p>
-			${readMoreButton(blog.ID)}
+			${readMoreButton(blog.post_name)}
 		</div>`
 		return html
 	}
