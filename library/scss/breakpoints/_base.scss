@@ -839,7 +839,7 @@ section.remove-padding {
 .show-more {
 	width: 100%;
 	padding: 2rem 0;
-	margin: 1rem 0;
+	margin: 4rem 0;
 	position: relative;
 	border-top: 1px solid #5f259f;
 	.flux-button {
@@ -851,6 +851,36 @@ section.remove-padding {
 }
 
 .single-blog-page {
+
+	.line {
+		position: relative;
+		&:before {
+			content: "";
+		    position: absolute;
+		    display: inline-block;
+		    top: 0;
+		    width: 100%;
+		    max-width: 92%;
+		    margin: 0 auto;
+		    left: 50%;
+		    transform: translateX(-50%);
+		    border-top: 1px solid #5f259f;
+		}
+	}
+
+	.other-posts {
+		width: 100%;
+		display: inline-block;
+		position: relative;
+		.news-item {
+			.item-image {
+				margin-bottom: 10px;
+			}
+			&-button {
+				position: relative;
+			}
+		}
+	}
 
 	.banner-image {
 		width: 100%;
@@ -881,9 +911,7 @@ section.remove-padding {
 	}
 
 	.blog-content {
-		// font-size: 21px;
 		width: 100%;
-		// line-height: 1.58;
 		width: 100%;
 		position: relative;
 		margin: 0 auto;
@@ -965,7 +993,7 @@ section.remove-padding {
 
 .news-item {
 	margin-top: 3rem;
-
+	display: inline-block;
 	a {
 		text-decoration: none;
 	}
@@ -974,10 +1002,12 @@ section.remove-padding {
 		padding: 0 0 50px 0;
 	}
 
+	img {
+		width: 100%;
+	}
 	.item-image {
 		object-fit: cover;
 		height: 210px;
-		background-color: rgba(0,0,0,0.05);
 		// border-radius: 4px;
 		&-logo {
 			background-color: rgba(0,0,0,0);

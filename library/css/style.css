@@ -644,6 +644,9 @@ Stylesheet: Grid Stylesheet
   padding-left: 0 !important;
   padding-right: 0 !important; }
 
+.parent, .remove-all-padding {
+  padding: 0 !important;
+
 .center {
   margin: inherit auto !important;
   text-align: center !important; }

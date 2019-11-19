@@ -118,8 +118,11 @@ $(document).ready(function () {
 		$('.banner-image-caption').text(blog.banner_image_caption)
 		$('.blog-content article').html(blog.post_content)
 		$('.fb-share-button').data('href', window.location.href)
-		$.each(blog.tags, function (i, tag) {
+		$.each(blog.tags, (i, tag) => {
 			$('.tags-container').append(blogTag(tag.name))
+		})
+		$.each(blog.other_posts, (i, blog) => {
+			$('.other-posts').append(otherBlogPreview(blog))
 		})
 		document.title = `${blog.post_title} - Flux Federation`
 	}
@@ -136,7 +139,7 @@ $(document).ready(function () {
 				n++
 				blog = self.blogs[0]
 				n == 1 ? html += `<div class="news-items-row">` : ''
-				html += blogPreview(blog)
+				html += indexBlogPreview(blog)
 				n == 3 || self.blogs.length == 1 ? html += `</div>` : ''
 				n == 3 ? n = 0 : ''
 				self.blogs.splice(0, 1)
@@ -174,9 +177,9 @@ $(document).ready(function () {
 		return html
 	}
 
-	const readMoreButton = name => `<div class="flux-button news-item-button"><a href="post/?name=${name}">Read More</a></div>`
+	const readMoreButton = name => `<div class="flux-button news-item-button"><a href="/newsroom/blog/post/?name=${name}">Read More</a></div>`
 
-	blogPreview = blog => {
+	indexBlogPreview = blog => {
 		html = 
 		`<div class="m-all t-4of12 news-item">
 			<a href="post/?name=${blog.post_name}">
@@ -186,6 +189,22 @@ $(document).ready(function () {
 			${blogPostMeta(blog)}
 			<p class="preview">${blog.post_preview}</p>
 			${readMoreButton(blog.post_name)}
+		</div>`
+		return html
+	}
+
+	otherBlogPreview = blog => {
+		html = 
+		`<div class="news-item">
+			<a class="t-2of5" href="../post/?name=${blog.post_name}">
+				<img src="${blog.banner_image}" class="item-image m-all">
+			</a>
+			<div class="t-3of5 m-all">
+				<h4>${blog.post_title}</h4>
+				${blogPostMeta(blog)}
+				<p class="preview remove-all-padding">${blog.post_preview}</p>
+				${readMoreButton(blog.post_name)}
+			</div>
 		</div>`
 		return html
 	}
