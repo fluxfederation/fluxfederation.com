@@ -1733,3 +1733,34 @@ body.white-footer #footer .wrap .line {
 		font-weight: bold;
 	}
 }
+
+/*********************
+SKELETON LOADING STYLES
+*********************/
+
+.image-skeleton {
+	background-color: rgba(0,0,0,0.1);
+}
+
+.text-skeleton {
+	width: 100%;
+	position: relative;
+	float: left;
+	margin: 5px 0 0 0;
+	&-header {
+		font-size: 1.25rem;
+	    line-height: 1.45rem;
+	    font-weight: 700;
+	}
+	&-purple {
+		color: $purple;
+		background-color: $purple;
+	}
+	&-partial {
+		width: 66.66%;
+	}
+}
+
+
+
+
