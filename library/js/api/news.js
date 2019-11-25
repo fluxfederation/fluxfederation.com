@@ -5,7 +5,7 @@ $(document).ready(function () {
 	$('.events-page').length ? getEventsData().then((events) => addEventsToPage(events)) : ''
 	
 	if ($('.blog-page').length) {
-		// return
+		return
 		getBlogPosts().then(blogs => {
 			self.blogs = blogs
 			addBlogsToPage()

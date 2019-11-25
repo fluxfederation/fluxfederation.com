@@ -1742,6 +1742,24 @@ SKELETON LOADING STYLES
 	background-color: $gray;
 }
 
+.skeleton-button {
+	position: relative;
+    display: inline-block;
+    border-radius: 0.1875rem;
+    background-color: #da155c;
+    overflow: hidden;
+    letter-spacing: .05rem;
+	color: darken($pink, 15%) !important;
+	a {
+		position: relative;
+	    display: inline-block;
+	    text-decoration: none;
+	    text-transform: uppercase;
+	    padding: .5rem 1.5rem;
+	    z-index: 1;
+	}
+}
+
 .text-skeleton {
 	width: 100%;
 	position: relative;
