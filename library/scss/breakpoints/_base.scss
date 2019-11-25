@@ -1738,18 +1738,32 @@ body.white-footer #footer .wrap .line {
 SKELETON LOADING STYLES
 *********************/
 
+@keyframes pulse {
+	0% {
+	  background-position: 0% 0%
+	}
+	100% {
+	  background-position: -135% 0%
+	}
+}
+
 .image-skeleton {
 	background-color: $gray;
+	background: linear-gradient(-90deg, $gray 0%, lighten($gray, 5%) 50%, $gray 100%);
+	background-size: 400% 400% !important;
+	animation: pulse 1.2s ease-in-out infinite;
 }
 
 .skeleton-button {
+	background: linear-gradient(-90deg, darken($pink, 15%) 0%, $pink 50%, darken($pink, 15%) 100%);
+	background-size: 400% 400% !important;
+	animation: pulse 1.2s ease-in-out infinite;
 	position: relative;
     display: inline-block;
     border-radius: 0.1875rem;
-    background-color: #da155c;
     overflow: hidden;
     letter-spacing: .05rem;
-	color: darken($pink, 15%) !important;
+    color: rgba(0,0,0,0) !important;
 	a {
 		position: relative;
 	    display: inline-block;
@@ -1761,20 +1775,22 @@ SKELETON LOADING STYLES
 }
 
 .text-skeleton {
+	background: linear-gradient(-90deg, $gray 0%, lighten($gray, 5%) 50%, $gray 100%);
+	background-size: 400% 400% !important;
+	animation: pulse 1.2s ease-in-out infinite;
 	width: 100%;
 	position: relative;
 	float: left;
 	margin: 5px 0 0 0;
 	line-height: .875rem;
 	font-weight: 500;
-	color: $gray;
-	background-color: $gray;
+	color: rgba(0,0,0,0) !important;
 	&-header {
 		line-height: 1.25rem;
 	}
 	&-purple {
 		color: $purple;
-		background-color: $purple;
+		background: linear-gradient(-90deg, $purple 0%, lighten($purple, 20%) 50%, $purple 100%);
 	}
 	&-medium {
 		width: 67%;
