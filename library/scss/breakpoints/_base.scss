@@ -1739,7 +1739,7 @@ SKELETON LOADING STYLES
 *********************/
 
 .image-skeleton {
-	background-color: rgba(0,0,0,0.1);
+	background-color: $gray;
 }
 
 .text-skeleton {
@@ -1747,17 +1747,22 @@ SKELETON LOADING STYLES
 	position: relative;
 	float: left;
 	margin: 5px 0 0 0;
+	line-height: .875rem;
+	font-weight: 500;
+	color: $gray;
+	background-color: $gray;
 	&-header {
-		font-size: 1.25rem;
-	    line-height: 1.45rem;
-	    font-weight: 700;
+		line-height: 1.25rem;
 	}
 	&-purple {
 		color: $purple;
 		background-color: $purple;
 	}
-	&-partial {
-		width: 66.66%;
+	&-medium {
+		width: 67%;
+	}
+	&-small {
+		width: 34%;
 	}
 }
 
