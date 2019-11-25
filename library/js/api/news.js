@@ -4,10 +4,10 @@ $(document).ready(function () {
 
 	$('.events-page').length ? getEventsData().then((events) => addEventsToPage(events)) : ''
 	
-	if ($('.blog-page').length) {
-		return
+	if ($('.blog-page').length) {		
 		getBlogPosts().then(blogs => {
 			self.blogs = blogs
+			$('.skeleton-new-items').remove()
 			addBlogsToPage()
 		})
 	}
@@ -62,7 +62,8 @@ $(document).ready(function () {
 				url: url,
 				crossDomain: true,
 				success: function(data) {
-					resolve(data)
+					setTimeout(() => resolve(data), 5000)
+					// resolve(data)
 				},
 				error: function(error) {
 					reject(error)
