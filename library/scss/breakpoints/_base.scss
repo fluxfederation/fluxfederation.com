@@ -1747,17 +1747,18 @@ SKELETON LOADING STYLES
 	}
 }
 
-.image-skeleton {
-	background-color: $gray;
-	background: linear-gradient(-90deg, $gray 0%, lighten($gray, 5%) 50%, $gray 100%);
+@mixin pulse($color) {
+	background: linear-gradient(-90deg, $color 0%, lighten($color, 5%) 50%, $color 100%);
 	background-size: 400% 400% !important;
 	animation: pulse 1.2s ease-in-out infinite;
 }
 
+.image-skeleton {
+	@include pulse($gray);
+}
+
 .skeleton-button {
-	background: linear-gradient(-90deg, darken($pink, 15%) 0%, $pink 50%, darken($pink, 15%) 100%);
-	background-size: 400% 400% !important;
-	animation: pulse 1.2s ease-in-out infinite;
+	@include pulse($pink);
 	position: relative;
     display: inline-block;
     border-radius: 0.1875rem;
@@ -1775,9 +1776,7 @@ SKELETON LOADING STYLES
 }
 
 .text-skeleton {
-	background: linear-gradient(-90deg, $gray 0%, lighten($gray, 5%) 50%, $gray 100%);
-	background-size: 400% 400% !important;
-	animation: pulse 1.2s ease-in-out infinite;
+	@include pulse($gray);
 	width: 100%;
 	position: relative;
 	float: left;
@@ -1789,8 +1788,7 @@ SKELETON LOADING STYLES
 		line-height: 1.25rem;
 	}
 	&-purple {
-		color: $purple;
-		background: linear-gradient(-90deg, $purple 0%, lighten($purple, 20%) 50%, $purple 100%);
+		@include pulse($purple);
 	}
 	&-medium {
 		width: 67%;
