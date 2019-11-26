@@ -867,7 +867,6 @@ function get_url_param(parameterName) {
             break;
         }
     }
-
     return(result);
 }
 
