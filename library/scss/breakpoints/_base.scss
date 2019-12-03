@@ -825,6 +825,17 @@ section.remove-padding {
 	padding: 0;
 }
 
+.no-events-banner {
+	display: inline-block;
+	width: 100%;
+	padding: 100px;
+	img {
+		object-fit: contain;
+		width: 100%;
+	}
+	// background: url('/library/img/no-events.png') center/contain no-repeat;
+}
+
 .back-to-blog-link {
 	opacity: 0.4;
 	text-decoration: none;
@@ -1008,13 +1019,7 @@ section.remove-padding {
 	.item-image {
 		object-fit: cover;
 		height: 210px;
-		// border-radius: 4px;
-		&-logo {
-			background-color: rgba(0,0,0,0);
-			padding: 50px;
-			object-fit: contain;
-			background-color: rgba(0,0,0,0.03);
-		}
+		margin-bottom: 15px;
 	}
 
 
