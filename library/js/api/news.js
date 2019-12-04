@@ -7,7 +7,7 @@ $(document).ready(function () {
 	
 	if ($('.events-page').length) {
 		getEventsData().then((events) => {
-			events.length = 0
+			// events.length = 0
 			events.length ? addEventsToPage(events) : $('.no-events-banner').fadeIn()
 		})
 	}
@@ -112,11 +112,11 @@ $(document).ready(function () {
 
 	seperateDateString = date => {
 		date = date.split('/')
-		date = new Date(parseInt(date[0]), parseInt(date[1]), parseInt(date[2]))
+		console.log(date)
+		date = new Date(parseInt(date[2]), (parseInt(date[1]) -1), parseInt(date[0]))
 		day = date.getDate()
-		year = date.getYear()
 		month = date.toLocaleString('default', { month: 'short' })
-		return {month: month, day: day, year: year}
+		return {month: month, day: day}
 	}
 
 	returnToBlogLink = () => `<a href="../" class="back-to-blog-link m-all t-5of6"><p>< Back to Blog</p></a>`
@@ -171,9 +171,9 @@ $(document).ready(function () {
 			<img src="${event.image_url}" class="item-image item-image-logo">
 			<h4>${event.title}</h4>
 			<div class="cf item-info">
-				<strong><p>${date.month} ${date.day} ${date.year}</p></strong>
+				<strong><p>${date.month} ${date.day}</p></strong>
 				<br>
-				<p class="preview">${event.blurb}</p>
+				<p class="preview">${event.description}</p>
 			</div>
 		</div>`
 		return html
