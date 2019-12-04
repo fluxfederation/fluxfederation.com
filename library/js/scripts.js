@@ -302,7 +302,7 @@ var isBlink = (isChrome || isOpera) && !!window.CSS;
                 brochureDownloadSubmitted = true;
 
                 setTimeout(function() {
-                    window.location = '/library/download/Flux-brochure-2019-web.pdf';
+                    window.location = '/library/download/Flux-Sales-Booklet-Global-Market-KL19-AU.pdf';
                 }, 1000);
             },
         });
