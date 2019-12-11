@@ -1,13 +1,9 @@
 $(document).ready(function () {
 
 	const self = this
-	console.log('test')
 
-	// $('.events-page').length ? getEventsData().then((events) => addEventsToPage(events)) : ''
-	
 	if ($('.events-page').length) {
 		getEventsData().then((events) => {
-			// events.length = 0
 			events.length ? addEventsToPage(events) : $('.no-events-banner').fadeIn()
 		})
 	}
@@ -49,7 +45,6 @@ $(document).ready(function () {
 	$(document).on('click', '.show-more-blogs .flux-button', e => addBlogsToPage())
 
 	function getEventsData() {
-		console.log('test')
 		return new Promise((resolve, reject) => {
 			$.ajax({
 				url: "https://cms.fluxfederation.com/wp-json/fluxapi/v1/events",
@@ -71,7 +66,6 @@ $(document).ready(function () {
 				url: url,
 				crossDomain: true,
 				success: function(data) {
-					// setTimeout(() => resolve(data), 2000)
 					resolve(data)
 				},
 				error: function(error) {
@@ -97,12 +91,13 @@ $(document).ready(function () {
 				})
 			})	
 		} else {
-			window.location.href = "../"
+			redirectBack()
 		}
 	}
 
+	const redirectBack = () => window.location.href = "../"
 
-	addEventsToPage = events => {
+	const addEventsToPage = events => {
 		console.log(events)
 		html =`<article class="wrap cf">`
 		$.each(events.reverse(), (i, event) => html += eventItem(event))
@@ -110,37 +105,34 @@ $(document).ready(function () {
 		$('.events-page').append(html)
 	}
 
-	seperateDateString = date => {
+	const seperateDateString = date => {
 		date = date.split('/')
-		console.log(date)
 		date = new Date(parseInt(date[2]), (parseInt(date[1]) -1), parseInt(date[0]))
 		day = date.getDate()
 		month = date.toLocaleString('default', { month: 'short' })
 		return {month: month, day: day}
 	}
 
-	returnToBlogLink = () => `<a href="../" class="back-to-blog-link m-all t-5of6"><p>< Back to Blog</p></a>`
+	const returnToBlogLink = () => `<a href="../" class="back-to-blog-link m-all t-5of6"><p>< Back to Blog</p></a>`
 
-	addBlogToPage = blog => {
-		blog.post_content == "" ? window.location.href = "../" : ''
+	const addBlogToPage = blog => {
+		blog.post_content == "" ? redirectBack() : ''
 		$('.blog-title').text(blog.post_title)
 		$(blogPostMeta(blog)).insertAfter('.blog-title')
 		$('.banner-image').attr('src', blog.banner_image)
 		$('.banner-image-caption').text(blog.banner_image_caption)
 		$('.blog-content article').html(blog.post_content)
 		$('.fb-share-button').data('href', window.location.href)
-		$.each(blog.tags, (i, tag) => {
-			$('.tags-container').append(blogTag(tag.name))
-		})
-		$.each(blog.other_posts, (i, blog) => {
-			$('.other-posts').append(otherBlogPreview(blog))
-		})
-		document.title = `${blog.post_title} - Flux Federation`
+		$.each(blog.tags, (i, tag) => $('.tags-container').append(blogTag(tag.name)))
+		$.each(blog.other_posts, (i, blog) => $('.other-posts').append(otherBlogPreview(blog)))
+		setPageTitle(blog.post_title)
 	}
 
-	blogTag = tag => `<div class="tag">${tag}</div>`
+	const setPageTitle = title => document.title = `${title} - Flux Federation`
 
-	addBlogsToPage = () => {
+	const blogTag = tag => `<div class="tag">${tag}</div>`
+
+	const addBlogsToPage = () => {
 		console.log(self.blogs)
 		$('.show-more').remove()
 		html = ``
@@ -162,7 +154,7 @@ $(document).ready(function () {
 
 	const showMorePostsButton = () => `<div class="show-more show-more-blogs"><div class="flux-button"><a>Show More</a></div></div>`
 
-	eventItem = event => {
+	const eventItem = event => {
 		date = seperateDateString(event.start_date)
 		html = 
 		`<div class="m-all t-4of12 news-item">
@@ -170,7 +162,7 @@ $(document).ready(function () {
 			<h4>${event.title}</h4>
 			<div class="cf item-info">
 				<strong><p>${date.month} ${date.day}</p></strong>
-				<strong><p><a target="_blank" href="http://www.google.com/maps/place/${event.location.lat},${event.location.lng}">${event.location.address.split(',')[0]}</a></p></strong>
+				<strong><p><a target="_blank" href="${googleMapsUrl(event.location.lat, event.location.lng)}">${event.location.address.split(',')[0]}</a></p></strong>
 				<br>
 				<p class="preview">${event.description}</p>
 			</div>
@@ -178,7 +170,9 @@ $(document).ready(function () {
 		return html
 	}
 
-	blogPostMeta = blog => {
+	const googleMapsUrl = (lat, lng) => `http://www.google.com/maps/place/${lat},${lng}`
+
+	const blogPostMeta = blog => {
 		console.log(blog)
 		date = seperateDateString(blog.date_written)
 		html = 
@@ -192,7 +186,7 @@ $(document).ready(function () {
 
 	const readMoreButton = name => `<div class="flux-button news-item-button"><a href="/newsroom/blog/post/?name=${name}">Read More</a></div>`
 
-	indexBlogPreview = blog => {
+	const indexBlogPreview = blog => {
 		html = 
 		`<div class="m-all t-4of12 news-item">
 			<a href="post/?name=${blog.post_name}">
@@ -206,7 +200,7 @@ $(document).ready(function () {
 		return html
 	}
 
-	otherBlogPreview = blog => {
+	const otherBlogPreview = blog => {
 		html = 
 		`<div class="news-item">
 			<a class="t-2of5" href="../post/?name=${blog.post_name}">
