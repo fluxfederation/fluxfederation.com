@@ -121,8 +121,6 @@ $(document).ready(function () {
 
 	returnToBlogLink = () => `<a href="../" class="back-to-blog-link m-all t-5of6"><p>< Back to Blog</p></a>`
 
-	calcPageNum = () => $('.news-item').length % 6 != 0 ? 0 : $('.news-item').length ? $('.news-item').length / 6 : 1
-
 	addBlogToPage = blog => {
 		blog.post_content == "" ? window.location.href = "../" : ''
 		$('.blog-title').text(blog.post_title)
@@ -168,10 +166,11 @@ $(document).ready(function () {
 		date = seperateDateString(event.start_date)
 		html = 
 		`<div class="m-all t-4of12 news-item">
-			<img src="${event.image_url}" class="item-image item-image-logo">
+			<img src="" class="item-image item-image-logo">
 			<h4>${event.title}</h4>
 			<div class="cf item-info">
 				<strong><p>${date.month} ${date.day}</p></strong>
+				<strong><p><a target="_blank" href="http://www.google.com/maps/place/${event.location.lat},${event.location.lng}">${event.location.address.split(',')[0]}</a></p></strong>
 				<br>
 				<p class="preview">${event.description}</p>
 			</div>
