@@ -33,6 +33,8 @@ $(document).ready(function () {
 		}
 	}
 
+	getFieldByID = (form_id, input_id) => $(`form#${form_id} *[id="${input_id}"]`)
+
 	addCustomCss = (styles) => {
 		$.each(styles, (selector, classNames) => $(selector).addClass(classNames))
 	}
@@ -139,6 +141,7 @@ $(document).ready(function () {
 	}
 
 	function postForm(data) {
+		console.log(data)
 		form_id = data.form_id
 		return new Promise((resolve, reject) => {
 			$.ajax({
@@ -148,9 +151,10 @@ $(document).ready(function () {
 				dataType: "json",
 				data: JSON.stringify(data),
 				success: function(data) {
-					redirect_url = $(`form#${form_id}`).find('#redirect-url').val()
-					redirectAfterSuccess(redirect_url)
-					resolve(data)
+					console.log(data)
+					// redirect_url = $(`form#${form_id}`).find('#redirect-url').val()
+					// redirectAfterSuccess(redirect_url)
+					// resolve(data)
 				},
 				error: function(error) {
 					reject(error)

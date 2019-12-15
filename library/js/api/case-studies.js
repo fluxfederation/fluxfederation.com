@@ -14,27 +14,40 @@ $(document).ready(function () {
 		})	
 	}
 
-	addCaseStudiesToPage = case_studies => {
-		console.log(case_studies)
-		html =`<article class="wrap cf">`
-		$.each(case_studies.reverse(), (i, case_study) => html += caseStudyItem(case_study))
-		html += `</article>`
-		$('.case-studies-page').append(html)
+	const addCaseStudiesToPage = () => {
+		console.log(self.blogs)
+		$('.show-more').remove()
+		html = ``
+		n = 0
+		for (var i=0; i < 6; i++) {
+			if (self.blogs.length) {
+				n++
+				blog = self.blogs[0]
+				n == 1 ? html += `<div class="news-items-row">` : ''
+				html += indexBlogPreview(blog)
+				n == 3 || self.blogs.length == 1 ? html += `</div>` : ''
+				n == 3 ? n = 0 : ''
+				self.blogs.splice(0, 1)
+			}
+		}
+		self.blogs.length ? html += showMorePostsButton() : ''
+		$('.blog-section').append(html)
 	}
 
-	caseStudyItem = case_study => {
+	const indexCaseStudyPreview = case_study => {
 		html = 
 		`<div class="m-all t-4of12 news-item">
-			<img src="" class="item-image item-image-logo">
-			<h4>${event.title}</h4>
-			<div class="cf item-info">
-				<strong><p>${date.month} ${date.day}</p></strong>
-				<strong><p><a target="_blank" href="http://www.google.com/maps/place/${event.location.lat},${event.location.lng}">${event.location.address.split(',')[0]}</a></p></strong>
-				<br>
-				<p class="preview">${event.description}</p>
-			</div>
+			<a href="post/?name=${case_study.post_title}">
+				<img src="${blog.banner_image}" class="item-image">
+				<h4>${case_study.post_title}</h4>
+			</a>
+			${blogPostMeta(blog)}
+			<p class="preview">${blog.post_preview}</p>
+			${readMoreButton(blog.post_name)}
 		</div>`
 		return html
 	}
+
+
 
 })
