@@ -14,6 +14,13 @@ $(document).ready(function () {
 			$('.skeleton-new-items').remove()
 			addBlogsToPage()
 		})
+
+		$(window).on('scroll', () => {
+			if (isInViewport($('footer')) && self.blogs.length) {
+				addBlogsToPage()
+			}
+		})
+
 	}
 
 	const isInViewport = element => {
@@ -23,14 +30,6 @@ $(document).ready(function () {
 		const viewport_bottom = viewport_top + $(window).height()
 		return element_bottom > viewport_top && element_top < viewport_bottom
 	}
-
-	$(window).on('scroll', () => {
-
-		if (isInViewport($('footer')) && self.blogs.length) {
-			console.log('added')
-			addBlogsToPage()
-		}
-	})
 
 	$('.single-blog-page').length ? getSingleBlogPost().then((blog) => addBlogToPage(blog)) : ''
 
