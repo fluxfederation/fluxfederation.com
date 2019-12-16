@@ -16,6 +16,22 @@ $(document).ready(function () {
 		})
 	}
 
+	const isInViewport = element => {
+		const element_top = element.offset().top
+		const element_bottom = element_top + element.outerHeight()
+		const viewport_top = $(window).scrollTop()
+		const viewport_bottom = viewport_top + $(window).height()
+		return element_bottom > viewport_top && element_top < viewport_bottom
+	}
+
+	$(window).on('scroll', () => {
+
+		if (isInViewport($('footer')) && self.blogs.length) {
+			console.log('added')
+			addBlogsToPage()
+		}
+	})
+
 	$('.single-blog-page').length ? getSingleBlogPost().then((blog) => addBlogToPage(blog)) : ''
 
 	$('.social-share-container li').click(e => {
@@ -42,7 +58,7 @@ $(document).ready(function () {
 		}
 	})
 
-	$(document).on('click', '.show-more-blogs .flux-button', e => addBlogsToPage())
+	$(document).on('click', '.show-more-blogs .flux-button', () => addBlogsToPage())
 
 	function getEventsData() {
 		return new Promise((resolve, reject) => {
@@ -133,7 +149,6 @@ $(document).ready(function () {
 	const blogTag = tag => `<div class="tag">${tag}</div>`
 
 	const addBlogsToPage = () => {
-		console.log(self.blogs)
 		$('.show-more').remove()
 		html = ``
 		n = 0
@@ -148,7 +163,7 @@ $(document).ready(function () {
 				self.blogs.splice(0, 1)
 			}
 		}
-		self.blogs.length ? html += showMorePostsButton() : ''
+		// self.blogs.length ? html += showMorePostsButton() : ''
 		$('.blog-section').append(html)
 	}
 
