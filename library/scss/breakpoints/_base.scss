@@ -836,6 +836,17 @@ section.remove-padding {
 	// background: url('/library/img/no-events.png') center/contain no-repeat;
 }
 
+.event-info {
+	a, a:visited {
+		color: $purple;
+	}
+	.small-text {
+		font-size: 0.85em;
+		margin-top: 5px;
+		margin-bottom: 10px;
+	}
+}
+
 .back-to-blog-link {
 	opacity: 0.4;
 	text-decoration: none;

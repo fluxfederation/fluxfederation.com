@@ -187,11 +187,16 @@ $(document).ready(function () {
 			<img src="${event.image_url}" class="item-image item-image-logo">
 			<h4>${event.title}</h4>
 			<div class="cf item-info">
-				<strong><p>${eventDate(event)} ${event.start_time && event.end_time ? `${event.start_time}-${event.end_time}` : ''}</p></strong><br>
-				<p><a href="${event.ics_file}">Add to Calendar</a></p><br>
-				<strong><p>${event.location.address.split(',')[0]}</p></strong><br>
-				<p><a target="_blank" href="${googleMapsUrl(event.location.address)}">View Map</a></p>
-				<br>
+				<div class="event-info">
+					<div class="cf">
+						<p>${eventDate(event)} ${event.start_time && event.end_time ? `${event.start_time}-${event.end_time}` : ''}</p><br>
+						<p class="small-text"><a href="${event.ics_file_url}">Add to Calendar</a></p><br>
+					</div>
+					<div class="cf">
+						<p>${event.location.address.split(',')[0]}</p><br>
+						<p class="small-text"><a target="_blank" href="${googleMapsUrl(event.location.address)}">View Map</a></p>
+					</div>
+				</div>
 				<p class="preview">${event.description}</p>
 			</div>
 		</div>`
