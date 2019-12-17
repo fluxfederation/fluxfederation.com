@@ -151,10 +151,9 @@ $(document).ready(function () {
 				dataType: "json",
 				data: JSON.stringify(data),
 				success: function(data) {
-					console.log(data)
-					// redirect_url = $(`form#${form_id}`).find('#redirect-url').val()
-					// redirectAfterSuccess(redirect_url)
-					// resolve(data)
+					redirect_url = $(`form#${form_id}`).find('#redirect-url').val()
+					redirectAfterSuccess(redirect_url)
+					resolve(data)
 				},
 				error: function(error) {
 					reject(error)
