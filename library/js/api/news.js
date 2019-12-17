@@ -4,7 +4,8 @@ $(document).ready(function () {
 
 	if ($('.events-page').length) {
 		getEventsData().then((events) => {
-			events.length ? addEventsToPage(events) : $('.no-events-banner').fadeIn()
+			self.events = events
+			events.length ? addNewsToIndexPage(self.events, 'event', $('.events-section')) : $('.no-events-banner').fadeIn()
 		})
 	}
 
@@ -12,12 +13,12 @@ $(document).ready(function () {
 		getBlogPosts().then(blogs => {
 			self.blogs = blogs
 			$('.skeleton-new-items').remove()
-			addBlogsToPage()
+			addNewsToIndexPage(self.blogs, 'blog', $('.blog-section'))
 		})
 
 		$(window).on('scroll', () => {
 			if (isInViewport($('footer')) && self.blogs.length) {
-				addBlogsToPage()
+				addNewsToIndexPage(self.blogs, 'blog', $('.blog-section'))
 			}
 		})
 
@@ -57,7 +58,7 @@ $(document).ready(function () {
 		}
 	})
 
-	$(document).on('click', '.show-more-blogs .flux-button', () => addBlogsToPage())
+	$(document).on('click', '.show-more-blogs .flux-button', () => addNewsToIndexPage(self.blogs, 'blog', $('.blog-section')))
 
 	function getEventsData() {
 		return new Promise((resolve, reject) => {
@@ -154,23 +155,23 @@ $(document).ready(function () {
 
 	const blogTag = tag => `<div class="tag">${tag}</div>`
 
-	const addBlogsToPage = () => {
-		$('.show-more').remove()
+	const addNewsToIndexPage = (items, type, container) => {
+		// $('.show-more').remove()
 		html = ``
 		n = 0
 		for (var i=0; i < 6; i++) {
-			if (self.blogs.length) {
+			if (items.length) {
 				n++
-				blog = self.blogs[0]
+				item = items[0]
 				n == 1 ? html += `<div class="news-items-row">` : ''
-				html += indexBlogPreview(blog)
-				n == 3 || self.blogs.length == 1 ? html += `</div>` : ''
+				html += type == 'blog' ? indexBlogPreview(item) : eventItem(item)
+				n == 3 || items.length == 1 ? html += `</div>` : ''
 				n == 3 ? n = 0 : ''
-				self.blogs.splice(0, 1)
+				items.splice(0, 1)
 			}
 		}
 		// self.blogs.length ? html += showMorePostsButton() : ''
-		$('.blog-section').append(html)
+		container.append(html)
 	}
 
 	const showMorePostsButton = () => `<div class="show-more show-more-blogs"><div class="flux-button"><a>Show More</a></div></div>`
@@ -186,19 +187,18 @@ $(document).ready(function () {
 		`<div class="m-all t-4of12 news-item">
 			<img src="${event.image_url}" class="item-image item-image-logo">
 			<h4>${event.title}</h4>
-			<div class="cf item-info">
-				<div class="event-info">
-					<div class="cf">
-						<p>${eventDate(event)} ${event.start_time && event.end_time ? `${event.start_time}-${event.end_time}` : ''}</p><br>
-						<p class="small-text"><a href="${event.ics_file_url}">Add to Calendar</a></p><br>
-					</div>
-					<div class="cf">
-						<p>${event.location.address.split(',')[0]}</p><br>
-						<p class="small-text"><a target="_blank" href="${googleMapsUrl(event.location.address)}">View Map</a></p>
-					</div>
+			<div class="cf item-info event-info">
+				<div class="cf">
+					<p>${eventDate(event)} ${event.start_time && event.end_time ? `${event.start_time}-${event.end_time}` : ''}</p><br>
+					<p class="small-text"><a href="${event.ics_file_url}">Add to Calendar</a></p><br>
 				</div>
-				<p class="preview">${event.description}</p>
+				<div class="cf">
+					<p>${event.location.address.split(',')[0]}</p><br>
+					<p class="small-text"><a target="_blank" href="${googleMapsUrl(event.location.address)}">View Map</a></p>
+				</div>
 			</div>
+			<p class="preview">${event.description}</p>
+			${readMoreEventButton(event.redirect_url)}
 		</div>`
 		return html
 	}
@@ -217,7 +217,9 @@ $(document).ready(function () {
 		return html
 	}
 
-	const readMoreButton = name => `<div class="flux-button news-item-button"><a href="/newsroom/blog/post/?name=${name}">Read More</a></div>`
+	const readMoreBlogButton = name => `<div class="flux-button news-item-button"><a href="/newsroom/blog/post/?name=${name}">Read More</a></div>`
+	
+	const readMoreEventButton = url => `<div class="flux-button news-item-button"><a target="_blank" href="${url}">Read More</a></div>`
 
 	const indexBlogPreview = blog => {
 		html = 
@@ -228,7 +230,7 @@ $(document).ready(function () {
 			</a>
 			${blogPostMeta(blog)}
 			<p class="preview">${blog.post_preview}</p>
-			${readMoreButton(blog.post_name)}
+			${readMoreBlogButton(blog.post_name)}
 		</div>`
 		return html
 	}
@@ -243,7 +245,7 @@ $(document).ready(function () {
 				<h4>${blog.post_title}</h4>
 				${blogPostMeta(blog)}
 				<p class="preview remove-all-padding">${blog.post_preview}</p>
-				${readMoreButton(blog.post_name)}
+				${readMoreBlogButton(blog.post_name)}
 			</div>
 		</div>`
 		return html
