@@ -120,12 +120,19 @@ $(document).ready(function () {
 		$('.events-page').append(html)
 	}
 
-	const seperateDateString = date => {
+	const parseDateInfo = date => {
 		date = date.split('/')
 		date = new Date(parseInt(date[2]), (parseInt(date[1]) -1), parseInt(date[0]))
 		day = date.getDate()
-		month = date.toLocaleString('default', { month: 'short' })
-		return {month: month, day: day}
+		weekday = date.toLocaleString('default', {weekday: 'long'})
+		month_short = date.toLocaleString('default', { month: 'short' })
+		month_long = date.toLocaleString('default', { month: 'long' })
+		return {
+			month_short: month_short,
+			month_long: month_long,
+		 	day: day,
+		 	weekday: weekday
+		}
 	}
 
 	const returnToBlogLink = () => `<a href="../" class="back-to-blog-link m-all t-5of6"><p>< Back to Blog</p></a>`
@@ -169,15 +176,16 @@ $(document).ready(function () {
 	const showMorePostsButton = () => `<div class="show-more show-more-blogs"><div class="flux-button"><a>Show More</a></div></div>`
 
 	const eventItem = event => {
-		date = seperateDateString(event.start_date)
+		date = parseDateInfo(event.start_date)
 		html = 
 		`<div class="m-all t-4of12 news-item">
 			<img src="${event.image_url}" class="item-image item-image-logo">
 			<h4>${event.title}</h4>
 			<div class="cf item-info">
-				<strong><p>${date.month} ${date.day}</p></strong><br>
-				<p><a href="${event.ics_file}">Add to Calendar</a></p><br><br>
-				<strong><p><a target="_blank" href="${googleMapsUrl(event.location.address)}">${event.location.address.split(',')[0]}</a></p></strong>
+				<strong><p>${date.weekday} ${date.day} ${date.month_long}</p></strong><br>
+				<p><a href="${event.ics_file}">Add to Calendar</a></p><br>
+				<strong><p>${event.location.address.split(',')[0]}</p></strong><br>
+				<p><a target="_blank" href="${googleMapsUrl(event.location.address)}">View Map</a></p>
 				<br>
 				<p class="preview">${event.description}</p>
 			</div>
@@ -189,12 +197,12 @@ $(document).ready(function () {
 
 	const blogPostMeta = blog => {
 		console.log(blog)
-		date = seperateDateString(blog.date_written)
+		date = parseDateInfo(blog.date_written)
 		html = 
 		`<div class="cf item-info">
 			<strong><p class="author">By ${blog.author_name}</p></strong>
 			<br>
-			<p class="item-meta-info">${date.month} ${date.day} | ${blog.read_time} min read</p>
+			<p class="item-meta-info">${date.month_short} ${date.day} | ${blog.read_time} min read</p>
 		</div>`
 		return html
 	}
