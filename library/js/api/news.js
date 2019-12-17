@@ -172,11 +172,12 @@ $(document).ready(function () {
 		date = seperateDateString(event.start_date)
 		html = 
 		`<div class="m-all t-4of12 news-item">
-			<img src="" class="item-image item-image-logo">
+			<img src="${event.image_url}" class="item-image item-image-logo">
 			<h4>${event.title}</h4>
 			<div class="cf item-info">
-				<strong><p>${date.month} ${date.day}</p></strong>
-				<strong><p><a target="_blank" href="${googleMapsUrl(event.location.lat, event.location.lng)}">${event.location.address.split(',')[0]}</a></p></strong>
+				<strong><p>${date.month} ${date.day}</p></strong><br>
+				<p><a href="${event.ics_file}">Add to Calendar</a></p><br><br>
+				<strong><p><a target="_blank" href="${googleMapsUrl(event.location.address)}">${event.location.address.split(',')[0]}</a></p></strong>
 				<br>
 				<p class="preview">${event.description}</p>
 			</div>
@@ -184,7 +185,7 @@ $(document).ready(function () {
 		return html
 	}
 
-	const googleMapsUrl = (lat, lng) => `http://www.google.com/maps/place/${lat},${lng}`
+	const googleMapsUrl = address => `http://www.google.com/maps/?q=${encodeURIComponent(address)}`
 
 	const blogPostMeta = blog => {
 		console.log(blog)
