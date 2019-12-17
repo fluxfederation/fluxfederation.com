@@ -175,14 +175,19 @@ $(document).ready(function () {
 
 	const showMorePostsButton = () => `<div class="show-more show-more-blogs"><div class="flux-button"><a>Show More</a></div></div>`
 
+	const eventDate = event => {
+		const start_date = parseDateInfo(event.start_date)
+		const end_date = event.end_date ? parseDateInfo(event.end_date) : null
+		return `${start_date.weekday} ${start_date.day} ${start_date.month_short} ${event.end_date ? `- ${end_date.weekday} ${end_date.day} ${end_date.month_short}` : ''}`
+	}
+
 	const eventItem = event => {
-		date = parseDateInfo(event.start_date)
 		html = 
 		`<div class="m-all t-4of12 news-item">
 			<img src="${event.image_url}" class="item-image item-image-logo">
 			<h4>${event.title}</h4>
 			<div class="cf item-info">
-				<strong><p>${date.weekday} ${date.day} ${date.month_long}</p></strong><br>
+				<strong><p>${eventDate(event)} ${event.start_time && event.end_time ? `${event.start_time}-${event.end_time}` : ''}</p></strong><br>
 				<p><a href="${event.ics_file}">Add to Calendar</a></p><br>
 				<strong><p>${event.location.address.split(',')[0]}</p></strong><br>
 				<p><a target="_blank" href="${googleMapsUrl(event.location.address)}">View Map</a></p>
