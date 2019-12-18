@@ -1796,7 +1796,7 @@ SKELETON LOADING STYLES
 	width: 100%;
 	position: relative;
 	float: left;
-	margin: 5px 0 0 0;
+	margin: 5px 0 0 0 !important;
 	line-height: .875rem;
 	font-weight: 500;
 	color: rgba(0,0,0,0) !important;
@@ -1807,10 +1807,12 @@ SKELETON LOADING STYLES
 		@include pulse($purple);
 	}
 	&-medium {
-		width: 67%;
+		width: 66%;
+		margin-right: 34%;
 	}
 	&-small {
-		width: 34%;
+		width: 33%;
+		margin-right: 67%;
 	}
 }
 

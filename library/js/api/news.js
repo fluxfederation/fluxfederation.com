@@ -5,6 +5,7 @@ $(document).ready(function () {
 	if ($('.events-page').length) {
 		getEventsData().then((events) => {
 			self.events = events
+			$('.skeleton-event-items').remove()
 			events.length ? addNewsToIndexPage(self.events, 'event', $('.events-section')) : $('.no-events-banner').fadeIn()
 		})
 	}
