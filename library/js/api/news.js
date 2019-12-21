@@ -3,7 +3,7 @@ $(document).ready(function () {
 	const self = this
 
 	if ($('.events-page').length) {
-		getEventsData().then((events) => {
+		getEventsData().then(events => {
 			self.events = events
 			$('.skeleton-event-items').remove()
 			events.length ? addNewsToIndexPage(self.events, 'event', $('.events-section')) : $('.no-events-banner').fadeIn()
@@ -22,7 +22,6 @@ $(document).ready(function () {
 				addNewsToIndexPage(self.blogs, 'blog', $('.blog-section'))
 			}
 		})
-
 	}
 
 	const isInViewport = element => {

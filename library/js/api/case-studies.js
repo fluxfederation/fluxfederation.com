@@ -1,9 +1,13 @@
 $(document).ready(function () {
 
-	$('.case-studies-page').length ? getCaseStudiesData().then(case_study => addCaseStudiesToPage(case_study)) : ''
+	if ($('.case-studies-page').length) {
+		getCaseStudiesData().then(case_studies => {
+			self.case_studies = case_studies
+			addCaseStudiesToIndexPage(case_studies)
+		})
+	}
 
 	function getCaseStudiesData() {
-		console.log('testt')
 		return new Promise((resolve, reject) => {
 			$.ajax({
 				url: "https://cms.fluxfederation.com/wp-json/fluxapi/v1/case-studies",
@@ -14,27 +18,25 @@ $(document).ready(function () {
 		})	
 	}
 
-	const addCaseStudiesToPage = () => {
-		console.log(self.blogs)
-		$('.show-more').remove()
+	const addCaseStudiesToIndexPage = (items = self.case_studies, container = 'case-studies-section') => {
 		html = ``
 		n = 0
 		for (var i=0; i < 6; i++) {
-			if (self.blogs.length) {
+			if (items.length) {
 				n++
-				blog = self.blogs[0]
+				item = items[0]
 				n == 1 ? html += `<div class="news-items-row">` : ''
-				html += indexBlogPreview(blog)
-				n == 3 || self.blogs.length == 1 ? html += `</div>` : ''
+				html += indexCaseStudyPreview(item)
+				n == 3 || items.length == 1 ? html += `</div>` : ''
 				n == 3 ? n = 0 : ''
-				self.blogs.splice(0, 1)
+				items.splice(0, 1)
 			}
 		}
-		self.blogs.length ? html += showMorePostsButton() : ''
-		$('.blog-section').append(html)
+		container.append(html)
 	}
 
 	const indexCaseStudyPreview = case_study => {
+		console.log(case_study)
 		html = 
 		`<div class="m-all t-4of12 news-item">
 			<a href="post/?name=${case_study.post_title}">
