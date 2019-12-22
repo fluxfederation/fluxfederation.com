@@ -7,6 +7,29 @@ $(document).ready(function () {
 		})
 	}
 
+	$('.single-case-study-page').length ? getSingleCaseStudy().then((case_study) => addCaseStudyToPage(case_study)) : ''
+
+	function getSingleCaseStudy() {
+		const postName = () => new URL(document.location).searchParams.get('name')
+		if(postName()) {
+			return new Promise((resolve, reject) => {
+				$.ajax({
+					url: `https://cms.fluxfederation.com/wp-json/fluxapi/v1/case-study/${postName()}`,
+					crossDomain: true,
+					success: function(data) {
+						resolve(data)
+					},
+					error: function(error) {
+						reject(error)
+					}
+				})
+			})	
+		} else {
+			redirectBack()
+		}
+	}
+
+
 	function getCaseStudiesData() {
 		return new Promise((resolve, reject) => {
 			$.ajax({
@@ -51,5 +74,27 @@ $(document).ready(function () {
 
 	const readMoreButton = name => `<div class="flux-button news-item-button"><a href="/solutions/case-studies/post?name=${name}">Read More</a></div>`
 
+	const addCaseStudyToPage = case_study => {
+		case_study.post_content == "" ? redirectBack() : ''
+		$('.case-study-title').text(case_study.post_title)
+		// $('.banner-image').attr('src', case_study.banner_image)
+		// $('.banner-image-caption').text(case_study.banner_image_caption)
+		console.log(case_study.post_content)
+		$('.case-study-content article').html(case_study.post_content)
+		// $('.fb-share-button').data('href', window.location.href)
+		// $.each(case_study.tags, (i, tag) => $('.tags-container').append(blogTag(tag.name)))
+		// $.each(case_study.other_posts, (i, blog) => $('.other-posts').append(otherBlogPreview(blog)))
+		setPageTitle(case_study.post_title)
+	}
+
+	const setPageTitle = title => document.title = `${title} - Flux Federation`
 
 })
+
+
+
+
+
+
+
+
