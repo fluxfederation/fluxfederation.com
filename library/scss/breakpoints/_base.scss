@@ -872,7 +872,7 @@ section.remove-padding {
 	}
 }
 
-.single-blog-page {
+.single-blog-page, .single-case-study {
 
 	.line {
 		position: relative;
@@ -933,7 +933,6 @@ section.remove-padding {
 	}
 
 	.blog-content {
-		width: 100%;
 		width: 100%;
 		position: relative;
 		margin: 0 auto;
@@ -1037,6 +1036,14 @@ section.remove-padding {
 }
 
 // Case Studies 
+
+.case-study-content {
+	background: none !important;
+}
+
+.case-study-title {
+	padding: 0 !important;
+}
 
 .case-studies-page {
 	.news-item .item-image {

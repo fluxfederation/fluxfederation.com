@@ -7,7 +7,7 @@ $(document).ready(function () {
 		})
 	}
 
-	$('.single-case-study-page').length ? getSingleCaseStudy().then((case_study) => addCaseStudyToPage(case_study)) : ''
+	$('.single-case-study').length ? getSingleCaseStudy().then((case_study) => addCaseStudyToPage(case_study)) : ''
 
 	function getSingleCaseStudy() {
 		const postName = () => new URL(document.location).searchParams.get('name')
