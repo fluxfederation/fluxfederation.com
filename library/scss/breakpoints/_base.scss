@@ -821,7 +821,7 @@ section.remove-padding {
 	width: 100%;
 }
 
-.blog-page, .events-page {
+.blog-page, .events-page, .case-studies-page {
 	padding: 0;
 }
 
@@ -1038,11 +1038,14 @@ section.remove-padding {
 
 // Case Studies 
 
-.news-item .item-image {
-	object-fit: contain;
-	padding: 25px;
-	background-color: $gray;
+.case-studies-page {
+	.news-item .item-image {
+		object-fit: contain;
+		padding: 25px;
+		background-color: $gray;
+	}
 }
+
 
 
 // Homepage

@@ -49,7 +49,7 @@ $(document).ready(function () {
 		return html
 	}
 
-	const readMoreButton = name => `<div class="flux-button news-item-button"><a href="/newsroom/blog/post/?name=${name}">Read More</a></div>`
+	const readMoreButton = name => `<div class="flux-button news-item-button"><a href="/solutions/case-studies/post?name=${name}">Read More</a></div>`
 
 
 })
