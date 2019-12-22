@@ -18,7 +18,7 @@ $(document).ready(function () {
 		})	
 	}
 
-	const addCaseStudiesToIndexPage = (items = self.case_studies, container = 'case-studies-section') => {
+	const addCaseStudiesToIndexPage = (items = self.case_studies, container = $('.case-studies-section')) => {
 		html = ``
 		n = 0
 		for (var i=0; i < 6; i++) {
@@ -39,17 +39,17 @@ $(document).ready(function () {
 		console.log(case_study)
 		html = 
 		`<div class="m-all t-4of12 news-item">
-			<a href="post/?name=${case_study.post_title}">
-				<img src="${blog.banner_image}" class="item-image">
+			<a href="post/?name=${case_study.post_name}">
+				<img src="${case_study.logo}" class="item-image">
 				<h4>${case_study.post_title}</h4>
 			</a>
-			${blogPostMeta(blog)}
-			<p class="preview">${blog.post_preview}</p>
-			${readMoreButton(blog.post_name)}
+			<p class="preview">${case_study.subheader}</p>
+			${readMoreButton(case_study.post_name)}
 		</div>`
 		return html
 	}
 
+	const readMoreButton = name => `<div class="flux-button news-item-button"><a href="/newsroom/blog/post/?name=${name}">Read More</a></div>`
 
 
 })
