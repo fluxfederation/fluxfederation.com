@@ -148,6 +148,7 @@ input[type="button"],
       &:hover {
         background: $purple;
         fill:white;
+        cursor: pointer;
         @extend %social-icon-hover
       }
       &:before {
