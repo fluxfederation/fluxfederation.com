@@ -475,6 +475,11 @@ FONT FACE (IN YOUR FACE)
   font-style: normal; }
 @font-face {
   font-family: 'rubik';
+  src: url("../fonts/ff-rubik-medium-webfont.woff2") format("woff2"), url("../fonts/ff-rubik-medium-webfont.woff") format("woff");
+  font-weight: 600;
+  font-style: normal; }
+@font-face {
+  font-family: 'rubik';
   src: url("../fonts/ff-rubik-bold-webfont.woff2") format("woff2"), url("../fonts/ff-rubik-bold-webfont.woff") format("woff");
   font-weight: 700;
   font-style: normal; }
@@ -645,7 +650,7 @@ Stylesheet: Grid Stylesheet
   padding-right: 0 !important; }
 
 .parent, .remove-all-padding {
-  padding: 0 !important;
+  padding: 0 !important; }
 
 .center {
   margin: inherit auto !important;
@@ -1387,7 +1392,8 @@ input[type="button"],
     fill: #5f259f; }
     .soc a:hover {
       background: #5f259f;
-      fill: white; }
+      fill: white;
+      cursor: pointer; }
     .soc a:before {
       height: 0px; }
   .soc em {
@@ -1991,6 +1997,10 @@ section ul, section ol {
   section ul li, section ol li {
     padding: .2rem 0 .5rem 0; }
 
+b, strong, .strong {
+  font-weight: 600;
+  -webkit-font-smoothing: antialiased; }
+
 /*********************
 HEADER STYLES
 *********************/
@@ -2211,7 +2221,7 @@ section.remove-padding {
     position: relative;
     border-radius: 50%;
     overflow: hidden;
-    -webkit-transform: rotate(0.000001deg); }
+    -webkit-transform: rotate(0.01deg); }
     .page .image .circle img {
       transition: all .5s ease-in-out;
       width: 100%; }
@@ -2254,6 +2264,167 @@ section.remove-padding {
   width: 100%; }
 .page .table-row-vert-center .graphic {
   width: 100%; }
+
+.news-items-row {
+  display: inline-block;
+  position: relative;
+  width: 100%;
+  padding-top: 30px; }
+
+.blog-page, .events-page {
+  padding: 0; }
+
+.no-events-banner {
+  display: inline-block;
+  width: 100%;
+  padding: 0 150px; }
+  .no-events-banner img {
+    object-fit: contain;
+    width: 100%; }
+
+.event-info a, .event-info a:visited {
+  color: #5f259f; }
+.event-info .small-text {
+  font-size: 0.85em;
+  margin-top: 5px;
+  margin-bottom: 10px; }
+
+.back-to-blog-link {
+  opacity: 0.4;
+  text-decoration: none; }
+  .back-to-blog-link p {
+    margin: 15px 0 0 0; }
+  .back-to-blog-link:before {
+    display: none; }
+
+.show-more {
+  width: 100%;
+  padding: 2rem 0;
+  margin: 4rem 0;
+  position: relative;
+  border-top: 1px solid #5f259f; }
+  .show-more .flux-button {
+    cursor: pointer;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%); }
+
+.single-blog-page .line {
+  position: relative; }
+  .single-blog-page .line:before {
+    content: "";
+    position: absolute;
+    display: inline-block;
+    top: 0;
+    width: 100%;
+    max-width: 92%;
+    margin: 0 auto;
+    left: 50%;
+    transform: translateX(-50%);
+    border-top: 1px solid #5f259f; }
+.single-blog-page .other-posts {
+  width: 100%;
+  display: inline-block;
+  position: relative; }
+  .single-blog-page .other-posts .news-item .item-image {
+    margin-bottom: 10px; }
+  .single-blog-page .other-posts .news-item-button {
+    position: relative; }
+.single-blog-page .banner-image {
+  width: 100%;
+  object-fit: cover;
+  background-color: rgba(0, 0, 0, 0.05);
+  height: 250px; }
+.single-blog-page .banner-image-caption {
+  width: 100%;
+  text-align: center;
+  color: rgba(0, 0, 0, 0.4); }
+.single-blog-page .tags-container {
+  width: 100%;
+  display: inline-block;
+  margin: 30px 0; }
+  .single-blog-page .tags-container .tag {
+    display: inline-block;
+    padding: 6px 12px;
+    margin: 10px 10px 0 0;
+    float: left;
+    border-radius: 4px;
+    background-color: rgba(0, 0, 0, 0.1);
+    color: #5f259f; }
+.single-blog-page .blog-content {
+  width: 100%;
+  width: 100%;
+  position: relative;
+  margin: 0 auto;
+  padding: 2rem 1.5rem; }
+  .single-blog-page .blog-content article {
+    margin: 0; }
+  .single-blog-page .blog-content .back-to-blog-link {
+    text-decoration: none;
+    margin: 0;
+    padding: 0;
+    width: 100%; }
+  .single-blog-page .blog-content .share-buttons {
+    margin-top: 10px;
+    float: left; }
+    .single-blog-page .blog-content .share-buttons a, .single-blog-page .blog-content .share-buttons iframe {
+      display: block; }
+  .single-blog-page .blog-content img {
+    padding: 2rem 0; }
+  .single-blog-page .blog-content h2 {
+    padding: 1.5rem 0 0 0;
+    margin: 0; }
+  .single-blog-page .blog-content hr {
+    border: none;
+    width: 100%;
+    height: 30px;
+    color: black; }
+    .single-blog-page .blog-content hr:before {
+      content: " ...";
+      width: 100%;
+      position: absolute;
+      text-align: center;
+      font-weight: bold;
+      letter-spacing: 0.6em;
+      font-size: 20px;
+      line-height: 20px;
+      font-weight: bold; }
+
+.item-info {
+  margin: 10px 0;
+  float: left;
+  width: 100%; }
+  .item-info .item-author-image {
+    float: left;
+    height: 44px;
+    width: 44px;
+    object-fit: cover;
+    border-radius: 50%; }
+  .item-info .item-meta-info {
+    color: rgba(0, 0, 0, 0.3); }
+  .item-info p {
+    float: left;
+    margin: 0; }
+    .item-info p.author {
+      color: #5f259f; }
+
+.social-share-container {
+  padding: 0;
+  margin: 0; }
+
+.news-item {
+  margin-top: 3rem;
+  display: inline-block; }
+  .news-item a {
+    text-decoration: none; }
+  .news-item .preview {
+    padding: 0 0 50px 0; }
+  .news-item img {
+    width: 100%; }
+  .news-item .item-image {
+    object-fit: cover;
+    height: 210px;
+    margin-bottom: 15px; }
 
 .homepage .simple, .homepage .flexible, .homepage .lovable {
   text-align: center;
@@ -2573,7 +2744,7 @@ section.remove-padding {
         transform: scaleX(1); }
 
 .awards-page #awards img {
-  max-height: 14rem;
+  max-height: 12rem;
   max-width: 100%;
   padding-right: 1.5rem; }
 
@@ -2604,6 +2775,8 @@ FOOTER STYLES
   color: #4d4d4d; }
 #footer .address-block h3 {
   margin-bottom: 1rem; }
+#footer .address-block .purple-text {
+  color: #5f259f; }
 #footer .footer-button {
   padding-bottom: .3rem; }
 #footer .slider {
@@ -2665,6 +2838,61 @@ body.white-footer #footer .wrap .line {
       margin: 0;
       padding: 0;
       text-align: right; }
+
+/*********************
+SKELETON LOADING STYLES
+*********************/
+@keyframes pulse {
+  0% {
+    background-position: 0% 0%; }
+  100% {
+    background-position: -135% 0%; } }
+.image-skeleton {
+  background: linear-gradient(-90deg, #cdcdcd 0%, #e6e6e6 50%, #cdcdcd 100%);
+  background-size: 400% 400% !important;
+  animation: pulse 1.2s ease-in-out infinite; }
+
+.skeleton-button {
+  background: linear-gradient(-90deg, #ea1e68 0%, #ee4d87 50%, #ea1e68 100%);
+  background-size: 400% 400% !important;
+  animation: pulse 1.2s ease-in-out infinite;
+  position: relative;
+  display: inline-block;
+  border-radius: 0.1875rem;
+  overflow: hidden;
+  letter-spacing: .05rem;
+  color: rgba(0, 0, 0, 0) !important; }
+  .skeleton-button a {
+    position: relative;
+    display: inline-block;
+    text-decoration: none;
+    text-transform: uppercase;
+    padding: .5rem 1.5rem;
+    z-index: 1; }
+
+.text-skeleton {
+  background: linear-gradient(-90deg, #cdcdcd 0%, #e6e6e6 50%, #cdcdcd 100%);
+  background-size: 400% 400% !important;
+  animation: pulse 1.2s ease-in-out infinite;
+  width: 100%;
+  position: relative;
+  float: left;
+  margin: 5px 0 0 0 !important;
+  line-height: .875rem;
+  font-weight: 500;
+  color: rgba(0, 0, 0, 0) !important; }
+  .text-skeleton-header {
+    line-height: 1.25rem; }
+  .text-skeleton-purple {
+    background: linear-gradient(-90deg, #461b76 0%, #5f259f 50%, #461b76 100%);
+    background-size: 400% 400% !important;
+    animation: pulse 1.2s ease-in-out infinite; }
+  .text-skeleton-medium {
+    width: 66%;
+    margin-right: 34%; }
+  .text-skeleton-small {
+    width: 33%;
+    margin-right: 67%; }
 
 /*********************
 LARGER MOBILE DEVICES
@@ -3142,6 +3370,19 @@ you can add resource intensive styles.
       position: absolute;
       bottom: 0;
       right: 0; }
+
+  .new-item-row {
+    display: flex; }
+
+  .news-item-button {
+    position: absolute;
+    bottom: 0; }
+
+  .single-blog-page .banner-image {
+    height: 500px; }
+  .single-blog-page .blog-content {
+    width: 680px;
+    padding: 2rem 0; }
 
   .solutions-page #bespoke-innovations article {
     display: flex;
@@ -3670,7 +3911,11 @@ This is for the larger monitors and possibly full screen viewers.
   .working-at-flux-page .benefits .benefit p {
     padding: 2rem 2.4rem;
     font-size: .9rem;
-    line-height: 1.5rem; } }
+    line-height: 1.5rem; }
+
+  .single-blog-page .banner-image {
+    height: 650px;
+    object-position: 50% 25%; } }
 /*********************
 RETINA (2x RESOLUTION DEVICES)
 This applies to the retina iPhone (4s) and iPad (2,3) along with
