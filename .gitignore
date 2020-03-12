@@ -10,3 +10,6 @@ GeoIP.dat
 GeoIPv6.dat
 .vscode
 .vscode/*
+node_modules/
+package.json
+package-lock.json

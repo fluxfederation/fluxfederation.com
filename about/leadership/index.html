@@ -2,6 +2,8 @@
 
 <html lang="en">
 	<head>
+        <meta name="referrer" content="origin">
+        <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' https://platform.twitter.com https://careers.pageuppeople.com https://connect.facebook.net https://www.gstatic.com/ https://www.google-analytics.com https://www.googletagmanager.com https://ajax.googleapis.com https://cms.fluxfederation.com https://www.google.com; child-src https://platform.twitter.com https://player.vimeo.com https://www.google.com; form-action 'none';">
 		<meta charset="utf-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
@@ -31,7 +33,7 @@
 
 		<title>Leadership Team - Flux Federation Energy Retail Software</title>
 
-		<link rel="stylesheet" href="/library/css/style.min.css?v=14" />
+		<link rel="stylesheet" href="/library/css/style.min.css?v=15" />
 
 		<!-- Global Site Tag (gtag.js) - Google Analytics -->
 		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-118976002-1"></script>
@@ -45,7 +47,8 @@
 		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <script type="text/javascript" src="/library/js/jquery.validate.min.js"></script>
 		<script type="text/javascript" src="/library/js/scripts.min.js?v=9"></script>
-
+        <script type="text/javascript" src="/library/js/api.min.js"></script>
+        <script id="g-recaptcha-script" src="https://www.google.com/recaptcha/api.js?onload=captchaLoaded" async defer></script>
 		<!--[if lt IE 9]>
 			<script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script>
 			<div style="width: 100%; background: #61319f">
@@ -87,12 +90,12 @@
                         <li>
                             <a href="/careers/working-at-flux" title="Working at Flux Federation">Careers</a>
                         </li>
-                        <li>
-                            <a href="#" class="scroll-to-footer contact" title="Contact Flux Federation">Contact</a>
-                        </li>
-                        <li>
-                            <a href="https://medium.com/humans-of-flux-federation" target="_blank" rel="noopener noreferrer" title="Flux Federation's Blog">Blog</a>
-                        </li>
+						<li>
+							<a href="/newsroom/blog" title="Flux Federation News">Newsroom</a>
+						</li>
+						<li>
+							<a href="#" class="scroll-to-footer contact" title="Contact Flux Federation">Contact</a>
+						</li>
                     </ul>
                 </nav>
                 <a class="hamburger" href="#">
@@ -155,6 +158,7 @@
                                     <img class="color" src="/library/img/leadership/Umesh.jpg" />
                                 </div>
                             </div>
+
                             <p><strong>Umesh Parag</strong><br />Chief Operating Officer</p>
                             <p><a href="mailto:umesh.parag@fluxfederation.com">umesh.parag@fluxfederation.com</a></p>
                         </div>
@@ -252,7 +256,7 @@
                             <p>
                                 <a href="/about/leadership" title="Flux Federation leadership">Leadership</a><br />
                                 <a href="/careers/working-at-flux/">Careers</a><br />
-                                <a href="https://medium.com/humans-of-flux-federation" target="_blank" rel="noopener noreferrer">Blog</a><br />
+                                <a href="/newsroom/blog">Newsroom</a><br />
                             </p>
                             <p>General enquiries: <a href="mailto:hello@fluxfederation.com">hello@fluxfederation.com</a><br />
                                 Media enquiries: <a href="mailto:marketing@fluxfederation.com">marketing@fluxfederation.com</a><br />
@@ -263,27 +267,7 @@
                                     <a href="#" class="drop-us-a-line">Drop us a line</a>
                                 </span>
                             </p>
-                            <div class="slider m-all t-3of4 remove-padding space-bottom cf">
-                                <form name="gform" id="get-in-touch-form" enctype="text/plain" action="https://docs.google.com/forms/d/e/1FAIpQLSe6rGcmsWfHDzbvoXrSe6uaJTjqnMCqLFOgT_gUuvnW6mZ3-Q/formResponse?" target="get-in-touch-response">
-                                    <input type="hidden" name="usp" value="pp_url" />
-                                    <p class="m-all">
-                                        <label for="your-name" class="m-all d-1of4">Name</label>
-                                        <input id="your-name" name="entry.1629797745" value="" type="text" placeholder="Your name" class="m-all t-3of4 cf"/>
-                                    </p>
-                                    <p class="m-all">
-                                        <label for="your-email" class="m-all d-1of4">Email</label>
-                                        <input id="your-email" name="entry.368106203" type="text" placeholder="Your email address" class="m-all t-3of4 cf"/>
-                                    </p>
-                                    <p class="m-all">
-                                        <label for="questions" class="m-all d-1of4">How can we help?</label>
-                                        <textarea id="questions" name="entry.113701146" placeholder="Ask us anything" class="m-all t-3of4 cf"></textarea>
-                                    </p>
-                                    <div class="m-all t-1of4 right cf">
-                                        <div class="flux-button">
-                                            <a class="gform" href="get-in-touch-form">Go</a>
-                                        </div>
-                                    </div>
-                                </form>
+                            <div class="slider m-all t-3of4 remove-padding space-bottom cf drop-us-a-line-container">
                             </div>
     
                             <div class="m-all t-1of2 no-padding t-offset-left-1of4 t-offset-right-1of4 cf">
@@ -291,9 +275,6 @@
                             </div>
                             
                             <ul class="soc m-all remove-padding">
-                                <li>
-                                    <a href="https://medium.com/humans-of-flux-federation" class="icon-26 medium" title="Medium" target="_blank" rel="noopener noreferrer"><svg viewBox="-6 -6 36 36"><path d="M2.846 6.887c.03-.295-.083-.586-.303-.784l-2.24-2.7v-.403h6.958l5.378 11.795 4.728-11.795h6.633v.403l-1.916 1.837c-.165.126-.247.333-.213.538v13.498c-.034.204.048.411.213.537l1.871 1.837v.403h-9.412v-.403l1.939-1.882c.19-.19.19-.246.19-.537v-10.91l-5.389 13.688h-.728l-6.275-13.688v9.174c-.052.385.076.774.347 1.052l2.521 3.058v.404h-7.148v-.404l2.521-3.058c.27-.279.39-.67.325-1.052v-10.608z"/></svg><!--[if lt IE 9]><em>Medium</em><![endif]--></a>
-                                </li>
                                 <li>
                                     <a href="https://twitter.com/fluxfederation" class="icon-26 twitter" title="Twitter" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 512 512"><path d="M419.6 168.6c-11.7 5.2-24.2 8.7-37.4 10.2 13.4-8.1 23.8-20.8 28.6-36 -12.6 7.5-26.5 12.9-41.3 15.8 -11.9-12.6-28.8-20.6-47.5-20.6 -42 0-72.9 39.2-63.4 79.9 -54.1-2.7-102.1-28.6-134.2-68 -17 29.2-8.8 67.5 20.1 86.9 -10.7-0.3-20.7-3.3-29.5-8.1 -0.7 30.2 20.9 58.4 52.2 64.6 -9.2 2.5-19.2 3.1-29.4 1.1 8.3 25.9 32.3 44.7 60.8 45.2 -27.4 21.4-61.8 31-96.4 27 28.8 18.5 63 29.2 99.8 29.2 120.8 0 189.1-102.1 185-193.6C399.9 193.1 410.9 181.7 419.6 168.6z"/></svg><!--[if lt IE 9]><em>Twitter</em><![endif]--></a>
                                 </li>
@@ -364,6 +345,12 @@
             </section>
 
         </footer>
+
+
+        <div class="cookie-disclaimer" style="display: none;">
+            <p class="cookie-disclaimer-text">We use cookies to give you the best possible experience. To accept cookies continue browsing, or check out our<a href="/supplier-privacy-notice" target="_blank"> privacy policy </a>to find out more.</p>
+    		<div class="cookie-disclaimer-close"><p><a>x</a></p></div>
+        </div>
 
     </body>
 </html>
