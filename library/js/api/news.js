@@ -115,7 +115,6 @@ $(document).ready(function () {
 	const redirectBack = () => window.location.href = "../"
 
 	const addEventsToPage = events => {
-		console.log(events)
 		html =`<article class="wrap cf">`
 		$.each(events.reverse(), (i, event) => html += eventItem(event))
 		html += `</article>`
