@@ -18,7 +18,7 @@ $(document).ready(function () {
 		})
 
 		$(window).on('scroll', () => {
-			if (isInViewport($('footer')) && self.blogs.length) {
+			if (isInViewport($('footer')) && self.blogs && self.blogs.length) {
 				addNewsToIndexPage(self.blogs, 'blog', $('.blog-section'))
 			}
 		})
@@ -206,6 +206,7 @@ $(document).ready(function () {
 	const googleMapsUrl = address => `http://www.google.com/maps/?q=${encodeURIComponent(address)}`
 
 	const blogPostMeta = blog => {
+		console.log(blog)
 		date = parseDateInfo(blog.date_written)
 		html = 
 		`<div class="cf item-info">
