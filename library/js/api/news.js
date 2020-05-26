@@ -18,7 +18,7 @@ $(document).ready(function () {
 		})
 
 		$(window).on('scroll', () => {
-			if (isInViewport($('footer')) && self.blogs.length) {
+			if (isInViewport($('footer')) && self.blogs && self.blogs.length) {
 				addNewsToIndexPage(self.blogs, 'blog', $('.blog-section'))
 			}
 		})
@@ -115,7 +115,6 @@ $(document).ready(function () {
 	const redirectBack = () => window.location.href = "../"
 
 	const addEventsToPage = events => {
-		console.log(events)
 		html =`<article class="wrap cf">`
 		$.each(events.reverse(), (i, event) => html += eventItem(event))
 		html += `</article>`
@@ -211,7 +210,20 @@ $(document).ready(function () {
 		date = parseDateInfo(blog.date_written)
 		html = 
 		`<div class="cf item-info">
-			<strong><p class="author">By ${blog.author_name}</p></strong>
+			<image class="item-author-image" src="${blog.author_image}"">
+			<strong><p class="item-info-text-margin">${blog.author_name}</p></strong>
+			<br>
+			<p class="item-meta-info">${date.month_short} ${date.day} | ${blog.read_time} min read</p>
+		</div>`
+		return html
+	}
+
+	const indexBlogPostMeta = blog => {
+		console.log(blog)
+		date = parseDateInfo(blog.date_written)
+		html = 
+		`<div class="cf item-info">
+			<strong><p class="item-info-text-margin">${blog.author_name}</p></strong>
 			<br>
 			<p class="item-meta-info">${date.month_short} ${date.day} | ${blog.read_time} min read</p>
 		</div>`
@@ -229,7 +241,7 @@ $(document).ready(function () {
 				<img src="${blog.banner_image}" class="item-image">
 				<h4>${blog.post_title}</h4>
 			</a>
-			${blogPostMeta(blog)}
+			${indexBlogPostMeta(blog)}
 			<p class="preview">${blog.post_preview}</p>
 			${readMoreBlogButton(blog.post_name)}
 		</div>`

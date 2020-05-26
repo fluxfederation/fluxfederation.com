@@ -992,20 +992,18 @@ section.remove-padding {
 		width: 44px;
 		object-fit: cover;
 		border-radius: 50%;
-	}
-
-	.item-meta-info {
-		color: rgba(0,0,0,0.3);
+		margin-right: 10px;
 	}
 
 	p {
 		float: left;
 		margin: 0;
-		&.author {
-			color: $purple;
+		color: $purple;
+		
+		&.item-meta-info {
+			color: rgba(0,0,0,0.3);
 		}
 	}
-
 }
 
 .social-share-container {
