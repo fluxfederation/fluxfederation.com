@@ -218,6 +218,18 @@ $(document).ready(function () {
 		return html
 	}
 
+	const indexBlogPostMeta = blog => {
+		console.log(blog)
+		date = parseDateInfo(blog.date_written)
+		html = 
+		`<div class="cf item-info">
+			<strong><p class="item-info-text-margin">${blog.author_name}</p></strong>
+			<br>
+			<p class="item-meta-info">${date.month_short} ${date.day} | ${blog.read_time} min read</p>
+		</div>`
+		return html
+	}
+
 	const readMoreBlogButton = name => `<div class="flux-button news-item-button"><a href="/newsroom/blog/post/?name=${name}">Read More</a></div>`
 	
 	const readMoreEventButton = url => `<div class="flux-button news-item-button"><a target="_blank" href="${url}">Read More</a></div>`
@@ -229,7 +241,7 @@ $(document).ready(function () {
 				<img src="${blog.banner_image}" class="item-image">
 				<h4>${blog.post_title}</h4>
 			</a>
-			${blogPostMeta(blog)}
+			${indexBlogPostMeta(blog)}
 			<p class="preview">${blog.post_preview}</p>
 			${readMoreBlogButton(blog.post_name)}
 		</div>`
