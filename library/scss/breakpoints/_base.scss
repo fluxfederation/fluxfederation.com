@@ -995,18 +995,15 @@ section.remove-padding {
 		margin-right: 10px;
 	}
 
-	.item-meta-info {
-		color: rgba(0,0,0,0.3);
-	}
-
 	p {
 		float: left;
 		margin: 0;
-		&.author {
-			color: $purple;
+		color: $purple;
+		
+		&.item-meta-info {
+			color: rgba(0,0,0,0.3);
 		}
 	}
-
 }
 
 .social-share-container {
