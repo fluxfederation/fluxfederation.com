@@ -811,6 +811,27 @@ section.remove-padding {
 			width: 100%;
 		}
 	}
+
+	// Location Section
+	.location {
+		padding-bottom: 0;
+
+		.layout {
+			.content {
+				padding: 0 20px 2rem 20px;
+			}
+
+			.image {
+				display: block;
+				width: 100%;
+				overflow: hidden;
+
+				img {
+					width: 150%;
+				}
+			}
+		}
+	}
 }
 
 // News Page
@@ -1364,26 +1385,6 @@ section.remove-padding {
 				}
 				&.image-5 {
 					background-image: url('/library/img/benefits-and-perks/Picture5.png');
-				}
-			}
-		}
-	}
-
-	.location {
-		padding-bottom: 0;
-
-		.layout {
-			.content {
-				padding: 0 20px 2rem 20px;
-			}
-
-			.image {
-				display: block;
-				width: 100%;
-				overflow: hidden;
-
-				img {
-					width: 150%;
 				}
 			}
 		}
