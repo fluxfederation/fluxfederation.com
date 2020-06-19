@@ -3,7 +3,7 @@
 <html lang="en">
 	<head>
         <meta name="referrer" content="origin">
-        <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' https://boards.greenhouse.io https://platform.twitter.com https://careers.pageuppeople.com https://connect.facebook.net https://www.gstatic.com/ https://www.google-analytics.com https://www.googletagmanager.com https://ajax.googleapis.com https://cms.fluxfederation.com https://www.google.com; child-src https://platform.twitter.com https://player.vimeo.com https://www.google.com https://boards.greenhouse.io; form-action 'none';">
+        <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' https://platform.twitter.com https://careers.pageuppeople.com https://connect.facebook.net https://www.gstatic.com/ https://www.google-analytics.com https://www.googletagmanager.com https://ajax.googleapis.com https://cms.fluxfederation.com https://www.google.com; child-src https://platform.twitter.com https://player.vimeo.com https://www.google.com; form-action 'none';">
 		<meta charset="utf-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
@@ -126,50 +126,55 @@
 					</nav>
 				</div>
 			</section>
-
-			<section id="jobs-listing" class="white">
-				<div class="wrap cf">
-					<article class="m-all t-offset-left-1of6 t-2of3 t-offset-right-1of6 cf">
+            <section id="jobs-listing" class="white">
+                <div class="wrap cf">
+                    <article class="m-all t-offset-left-1of6 t-2of3 t-offset-right-1of6 cf">
 						<h2>Opportunities</h2>
-						<!-- <div id="jobs">
-						</div> -->
-						<div id="grnhse_app"></div>
+						
+						<div id="single-job"></div>
+
+						<p class="link-opportunities">Check out other <a href="/careers/opportunities/">job opportunities with Flux.</a></p>
 					</article>
 				</div>
 			</section>
 
-			<section id="call-to-action" class="flat-purple">
+			<section id="call-to-action" class="gray">
 				<article class="wrap cf">
-					<div class="m-all t-5of12 cf">
-						
-						<h3 class="hide-if-no-jobs">Don't see yourself on this list?</h3>
-						<h3 class="show-if-no-jobs">See something you like?</h3>
-						<p class="hide-if-no-jobs">Don't despair. Even if we're not advertising for a role that jumps out, there may still a seat for you here. Drop us a line so you can chat with our super friendly HR team about all the things you're good at - they'd love to hear from you.</p>
-						<p class="show-if-no-jobs">Drop us a line below so we can have a chat.</p>
-
-						<h3 class="space-top">Flux can help you get here</h3>
-						<p>Moving can be stressful, even if it's across town. Moving to the other side of the world is a whole new level, but it can also be hugely exciting if you have the right support. For international job applicants, Flux can help you navigate all the boring but necessary paperwork, so you can focus on the more important aspects of shifting to New Zealand.</p>
-
-						<div class="hasreveal buttons">
-							<div class="flux-button">
-								<a href="#" class="drop-us-a-line">Drop us a line</a>
-							</div>
-		
-							<div class="slider cf" id="get-in-touch-form-2">
-							</div>
-		
-							<div class="m-all remove-padding cf">
-								<iframe title="form-response" name="get-in-touch-response-2" id="get-in-touch-response-2" style=""></iframe>
-							</div>
-						</div>
+					<div class="m-all t-5of12 t-offset-right-1of6 cf">
+						<h3>Have other skills to offer?</h3>
+						<p>Don't despair. Even if we're not advertising for a role that jumps out, there may still a seat for you here. Drop us a line so you can chat with our super friendly HR team about all the things you're good at - they'd love to hear from you.</p>
+						<div class="underline"></div>
 					</div>
-
-					<div id="fluxie-door" class="m-all t-7of12">
-						<img src="/library/img/footers/careers-opportunities-footer.svg" alt="illustration of Fluxy world, Fluxy astronaut waving and standing infront of a spaceship">
+					<div class="m-all t-5of12 cf">
+						<h3>Flux can help you get here</h3>
+						<p>Moving can be stressful, even if it's across town. Moving to the other side of the world is a whole new level, but it can also be hugely exciting if you have the right support. For international job applicants, Flux can help you navigate all the boring but necessary paperwork, so you can focus on the more important aspects of shifting to New Zealand.</p>
+						<div class="underline"></div>
 					</div>
 
 				</article>
 			</section>
+
+            <section class="call-to-action gray">
+                <div class="illustration">
+                    <img src="/library/img/footers/footer-3.svg" />
+                </div>
+                <div class="hasreveal buttons center">
+                    <div class="flux-button">
+                        <a href="#" class="drop-us-a-line">Drop us a line</a>
+                    </div>
+
+                    <div class="slider cf">
+						<div class="m-all t-1of2 no-padding t-offset-left-1of4 t-offset-right-1of4 cf" id="get-in-touch-form-2">
+    	                </div>
+                    </div>
+
+                    <div class="m-all t-1of2 no-padding t-offset-left-1of4 t-offset-right-1of4 cf">
+                    	<iframe title="form-response" name="get-in-touch-response-2" id="get-in-touch-response-2" style=""></iframe>
+                    </div>
+
+                </div>
+            </section>
+
 		</main>
 
         <footer>
@@ -196,6 +201,7 @@
 								</span>
 							</p>
  							<div class="slider m-all t-3of4 remove-padding space-bottom cf drop-us-a-line-container">
+								 
 							</div>
 	
 							<div class="m-all t-1of2 no-padding t-offset-left-1of4 t-offset-right-1of4 cf">
@@ -278,7 +284,5 @@
     		<div class="cookie-disclaimer-close"><p><a>x</a></p></div>
         </div>
 
-		<script src="https://boards.greenhouse.io/embed/job_board/js?for=fluxfederation"></script>
-		
-	</body>
+    </body>
 </html>
