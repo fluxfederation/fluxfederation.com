@@ -35,7 +35,7 @@ h1 {
 	line-height: 1.4rem;
 }
 
-.opening a {
+.opening a, .link-container a {
 	position: relative;
 	color: $link-color;
 	outline: none !important;
@@ -83,6 +83,10 @@ h1 {
 	}
 }
 
+#custom_fields {
+	margin-top: 2rem;
+}
+
 #submit_app {
 	position: relative;
     display: inline-block;
@@ -91,6 +95,7 @@ h1 {
     overflow: hidden;
     letter-spacing: .05rem;
     font-family: "rubik",Helvetica,Arial,sans-serif !important;
+    text-shadow: initial !important;
     &:after {
     	content: '';
 	    width: 110%;
