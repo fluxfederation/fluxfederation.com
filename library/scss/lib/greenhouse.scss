@@ -1,6 +1,46 @@
 // Greenhouse.io Job Board Styles
 @import "../partials/variables";
 
+@font-face {
+    font-family: 'rubik';
+    src: url('https://fluxfederation.com/library/fonts/ff-rubik-light-webfont.woff2') format('woff2'),
+         url('https://fluxfederation.com/library/fonts/ff-rubik-light-webfont.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'rubik';
+    src: url('https://fluxfederation.com/library/fonts/ff-rubik-regular-webfont.woff2') format('woff2'),
+         url('https://fluxfederation.com/library/ff-rubik-regular-webfont.woff') format('woff');
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'rubik';
+    src: url('https://fluxfederation.com/libraryfonts/ff-rubik-medium-webfont.woff2') format('woff2'),
+         url('https://fluxfederation.com/library/fonts/ff-rubik-medium-webfont.woff') format('woff');
+    font-weight: 600;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'rubik';
+    src: url('https://fluxfederation.com/library/fonts/ff-rubik-bold-webfont.woff2') format('woff2'),
+         url('https://fluxfederation.com/library/fonts/ff-rubik-bold-webfont.woff') format('woff');
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'rubik';
+    src: url('https://fluxfederation.com/library/fonts/ff-rubik-black-webfont.woff2') format('woff2'),
+         url('https://fluxfederation.com/library/fonts/ff-rubik-black-webfont.woff') format('woff');
+    font-weight: 900;
+    font-style: normal;
+}
+
 html, body {
 	font-family: "rubik",Helvetica,Arial,sans-serif !important;
 	font-size: 16.5px !important;
@@ -15,9 +55,9 @@ html, body {
 
 h1 {
 	color: $purple;
-	font-size: 2.3rem;
-    line-height: 2.3rem;
-    font-weight: 300;
+	font-size: 1.4rem;
+	line-height: 1.6rem;
+	font-weight: 700;
 }
 
 #wrapper, #app_body {
@@ -27,15 +67,29 @@ h1 {
 
 .accessible #content {
 	line-height: 1.3em !important; 
+	font-weight: 500;
 }
 
 .accessible .level-0 h3 {
-	border-bottom: 3px solid $purple;
+	border-bottom: 1px solid $purple;
+	padding-bottom: .4rem;
 	line-height: 30px !important;
 }
 
 .accessible .opening {
 	line-height: 1.6rem !important;
+}
+
+.accessible .location {
+	color: #4d4d4d;
+	margin: 1rem 0px;
+	font-weight: 500;
+}
+
+.accessible {
+	.app-title + .location {
+		margin: .5rem 0px;
+	}
 }
 
 .accessible .level-0 h3, h3, h2 {
@@ -44,7 +98,7 @@ h1 {
 	line-height: 1.4rem;
 }
 
-.opening a, .link-container a {
+a, .opening a, .link-container a {
 	position: relative;
 	color: $link-color;
 	outline: none !important;
@@ -78,6 +132,7 @@ h1 {
 }
 
 #application {
+	margin-top: 4rem;
 	padding: 20px !important;
 	border: 1px solid #ee4d87;
 	background-color: initial;
@@ -124,4 +179,11 @@ h1 {
     }
 }
 
+#submission_received { 
+	padding:0;
+}
+
+#view-more {
+	text-align:left;
+}
 
