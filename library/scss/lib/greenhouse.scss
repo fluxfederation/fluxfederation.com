@@ -9,7 +9,7 @@ html, body {
 	color: $dark-gray !important;
 }
 
-#logo, h1:not(.app-title), h2:not(.heading), .company-name, #header a, #main hr {
+#logo, h1:not(.app-title), h2:not(.heading), .company-name, #header a, #main hr, #filter-count {
 	display: none;
 }
 
@@ -27,6 +27,15 @@ h1 {
 
 .accessible #content {
 	line-height: 1.3em !important; 
+}
+
+.accessible .level-0 h3 {
+	border-bottom: 3px solid $purple;
+	line-height: 30px !important;
+}
+
+.accessible .opening {
+	line-height: 1.6rem !important;
 }
 
 .accessible .level-0 h3, h3, h2 {
